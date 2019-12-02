@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Api;
-
+use Illuminate\Contracts\Auth\Factory as Auth;
+use App\Models\OTPModel;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,8 +35,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(JWTAuth $jwt)
+    public function __construct(Auth $auth, JWTAuth $jwt)
     {
+        $this->auth=$auth;
         $this->jwt=$jwt;
     }
 
@@ -74,6 +76,8 @@ class LoginController extends Controller
             if($user = $this->create($request->all())){
                 //event(new Registered($user));
                 //sendotp
+               $user->assignRole('customer');
+               OTPModel::createOTP($user->id, 'login');
             }
         }else if(!($user->status==0 || $user->status==1)){
             //send OTP
@@ -83,6 +87,8 @@ class LoginController extends Controller
 
                 ],
             ], 404);
+        }else{
+            OTPModel::createOTP($user->id, 'login');
         }
         return [
             'message'=>'Please verify OTP to continue'
@@ -119,12 +125,22 @@ class LoginController extends Controller
                 ],
             ], 401);
         }
-        if($user->status==0){
 
+        if(!OTPModel::verifyOTP($user->id, 'login', $request->otp)){
+            return response()->json([
+                'message'=>'Incorrect OTP',
+                'errors'=>[
+
+                ],
+            ], 401);
+        }
+
+        //activate user if not activated
+        if($user->status==0){
             $user->status=1;
             $user->save();
         }
-        //var_dump($user->status);die;
+
         return [
             'message'=>'Login Successfull',
             'token'=>$this->jwt->attempt(['password'=>$request->mobile, 'mobile'=>$request->mobile])
@@ -133,6 +149,7 @@ class LoginController extends Controller
     }
 
     public function home(Request $request){
+        $user=$this->auth->user();
         return ['message'=>'user home page'];
     }
 
