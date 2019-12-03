@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,4 +37,28 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|integer|digits:10',
+            'password' => 'required|string',
+        ]);
+    }
+
+    public function username()
+    {
+        return 'mobile';
+    }
+
+    public function redirectTo(){
+        if(auth()->user()->hasRole('admin'))
+            return route('admin.dashboard');
+        else if(auth()->user()->hasRole('partner'))
+            return route('partner.dashboard');
+        else
+            abort(401);
+    }
+
+
 }
