@@ -52,12 +52,18 @@ class LoginController extends Controller
     }
 
     public function redirectTo(){
-        if(auth()->user()->hasRole('admin'))
-            return route('admin.dashboard');
-        else if(auth()->user()->hasRole('partner'))
-            return route('partner.dashboard');
-        else
-            abort(401);
+        foreach(config('allowedusers.admins') as $key=>$value){
+            if(auth()->user()->hasRole($key)){
+                return route($value);
+            }
+        }
+        abort(401);
+//        if(auth()->user()->hasRole('admin'))
+//            return route('admin.dashboard');
+//        else if(auth()->user()->hasRole('partner'))
+//            return route('partner.dashboard');
+//        else
+//            abort(401);
     }
 
 

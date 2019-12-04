@@ -20,6 +20,8 @@ class ProfileController extends Controller
         $user=$this->auth->user();
 
         $user->address=$request->address;
+        $user->lat=$request->lat;
+        $user->lang=$request->lang;
         if(!$user->save()){
             return response()->json([
                 'message'=>'some error occurred',

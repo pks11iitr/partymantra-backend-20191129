@@ -79,15 +79,23 @@ class LoginController extends Controller
                $user->assignRole('customer');
                OTPModel::createOTP($user->id, 'login');
             }
-        }else if(!($user->status==0 || $user->status==1)){
+        }else if(!in_array($user->status, [0 , 1])){
             //send OTP
             return response()->json([
                 'message'=>'invalid login attempt',
                 'errors'=>[
 
                 ],
-            ], 404);
+            ], 401);
         }else{
+            if(empty(array_intersect($user->getRoles(), config('allowedusers.apiusers')))){
+                return response()->json([
+                    'message'=>'invalid login attempt',
+                    'errors'=>[
+
+                    ],
+                ], 401);
+            }
             OTPModel::createOTP($user->id, 'login');
         }
         return [
@@ -106,7 +114,7 @@ class LoginController extends Controller
     public function verifyOTP(Request $request){
         $this->validate($request, [
             'mobile' => ['required', 'integer', 'digits:10'],
-            'otp' => ['required', 'integer', 'digits:6'],
+            'otp' => ['required', 'integer'],
         ]);
 
         $user=User::where('mobile', $request->mobile)->first();
