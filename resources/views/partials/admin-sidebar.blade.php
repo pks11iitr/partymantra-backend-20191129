@@ -59,7 +59,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
+                            <a href="{{route('admin.cusines.add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -82,7 +82,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
+                            <a href="{{route('admin.menu.add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -99,13 +99,13 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Partners
+                            Collection
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
+                            <a href="{{route('admin.collection.add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -128,7 +128,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
+                            <a href="{{route('admin.event.add')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New</p>
                             </a>

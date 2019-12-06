@@ -48,6 +48,11 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::post('collection', 'Admin\CollectionController@store')->name('admin.collection.store');
     Route::get('collection/{id}', 'Admin\CollectionController@edit')->where('id', '[0-9]+')->name('admin.collection.edit');
     Route::post('collection/{id}', 'Admin\CollectionController@update')->where('id', '[0-9]+')->name('admin.collection.update');
+    
+    Route::get('menu/create', 'Admin\MenuController@add')->name('admin.menu.add');
+    Route::post('menu', 'Admin\MenuController@store')->name('admin.menu.store');
+    Route::get('menu/{id}', 'Admin\MenuController@edit')->where('id', '[0-9]+')->name('admin.menu.edit');
+    Route::post('menu/{id}', 'Admin\MenuController@update')->where('id', '[0-9]+')->name('admin.menu.update');
 
 
 });
