@@ -22,9 +22,19 @@ $api = app('Dingo\Api\Routing\Router');
 
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
-        $api->get('home', ['as'=>'api.home', 'uses'=>'Auth\Api\LoginController@home']);
-        $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\ProfileController@updateAddress']);
+        $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\Api\ProfileController@updateAddress']);
+        //home page
+        $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
+        //colections list
+        $api->get('collections', ['as'=>'api.collections', 'uses'=>'Customer\Api\CollectionController@index']);
+        //collection events
+        $api->get('collection/{id}/events', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@events']);
+        //event details
+        $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
+
     });
+
+
 
 
 
