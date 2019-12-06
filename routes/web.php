@@ -12,17 +12,44 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-    //return redirect(route('login'));
+    //return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
 
 //this will be removed after setting proper redirection
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
+    Route::get('partners', 'Admin\PartnerController@index')->name('admin.partners');
+    Route::get('partners/create', 'Admin\PartnerController@add')->name('admin.partners.add');
+    Route::post('partners', 'Admin\PartnerController@store')->name('admin.partners.store');
+    Route::get('partners/{id}', 'Admin\PartnerController@edit')->where('id', '[0-9]+')->name('admin.partners.edit');
+    Route::post('partners/{id}', 'Admin\PartnerController@update')->where('id', '[0-9]+')->name('admin.partners.update');
+
+    Route::get('category/create', 'Admin\CategoryController@add')->name('admin.category.add');
+    Route::post('category', 'Admin\CategoryController@store')->name('admin.category.store');
+    Route::get('category/{id}', 'Admin\CategoryController@edit')->where('id', '[0-9]+')->name('admin.category.edit');
+    Route::post('category/{id}', 'Admin\CategoryController@update')->where('id', '[0-9]+')->name('admin.category.update');
+
+    Route::get('cusines/create', 'Admin\CusineController@add')->name('admin.cusines.add');
+    Route::post('cusines', 'Admin\CusineController@store')->name('admin.cusines.store');
+    Route::get('cusines/{id}', 'Admin\CusineController@edit')->where('id', '[0-9]+')->name('admin.cusines.edit');
+    Route::post('cusines/{id}', 'Admin\CusineController@update')->where('id', '[0-9]+')->name('admin.cusines.update');
+
+    Route::get('event/create', 'Admin\EventController@add')->name('admin.event.add');
+    Route::post('event', 'Admin\EventController@store')->name('admin.event.store');
+    Route::get('event/{id}', 'Admin\EventController@edit')->where('id', '[0-9]+')->name('admin.event.edit');
+    Route::post('event/{id}', 'Admin\EventController@update')->where('id', '[0-9]+')->name('admin.event.update');
+
+    Route::get('collection/create', 'Admin\CollectionController@add')->name('admin.collection.add');
+    Route::post('collection', 'Admin\CollectionController@store')->name('admin.collection.store');
+    Route::get('collection/{id}', 'Admin\CollectionController@edit')->where('id', '[0-9]+')->name('admin.collection.edit');
+    Route::post('collection/{id}', 'Admin\CollectionController@update')->where('id', '[0-9]+')->name('admin.collection.update');
+
+
 });
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
