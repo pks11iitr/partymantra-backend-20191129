@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>View Partners</h1>
+            <h1>View Collection</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">View Partners</li>
+              <li class="breadcrumb-item active">View Collection</li>
             </ol>
           </div>
         </div>
@@ -36,50 +36,30 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">View Partners Table</h3>
+              <h3 class="card-title">View Collection Table</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Partner Type</th>
-                  <th>Mobile</th>
-                  <th>Header Image</th>
-                   <th>Small Icon Image</th>
-                    <th>Description</th>
-                     <th>Short Address</th>
-                      <th>Per Person Text</th>
-                       <th>Address</th>
-                          <th>Is Active</th>
-                             <th>Action</th>
-
-                       
-                  
-                
-                </tr>
+                  <th>Name</th>
+                   <th>Image</th>
+					<th>Action</th>      
+          </tr>
                 </thead>
                 <tbody>
-              
-               @foreach($partners as $partner)	
+				@foreach($collections as $collection)	
                 <tr>
-                  <td>{{$partner->type}}</td>
-                  <td>{{$partner->contact_no}}</td>
-                  <td>{{$partner->header_image}}</td>
-                  <td>{{$partner->small_image}}</td>
-                  <td>{{$partner->description}}</td>
-                  <td>{{$partner->short_address}}</td>
-                  <td>{{$partner->per_person_text}}</td>
-                  <td>{{$partner->address}}</td>
-                  <td>{{$partner->isactive}}</td>
+                  <td>{{$collection->name}}</td>
+                   <td><img src="../collections/<?php echo $collection['cover_image'];  ?>" height="30px" width="30px"></td>
                   
                     <td>
-					<a href="{{route('admin.menu.edit', ['id'=>$partner->id])}}"><span class="badge bg-success">Edit</span></a>
+					<a href="{{route('admin.collection.edit', ['id'=>$collection->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
                     
                 </tr>
                 @endforeach
-               
                 </tbody>
               </table>
             </div>
