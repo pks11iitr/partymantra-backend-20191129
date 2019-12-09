@@ -29,11 +29,13 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::get('partners/{id}', 'Admin\PartnerController@edit')->where('id', '[0-9]+')->name('admin.partners.edit');
     Route::post('partners/{id}', 'Admin\PartnerController@update')->where('id', '[0-9]+')->name('admin.partners.update');
 
-    
+
+    Route::get('category', 'Admin\CategoryController@index')->name('admin.category');
     Route::get('category/create', 'Admin\CategoryController@add')->name('admin.category.add');
     Route::post('category', 'Admin\CategoryController@store')->name('admin.category.store');
     Route::get('category/{id}', 'Admin\CategoryController@edit')->where('id', '[0-9]+')->name('admin.category.edit');
     Route::post('category/{id}', 'Admin\CategoryController@update')->where('id', '[0-9]+')->name('admin.category.update');
+	
 	
     Route::get('cusines', 'Admin\CusineController@index')->name('admin.cusines');
     Route::get('cusines/create', 'Admin\CusineController@add')->name('admin.cusines.add');

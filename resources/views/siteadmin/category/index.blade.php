@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>View Events</h1>
+            <h1>View Category</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">View Events</li>
+              <li class="breadcrumb-item active">View Category</li>
             </ol>
           </div>
         </div>
@@ -36,51 +36,31 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">View Events Table</h3>
+              <h3 class="card-title">View Category Table</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                   <th>Header Image</th>
-                    <th>Small  Image</th>
-                     <th>Description</th>
-                      <th>Venue Name</th>
-                       <th>Venue Address</th>
-                          <th>Package Name</th>
-                          <th>Markas Full</th>
-                             <th>Action</th>
-
-                       
-                  
-                
-                </tr>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Isactive</th>
+					<th>Action</th>      
+          </tr>
                 </thead>
                 <tbody>
-              
-               @foreach($events as $event)	
+				@foreach($categories as $category)	
                 <tr>
-                  <td>{{$event->title}}</td>
-                  <td>{{$event->startdate}}</td>
-                  <td>{{$event->enddate}}</td>
-                  <td>{{$event->header_image}}</td>
-                  <td>{{$event->small_image}}</td>
-                  <td>{{$event->description}}</td>
-                  <td>{{$event->venue_name}}</td>
-                  <td>{{$event->venue_adderss}}</td>
-                  <td>{{$event->custom_package_details}}</td>
-                  <td>{{$event->markasfull}}</td>
+                  <td>{{$category->name}}</td>
+                  <td>{{$category->name}}</td>
+                  <td>{{$category->name}}</td>
                     <td>
-					<a href="{{route('admin.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>
+					<a href="{{route('admin.category.edit', ['id'=>$category->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
                     
                 </tr>
                 @endforeach
-               
                 </tbody>
               </table>
             </div>

@@ -141,6 +141,33 @@
                         </li>
                     </ul>
                 </li>
+                
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.category.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.category')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -181,6 +208,7 @@
 
 <!-- this is for validation errors -->
 @if ($errors->any())
+<?php var_dump($errors); ?>
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
         Please check the form below for errors
