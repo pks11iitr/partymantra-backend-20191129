@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Partner</h1>
+                        <h1>Add Events</h1>
                     </div>
 
                 </div>
@@ -26,26 +26,25 @@
                             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
                         </div>
                     </div>
-                   <form action="{{route('admin.partners.store')}}" method="post" enctype="multipart/form-data">
-				@csrf
- 
                     <!-- /.card-header -->
+                               <form action="{{route('admin.event.store')}}" method="post" enctype="multipart/form-data">
+						@csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Partner Type</label>
-                                    <select name="type"  class="form-control select2" style="width: 100%;">
-                                        <option value="restaurant" selected="selected">Restaurant</option>
-                                        <option value="organizers">Event Organizer</option>
-                                   </select>
+                                    <label>Isactive</label>
+                                   <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="organizer" value="0">No</option>
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Partner Title</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1"> Title</label>
+                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -56,8 +55,8 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Mobile</label>
-                                    <input type="text" class="form-control" name="contact_no" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
+                                    <label for="exampleInputEmail1">Start Date</label>
+                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -65,8 +64,8 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Password</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="password">
+                                    <label for="exampleInputEmail1">End Date</label>
+                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -78,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
-                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter image">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -87,7 +86,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Small Icon Image</label>
-                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="small_image">
+                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter small image" name="small_image">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -110,8 +109,8 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Short Address</label>
-                                    <input type="text" class="form-control" name="short_address" id="exampleInputEmail1" placeholder="Enter email" name="short_address">
+                                    <label for="exampleInputEmail1">Venue Name</label>
+                                    <input type="text" class="form-control" name="venue_name" id="exampleInputEmail1" placeholder="Enter venue" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -119,41 +118,54 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Per Person Text</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="per_person_text">
+                                    <label for="exampleInputEmail1">Venue Address</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter venue address" name="venue_adderss">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Custom Package Details</label>
+                                    <input type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" >
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Markas Full</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter markasfull" name="markasfull">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
                         </div>
 
+
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Address</label>
-                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lat">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lang">
+                                    <label for="exampleInputEmail1">TNC</label>
+                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address">
+                                 
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Is Active</label>
-                                    <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        
+                        
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-block btn-primary">Add</button>
+                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -161,10 +173,10 @@
                         <!-- /.row -->
                     </div>
                     <!-- /.card-body -->
-
+					</form>
                 </div>
                 <!-- /.card -->
-</form>
+
 
             </div><!-- /.container-fluid -->
         </section>
