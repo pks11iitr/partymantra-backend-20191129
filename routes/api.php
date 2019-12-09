@@ -32,6 +32,12 @@ $api = app('Dingo\Api\Routing\Router');
         //event details
         $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
 
+        $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
+
+        $api->post('book-event', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        $api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        $api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+
     });
 
 
