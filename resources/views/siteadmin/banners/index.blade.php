@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>View Collection</h1>
+            <h1>View Banners</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">View Collection</li>
+              <li class="breadcrumb-item active">View Banners</li>
             </ol>
           </div>
         </div>
@@ -36,27 +36,27 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">View Collection Table</h3>
+              <h3 class="card-title">View Banners Table</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                   <th>Image</th>
+                  <th>Entity Type</th>
+                  <th>Image</th>
+                  <th>Isactive</th>
 					<th>Action</th>      
           </tr>
                 </thead>
                 <tbody>
-				@foreach($collections as $collection)	
+				@foreach($banners as $banner)	
                 <tr>
-                  <td>{{$collection->name}}</td>
-                  <td>{{Storage::url($collection->cover_image)}}</td>
-                  
-                  
+                  <td>{{$banner->name}}</td>
+                  <td>{{Storage::url($banner->image)}}</td>
+                  <td>{{$banner->isactive}}</td>
                     <td>
-					<a href="{{route('admin.collection.edit', ['id'=>$collection->id])}}"><span class="badge bg-success">Edit</span></a>
+					<a href="{{route('admin.banner.edit', ['id'=>$banner->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
                     
                 </tr>

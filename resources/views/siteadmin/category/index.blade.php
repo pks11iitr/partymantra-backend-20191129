@@ -54,7 +54,7 @@
                 <tr>
                   <td>{{$category->name}}</td>
                   <td>{{Storage::url($category->image)}}</td>
-                  <td>{{$category->name}}</td>
+                  <td>{{$category->isactive}}</td>
                     <td>
 					<a href="{{route('admin.category.edit', ['id'=>$category->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>

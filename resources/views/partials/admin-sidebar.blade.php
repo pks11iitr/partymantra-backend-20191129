@@ -49,6 +49,32 @@
                         </li>
                     </ul>
                 </li>
+                
+                
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Banners
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.banner.add')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.banner')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
