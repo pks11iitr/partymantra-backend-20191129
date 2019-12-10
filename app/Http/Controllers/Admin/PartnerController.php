@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
+use Illuminate\Support\Facades\Hash;
 use Storage;
 
 class PartnerController extends Controller
 {
     public function index(Request $request){
-		
+
 				 $partners=Partner::get();
-				 
+
 	 return view('siteadmin.partners.index', ['partners'=>$partners]);
 
 
@@ -27,10 +29,12 @@ class PartnerController extends Controller
     }
 
     public function store(Request $request){
-		
-		
-		
+
+
+
 			$request->validate([
+			'contact_no'=>'required|digits:10',
+			'password'=>'required|max:25',
 			'name'=>'required|max:250',
 			'header_image'=>'required|image',
 			'small_image'=>'required|image',
@@ -43,29 +47,42 @@ class PartnerController extends Controller
 			'type'=>'required',
 			'per_person_text'=>'required',
 			'isactive'=>'required'
-			
+
 			]);
-		
-		$file=$request->header_image->path();
-		
-		$name=str_replace(' ', '_', $request->header_image->getClientOriginalName());
-		
-		$path='partners/'.$name;
-		
-		Storage::put($path, $file);
-		
-		// 2nd image 
-		$file=$request->small_image->path();
-		
-		$name1=str_replace(' ', '_', $request->small_image->getClientOriginalName());
-		
-		$path='partners/'.$name;
-		
-		Storage::put($path, $file);
-		
-		if(Partner::create(['name'=>$request->name,
-							'header_image'=>$path,
-							'small_image'=>$path,
+
+		//create use
+        $user=User::create([
+            'mobile' => $request->contact_no,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if(isset($request->header_image)){
+            $file=$request->header_image->path();
+
+            $name=str_replace(' ', '_', $request->header_image->getClientOriginalName());
+
+            $path1='partners/'.$name;
+
+            Storage::put($path1, $file);
+        }
+
+        if(isset($request->small_image)){
+            // 2nd image
+            $file=$request->small_image->path();
+
+            $name=str_replace(' ', '_', $request->small_image->getClientOriginalName());
+
+            $path2='partners/'.$name;
+
+            Storage::put($path2, $file);
+
+        }
+
+		if(Partner::create([
+		                    'user_id'=>$user->id,
+		                    'name'=>$request->name,
+							'header_image'=>$path1,
+							'small_image'=>$path2,
 							'description'=>$request->description,
 							'address'=>$request->address,
 							'short_address'=>$request->short_address,
@@ -77,11 +94,11 @@ class PartnerController extends Controller
 							 'isactive'=>$request->isactive,
 							'user_id'=>auth()->user()->id
 							]))
-							
+
 							{
 				return redirect()->route('admin.partners')->with('success', 'Partners has been created');
-		}	
-		
+		}
+
 		return redirect()->back()->with('error', 'Partners create failed');
 
     }
