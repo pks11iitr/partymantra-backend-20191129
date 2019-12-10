@@ -23,6 +23,7 @@ $api = app('Dingo\Api\Routing\Router');
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
         $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\Api\ProfileController@updateAddress']);
+        $api->post('update-profile', ['as'=>'api.updateprofile', 'uses'=>'Customer\Api\ProfileController@updateProfile']);
         //home page
         $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
         //colections list
