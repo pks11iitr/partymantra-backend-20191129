@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Customer\Api;
 
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
@@ -42,6 +42,12 @@ class ProfileController extends Controller
 
 
     public function updateProfile(Request $request){
+        $request->validate([
+           'name'=>'required|max:25',
+           'email'=>'required|email',
+           'gender'=>'required|in:male,female,other',
+           'dob'=>'required|date_format:Y-m-d'
+        ]);
         $user=$this->auth->user();
         $user->name=$request->name;
         $user->gender=$request->gender;
