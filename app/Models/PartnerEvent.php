@@ -14,4 +14,9 @@ class PartnerEvent extends Model
     public function partner(){
         return $this->belongsTo('App\Models\Partner', 'partner_id');
     }
+
+    public function packages()
+    {
+        return $this->hasMany('App\Models\Package', 'event_id');
+    }
 }

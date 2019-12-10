@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class EventController extends Controller
 {
     public function view(Request $request, $id ){
-        $event=PartnerEvent::with('partner')->find($id);
+        $event=PartnerEvent::with(['partner', 'packages.activemenus'])->findOrFail($id);
         if(!$event){
             return response()->json([
                 'message'=>'invalid request',
