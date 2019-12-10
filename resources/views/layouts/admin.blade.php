@@ -60,9 +60,10 @@
           </form>
       </li>
     </ul>
+    
   </nav>
   <!-- /.navbar -->
-
+  
   @yield('contents')
   <!-- Content Wrapper. Contains page content -->
 

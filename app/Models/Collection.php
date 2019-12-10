@@ -9,6 +9,8 @@ class Collection extends Model
 {
     protected $table ='collections';
 
+	protected $fillable=['name', 'cover_image', 'created_by'];
+	
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'priority'];
 
     use Active;

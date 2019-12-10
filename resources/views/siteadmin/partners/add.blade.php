@@ -26,15 +26,18 @@
                             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
                         </div>
                     </div>
+                   <form action="{{route('admin.partners.store')}}" method="post" enctype="multipart/form-data">
+				@csrf
+ 
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Partner Type</label>
-                                    <select class="form-control select2" style="width: 100%;">
-                                        <option name="restaurant" selected="selected">Restaurant</option>
-                                        <option value="organizer">Event Organizer</option>
+                                    <select name="type"  class="form-control select2" style="width: 100%;">
+                                        <option value="restaurant" selected="selected">Restaurant</option>
+                                        <option value="organizers">Event Organizer</option>
                                    </select>
                                 </div>
                             </div>
@@ -54,7 +57,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mobile</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
+                                    <input type="text" class="form-control" name="contact_no" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -108,7 +111,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Short Address</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" name="short_address">
+                                    <input type="text" class="form-control" name="short_address" id="exampleInputEmail1" placeholder="Enter email" name="short_address">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -129,9 +132,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Address</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" name="address">
-                                    <input type="hidden" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" name="lat">
-                                    <input type="hidden" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email" name="lang">
+                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address">
+                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lat">
+                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lang">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -150,7 +153,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-block btn-primary btn-sm">Add</button>
+                                    <button type="submit" class="btn btn-block btn-primary">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +164,7 @@
 
                 </div>
                 <!-- /.card -->
-
+</form>
 
             </div><!-- /.container-fluid -->
         </section>
