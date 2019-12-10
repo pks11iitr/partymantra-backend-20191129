@@ -36,7 +36,7 @@ class EventController extends Controller
 			'small_image'=>'required|image',
 			'description'=>'required|max:1000',
 			'venue_name'=>'required|max:100',
-			'venue_adderss'=>'required|max:250',
+			'venue_adderss'=>'nullable',
 			'lat'=>'required',
 			'lang'=>'required',
 			'startdate'=>'required',

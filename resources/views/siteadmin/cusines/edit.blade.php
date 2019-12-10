@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Cusines</h1>
+                        <h1>Edit Cusines</h1>
                     </div>
 
                 </div>
@@ -36,7 +36,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter name">
+                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" 
+                                    placeholder="Enter name"  value="<?php echo $cusines[0]->name?>" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -78,3 +79,4 @@
         })
     </script>
 @endsection
+

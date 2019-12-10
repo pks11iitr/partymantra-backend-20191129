@@ -75,8 +75,6 @@
                   
                     <td>
 					<a href="{{route('admin.partners.edit', ['id'=>$partner->id])}}"><span class="badge bg-success">Edit</span></a>
-			<a href="{{route('admin.partners.edit', ['id'=>$partner->id])}}"><span class="btn btn-block btn-primary btn-xs">Details</span></a>
-
                     </td>
                     
                 </tr>

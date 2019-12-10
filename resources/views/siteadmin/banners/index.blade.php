@@ -44,6 +44,7 @@
                 <thead>
                 <tr>
                   <th>Entity Type</th>
+                  <th>Entities</th>
                   <th>Image</th>
                   <th>Isactive</th>
 					<th>Action</th>      
@@ -52,7 +53,8 @@
                 <tbody>
 				@foreach($banners as $banner)	
                 <tr>
-                  <td>{{$banner->name}}</td>
+                  <td>{{$banner->entity_type}}</td>
+                  <td>{{$banner->entity_id}}</td>
                   <td>{{Storage::url($banner->image)}}</td>
                   <td>{{$banner->isactive}}</td>
                     <td>

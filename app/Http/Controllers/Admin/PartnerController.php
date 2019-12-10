@@ -19,6 +19,9 @@ class PartnerController extends Controller
     }
 
     public function edit(Request $request, $id){
+		
+		$partners=Partner::findOrFail($id);
+		return view('siteadmin.partners.edit', ['partners'=>$partners]);
 
     }
 

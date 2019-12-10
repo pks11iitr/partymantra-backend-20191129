@@ -3,54 +3,7 @@
 @section('contents')
     @include('partials.admin-sidebar')
     
-      <script>
-      //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
-
-  </script>
-  
-  <script type="text/javascript">
-       var token = '{{ csrf_token() }}';
-</script>
- 
-  
-   <script type="text/javascript">
- function getdata(id)
- {
- 
-     $.ajax({
-   method: 'POST', // Type of response and matches what we said in the route
-   url: '/ajexdata', // This is the url we gave in the route
-   data: {'id':id,'_token': token}, // a JSON object to send back
-   success: function(response){ // What to do if we succeed
-       
-      if(response){
-               
-               $.each(response,function(key,value){
-                  /*   $("#area").click('<option value="'+value+'">'+key+'</option>');*/
-                   $("#lca").append('<option value="'+value+'">'+key+'</option>');
-                  
-               });
-         
-           }else{
-              $("#lca").empty();
-             /* $("#area").empty();*/
-           }
-   
-
-   },
-   error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-       console.log(JSON.stringify(jqXHR));
-       console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-   }
-});  
- }
- 
- 
-  </script>
+      
     
     
     <div class="content-wrapper">
@@ -88,11 +41,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label >Select Type</label>
-                                    <select name="entity_id" class="form-control select2" 
-                                    style="width: 100%;" onchange="getdata(this.value)">
-                                        <option  value="even">Organizer</option>
-                                        <option  value="restaurant">Events</option>
-                                        <option  value="party">Events</option>
+                                    <select name="entity_type" class="form-control select2" 
+                                    style="width: 100%;"  onchange="getdata(this.value)" >
+                                    
+                                        <option  value="event">Event</option>
+                                        <option  value="restaurant">Restaurant</option>
+                                        <option  value="party">Party</option>
                                        
                                     </select>
                                 </div>
@@ -103,8 +57,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                      <label>Entities</label>
-										 <input type="text" class="form-control" name="entity_type" id="lca"
-										 id="exampleInputEmail1" placeholder="Enter entity" >
+										 <select class="form-control select2" name="entity_id" id="lca">
+											 Select Entity  </select>
 
                                 </div>
                                 <!-- /.form-group -->
@@ -164,4 +118,38 @@
             theme: 'bootstrap4'
         })
     </script>
+  
+   <script type="text/javascript">
+ function getdata(id)
+ {
+ 
+     $.ajax({
+   method: 'get', // Type of response and matches what we said in the route
+   url: '{{route('banner.ajax')}}', // This is the url we gave in the route
+   data: {'type':id}, // a JSON object to send back
+   success: function(response){ // What to do if we succeed
+       
+      if(response){
+               
+               $.each(response,function(key,value){
+                   $("#lca").append('<option value="'+value.id+'">'+value.name+'</option>');
+                  
+               });
+         
+           }else{
+              $("#lca").empty();
+            
+           }
+   
+
+   },
+   error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+       console.log(JSON.stringify(jqXHR));
+       console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+   }
+});  
+ }
+ 
+ 
+  </script>
 @endsection
