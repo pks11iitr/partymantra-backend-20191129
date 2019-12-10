@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
@@ -11,10 +12,10 @@ class EventController extends Controller
 {
     //
       public function index(Request $request){
-		  
-		  
+
+
 				 $events=Event::get();
-				 
+
 	 return view('siteadmin.events.index', ['events'=>$events]);
 
 
@@ -25,12 +26,15 @@ class EventController extends Controller
     }
 
     public function add(Request $request){
-        return view('siteadmin.events.add');
+        $organizers=Partner::where('isactive', 1)->where('type', 'organizers')->get();
+        //var_dump($organizers->toArray());die;
+        return view('siteadmin.events.add', ['organizers'=>$organizers]);
     }
 
     public function store(Request $request){
-		
+
 			$request->validate([
+			    'partner_id'=>'required|integer',
 			'title'=>'required|max:150',
 			'header_image'=>'required|image',
 			'small_image'=>'required|image',
@@ -45,30 +49,35 @@ class EventController extends Controller
 			'custom_package_details'=>'required',
 			'isactive'=>'required',
 			'markasfull'=>'required'
-			
-			
 			]);
-		
-		$file=$request->header_image->path();
-		
-		$name=str_replace(' ', '_', $request->header_image->getClientOriginalName());
-		
-		$path='events/'.$name;
-		
-		Storage::put($path, $file);
-		
-		// 2nd image 
-		$file=$request->small_image->path();
-		
-		$name1=str_replace(' ', '_', $request->small_image->getClientOriginalName());
-		
-		$path='events/'.$name;
-		
-		Storage::put($path, $file);
-		
+
+		if(isset($request->header_image)){
+            $file=$request->header_image->path();
+
+            $name=str_replace(' ', '_',                     $request->header_image->getClientOriginalName());
+
+            $path1='events/'.$name;
+
+            Storage::put($path1, $file);
+
+        }
+
+		if(isset($request->small_image)){
+            // 2nd image
+            $file=$request->small_image->path();
+
+            $name=str_replace(' ', '_', $request->small_image->getClientOriginalName());
+
+            $path2='events/'.$name;
+
+            Storage::put($path2, $file);
+
+        }
+
+
 		if(Event::create(['title'=>$request->title,
-							'header_image'=>$path,
-							'small_image'=>$path,
+							'header_image'=>$path1,
+							'small_image'=>$path2,
 							'description'=>$request->description,
 							'venue_name'=>$request->venue_name,
 							'venue_adderss'=>$request->venue_adderss,
@@ -82,10 +91,10 @@ class EventController extends Controller
 							  'markasfull'=>$request->markasfull,
 							'partner_id'=>auth()->user()->id
 							]))
-							
+
 							{
-				return redirect()->route('admin.events')->with('success', 'Events has been created');
-		
+				return redirect()->route('admin.event')->with('success', 'Events has been created');
+
 
     }
     	return redirect()->back()->with('error', 'Events create failed');
