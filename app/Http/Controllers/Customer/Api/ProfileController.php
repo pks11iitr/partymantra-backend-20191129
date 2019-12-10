@@ -17,8 +17,13 @@ class ProfileController extends Controller
     }
 
     public function updateAddress(Request $request){
-        $user=$this->auth->user();
+        $request->validate([
+            'address'=>'required|max:150',
+            'lat'=>'required|numeric',
+            'lang'=>'required|numeric'
+        ]);
 
+        $user=$this->auth->user();
         $user->address=$request->address;
         $user->lat=$request->lat;
         $user->lang=$request->lang;
@@ -38,8 +43,10 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request){
         $user=$this->auth->user();
-
-        $user->address=$request->address;
+        $user->name=$request->name;
+        $user->gender=$request->gender;
+        $user->dob=$request->dob;
+        $user->email=$request->email;
         if(!$user->save()){
             return response()->json([
                 'message'=>'some error occurred',
