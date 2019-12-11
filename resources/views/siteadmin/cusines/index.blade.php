@@ -54,6 +54,7 @@
                   <td>{{$cusine->name}}</td>
                   
                     <td>
+						
 					<a href="{{route('admin.cusines.edit', ['id'=>$cusine->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
                     

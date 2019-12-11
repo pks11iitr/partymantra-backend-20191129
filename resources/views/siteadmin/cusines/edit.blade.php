@@ -27,7 +27,10 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <form action="{{route('admin.cusines.store')}}" method="post">
+                    
+                    
+                    
+                    <form action="{{route('admin.cusines.store',['id'=>$cusine->id])}}" method="post">
 						@csrf
                     <div class="card-body">
                         <div class="row">
@@ -37,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" class="form-control" name="name" id="exampleInputEmail1" 
-                                    placeholder="Enter name"  value="<?php echo $cusines[0]->name?>" >
+                                    placeholder="Enter name"  value="<?php echo $cusine->name?>" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>

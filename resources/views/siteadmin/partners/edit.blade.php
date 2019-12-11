@@ -36,9 +36,9 @@
                                 <div class="form-group">
                                     <label>Partner Type</label>
                                     <select name="type"  class="form-control select2" 
-                                     value="<?php echo $partners->type?>"  style="width: 100%;">
-                                        <option value="restaurant" selected="selected">Restaurant</option>
-                                        <option value="organizers">Event Organizer</option>
+                                       style="width: 100%;">
+                                        <option value="restaurant" {{$partners->type=='restaurant'?'selected':''}}>Restaurant</option>
+                                        <option value="organizers" {{$partners->type=='organizers'?'selected':''}}>Event Organizer</option>
                                    </select>
                                 </div>
                             </div>
@@ -53,36 +53,38 @@
                             </div>
                             <!-- /.col -->
                         </div>
-                        <!-- /.row -->
+                        
+<!--
                         <div class="row">
-                            <!-- /.col -->
+                           
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mobile</label>
                                     <input type="text" class="form-control" name="contact_no" id="exampleInputEmail1"
-                                     value="<?php echo $partners->contact_no?>" placeholder="Enter email" name="contact_no">
+                                     value="" placeholder="Enter email" name="contact_no">
                                 </div>
-                                <!-- /.form-group -->
+                                
                             </div>
-                            <!-- /.col -->
-                            <!-- /.col -->
+                           
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Password</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter password" 
-                                    value="<?php echo $partners->password?>" name="password">
+                                    value="***********" name="password">
                                 </div>
-                                <!-- /.form-group -->
+                                
                             </div>
-                            <!-- /.col -->
+                            
                         </div>
-                        <!-- /.row -->
+-->
+                        
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
                                     <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email">
+                                    <image src="{{Storage::url($partners->header_image)}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -92,6 +94,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Small Icon Image</label>
                                     <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="small_image">
+                                     <image src="{{Storage::url($partners->small_image)}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -104,9 +107,9 @@
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea name="description" class="form-control" 
-                                    value="<?php echo $partners->description?>"></textarea>
+                                    >{{$partners->description}}</textarea>
                                 </div>
-                                <!-- /.form-group -->
+                              
                             </div>
 
                         </div>
@@ -139,9 +142,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Address</label>
-                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lat">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lang">
+                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address"  value="<?php echo $partners->address?>">
+                                   
                                 </div>
                                 <!-- /.form-group -->
                             </div>

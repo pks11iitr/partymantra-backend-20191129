@@ -37,6 +37,7 @@ class PartnerController extends Controller
 
 			$request->validate([
 			'contact_no'=>'required|digits:10',
+			'mobile'=>'required|digits:10',
 			'password'=>'required|max:25',
 			'name'=>'required|max:250',
 			'header_image'=>'required|image',
@@ -54,10 +55,12 @@ class PartnerController extends Controller
 			]);
 
 		//create use
-        $user=User::create([
-            'mobile' => $request->contact_no,
-            'password' => Hash::make($request->password),
-        ]);
+		$user=User::where('mobile',$request->mobile)->first();
+		if(!$user)
+			$user=User::create([
+				'mobile' => $request->mobile,
+				'password' => Hash::make($request->password),
+			]);
 
         if(isset($request->header_image)){
             $file=$request->header_image->path();
@@ -107,6 +110,41 @@ class PartnerController extends Controller
     }
 
     public function update(Request $request, $id){
+		
+		$request->validate([
+			'contact_no'=>'required|digits:10',
+			'mobile'=>'required|digits:10',
+			'password'=>'required|max:25',
+			'name'=>'required|max:250',
+			'header_image'=>'required|image',
+			'small_image'=>'required|image',
+			'description'=>'nullable|max:1000',
+			'address'=>'nullable|max:250',
+			'lat'=>'nullable',
+			'lang'=>'nullable',
+			'short_address'=>'required|max:50',
+			'contact_no'=>'required',
+			'type'=>'required',
+			'per_person_text'=>'required',
+			'isactive'=>'required'
+
+			]);
+			
+			
+			
+		if(Partner::create([ 
+		
+		
+		
+		
+		]))
+		
+
+							{
+				return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
+		}
+
+		return redirect()->back()->with('error', 'Partners create failed');
 
     }
 
