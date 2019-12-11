@@ -33,4 +33,8 @@ class PartnerEvent extends Model
     public function getSmallImageAttribute($value){
         return Storage::url($value);
     }
+
+    public function order(){
+        return $this->morphMany('App\Models\OrderItem', 'entity');
+    }
 }
