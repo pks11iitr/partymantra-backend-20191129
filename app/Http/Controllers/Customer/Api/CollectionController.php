@@ -18,7 +18,7 @@ class CollectionController extends Controller
             default: $type='event';
         }
 
-        $collections=Collection::active()->has($type)->orderBy('priority', 'desc')->paginate(10);
+        $collections=Collection::active()->has($type)->orderBy('priority', 'desc')->get();
 
         return ['collections'=>$collections];
     }
@@ -34,7 +34,7 @@ class CollectionController extends Controller
             ], 404);
         //PartnerEvent::where('')
 
-        return ['events'=>$collection->allevents()->paginate(10)];
+        return ['events'=>$collection->allevents()->get()];
 
     }
 

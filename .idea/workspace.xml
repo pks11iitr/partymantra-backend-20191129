@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MenuController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/menus/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/menus/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +178,7 @@
       <workItem from="1575277538386" duration="229000" />
       <workItem from="1575278312365" duration="14194000" />
       <workItem from="1575522101580" duration="32793000" />
-      <workItem from="1575892016057" duration="20373000" />
+      <workItem from="1575892016057" duration="25437000" />
     </task>
     <task id="LOCAL-00001" summary="address updated api">
       <created>1575285836963</created>
@@ -268,7 +264,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575974801678</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="change in event create">
+      <created>1575987247292</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575987247292</updated>
+    </task>
+    <task id="LOCAL-00014" summary="change in event create">
+      <created>1576046937039</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576046937039</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,17 +305,18 @@
     <MESSAGE value="theme setup done" />
     <MESSAGE value="event packages cerated, working on orders" />
     <MESSAGE value="update profile api" />
-    <option name="LAST_COMMIT_MESSAGE" value="update profile api" />
+    <MESSAGE value="change in event create" />
+    <option name="LAST_COMMIT_MESSAGE" value="change in event create" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1575985401859">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576046324421">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1575985401859" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1575974801536">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1576046324421" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576046936217">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1575974801536" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576046936217" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1575275604543">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -314,21 +325,21 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1575632563289" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1575451443847">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1576045466123">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1575451443847" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1575974810091">
+    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1575987286202">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1575974810091" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1575987286202" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1575892310697">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1575892310697" />
-    <state x="332" y="189" key="git4idea.merge.GitPullDialog" timestamp="1575522138248">
+    <state x="332" y="189" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576043664000">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="332" y="189" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1575522138248" />
+    <state x="332" y="189" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1576043664000" />
   </component>
 </project>

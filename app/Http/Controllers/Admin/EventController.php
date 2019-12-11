@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Event;
+use App\Models\PartnerEvent;
 use Storage;
 
 class EventController extends Controller
@@ -14,7 +14,7 @@ class EventController extends Controller
       public function index(Request $request){
 
 
-				 $events=Event::get();
+				 $events=PartnerEvent::get();
 
 	 return view('siteadmin.events.index', ['events'=>$events]);
 
@@ -26,7 +26,7 @@ class EventController extends Controller
     }
 
     public function add(Request $request){
-        $organizers=Partner::where('isactive', 1)->where('type', 'organizers')->get();
+        $organizers=Partner::active()->where('type', 'organizers')->get();
         //var_dump($organizers->toArray());die;
         return view('siteadmin.events.add', ['organizers'=>$organizers]);
     }
@@ -75,21 +75,21 @@ class EventController extends Controller
         }
 
 
-		if(Event::create(['title'=>$request->title,
+		if(PartnerEvent::create(['title'=>$request->title,
 							'header_image'=>$path1,
 							'small_image'=>$path2,
 							'description'=>$request->description,
 							'venue_name'=>$request->venue_name,
 							'venue_adderss'=>$request->venue_adderss,
-							 'lat'=>$request->lat,
-							 'lang'=>$request->lang,
-							 'startdate'=>$request->startdate,
-							 'enddate'=>$request->enddate,
-							 'tnc'=>$request->tnc,
-							 'custom_package_details'=>$request->custom_package_details,
-							  'isactive'=>$request->isactive,
-							  'markasfull'=>$request->markasfull,
-							'partner_id'=>auth()->user()->id
+							'lat'=>$request->lat,
+							'lang'=>$request->lang,
+							'startdate'=>$request->startdate,
+							'enddate'=>$request->enddate,
+							'tnc'=>$request->tnc,
+							'custom_package_details'=>$request->custom_package_details,
+                            'isactive'=>$request->isactive,
+                            'markasfull'=>$request->markasfull,
+							'partner_id'=>$request->partner_id
 							]))
 
 							{

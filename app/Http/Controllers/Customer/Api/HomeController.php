@@ -21,7 +21,7 @@ class HomeController extends Controller
 
         $collections=Collection::active()->where('istop', true)->has($type)->get()->toArray();
 
-        $othercollections=Collection::active()->where('istop', false)->orderby('priority', 'desc')->with($type)->paginate(3);
+        $othercollections=Collection::active()->where('istop', false)->orderby('priority', 'desc')->with($type)->get();
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections];
 
