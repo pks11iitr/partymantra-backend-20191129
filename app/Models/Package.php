@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Active;
 use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
+    use Active;
     protected $table='event_packages';
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'priority', 'lat', 'lang', 'partner_id', 'pivot'];
