@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        echo 'welcome partner';die;
+		return view('partneradmin.dashboard');
+
     }
 }

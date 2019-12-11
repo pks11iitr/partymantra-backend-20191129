@@ -18,6 +18,8 @@ class CusineController extends Controller
     }
 
     public function edit(Request $request, $id){
+		$cusine=Cusine::findOrFail($id);
+		return view('siteadmin.cusines.edit', ['cusine'=>$cusine]);
 
     }
 
@@ -32,7 +34,8 @@ class CusineController extends Controller
 			'name'=>'required|max:100'
 		]);
 		
-		if(Cusine::create(['name'=>$request->name, 'creator_id'=>auth()->user()->id])){
+		if(Cusine::create(['name'=>$request->name, 
+		'creator_id'=>auth()->user()->id])){
 				return redirect()->route('admin.cusines')->with('success', 'Cusine has been created');
 		}	
 		
@@ -41,6 +44,22 @@ class CusineController extends Controller
     }
 
     public function update(Request $request, $id){
+		
+		$request->validate([
+			'name'=>'required|max:100'
+		]);
+		
+		
+		if(Cusine::update(['name'=>$request->name
+							
+							]))
+							{
+								
+								
+					return redirect()->route('admin.cusines')->with('success', 'Cusine has been updated');
+		}	
+		
+		return redirect()->back()->with('error', 'Cusine create failed');
 
     }
 

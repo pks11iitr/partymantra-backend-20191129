@@ -52,10 +52,10 @@
                                 </div>
                             </div>
                          <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
+                            
+                                <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                                </div>
+                            
                             </div>
                         </div>
                             <!-- /.col -->

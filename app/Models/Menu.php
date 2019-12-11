@@ -14,5 +14,4 @@ class Menu extends Model
     protected $fillable=['name', 'image', 'price', 'cut_pice', 'category_id', 'description', 'isactive', 'creator_id', 'partner_id'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'pivot'];
-
 }

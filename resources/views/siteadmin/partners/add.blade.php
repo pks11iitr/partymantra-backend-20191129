@@ -56,8 +56,8 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Mobile</label>
-                                    <input type="text" class="form-control" name="contact_no" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
+                                    <label for="exampleInputEmail1">Mobile(will be used for partner login)</label>
+                                    <input type="text" class="form-control" name="mobile" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -65,7 +65,7 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Password</label>
+                                    <label for="exampleInputEmail1">Password(will be used for partner login)</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="password">
                                 </div>
                                 <!-- /.form-group -->
@@ -132,9 +132,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Address</label>
-                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lat">
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="lang">
+                                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter address" name="address">
+
+                             >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -149,12 +149,19 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-block btn-primary">Add</button>
+                                    <label for="exampleInputEmail1">Contact No</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="contact_no">
                                 </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
+                         <div class="row">
+                            
+                                <div class="form-group"  style="algin:center;">
+                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
+                            
                             </div>
                         </div>
 

@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Cusines</h1>
+                        <h1>Edit Cusines</h1>
                     </div>
 
                 </div>
@@ -27,7 +27,10 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <form action="{{route('admin.cusines.store')}}" method="post">
+                    
+                    
+                    
+                    <form action="{{route('admin.cusines.store',['id'=>$cusine->id])}}" method="post">
 						@csrf
                     <div class="card-body">
                         <div class="row">
@@ -36,7 +39,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter name">
+                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" 
+                                    placeholder="Enter name"  value="<?php echo $cusine->name?>" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -78,3 +82,4 @@
         })
     </script>
 @endsection
+
