@@ -33,10 +33,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Isactive</label>
-                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                    <label>Select Partner</label>
+                                    <select name="partner_id" class="form-control select2" style="width: 100%;">
+                                        @foreach($partners as $partner)
+                                        <option  selected="selected" value="{{$partner->id}}">{{$partner->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -83,7 +84,15 @@
                             </div>
                             <!-- /.col -->
                             <!-- /.col -->
-
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="organizer" value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -100,12 +109,12 @@
                         </div>
 
 
-                      
+
                         <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
 
