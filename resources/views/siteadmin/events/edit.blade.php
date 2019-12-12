@@ -84,6 +84,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
                                     <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter image">
+                                    <br>
+                                    <img src="{{$event->header_image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -92,7 +94,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Small Icon Image</label>
-                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter small image" name="small_image">
+                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter small image" name="small_image"><br>
+                                    <img src="{{$event->small_image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -104,7 +107,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control"></textarea>
+                                    <textarea name="description" class="form-control">{{$event->description}}</textarea>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -116,7 +119,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Venue Name</label>
-                                    <input type="text" class="form-control" name="venue_name" id="exampleInputEmail1" placeholder="Enter venue" >
+                                    <input type="text" class="form-control" name="venue_name" id="exampleInputEmail1" placeholder="Enter venue" value="{{$event->venue_name}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -129,7 +132,7 @@
                                 <div class="form-group" >
                                     <label for="exampleInputEmail1" id="locationField">Venue Address</label>
                                     <input type="text" class="form-control" id="autocomplete"
-                                    placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()">
+                                    placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()" value="{{$event->venue_adderss}}">
                                     <input type="hidden" name="lat" value="23.5">
                                     <input type="hidden" name="lang" value="22.1">
                                     </div>
@@ -141,8 +144,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option  selected="selected" value="1" {{$event->issactive==1?'selected':0}}>Yes</option>
+                                        <option value="0" {{$event->issactive==0?'selected':0}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -163,7 +166,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">TNC</label>
-                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address">
+                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address" value="{{$event->tnc}}">
                                 </div>
                             </div>
                         </div>
@@ -173,7 +176,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Custom Package Details</label>
-                                    <textarea type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" ></textarea>
+                                    <textarea type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" >{{$event->custom_package_details}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -184,15 +187,14 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Include Menu Items</label>
                                     <select name="menu_items" class="form-control select2" style="width: 100%;" multiple>
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="0">No</option>
+
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Collection</label>
-                                    <select class="form-control select2" name="entity_id" id="lca2">
+                                    <select class="form-control select2" name="collection_id" id="lca2" multiple>
                                         <option value="">Select Collection</option>
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}">{{$collection->name}}</option>

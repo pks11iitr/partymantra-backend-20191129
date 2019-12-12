@@ -122,4 +122,9 @@ class MenuController extends Controller
 
     }
 
+
+    public function partnermenus(Request $request, $id){
+          return Menu::active()->where('partner_id', $id)->get();
+    }
+
 }

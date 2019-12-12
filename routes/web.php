@@ -63,6 +63,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::post('menu', 'Admin\MenuController@store')->name('admin.menu.store');
     Route::get('menu/{id}', 'Admin\MenuController@edit')->where('id', '[0-9]+')->name('admin.menu.edit');
     Route::post('menu/{id}', 'Admin\MenuController@update')->where('id', '[0-9]+')->name('admin.menu.update');
+    Route::get('menu-partner/{id}', 'Admin\MenuController@partnermenus')->name('partner.menus');
 
 
 	Route::get('ajexdata','Admin\BannerController@ajexdataa')->name('banner.ajax');

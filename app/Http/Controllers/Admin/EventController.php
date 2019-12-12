@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Collection;
+use App\Models\Menu;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PartnerEvent;
+use Illuminate\Support\Facades\DB;
 use Storage;
 
 class EventController extends Controller
@@ -121,8 +123,6 @@ class EventController extends Controller
         $request->validate([
             'partner_id'=>'required|integer',
             'title'=>'required|max:150',
-            'header_image'=>'required|image',
-            'small_image'=>'required|image',
             'description'=>'required|max:1000',
             'venue_name'=>'required|max:100',
             'venue_adderss'=>'nullable',
@@ -145,6 +145,8 @@ class EventController extends Controller
 
             Storage::put($path1, file_get_contents($file));
 
+        }else{
+            $path1=DB::raw('header_image');
         }
 
         if(isset($request->small_image)){
@@ -157,8 +159,11 @@ class EventController extends Controller
 
             Storage::put($path2, file_get_contents($file));
 
+        }else{
+            $path2=DB::raw('small_image');
         }
 
+        $ecollection=$event->collection;
 
         if($event->update(['title'=>$request->title,
             'header_image'=>$path1,
@@ -179,9 +184,12 @@ class EventController extends Controller
         ]))
 
         {
+
             if(!empty($request->collection_id)){
                 $collection=Collection::findOrFail($request->collection_id);
                 $collection->event()->attach($event->id);
+            }else{
+                $collection->event()->detach($event->id);
             }
             return redirect()->route('admin.event')->with('success', 'Events has been created');
 

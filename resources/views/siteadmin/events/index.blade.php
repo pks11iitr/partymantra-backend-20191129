@@ -49,6 +49,7 @@
                       <th>Venue Name</th>
                        <th>Venue Address</th>
                           <th>Markas Full</th>
+                    <th>Is active</th>
                              <th>Action</th>
 
 
@@ -66,6 +67,7 @@
                   <td>{{$event->venue_name}}</td>
                   <td>{{$event->venue_adderss}}</td>
                   <td>{{$event->markasfull}}</td>
+                    <td>{{$event->isactive}}</td>
                     <td><a href="{{route('admin.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>
 
                     </td>
