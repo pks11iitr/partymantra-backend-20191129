@@ -55,10 +55,7 @@ class BannerController extends Controller
 
 		Storage::put($path, $file);
 
-
-
-
-		if(Banner::create(['entity_type'=>$request->entity_type,
+	if(Banner::create(['entity_type'=>$request->entity_type,
 					'entity_id'=>$request->entity_id,
 					'isactive'=>$request->isactive,
 					'image'=>$path,
@@ -69,17 +66,61 @@ class BannerController extends Controller
 
 		return redirect()->back()->with('error', 'Banner create failed');
 
-
-
 	}
-	public function update(Request $request)
-	{
 
-	}
-	public function edit(Request $request)
-	{
+      public function edit(Request $request, $id)
+      {
+        $banner = banner::findOrFail($id);
+        return view('siteadmin.banners.edit',['banner'=>$banner]);
+      }
 
-	}
+
+	       public function update(Request $request,$id)
+	        {
+
+            	$request->validate([
+            			'entity_type'=>'nullable',
+            			'entity_id'=>'nullable',
+            			'isactive'=>'required',
+            			'image'=>'required|image'
+
+            		]);
+
+                		$file=$request->image->path();
+
+                		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+
+                		$path='category/'.$name;
+
+                		Storage::put($path, $file);
+
+          $banner = banner::findOrFail($id);
+
+          if($banner->update(['entity_type'=>$request->entity_type,
+        					'entity_id'=>$request->entity_id,
+        					'isactive'=>$request->isactive,
+
+
+          ])){
+            return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
+
+          }else {
+            if($banner->update(['entity_type'=>$request->entity_type,
+          					'entity_id'=>$request->entity_id,
+          					'isactive'=>$request->isactive,
+
+
+            ]));{
+
+              return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
+
+            }
+            	return redirect()->back()->with('error', 'Banner update failed');
+          }
+
+
+	             }
+
 
 
 

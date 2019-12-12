@@ -27,9 +27,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -47,11 +47,11 @@
                   <th>Entities</th>
                   <th>Image</th>
                   <th>Isactive</th>
-					<th>Action</th>      
+					<th>Action</th>
           </tr>
                 </thead>
                 <tbody>
-				@foreach($banners as $banner)	
+				@foreach($banners as $banner)
                 <tr>
                   <td>{{$banner->entity_type}}</td>
                   <td>{{$banner->entity_id}}</td>
@@ -60,7 +60,7 @@
                     <td>
 					<a href="{{route('admin.banner.edit', ['id'=>$banner->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
-                    
+
                 </tr>
                 @endforeach
                 </tbody>
@@ -76,7 +76,7 @@
     </section>
     <!-- /.content -->
   </div>
-  
+
   <script>
   $(function () {
     $("#example1").DataTable();

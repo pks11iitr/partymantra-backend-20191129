@@ -28,7 +28,7 @@
                     </div>
                    <form action="{{route('admin.partners.store')}}" method="post" enctype="multipart/form-data">
 				@csrf
- 
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
@@ -134,7 +134,7 @@
                                     <label for="exampleInputEmail1">Address</label>
                                                                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter address" name="address">
 
-                             >
+
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -158,10 +158,10 @@
                             </div>
                         </div>
                          <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
 

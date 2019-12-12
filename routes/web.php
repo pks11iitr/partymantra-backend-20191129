@@ -35,8 +35,8 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::post('category', 'Admin\CategoryController@store')->name('admin.category.store');
     Route::get('category/{id}', 'Admin\CategoryController@edit')->where('id', '[0-9]+')->name('admin.category.edit');
     Route::post('category/{id}', 'Admin\CategoryController@update')->where('id', '[0-9]+')->name('admin.category.update');
-	
-	
+
+
     Route::get('cusines', 'Admin\CusineController@index')->name('admin.cusines');
     Route::get('cusines/create', 'Admin\CusineController@add')->name('admin.cusines.add');
     Route::post('cusines', 'Admin\CusineController@store')->name('admin.cusines.store');
@@ -57,7 +57,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::post('collection', 'Admin\CollectionController@store')->name('admin.collection.store');
     Route::get('collection/{id}', 'Admin\CollectionController@edit')->where('id', '[0-9]+')->name('admin.collection.edit');
     Route::post('collection/{id}', 'Admin\CollectionController@update')->where('id', '[0-9]+')->name('admin.collection.update');
-    
+
      Route::get('menu', 'Admin\MenuController@index')->name('admin.menu');
     Route::get('menu/create', 'Admin\MenuController@add')->name('admin.menu.add');
     Route::post('menu', 'Admin\MenuController@store')->name('admin.menu.store');
@@ -73,6 +73,22 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::post('banner/{id}', 'Admin\BannerController@update')->where('id', '[0-9]+')->name('admin.banner.update');
 });
 
-Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
+    Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
     Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
+
+
+    Route::get('menu', 'Partner\MenuController@index')->name('partner.menu');
+    Route::get('menu/create', 'Partner\MenuController@add')->name('partner.menu.add');
+    Route::post('menu', 'Partner\MenuController@store')->name('partner.menu.store');
+    Route::get('menu/{id}', 'Partner\MenuController@edit')->where('id', '[0-9]+')->name('partner.menu.edit');
+    Route::post('menu/{id}', 'Partner\MenuController@update')->where('id', '[0-9]+')->name('partner.menu.update');
+
+
+
+    Route::get('event', 'Partner\EventController@index')->name('partner.event');
+     Route::get('event/create', 'Partner\EventController@add')->name('partner.event.add');
+     Route::post('event', 'Partner\EventController@store')->name('partner.event.store');
+     Route::get('event/{id}', 'Partner\EventController@edit')->where('id', '[0-9]+')->name('partner.event.edit');
+     Route::post('event/{id}', 'Partner\EventController@update')->where('id', '[0-9]+')->name('partner.event.update');
+
 });

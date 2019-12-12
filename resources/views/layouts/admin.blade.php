@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="{{asset('datetimepicker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -60,10 +61,10 @@
           </form>
       </li>
     </ul>
-    
+
   </nav>
   <!-- /.navbar -->
-  
+
   @yield('contents')
   <!-- Content Wrapper. Contains page content -->
 
@@ -97,6 +98,8 @@
 <script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('datetimepicker/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{asset('datetimepicker/js/locales/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
 
 @yield('scripts')
 </body>

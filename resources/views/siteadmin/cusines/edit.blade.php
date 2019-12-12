@@ -27,19 +27,19 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    
-                    
-                    
-                    <form action="{{route('admin.cusines.store',['id'=>$cusine->id])}}" method="post">
+
+
+
+                    <form action="{{route('admin.cusines.update',['id'=>$cusine->id])}}" method="post">
 						@csrf
                     <div class="card-body">
                         <div class="row">
-                           
+
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" 
+                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1"
                                     placeholder="Enter name"  value="<?php echo $cusine->name?>" >
                                 </div>
                                 <!-- /.form-group -->
@@ -47,13 +47,13 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                        
-                         
+
+
                          <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
                             <!-- /.col -->
@@ -82,4 +82,3 @@
         })
     </script>
 @endsection
-

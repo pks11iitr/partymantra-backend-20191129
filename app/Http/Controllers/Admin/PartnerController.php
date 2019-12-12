@@ -21,7 +21,7 @@ class PartnerController extends Controller
     }
 
     public function edit(Request $request, $id){
-		
+
 		$partners=Partner::findOrFail($id);
 		return view('siteadmin.partners.edit', ['partners'=>$partners]);
 
@@ -110,11 +110,11 @@ class PartnerController extends Controller
     }
 
     public function update(Request $request, $id){
-		
+
+	     $partners=Partner::findOrFail($id);
 		$request->validate([
 			'contact_no'=>'required|digits:10',
-			'mobile'=>'required|digits:10',
-			'password'=>'required|max:25',
+
 			'name'=>'required|max:250',
 			'header_image'=>'required|image',
 			'small_image'=>'required|image',
@@ -129,22 +129,81 @@ class PartnerController extends Controller
 			'isactive'=>'required'
 
 			]);
-			
-			
-			
-		if(Partner::create([ 
-		
-		
-		
-		
-		]))
-		
 
-							{
-				return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
-		}
 
-		return redirect()->back()->with('error', 'Partners create failed');
+      if(isset($request->header_image)){
+          $file=$request->header_image->path();
+
+          $name=str_replace(' ', '_', $request->header_image->getClientOriginalName());
+
+          $path1='partners/'.$name;
+
+          Storage::put($path1, $file);
+      }
+
+      if(isset($request->small_image)){
+          // 2nd image
+          $file=$request->small_image->path();
+
+          $name=str_replace(' ', '_', $request->small_image->getClientOriginalName());
+
+          $path2='partners/'.$name;
+
+          Storage::put($path2, $file);
+
+      }
+
+
+		if($partners->update([
+     'name'=>$request->name,
+
+'description'=>$request->description,
+'address'=>$request->address,
+'short_address'=>$request->short_address,
+'lat'=>$request->lat,
+'lang'=>$request->lang,
+'contact_no'=>$request->contact_no,
+'type'=>$request->type,
+'per_person_text'=>$request->per_person_text,
+'isactive'=>$request->isactive,
+'user_id'=>auth()->user()->id
+
+
+
+
+		])) {
+    	return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
+
+    }else {
+
+      if($partners->update([
+       'name'=>$request->name,
+'description'=>$request->description,
+'address'=>$request->address,
+'short_address'=>$request->short_address,
+'lat'=>$request->lat,
+'lang'=>$request->lang,
+'contact_no'=>$request->contact_no,
+'type'=>$request->type,
+'per_person_text'=>$request->per_person_text,
+'isactive'=>$request->isactive,
+'user_id'=>auth()->user()->id
+
+
+
+
+      ]))
+      {
+
+        	return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
+      }
+
+    }
+
+
+
+
+		return redirect()->back()->with('error', 'Partners update failed');
 
     }
 

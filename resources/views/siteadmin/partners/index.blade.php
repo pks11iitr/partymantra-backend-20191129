@@ -27,9 +27,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -45,43 +45,37 @@
                 <tr>
                   <th>Partner Type</th>
                   <th>Mobile</th>
-                  <th>Header Image</th>
-                   <th>Small Icon Image</th>
-                    <th>Description</th>
                      <th>Short Address</th>
                       <th>Per Person Text</th>
                        <th>Address</th>
                           <th>Is Active</th>
                              <th>Action</th>
 
-                       
-                  
-                
+
+
+
                 </tr>
                 </thead>
                 <tbody>
-              
-               @foreach($partners as $partner)	
+
+               @foreach($partners as $partner)
                 <tr>
                   <td>{{$partner->type}}</td>
                   <td>{{$partner->contact_no}}</td>
-                  <td>{{Storage::url($partner->header_image)}}</td>
-                 <td>{{Storage::url($partner->small_image)}}</td>
-                  <td>{{$partner->description}}</td>
+
                   <td>{{$partner->short_address}}</td>
                   <td>{{$partner->per_person_text}}</td>
                   <td>{{$partner->address}}</td>
                   <td>{{$partner->isactive}}</td>
-                  
+
                     <td>
 					<a href="{{route('admin.partners.edit', ['id'=>$partner->id])}}"><span class="badge bg-success">Edit</span></a>
-			<a href="{{route('admin.partners.edit', ['id'=>$partner->id])}}"><span class="btn btn-block btn-primary btn-xs">Details</span></a>
 
                     </td>
-                    
+
                 </tr>
                 @endforeach
-               
+
                 </tbody>
               </table>
             </div>
@@ -95,7 +89,7 @@
     </section>
     <!-- /.content -->
   </div>
-  
+
   <script>
   $(function () {
     $("#example1").DataTable();
