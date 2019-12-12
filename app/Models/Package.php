@@ -21,7 +21,7 @@ class Package extends Model
     }
 
     public function event(){
-        return $this->belongsTo('App\Models\Event', 'event_id');
+        return $this->belongsTo('App\Models\PartnerEvent', 'event_id');
     }
 
 

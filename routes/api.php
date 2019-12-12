@@ -27,9 +27,10 @@ $api = app('Dingo\Api\Routing\Router');
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
         $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\Api\ProfileController@updateAddress']);
         $api->post('update-profile', ['as'=>'api.updateprofile', 'uses'=>'Customer\Api\ProfileController@updateProfile']);
-        $api->post('book-event', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
-        $api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
-        $api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        $api->post('book', ['as'=>'api.order.book', 'uses'=>'Customer\Api\OrderController@addtocart']);
+        $api->post('pay-now', ['as'=>'api.order.pay', 'uses'=>'Customer\Api\OrderController@makeOrder']);
+        //$api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
 
     });
 
