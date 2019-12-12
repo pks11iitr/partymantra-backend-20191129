@@ -92,9 +92,9 @@
                                 <div class="form-group">
                                     <label>Isactive</label>
                                     <select name="isactive" class="form-control select2"
-                                    value="<?=$menu->isactive?>" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                     style="width: 100%;">
+                                    <option   value="1" {{$menu->isactive==1?'selected':''}}>Yes</option>
+                                      <option   value="0" {{$menu->isactive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>

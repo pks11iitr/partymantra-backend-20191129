@@ -69,7 +69,7 @@ class BannerController extends Controller
 
       public function edit(Request $request, $id)
       {
-        $banner = banner::findOrFail($id);
+        $banner = Banner::findOrFail($id);
         return view('siteadmin.banners.edit',['banner'=>$banner]);
       }
 
