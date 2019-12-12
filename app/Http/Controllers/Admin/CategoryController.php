@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
 		$path='category/'.$name;
 
-		Storage::put($path, $file);
+		Storage::put($path, file_get_contents($file));
 
 
 				 if(Category::create(['name'=>$request->name,

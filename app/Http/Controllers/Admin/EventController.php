@@ -54,11 +54,11 @@ class EventController extends Controller
 		if(isset($request->header_image)){
             $file=$request->header_image->path();
 
-            $name=str_replace(' ', '_',                     $request->header_image->getClientOriginalName());
+            $name=str_replace(' ', '_',                                   $request->header_image->getClientOriginalName());
 
             $path1='events/'.$name;
 
-            Storage::put($path1, $file);
+            Storage::put($path1, file_get_contents($file));
 
         }
 
@@ -70,7 +70,7 @@ class EventController extends Controller
 
             $path2='events/'.$name;
 
-            Storage::put($path2, $file);
+            Storage::put($path2, file_get_contents($file));
 
         }
 

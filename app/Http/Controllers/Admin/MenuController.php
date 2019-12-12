@@ -47,7 +47,7 @@ class MenuController extends Controller
 
 		$path='menus/'.$name;
 
-		Storage::put($path, $file);
+		Storage::put($path, file_get_contents($file));
 
 		if(Menu::create(['name'=>$request->name,
 							'image'=>$path,

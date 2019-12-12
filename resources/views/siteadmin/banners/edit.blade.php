@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
                                     <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image">
-                                      <image src="{{Storage::url($banner->image)}}">
+                                      <image src="{{$banner->image}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>

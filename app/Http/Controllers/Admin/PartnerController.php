@@ -69,7 +69,7 @@ class PartnerController extends Controller
 
             $path1='partners/'.$name;
 
-            Storage::put($path1, $file);
+            Storage::put($path1, file_get_contents($file));
         }
 
         if(isset($request->small_image)){
@@ -80,7 +80,7 @@ class PartnerController extends Controller
 
             $path2='partners/'.$name;
 
-            Storage::put($path2, $file);
+            Storage::put($path2, file_get_contents($file));
 
         }
 

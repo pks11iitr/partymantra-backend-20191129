@@ -50,7 +50,7 @@ class BannerController extends Controller
 
 		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
-		$path='banners/'.$name;
+		$path='banner/'.$name;
 
 		Storage::put($path, $file);
 
@@ -91,7 +91,7 @@ class BannerController extends Controller
 
                     $path='banner/'.$name;
 
-                    Storage::put($path, $file);
+                    Storage::put($path, file_get_contents($file));
 
                 }else{
                     $path=$banner->image;

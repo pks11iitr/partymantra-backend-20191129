@@ -43,7 +43,7 @@ class CollectionController extends Controller
 
 		$path='collections/'.$name;
 
-		Storage::put($path, $file);
+		Storage::put($path, file_get_contents($file));
 
 		if(Collection::create(['name'=>$request->name,
 					'cover_image'=>$path,

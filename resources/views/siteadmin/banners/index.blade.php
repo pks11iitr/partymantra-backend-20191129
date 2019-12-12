@@ -55,7 +55,7 @@
                 <tr>
                   <td>{{$banner->entity_type}}</td>
                   <td>{{$banner->entity_id}}</td>
-                  <td>{{Storage::url($banner->image)}}</td>
+                  <td>{{$banner->image}}</td>
                   <td>{{$banner->isactive}}</td>
                     <td>
 					<a href="{{route('admin.banner.edit', ['id'=>$banner->id])}}"><span class="badge bg-success">Edit</span></a>
