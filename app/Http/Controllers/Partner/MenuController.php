@@ -20,6 +20,10 @@ class MenuController extends Controller
 
     public function edit(Request $request, $id){
 
+        $menus=Menu::findOrFail($id);
+      	 return view('partneradmin.menus.edit',['menus'=>$menus]);
+
+
     }
 
     public function add(Request $request){
@@ -38,11 +42,7 @@ class MenuController extends Controller
 			'isactive'=>'required'
 
 			]);
-
-
-
-
-      		$partner=Partner::where('user_id',auth()->user()->id)->first();
+	$partner=Partner::where('user_id',auth()->user()->id)->first();
 
 
              if(isset($request->image)){
@@ -79,6 +79,65 @@ class MenuController extends Controller
 
     public function update(Request $request, $id){
 
+      $request->validate([
+      'name'=>'required|max:100',
+      'image'=>'required|image',
+      'price'=>'required',
+      'cut_pice'=>'required',
+      'isactive'=>'required'
+
+      ]);
+
+
+                 if(isset($request->image)){
+    		$file=$request->image->path();
+
+    		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+
+    		$path='menus/'.$name;
+
+    		Storage::put($path, $file);
+
+     $menus=Menu::findOrFail($id);
+
+  	$partner=Partner::where('user_id',auth()->user()->id)->first();
+        if($menus->update([
+          'name'=>$request->name,
+          'image'=>$path,
+          'price'=>$request->price,
+          'cut_pice'=>$request->cut_pice,
+          'description'=>$request->description,
+          'isactive'=>$request->isactive,
+          'creator_id'=>auth()->user()->id,
+          'partner_id'=>$partner->id,
+
+      							])){
+                      return redirect()->route('partner.menu')->with('success', 'Menus has been created');
+
+
+                    }
+
     }
+    else
+    {
+      if($menus->update([
+
+        'name'=>$request->name,
+
+        'price'=>$request->price,
+        'cut_pice'=>$request->cut_pice,
+        'description'=>$request->description,
+        'isactive'=>$request->isactive,
+        'creator_id'=>auth()->user()->id,
+        'partner_id'=>$partner->id,
+    							])){
+
+                    return redirect()->route('partner.menu')->with('success', 'Menus has been created');
+
+                  }
+
+    }
+	return redirect()->back()->with('error', 'Menus create failed');
+}
 
 }

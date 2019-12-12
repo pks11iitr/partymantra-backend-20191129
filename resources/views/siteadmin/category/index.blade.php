@@ -27,9 +27,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -46,11 +46,11 @@
                   <th>Name</th>
                   <th>Image</th>
                   <th>Isactive</th>
-					<th>Action</th>      
+					<th>Action</th>
           </tr>
                 </thead>
                 <tbody>
-				@foreach($categories as $category)	
+				@foreach($categories as $category)
                 <tr>
                   <td>{{$category->name}}</td>
                   <td>{{Storage::url($category->image)}}</td>
@@ -58,7 +58,7 @@
                     <td>
 					<a href="{{route('admin.category.edit', ['id'=>$category->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
-                    
+
                 </tr>
                 @endforeach
                 </tbody>
@@ -74,7 +74,7 @@
     </section>
     <!-- /.content -->
   </div>
-  
+
   <script>
   $(function () {
     $("#example1").DataTable();

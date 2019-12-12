@@ -46,9 +46,9 @@
 				<th>Name</th>
                  <th>Price</th>
                     <th>Cut Pice</th>
-                     <th>Image</th>
+                    
                       <th>Isactive</th>
-                       <th>Description</th>
+
                        <th>Action</th>
           </tr>
                 </thead>
@@ -58,11 +58,12 @@
                   <td>{{$menu->name}}</td>
                   <td>{{$menu->price}}</td>
                   <td>{{$menu->cut_pice}}</td>
-                  <td>{{$menu->image}}</td>
+
                   <td>{{$menu->isactive}}</td>
-                  <td>{{$menu->description}}</td>
+
 
                     <td>
+
 					<a href="{{route('partner.menu.edit', ['id'=>$menu->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
 

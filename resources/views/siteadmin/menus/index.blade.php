@@ -27,9 +27,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -46,26 +46,26 @@
 				<th>Name</th>
                  <th>Price</th>
                     <th>Cut Pice</th>
-                     <th>Image</th>
+
                       <th>Isactive</th>
-                       <th>Description</th>
-                       <th>Action</th>      
+
+                       <th>Action</th>
           </tr>
                 </thead>
                 <tbody>
-				@foreach($menus as $menu)	
+				@foreach($menus as $menu)
                 <tr>
                   <td>{{$menu->name}}</td>
                   <td>{{$menu->price}}</td>
                   <td>{{$menu->cut_pice}}</td>
-                  <td>{{$menu->image}}</td>
+
                   <td>{{$menu->isactive}}</td>
-                  <td>{{$menu->description}}</td>
-                  
+
+
                     <td>
 					<a href="{{route('admin.menu.edit', ['id'=>$menu->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>
-                    
+
                 </tr>
                 @endforeach
                 </tbody>
@@ -81,7 +81,7 @@
     </section>
     <!-- /.content -->
   </div>
-  
+
   <script>
   $(function () {
     $("#example1").DataTable();

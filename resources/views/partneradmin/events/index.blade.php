@@ -46,12 +46,11 @@
                   <th>Title</th>
                   <th>Start Date</th>
                   <th>End Date</th>
-                   <th>Header Image</th>
-                    <th>Small  Image</th>
-                     <th>Description</th>
+
+
                       <th>Venue Name</th>
                        <th>Venue Address</th>
-                          <th>Package Name</th>
+
                           <th>Markas Full</th>
                              <th>Action</th>
 
@@ -67,12 +66,11 @@
                   <td>{{$event->title}}</td>
                   <td>{{$event->startdate}}</td>
                   <td>{{$event->enddate}}</td>
-                  <td>{{$event->header_image}}</td>
-                  <td>{{$event->small_image}}</td>
-                  <td>{{$event->description}}</td>
+
+                  
                   <td>{{$event->venue_name}}</td>
                   <td>{{$event->venue_adderss}}</td>
-                  <td>{{$event->custom_package_details}}</td>
+
                   <td>{{$event->markasfull}}</td>
                     <td>
 					<a href="{{route('partner.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>

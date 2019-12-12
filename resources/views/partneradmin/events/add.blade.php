@@ -31,7 +31,7 @@
                     <!-- /.card-header -->
                                <form action="{{route('partner.event.store')}}" method="post" enctype="multipart/form-data">
 						@csrf
-          
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> Title</label>
@@ -47,8 +47,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
-                                </div>
+<input class="form-control form_datetime" type="text"   name="startdate">                                </div>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
@@ -56,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
+                                    <input type="text" class="form-control form_datetime" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -210,6 +209,10 @@
     </div>
 @endsection
 @section('scripts')
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+</script>
+
     <script>
         //Initialize Select2 Elements
         $('.select2').select2()

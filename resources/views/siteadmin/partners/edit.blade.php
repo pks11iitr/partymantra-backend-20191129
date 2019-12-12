@@ -26,65 +26,43 @@
                             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
                         </div>
                     </div>
-                   <form action="{{route('admin.partners.store')}}" method="post" enctype="multipart/form-data">
+                   <form action="{{route('admin.partners.update',['id'=>$partners->id])}}" method="post" enctype="multipart/form-data">
 				@csrf
- 
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Partner Type</label>
-                                    <select name="type"  class="form-control select2" 
-                                       style="width: 100%;">
-                                        <option value="restaurant" {{$partners->type=='restaurant'?'selected':''}}>Restaurant</option>
-                                        <option value="organizers" {{$partners->type=='organizers'?'selected':''}}>Event Organizer</option>
-                                   </select>
-                                </div>
-                            </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label>Partner Type</label>
+                                  <select name="type"  class="form-control select2"
+                                     style="width: 100%;">
+                                      <option value="restaurant" {{$partners->type=='restaurant'?'selected':''}}>Restaurant</option>
+                                      <option value="organizers" {{$partners->type=='organizers'?'selected':''}}>Event Organizer</option>
+                                 </select>
+                              </div>
+                          </div>
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Partner Title</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" 
-                                    placeholder="Enter email" value="<?php echo $partners->name?>">
+                                    <input type="text" class="form-control" name="name"
+                                    value="<?php echo $partners->name?>" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
                         </div>
-                        
-<!--
-                        <div class="row">
-                           
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Mobile</label>
-                                    <input type="text" class="form-control" name="contact_no" id="exampleInputEmail1"
-                                     value="" placeholder="Enter email" name="contact_no">
-                                </div>
-                                
-                            </div>
-                           
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Password</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter password" 
-                                    value="***********" name="password">
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
--->
-                        
+                        <!-- /.row -->
+
+                        <!-- /.row -->
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
                                     <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email">
-                                    <image src="{{Storage::url($partners->header_image)}}">
+                                      <image src="{{Storage::url($partners->header_image)}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -106,10 +84,10 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control" 
-                                    >{{$partners->description}}</textarea>
+                                    <textarea name="description" class="form-control">
+                                    {{$partners->description}}</textarea>
                                 </div>
-                              
+                                <!-- /.form-group -->
                             </div>
 
                         </div>
@@ -119,8 +97,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Short Address</label>
-                                    <input type="text" class="form-control" name="short_address" id="exampleInputEmail1" 
-                                    value="<?php echo $partners->short_address?>" placeholder="Enter email" name="short_address">
+                                    <input type="text" class="form-control" name="short_address"  value="<?php echo $partners->short_address?>"
+                                    id="exampleInputEmail1" placeholder="Enter email" name="short_address">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -129,8 +107,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Per Person Text</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" 
-                                    value="<?php echo $partners->per_person_text?>" name="per_person_text">
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    value="<?php echo $partners->per_person_text?>" placeholder="Enter email" name="per_person_text">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -142,8 +120,10 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Address</label>
-                                    <input type="text" class="form-control" name="address" id="exampleInputEmail1" placeholder="Enter email" name="address"  value="<?php echo $partners->address?>">
-                                   
+                                      <input type="text" class="form-control" id="exampleInputEmail1"
+                                      value="<?php echo $partners->address?>" placeholder="Enter address" name="address">
+
+
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -152,19 +132,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Is Active</label>
-                                    <select name="isactive" class="form-control select2" 
-                                    value="<?php echo $partners->isactive?>" style="width: 100%;">
+                                    <select name="isactive" class="form-control select2"
+                                     value="<?php echo $partners->isactive?>" style="width: 100%;">
                                         <option  selected="selected" value="1">Yes</option>
                                         <option value="organizer" value="0">No</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Contact No</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    value="<?php echo $partners->contact_no?>" placeholder="Enter email" name="contact_no">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                         </div>
                          <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
 
