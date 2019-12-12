@@ -52,7 +52,7 @@ class BannerController extends Controller
 
 		$path='banner/'.$name;
 
-		Storage::put($path, $file);
+		Storage::put($path, file_get_contents($file));
 
 	if(Banner::create(['entity_type'=>$request->entity_type,
 					'entity_id'=>$request->entity_id,
