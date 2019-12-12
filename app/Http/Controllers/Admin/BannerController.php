@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Storage;
-use App\Models\Event;
+use App\Models\PartnerEvent;
 use App\Models\Partner;
 class BannerController extends Controller
 {
@@ -24,7 +24,7 @@ class BannerController extends Controller
 				if(!in_array($type, ['event', 'party', 'restaurant']))
 					$type='event';
 				switch($type){
-					case 'event':return $events=Event::get();
+					case 'event':return $events=PartnerEvent::get();
 					case 'party':return [];
 					case 'restaurant':return $restaurants=Partner::where('type', 'restaurant')->get();
 				}
@@ -33,7 +33,6 @@ class BannerController extends Controller
 
 	public function add(Request $request)
 	{
-
 		return view('siteadmin.banners.add');
 	}
 	public function store(Request $request)
@@ -81,47 +80,35 @@ class BannerController extends Controller
             	$request->validate([
             			'entity_type'=>'nullable',
             			'entity_id'=>'nullable',
-            			'isactive'=>'required',
-            			'image'=>'required|image'
+            			'isactive'=>'required'
 
             		]);
+                $banner = banner::findOrFail($id);
+                if($request->image){
+                    $file=$request->image->path();
 
-                		$file=$request->image->path();
+                    $name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
-                		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+                    $path='banner/'.$name;
 
-                		$path='category/'.$name;
+                    Storage::put($path, $file);
 
-                		Storage::put($path, $file);
-
-          $banner = banner::findOrFail($id);
-
-          if($banner->update(['entity_type'=>$request->entity_type,
-        					'entity_id'=>$request->entity_id,
-        					'isactive'=>$request->isactive,
+                }else{
+                    $path=$banner->image;
+                }
 
 
+
+          if($banner->update([
+                    'entity_type'=>$request->entity_type,
+        			'entity_id'=>$request->entity_id,
+        			'isactive'=>$request->isactive,
+                    'image'=>$path
           ])){
-            return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
+                return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
 
-          }else {
-            if($banner->update(['entity_type'=>$request->entity_type,
-          					'entity_id'=>$request->entity_id,
-          					'isactive'=>$request->isactive,
-
-
-            ]));{
-
-              return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
-
-            }
-            	return redirect()->back()->with('error', 'Banner update failed');
           }
-
-
-	             }
-
-
-
+             	return redirect()->back()->with('error', 'Banner update failed');
+          }
 
 }

@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartnerEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartnerEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +134,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -183,7 +181,8 @@
       <workItem from="1575277538386" duration="229000" />
       <workItem from="1575278312365" duration="14194000" />
       <workItem from="1575522101580" duration="32793000" />
-      <workItem from="1575892016057" duration="37303000" />
+      <workItem from="1575892016057" duration="38954000" />
+      <workItem from="1576136611185" duration="3818000" />
     </task>
     <task id="LOCAL-00001" summary="address updated api">
       <created>1575285836963</created>
@@ -290,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576047067684</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="change in event create">
+      <created>1576072185785</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1576072185785</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,10 +331,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1576046324421" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576047067570">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576072185422">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576047067570" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576072185422" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576047063303">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -345,10 +351,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576047078984">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576072205503">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576047078984" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576072205503" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1575892310697">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

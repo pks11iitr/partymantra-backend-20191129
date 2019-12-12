@@ -2,10 +2,6 @@
 
 @section('contents')
     @include('partials.admin-sidebar')
-
-
-
-
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
@@ -82,8 +78,8 @@
                                 <div class="form-group">
                                      <label>Isactive</label>
                                      <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option  selected="selected" value="1" {{$banner->isactive==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$banner->isactive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
@@ -122,36 +118,51 @@
     </script>
 
    <script type="text/javascript">
- function getdata(id)
- {
+           function getdata(id)
+           {
 
-     $.ajax({
-   method: 'get', // Type of response and matches what we said in the route
-   url: '{{route('banner.ajax')}}', // This is the url we gave in the route
-   data: {'type':id}, // a JSON object to send back
-   success: function(response){ // What to do if we succeed
+               $.ajax({
+                   method: 'get', // Type of response and matches what we said in the route
+                   url: '{{route('banner.ajax')}}', // This is the url we gave in the route
+                   data: {'type':id}, // a JSON object to send back
+                   datatype:'json',
+                   success: function(response){ // What to do if we succeed
+                       $("#lca").empty();
+                       if(response){
 
-      if(response){
+                           $.each(response,function(i, data){
+                               console.log(data)
+                               if(id=='event')
+                                   $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
 
-               $.each(response,function(key,value){
-                   $("#lca").append('<option value="'+value.id+'">'+value.name+'</option>');
+                               else if(id=='party'){
+                                   $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
+                               }else if(id=='restaurant'){
+                                   $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
+                               }
+                           });
 
+                       }else{
+                           $("#lca").empty();
+
+                       }
+
+
+                   },
+                   error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                       console.log(JSON.stringify(jqXHR));
+                       console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                   }
                });
-
-           }else{
-              $("#lca").empty();
-
            }
 
 
-   },
-   error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-       console.log(JSON.stringify(jqXHR));
-       console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-   }
-});
- }
+   </script>
+    <script>
+        $(document).ready(function(){
+            getdata('event')
+            $('#lca').val('{{$banner->id}}')
+        })
+    </script>
 
-
-  </script>
 @endsection

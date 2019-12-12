@@ -2,10 +2,10 @@
 
 @section('contents')
     @include('partials.admin-sidebar')
-    
-      
-    
-    
+
+
+
+
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
@@ -34,20 +34,20 @@
                                         <form action="{{route('admin.banner.store')}}" method="post" enctype="multipart/form-data">
 						@csrf
                     <div class="card-body">
-                        
-                        
+
+
                 	<div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label >Select Type</label>
-                                    <select name="entity_type" class="form-control select2" 
+                                    <select name="entity_type" class="form-control select2"
                                     style="width: 100%;"  onchange="getdata(this.value)" >
-                                    
+
                                         <option  value="event">Event</option>
                                         <option  value="restaurant">Restaurant</option>
                                         <option  value="party">Party</option>
-                                       
+
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
@@ -86,12 +86,12 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
-                      
+
                         <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
 
@@ -118,38 +118,51 @@
             theme: 'bootstrap4'
         })
     </script>
-  
+
    <script type="text/javascript">
  function getdata(id)
  {
- 
-     $.ajax({
-   method: 'get', // Type of response and matches what we said in the route
-   url: '{{route('banner.ajax')}}', // This is the url we gave in the route
-   data: {'type':id}, // a JSON object to send back
-   success: function(response){ // What to do if we succeed
-       
-      if(response){
-               
-               $.each(response,function(key,value){
-                   $("#lca").append('<option value="'+value.id+'">'+value.name+'</option>');
-                  
-               });
-         
-           }else{
-              $("#lca").empty();
-            
-           }
-   
 
-   },
-   error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-       console.log(JSON.stringify(jqXHR));
-       console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-   }
-});  
+     $.ajax({
+           method: 'get', // Type of response and matches what we said in the route
+           url: '{{route('banner.ajax')}}', // This is the url we gave in the route
+           data: {'type':id}, // a JSON object to send back
+           datatype:'json',
+           success: function(response){ // What to do if we succeed
+               $("#lca").empty();
+                    if(response){
+
+                        $.each(response,function(i, data){
+                            console.log(data)
+                           if(id=='event')
+                                $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
+
+                            else if(id=='party'){
+                               $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
+                            }else if(id=='restaurant'){
+                               $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
+                            }
+                        });
+
+                    }else{
+                        $("#lca").empty();
+
+                    }
+
+
+               },
+           error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                   console.log(JSON.stringify(jqXHR));
+                   console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+               }
+            });
  }
- 
- 
+
+
   </script>
+<script>
+    $(document).ready(function(){
+        getdata('event')
+    })
+</script>
 @endsection

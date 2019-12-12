@@ -206,7 +206,7 @@
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
 
@@ -304,7 +304,7 @@
             }
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbXTYhfpiOi-Y-Wd_TK4OWPkmu3z7vPbU&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-qt3IABoiaTuVxP7-8dcJ7IBWx7-wyRA&libraries=places&callback=initAutocomplete"
             async defer></script>
 
 @endsection
