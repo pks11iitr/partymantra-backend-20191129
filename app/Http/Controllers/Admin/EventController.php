@@ -21,11 +21,17 @@ class EventController extends Controller
 
     }
 
-    public function edit(Request $request, $id){
 
-    }
+          public function edit(Request $request, $id){
 
-    public function add(Request $request){
+
+      $events = PartnerEvent::findOrFail($id);
+      return view('siteadmin.events.edit',['events'=>$events]);
+        }
+
+
+
+          public function add(Request $request){
         $organizers=Partner::active()->where('type', 'organizers')->get();
         //var_dump($organizers->toArray());die;
         return view('siteadmin.events.add', ['organizers'=>$organizers]);
@@ -87,8 +93,9 @@ class EventController extends Controller
 							'enddate'=>$request->enddate,
 							'tnc'=>$request->tnc,
 							'custom_package_details'=>$request->custom_package_details,
-                            'isactive'=>$request->isactive,
-                            'markasfull'=>$request->markasfull,
+                      'isactive'=>$request->isactive,
+                  'markasfull'=>$request->markasfull,
+                  'creator_id'=>auth()->user()->id,
 							'partner_id'=>$request->partner_id
 							]))
 
@@ -102,6 +109,9 @@ class EventController extends Controller
     }
 
     public function update(Request $request, $id){
+
+
+
 
     }
 }

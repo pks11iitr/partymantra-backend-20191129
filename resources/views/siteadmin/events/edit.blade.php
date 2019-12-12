@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Events</h1>
+                        <h1>Edit Events</h1>
                     </div>
 
                 </div>
@@ -29,14 +29,15 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                               <form action="{{route('admin.event.store')}}" method="post" enctype="multipart/form-data">
+                               <form action="{{route('admin.event.update',['id'=>$events->id])}}" method="post" enctype="multipart/form-data">
 						@csrf
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Organizer</label>
-                                    <select name="partner_id" class="form-control select2" style="width: 100%;">
+                                    <select name="partner_id" class="form-control select2"
+                                    style="width: 100%;">
                                         @foreach($organizers as $organizer)
                                         <option  value="{{$organizer->id}}" >{{$organizer->name}}</option>
                                         @endforeach
@@ -131,20 +132,12 @@
                                     placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()">
                                     <input type="hidden" name="lat" value="23.5">
                                     <input type="hidden" name="lang" value="22.1">
-
-
-
-
-
+                                    </div>
                                 </div>
-                                <!-- /.form-group -->
                             </div>
-                            <!-- /.col -->
-                        </div>
 
                         <div class="row">
-                            <!-- /.col -->
-                            <div class="col-md-6">
+                          <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
@@ -153,45 +146,40 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- /.col -->
-                            <!-- /.col -->
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mark as Full</label>
                                     <select name="markasfull" class="form-control select2" style="width: 100%;">
                                         <option value="0" selected="selected">No</option>
                                         <option   value="1">Yes</option>
-
-                                    </select>
+                                      </select>
                                 </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                        </div>
+                              </div>
+                              </div>
 
 
                         <div class="row">
-                            <!-- /.col -->
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">TNC</label>
                                     <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address">
-
                                 </div>
-                                <!-- /.form-group -->
                             </div>
                         </div>
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Custom Package Details</label>
                                     <textarea type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" ></textarea>
                                 </div>
-                                <!-- /.form-group -->
                             </div>
                         </div>
+
+
                         <div class="row">
-                            <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Include Menu Items</label>
@@ -202,6 +190,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">
@@ -209,18 +199,14 @@
 
                             </div>
                         </div>
-
-                        <!-- /.row -->
                     </div>
-                    <!-- /.card-body -->
 					</form>
                 </div>
-                <!-- /.card -->
 
 
-            </div><!-- /.container-fluid -->
+
+            </div>
         </section>
-        <!-- /.content -->
     </div>
 @endsection
 @section('scripts')

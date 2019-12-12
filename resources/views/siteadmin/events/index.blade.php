@@ -27,9 +27,9 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-           
+
             <!-- /.card-header -->
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -46,41 +46,33 @@
                   <th>Title</th>
                   <th>Start Date</th>
                   <th>End Date</th>
-                   <th>Header Image</th>
-                    <th>Small  Image</th>
-                     <th>Description</th>
                       <th>Venue Name</th>
                        <th>Venue Address</th>
-                          <th>Package Name</th>
                           <th>Markas Full</th>
                              <th>Action</th>
 
-                       
-                  
-                
+
+
+
                 </tr>
                 </thead>
                 <tbody>
-              
-               @foreach($events as $event)	
+
+               @foreach($events as $event)
                 <tr>
                   <td>{{$event->title}}</td>
                   <td>{{$event->startdate}}</td>
                   <td>{{$event->enddate}}</td>
-                  <td>{{$event->header_image}}</td>
-                  <td>{{$event->small_image}}</td>
-                  <td>{{$event->description}}</td>
                   <td>{{$event->venue_name}}</td>
                   <td>{{$event->venue_adderss}}</td>
-                  <td>{{$event->custom_package_details}}</td>
                   <td>{{$event->markasfull}}</td>
-                    <td>
-					<a href="{{route('admin.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>
+                    <td><a href="{{route('admin.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>
+
                     </td>
-                    
+
                 </tr>
                 @endforeach
-               
+
                 </tbody>
               </table>
             </div>
@@ -94,7 +86,7 @@
     </section>
     <!-- /.content -->
   </div>
-  
+
   <script>
   $(function () {
     $("#example1").DataTable();

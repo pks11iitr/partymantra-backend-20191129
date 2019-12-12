@@ -21,7 +21,7 @@ class CollectionController extends Controller
 
     public function edit(Request $request, $id){
 
-      $collection = collection::findOrfail($id);
+      $collection = Collection::findOrfail($id);
       return view('siteadmin.collections.edit',['collection'=>$collection]);
 
     }

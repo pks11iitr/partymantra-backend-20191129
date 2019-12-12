@@ -133,9 +133,9 @@
                                 <div class="form-group">
                                     <label>Is Active</label>
                                     <select name="isactive" class="form-control select2"
-                                     value="<?php echo $partners->isactive?>" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                      style="width: 100%;">
+                                      <option   value="1" {{$partners->isactive==1?'selected':''}}>Yes</option>
+                                        <option   value="0" {{$partners->isactive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>

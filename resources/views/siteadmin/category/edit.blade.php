@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                                        <form action="{{route('admin.category.update',['id'=>$category->id])}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('admin.category.update',['id'=>$category->id])}}" method="post" enctype="multipart/form-data">
 						@csrf
                     <div class="card-body">
                         <div class="row">
@@ -56,13 +56,16 @@
                             </div>
                             <!-- /.col -->
                             <!-- /.col -->
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                      <label>Isactive</label>
                                      <select name="isactive" class="form-control select2"
-                                     value="<?=$category->isactive?>" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                     style="width: 100%;">
+
+                                        <option   value="1" {{$category->isactive==1?'selected':''}}>Yes</option>
+                                          <option   value="0" {{$category->isactive==0?'selected':''}}>No</option>
+
                                     </select>
                                 </div>
                                 <!-- /.form-group -->

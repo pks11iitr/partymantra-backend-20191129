@@ -20,7 +20,7 @@ class MenuController extends Controller
 
     public function edit(Request $request, $id){
         $partners=Partner::where('isactive', 1)->get();
-      $menu = menu::findOrFail($id);
+      $menu = Menu::findOrFail($id);
       return view('siteadmin.menus.edit',['menu'=>$menu,'partners'=>$partners]);
 
     }
@@ -89,7 +89,7 @@ class MenuController extends Controller
     Storage::put($path, $file);
 
     $partners=Partner::where('isactive', 1)->get();
-    $menu = menu::findOrFail($id);
+    $menu = Menu::findOrFail($id);
 
     if($menu->update(['name'=>$request->name,
 
