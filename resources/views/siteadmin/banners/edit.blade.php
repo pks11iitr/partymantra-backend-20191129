@@ -38,11 +38,11 @@
                                 <div class="form-group">
                                     <label >Select Type</label>
                                     <select name="entity_type" class="form-control select2"
-                                  value="<?=$banner->entity_type?>"  style="width: 100%;"  onchange="getdata(this.value)" >
+                                    style="width: 100%;"  onchange="getdata(this.value)" >
 
-                                        <option  value="event">Event</option>
-                                        <option  value="restaurant">Restaurant</option>
-                                        <option  value="party">Party</option>
+                                        <option  value="event" {{$banner->entity_type=='event'?'selected': ''}}>Event</option>
+                                        <option  value="restaurant" {{$banner->entity_type=='restaurant'?'selected': ''}}>Restaurant</option>
+                                        <option  value="party" {{$banner->entity_type=='party'?'selected': ''}}>Party</option>
 
                                     </select>
                                 </div>
@@ -67,8 +67,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image">
-                                      <image src="{{$banner->image}}">
+                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image"><br>
+                                      <image src="{{$banner->image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -140,6 +140,7 @@
                                }else if(id=='restaurant'){
                                    $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
                                }
+                               $("#lca").val('{{$banner->entity_id}}').trigger('change');
                            });
 
                        }else{
@@ -161,7 +162,8 @@
     <script>
         $(document).ready(function(){
             getdata('event')
-            $('#lca').val('{{$banner->id}}')
+            //$('#lca').select2("val", '{{$banner->entity_id}}');
+
         })
     </script>
 

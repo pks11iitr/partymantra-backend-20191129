@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use Storage;
 
 class CategoryController extends Controller
@@ -34,26 +35,25 @@ class CategoryController extends Controller
 				]);
 
 
-		$file=$request->image->path();
+                    $file=$request->image->path();
 
-		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+                    $name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
-		$path='category/'.$name;
+                    $path='category/'.$name;
 
-		Storage::put($path, file_get_contents($file));
+                    Storage::put($path, file_get_contents($file));
 
 
 				 if(Category::create(['name'=>$request->name,
 									'image'=>$path,
 									'isactive'=>$request->isactive,
 									'creator_id'=>auth()->user()->id
-
 								]))
-								{
+                {
 
 									return redirect()->route('admin.category')->with('success','Menus has been created');
 
-								}
+                }
 
 									return redirect()->back()->with('error', 'Menus create failed');
 		}
@@ -66,39 +66,43 @@ class CategoryController extends Controller
 
               }
 
-		            public function update (Request $request, $id){
+            public function update (Request $request, $id){
 
                   $request->validate([
                   'name'=>'required|max:100',
-                  'image'=>'required|image',
                   'isactive'=>'required'
 
                   ]);
+                if(isset($request->image)){
                   $file=$request->image->path();
 
               		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
               		$path='category/'.$name;
 
-              		Storage::put($path, $file);
-                    $category = category::findOrFail($id);
+              		Storage::put($path, file_get_contents($file));
+                }else{
+                    $path=DB::raw('image');
+                }
+                $category = category::findOrFail($id);
 
-                  if($category->update(['name'=>$request->name,
+              if($category->update(['name'=>$request->name,
 
                           'isactive'=>$request->isactive,
-                          'creator_id'=>auth()->user()->id
-
+                          'creator_id'=>auth()->user()->id,
+                            'image'=>$path
                         ])){
 
                 	return redirect()->route('admin.category')->with('success','Menus has been updated');
-                        }else {
+                }else {
 
-                          if($category->update(['name'=>$request->name,
+              if($category->update(['name'=>$request->name,
 
-                                  'isactive'=>$request->isactive,
-                                  'creator_id'=>auth()->user()->id
+                      'isactive'=>$request->isactive,
+                      'creator_id'=>auth()->user()->id,
+                      'image'=>$path
 
-                                ])){
+                    ])){
                       	return redirect()->route('admin.category')->with('success','Menus has been updated');
                                 }
                               return redirect()->back()->with('error', 'Menus update failed');

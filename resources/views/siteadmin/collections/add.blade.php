@@ -31,7 +31,7 @@
 						@csrf
                     <div class="card-body">
                         <div class="row">
-                           
+
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -40,10 +40,20 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0" value="0">No</option>
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                        
+                        <div class="row">
                          <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cover Image</label>
@@ -51,11 +61,19 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Small Image</label>
+                                    <input type="file" class="form-control" name="small_image" id="exampleInputEmail1" placeholder="Enter image">
+
+                                </div>
+                            </div>
+                        </div>
                          <div class="row">
-                            
+
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
-                            
+
                             </div>
                         </div>
                             <!-- /.col -->

@@ -41,18 +41,38 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" {{$collection->isactive==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$collection->isactive==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
+                         <div class="row">
                          <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cover Image</label>
                              <input type="file" class="form-control" name="cover_image" id="exampleInputEmail1" placeholder="Enter image">
-                              <image src="{{Storage::url($collection->image)}}">
+                                    <br>
+                                    <image src="{{$collection->cover_image}}" height="100" width="200">
                                 </div>
                             </div>
-                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <label>Cover Image</label>
+                                     <input type="file" class="form-control" name="small_image" id="exampleInputEmail1" placeholder="Enter image">
+                                     <br>
+                                     <image src="{{$collection->small_image}}" height="100" width="200">
+                                 </div>
+                             </div>
+                         </div>
+                             <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>

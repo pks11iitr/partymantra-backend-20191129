@@ -201,6 +201,20 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Collection</label>
+                                    <select class="form-control select2" name="entity_id" id="lca2">
+                                        <option value="">Select Collection</option>
+                                        @foreach($collections as $collection)
+                                            <option value="{{$collection->id}}">{{$collection->name}}</option>
+                                        @endforeach
+                                        Select Entity
+                                    </select>
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                         </div>
                             <div class="row">
                             <div class="col-md-12">

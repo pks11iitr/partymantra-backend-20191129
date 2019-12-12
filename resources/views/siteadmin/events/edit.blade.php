@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                               <form action="{{route('admin.event.update',['id'=>$events->id])}}" method="post" enctype="multipart/form-data">
+                               <form action="{{route('admin.event.update',['id'=>$event->id])}}" method="post" enctype="multipart/form-data">
 						@csrf
                     <div class="card-body">
                         <div class="row">
@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> Title</label>
-                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title">
+                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title" value="{{$event->title}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -62,7 +62,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
+                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{$event->startdate}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
+                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{$event->enddate}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -185,10 +185,22 @@
                                     <label for="exampleInputEmail1">Include Menu Items</label>
                                     <select name="menu_items" class="form-control select2" style="width: 100%;" multiple>
                                         <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Collection</label>
+                                    <select class="form-control select2" name="entity_id" id="lca2">
+                                        <option value="">Select Collection</option>
+                                        @foreach($collections as $collection)
+                                            <option value="{{$collection->id}}">{{$collection->name}}</option>
+                                        @endforeach
+                                        Select Entity
+                                    </select>
+
+                                </div>
                         </div>
 
 

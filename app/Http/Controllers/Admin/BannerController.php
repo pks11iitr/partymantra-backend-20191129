@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use Illuminate\Support\Facades\DB;
 use Storage;
 use App\Models\PartnerEvent;
 use App\Models\Partner;
@@ -94,7 +95,7 @@ class BannerController extends Controller
                     Storage::put($path, file_get_contents($file));
 
                 }else{
-                    $path=$banner->image;
+                    $path=DB::raw('image');
                 }
 
 

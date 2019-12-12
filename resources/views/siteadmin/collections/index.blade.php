@@ -45,6 +45,7 @@
                 <tr>
                   <th>Name</th>
                    <th>Image</th>
+                    <th>Is Active</th>
 					<th>Action</th>
           </tr>
                 </thead>
@@ -52,8 +53,8 @@
 				@foreach($collections as $collection)
                 <tr>
                   <td>{{$collection->name}}</td>
-                  <td>{{Storage::url($collection->cover_image)}}</td>
-
+                  <td>{{$collection->cover_image}}</td>
+                    <td>{{$collection->isactive}}</td>
 
                     <td>
 					<a href="{{route('admin.collection.edit', ['id'=>$collection->id])}}"><span class="badge bg-success">Edit</span></a>

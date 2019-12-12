@@ -81,7 +81,7 @@
                                      <label>Isactive</label>
                                      <select name="isactive" class="form-control select2" style="width: 100%;">
                                         <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option value="0" value="0">No</option>
                                     </select>
                                 </div>
                                 <!-- /.form-group -->

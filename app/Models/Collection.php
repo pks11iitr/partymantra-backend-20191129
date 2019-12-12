@@ -12,7 +12,7 @@ class Collection extends Model
 
     protected $table ='collections';
 
-	protected $fillable=['name', 'cover_image', 'created_by'];
+	protected $fillable=['name', 'cover_image', 'small_image', 'created_by','isactive'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'priority'];
 
@@ -33,6 +33,10 @@ class Collection extends Model
     }
 
     public function getCoverImageAttribute($value)
+    {
+        return Storage::url($value);
+    }
+    public function getSmallImageAttribute($value)
     {
         return Storage::url($value);
     }
