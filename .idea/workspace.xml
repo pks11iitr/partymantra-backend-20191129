@@ -5,14 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventPackagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventPackagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartnerEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartnerEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Traits/Active.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Traits/Active.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/package/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/package/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/package/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/package/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +182,7 @@
       <workItem from="1575278312365" duration="14194000" />
       <workItem from="1575522101580" duration="32793000" />
       <workItem from="1575892016057" duration="38954000" />
-      <workItem from="1576136611185" duration="31493000" />
+      <workItem from="1576136611185" duration="32046000" />
     </task>
     <task id="LOCAL-00001" summary="address updated api">
       <created>1575285836963</created>
@@ -372,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576231882812</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Merge branch 'monika-branch' of github.com:pks11iitr/partymantra-backend-20191129&#10;&#10;# Conflicts:&#10;#&#9;routes/web.php">
+      <created>1576236531743</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576236531743</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,10 +411,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1576159841253" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576231882755">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576236531482">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576231882755" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576236531482" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576231768521">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -438,10 +439,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576231299400">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576236539552">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576231299400" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576236539552" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1575892310697">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

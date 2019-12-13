@@ -93,7 +93,9 @@ class EventPackagesController extends Controller
                   }
 
 
+    public function ajaxselectmenuevent(Request $request){
 
+    }
 
 
 

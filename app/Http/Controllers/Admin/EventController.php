@@ -208,10 +208,4 @@ class EventController extends Controller
 
 
     }
-
-
-    public function ajaxpartnerevent(Request $request, $id){
-          $partner=Partner::findOrFail($id);
-          return $partner->packages;
-    }
 }
