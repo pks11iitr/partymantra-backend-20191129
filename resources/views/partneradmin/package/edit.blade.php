@@ -102,7 +102,19 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Menu</label>
+                                    <select name="menus[]" class="form-control select2" style="width: 100%;" multiple>
+                                        @foreach($menus as $m)
+                                            <option value="{{$m->id}}" >{{$m->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
 
 
                         <div class="row">

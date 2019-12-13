@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Partner;
 
+use App\Models\Menu;
+use App\Models\Partner;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,17 +21,21 @@ class EventPackagesController extends Controller
     }
 
     public function edit(Request $request, $id){
-      	$events=PartnerEvent::where('isactive', 1)->get();
-      $package = Package::findOrfail($id);
-      return view('partneradmin.package.edit',['package'=>$package,'events'=>$events]);
+        $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
+        $events=PartnerEvent::where('partneractive', 1)->where('partner_id', $partner->id)->get();
+        $package = Package::where('partner_id',$partner->id)->where('id', $id)->firstOrfail();
+        $menus=Menu::active()->where('partner_id', $partner->id)->get();
+      return view('partneradmin.package.edit',['package'=>$package,'events'=>$events, 'menus'=>$menus]);
 
 
     }
 
     public function add(Request $request){
-
-        $events=PartnerEvent::where('isactive', 1)->get();
-      return view('partneradmin.package.add',['events'=>$events]);
+        $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
+        $events=PartnerEvent::where('partneractive', 1)->where('partner_id', $partner->id)->get();
+        //var_dump($events);die;
+        $menus=Menu::active()->where('partner_id', $partner->id)->get();
+        return view('partneradmin.package.add',['events'=>$events, 'menus'=>$menus]);
     }
 
     public function store(Request $request){

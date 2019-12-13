@@ -89,15 +89,26 @@
                                     <label>Isactive</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
                                         <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option value="0" >No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Menu</label>
+                                    <select name="menus[]" class="form-control select2" style="width: 100%;" multiple>
+                                        @foreach($menus as $m)
+                                        <option value="{{$m->id}}" >{{$m->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <!-- /.col -->
                         </div>
-                        <!-- /.row -->
-
-
 
                         <div class="row">
 
