@@ -60,7 +60,7 @@ class EventController extends Controller
                 'isactive'=>'required',
                 'partneractive'=>'required',
                 'istop'=>'required',
-                'homeposition'=>'required|integer'
+                'priority'=>'required|integer'
 			]);
 
             if(isset($request->header_image)){

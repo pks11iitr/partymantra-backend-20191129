@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Menu;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,6 +22,7 @@ class EventPackagesController extends Controller
     public function edit(Request $request, $id){
       	$events=PartnerEvent::where('isactive', 1)->get();
       $package = Package::findOrfail($id);
+      //var_dump($package->menus);die;
       return view('siteadmin.package.edit',['package'=>$package,'events'=>$events]);
 
 
@@ -33,6 +35,7 @@ class EventPackagesController extends Controller
     }
 
     public function store(Request $request){
+
       $request->validate([
         'package_name'=>'required|max:50',
         'text_under_name'=>'required|max:50',
@@ -40,18 +43,26 @@ class EventPackagesController extends Controller
         'custom_package_detail'=>'required',
         'isactive'=>'required',
         'partneractive'=>'required',
-
+        'event_id'=>'required'
       ]);
-
-      if(Package::create([
+        $event=PartnerEvent::findOrFail($request->event_id);
+      if($package=Package::create([
         'package_name'=>$request->package_name,
         'text_under_name'=>$request->text_under_name,
         'price'=>$request->price,
         'custom_package_detail'=>$request->custom_package_detail,
         'isactive'=>$request->isactive,
         'partneractive'=>$request->partneractive,
-        'event_id'=>auth()->user()->id
+        'event_id'=>$request->event_id,
+          'partner_id'=>$event->partner_id,
+          'created_by'=>auth()->user()->id
         ])){
+
+            if(!empty($request->menus)){
+                $package->menus()->attach($request->menus);
+            }else{
+
+            }
 
             return redirect()->route('admin.package')->with('success', 'Package has been created');
       }
@@ -73,7 +84,7 @@ class EventPackagesController extends Controller
 
                 ]);
                   $package = Package::findOrfail($id);
-                $events=PartnerEvent::where('isactive', 1)->get();
+                  $event=PartnerEvent::findOrFail($request->event_id);
 
                 if($package->update([
                   'package_name'=>$request->package_name,
@@ -82,10 +93,17 @@ class EventPackagesController extends Controller
                   'custom_package_detail'=>$request->custom_package_detail,
                   'isactive'=>$request->isactive,
                   'partneractive'=>$request->partneractive,
-                  'event_id'=>auth()->user()->id
+                  'event_id'=>$request->id,
+                    'partner_id'=>$event->partner_id,
+                    'created_by'=>auth()->user()->id
                   ])){
+                    if(!empty($request->menus)){
+                        $package->menus()->attach($request->menus);
+                    }else{
 
-                      return redirect()->route('admin.package')->with('success', 'Package has been updated');
+                    }
+
+                    return redirect()->route('admin.package')->with('success', 'Package has been updated');
                 }
 
                   return redirect()->back()->with('error', 'Package update failed');
@@ -93,8 +111,12 @@ class EventPackagesController extends Controller
                   }
 
 
-    public function ajaxselectmenuevent(Request $request){
-
+    public function ajaxselectmenuevent(Request $request, $id){
+            $event=PartnerEvent::findOrFail($id);
+            //var_dump($event->partner_id);
+            return $menus=Menu::active()->where('partner_id', $event->partner_id)->get();
+            echo '<pre>';
+            var_dump($menus->toArray());die;
     }
 
 

@@ -34,7 +34,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Event</label>
-                                    <select name="event_id" class="form-control select2" style="width: 100%;">
+                                    <select name="event_id" class="form-control select2" style="width: 100%;" onchange="getdata($(this).val())" id="events">
                                       @foreach($events as $event)
                                       <option  selected="selected" value="{{$event->id}}">{{$event->title}}</option>
                                       @endforeach
@@ -86,10 +86,10 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Isactive</label>
-                                    <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                    <label>Add Menus</label>
+                                    <select name="menus[]" class="form-control select2" style="width: 100%;" multiple id="lca">
+
+
                                     </select>
                                 </div>
                             </div>
@@ -99,13 +99,24 @@
                     <div row="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Add Menus</label>
-                                <select name="menus[]" class="form-control select2" style="width: 100%;" multiple>
-
-
+                                <label>Isactive</label>
+                                <select name="isactive" class="form-control select2" style="width: 100%;">
+                                    <option  selected="selected" value="1">Yes</option>
+                                    <option value="0">No</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Partner active</label>
+                                <select name="partneractive" class="form-control select2" style="width: 100%;">
+                                    <option  selected="selected" value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+
                         <!-- /.col -->
                     </div>
 
@@ -139,6 +150,46 @@
         //Initialize Select2 Elements
         $('.select2bs4').select2({
             theme: 'bootstrap4'
+        })
+    </script>
+    <script type="text/javascript">
+        function getdata(id)
+        {
+
+            $.ajax({
+                method: 'get', // Type of response and matches what we said in the route
+                url: '{{route('partner.packagemenu.ajax', ['id'=>''])}}/'+id, // This is the url we gave in the route
+                data: {}, // a JSON object to send back
+                datatype:'json',
+                success: function(response){ // What to do if we succeed
+                    $("#lca").empty();
+                    if(response){
+
+                        $.each(response,function(i, data){
+                            console.log(data)
+
+                                $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
+                      });
+
+                    }else{
+                        $("#lca").empty();
+
+                    }
+
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        }
+
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            getdata($("#events").val())
         })
     </script>
 @endsection

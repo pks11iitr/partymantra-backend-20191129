@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Partner;
 
+use App\Models\Collection;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PartnerEvent;
+use Illuminate\Support\Facades\DB;
 use Storage;
 
 class EventController extends Controller
@@ -13,8 +15,8 @@ class EventController extends Controller
     //
       public function index(Request $request){
 
-
-				 $events=PartnerEvent::get();
+                $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
+				 $events=PartnerEvent::where('partner_id', $partner->id)->get();
 
 	 return view('partneradmin.events.index', ['events'=>$events]);
 
@@ -22,16 +24,18 @@ class EventController extends Controller
     }
 
     public function edit(Request $request, $id){
-
-      $events = PartnerEvent::findOrFail($id);
-      return view('partneradmin.events.edit',['events'=>$events]);
+        $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
+        $event=PartnerEvent::where('partner_id', $partner->id)->where('id', $id)->firstOrFail();
+        $collections=Collection::active()->get();
+      return view('partneradmin.events.edit',['collections'=>$collections, 'events'=>$event]);
 
     }
 
     public function add(Request $request){
-        $organizers=Partner::where('isactive', 1)->where('type', 'organizers')->get();
+
         //var_dump($organizers->toArray());die;
-        return view('partneradmin.events.add', ['organizers'=>$organizers]);
+        $collections=Collection::active()->get();
+        return view('partneradmin.events.add', ['collections'=>$collections]);
     }
 
     public function store(Request $request){
@@ -53,7 +57,7 @@ class EventController extends Controller
 			'isactive'=>'required',
 			'markasfull'=>'required'
 			]);
-	$partner=Partner::where('user_id',auth()->user()->id)->first();
+	        $partner=Partner::where('user_id',auth()->user()->id)->first();
 		if(isset($request->header_image)){
             $file=$request->header_image->path();
 
@@ -62,7 +66,7 @@ class EventController extends Controller
 
             $path1='events/'.$name;
 
-            Storage::put($path1, $file);
+            Storage::put($path1, file_get_contents($file));
 
         }
 
@@ -74,7 +78,7 @@ class EventController extends Controller
 
             $path2='events/'.$name;
 
-            Storage::put($path2, $file);
+            Storage::put($path2, file_get_contents($file));
 
         }
 
@@ -96,26 +100,25 @@ class EventController extends Controller
 							  'isactive'=>0,
 							  'partneractive'=>$request->isactive,
 							  'markasfull'=>$request->markasfull,
-							'partner_id'=>$partner->id,
-              'creator_id'=>auth()->user()->id,
+							  'partner_id'=>$partner->id,
+                              'creator_id'=>auth()->user()->id,
 							]))
 
 							{
-				return redirect()->route('partner.event')->with('success', 'Events has been created');
+				                return redirect()->route('partner.event')->with('success', 'Events has been created');
 
 
-    }
+                             }
     	return redirect()->back()->with('error', 'Events create failed');
 
     }
 
     public function update(Request $request, $id){
-  $events = PartnerEvent::findOrFail($id);
+        $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
+        $events=PartnerEvent::where('partner_id', $partner->id)->where('id', $id)->firstOrFail();
       $request->validate([
 
     'title'=>'required|max:150',
-      'header_image'=>'required|image',
-      'small_image'=>'required|image',
       'description'=>'required|max:1000',
       'venue_name'=>'required|max:100',
       'venue_adderss'=>'nullable',
@@ -139,7 +142,9 @@ class EventController extends Controller
 
               Storage::put($path1, $file);
 
-          }
+          }else{
+          $path1=DB::raw('header_image');
+      }
 
       if(isset($request->small_image)){
               // 2nd image
@@ -151,7 +156,9 @@ class EventController extends Controller
 
               Storage::put($path2, $file);
 
-          }
+          }else{
+          $path2=DB::raw('small_image');
+      }
 
           $partner=Partner::where('user_id',auth()->user()->id)->first();
 
@@ -172,10 +179,6 @@ class EventController extends Controller
          							  'markasfull'=>$request->markasfull,
          							'partner_id'=>$partner->id,
                        'creator_id'=>auth()->user()->id,
-
-
-
-
                	])){
 
                     return redirect()->route('partner.event')->with('success', 'Events has been created');

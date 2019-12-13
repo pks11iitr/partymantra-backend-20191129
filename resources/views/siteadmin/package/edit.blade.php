@@ -35,9 +35,9 @@
                                 <div class="form-group">
                                     <label>Select Event</label>
                                     <select name="event_id" class="form-control select2"
-                                    value="<?=$package->event_id?>" style="width: 100%;">
+                                     style="width: 100%;" id="events" onchange="getdata($(this).val())">
                                       @foreach($events as $event)
-                                      <option  selected="selected" value="{{$event->id}}">{{$event->title}}</option>
+                                      <option value="{{$event->id}}" {{$event->id==$package->event_id?'selected':''}}>{{$event->title}}</option>
                                       @endforeach
                                     </select>
                                 </div>
@@ -76,17 +76,31 @@
                             </div>
                             <!-- /.col -->
                         </div>
-                        <!-- /.row -->
                         <div class="row">
-                            <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Customer Package Details</label>
                                     <input type="text" class="form-control" name="custom_package_detail" id="exampleInputEmail1"
-                                    value="<?=$package->custom_package_detail?>" placeholder="Enter package details">
+                                           value="<?=$package->custom_package_detail?>" placeholder="Enter package details">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Add Menus</label>
+                                    <select name="menus[]" class="form-control select2"
+                                            style="width: 100%;" id="lca" multiple>
+
+
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <!-- /.col -->
+
                             <!-- /.col -->
                             <!-- /.col -->
                             <div class="col-md-6">
@@ -95,6 +109,15 @@
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
                                       <option   value="1" {{$package->isactive==1?'selected':''}}>Yes</option>
                                         <option   value="0" {{$package->isactive==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Partner Active</label>
+                                    <select name="partneractive" class="form-control select2" style="width: 100%;">
+                                        <option   value="1" {{$package->partneractive==1?'selected':''}}>Yes</option>
+                                        <option   value="0" {{$package->partneractive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -133,6 +156,47 @@
         //Initialize Select2 Elements
         $('.select2bs4').select2({
             theme: 'bootstrap4'
+        })
+    </script>
+    <script type="text/javascript">
+        function getdata(id)
+        {
+
+            $.ajax({
+                method: 'get', // Type of response and matches what we said in the route
+                url: '{{route('partner.packagemenu.ajax', ['id'=>''])}}/'+id, // This is the url we gave in the route
+                data: {}, // a JSON object to send back
+                datatype:'json',
+                success: function(response){ // What to do if we succeed
+                    $("#lca").empty();
+                    if(response){
+
+                        $.each(response,function(i, data){
+                            console.log(data)
+
+                            $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
+                            $('#lca').val([@foreach ($package->menus as $m) {{$m->id.','}}@endforeach]);
+                        });
+
+                    }else{
+                        $("#lca").empty();
+
+                    }
+
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        }
+
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            getdata($("#events").val())
         })
     </script>
 @endsection

@@ -144,8 +144,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option value="1" {{$event->issactive=='1'?'selected':''}}>Yes</option>
-                                        <option value="0" {{$event->issactive=='0'?'selected':''}}>No</option>
+                                        <option value="1" {{$event->isactive=='1'?'selected':''}}>Yes</option>
+                                        <option value="0" {{$event->isactive=='0'?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>

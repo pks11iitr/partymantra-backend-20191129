@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Partner Title</label>
                                     <input type="text" class="form-control" name="name"
-                                    value="<?php echo $partners->name?>" id="exampleInputEmail1" placeholder="Enter email">
+                                    value="{{$partners->name}}" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -61,8 +61,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
-                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email">
-                                      <image src="{{Storage::url($partners->header_image)}}">
+                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email"><br>
+                                      <image src="{{$partners->header_image}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -72,7 +72,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Small Icon Image</label>
                                     <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="small_image">
-                                     <image src="{{Storage::url($partners->small_image)}}">
+                                    <br>
+                                    <image src="{{$partners->header_image}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>

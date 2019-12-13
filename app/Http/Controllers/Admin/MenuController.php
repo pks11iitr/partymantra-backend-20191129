@@ -74,7 +74,6 @@ class MenuController extends Controller
     public function update(Request $request, $id){
       $request->validate([
       'name'=>'required|max:100',
-      'image'=>'required|image',
       'price'=>'required',
       'cut_pice'=>'required',
       'isactive'=>'required'

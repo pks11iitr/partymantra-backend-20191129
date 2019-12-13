@@ -116,8 +116,7 @@
                                     <label for="exampleInputEmail1" id="locationField">Venue Address</label>
                                     <input type="text" class="form-control" id="autocomplete"
                                     placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()">
-                                    <input type="hidden" name="lat" value="23.5">
-                                    <input type="hidden" name="lang" value="22.1">
+
 
 
 
@@ -128,7 +127,25 @@
                             </div>
                             <!-- /.col -->
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" >
+                                    <label for="exampleInputEmail1" id="locationField">Lang</label>
+                                    <input type="text" class="form-control"
+                                           name="lang">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" >
+                                    <label for="exampleInputEmail1" id="locationField">Lat</label>
+                                    <input type="text" class="form-control"
+                                           name="lat">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
 
+                        </div>
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
@@ -181,10 +198,11 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Include Menu Items</label>
-                                    <select name="menu_items" class="form-control select2" style="width: 100%;" multiple>
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                    <label for="exampleInputEmail1">Select Collection</label>
+                                    <select name="collection_id" class="form-control select2" style="width: 100%;" multiple>
+                                    @foreach($collections as $c)
+                                            <option value="{{$c->id}}">{{$c->name}}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>

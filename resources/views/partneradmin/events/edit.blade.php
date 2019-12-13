@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> Title</label>
                                     <input type="text" class="form-control" name="title" id="exampleInputEmail1"
-                                    value="<?=$events->title ?>" placeholder="Enter title">
+                                    value="{{$events->title }}" placeholder="Enter title">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
                                     <input type="text" class="form-control form_datetime" name="startdate" id="exampleInputEmail1"
-                                    value="<?= $events->startdate?>" placeholder="Enter startdate" >
+                                    value="{{$events->startdate}}" placeholder="Enter startdate" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
                                     <input type="text" class="form-control form_datetime" id="exampleInputEmail1" placeholder="Enter enddate"
-                                    value="<?=$events->enddate ?> " name="enddate">
+                                    value="{{$events->enddate}}" name="enddate">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -71,8 +71,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
-                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter image">
-                                        <image src="{{Storage::url($events->header_image)}}">
+                                    <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter image"><br>
+                                        <image src="{{$events->header_image}}" height="100" height="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -81,8 +81,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Small Icon Image</label>
-                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter small image" name="small_image">
-                                      <image src="{{Storage::url($events->small_image)}}">
+                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter small image" name="small_image"><br>
+                                        <image src="{{$events->small_image}}" height="100" height="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -133,7 +133,25 @@
                             </div>
                             <!-- /.col -->
                         </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" >
+                            <label for="exampleInputEmail1" id="locationField">Lang</label>
+                            <input type="text" class="form-control"
+                                   name="lang" value="{{$events->lang}}" id="lang">
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" >
+                            <label for="exampleInputEmail1" id="locationField">Lat</label>
+                            <input type="text" class="form-control"
+                                   name="lat" value="{{$events->lat}}" id="lat">
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
 
+                </div>
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
@@ -185,19 +203,22 @@
                                 <!-- /.form-group -->
                             </div>
                         </div>
-                        <div class="row">
+
                             <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Include Menu Items</label>
-                                    <select name="menu_items" class="form-control select2"
-                                    value="<?=$events->menu_items?>" style="width: 100%;" multiple>
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
-                                    </select>
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Select Collection</label>
+                                        <select name="collection_id" class="form-control select2" style="width: 100%;" multiple>
+                                            @foreach($collections as $collection)
+                                                <option value="{{$collection->id}}" @foreach($events->collections as $c) @if($c->id==$collection->id){{'selected'}}@endif @endforeach>{{$collection->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">

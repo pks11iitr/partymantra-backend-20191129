@@ -80,7 +80,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::post('banner', 'Admin\BannerController@store')->name('admin.banner.store');
         Route::get('banner/{id}', 'Admin\BannerController@edit')->where('id', '[0-9]+')->name('admin.banner.edit');
         Route::post('banner/{id}', 'Admin\BannerController@update')->where('id', '[0-9]+')->name('admin.banner.update');
-        Route::get('select-menu-for-package/{id}', 'Admin\PackageController@ajaxselectmenuevent')->name('partner.packagemenu.ajax');
+        Route::get('select-menu-for-package/{id}', 'Admin\EventPackagesController@ajaxselectmenuevent')->name('partner.packagemenu.ajax');
 
 });
 
