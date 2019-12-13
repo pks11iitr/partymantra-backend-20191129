@@ -43,11 +43,10 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Organizer</th>
                   <th>Event Name</th>
                   <th>Package Name</th>
                   <th>Price</th>
-                  <th>Text under Name</th>
-                  <th>Customer Package Details</th>
                   <th>Isactive</th>
                  <th>Action</th>
                 </tr>
@@ -56,12 +55,12 @@
 
                @foreach($event_packages as $packages)
                 <tr>
+                  <td>{{$packages->partner->name??''}}</td>
                   <td>{{$packages->event->title??''}}</td>
                   <td>{{$packages->package_name}}</td>
                   <td>{{$packages->price}}</td>
-                  <td>{{$packages->text_under_name}}</td>
-                  <td>{{$packages->custom_package_detail}}</td>
-                  <td>{{$packages->isactive}}</td>
+
+                  <td>{{$packages->statustext()}}</td>
                     <td>
 					<a href="{{route('admin.package.edit', ['id'=>$packages->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>

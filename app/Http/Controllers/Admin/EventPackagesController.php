@@ -39,6 +39,7 @@ class EventPackagesController extends Controller
         'price'=>'required',
         'custom_package_detail'=>'required',
         'isactive'=>'required',
+        'partneractive'=>'required',
 
       ]);
 
@@ -48,6 +49,7 @@ class EventPackagesController extends Controller
         'price'=>$request->price,
         'custom_package_detail'=>$request->custom_package_detail,
         'isactive'=>$request->isactive,
+        'partneractive'=>$request->partneractive,
         'event_id'=>auth()->user()->id
         ])){
 
@@ -67,6 +69,7 @@ class EventPackagesController extends Controller
                   'price'=>'required',
                   'custom_package_detail'=>'required',
                   'isactive'=>'required',
+                  'partneractive'=>'required',
 
                 ]);
                   $package = Package::findOrfail($id);
@@ -78,6 +81,7 @@ class EventPackagesController extends Controller
                   'price'=>$request->price,
                   'custom_package_detail'=>$request->custom_package_detail,
                   'isactive'=>$request->isactive,
+                  'partneractive'=>$request->partneractive,
                   'event_id'=>auth()->user()->id
                   ])){
 

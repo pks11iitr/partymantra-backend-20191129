@@ -96,7 +96,18 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
+                    <div row="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Add Menus</label>
+                                <select name="menus[]" class="form-control select2" style="width: 100%;" multiple>
 
+
+                                </select>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
 
 
                         <div class="row">

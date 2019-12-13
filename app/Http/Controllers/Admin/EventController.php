@@ -56,9 +56,9 @@ class EventController extends Controller
                 'startdate'=>'required',
                 'enddate'=>'nullable',
                 'tnc'=>'required',
-                'custom_package_details'=>'required',
+                'custom_package_details'=>'nullable',
                 'isactive'=>'required',
-                'markasfull'=>'required',
+                'partneractive'=>'required',
                 'istop'=>'required',
                 'homeposition'=>'required|integer'
 			]);
@@ -99,6 +99,7 @@ class EventController extends Controller
                                 'enddate'=>$request->enddate,
                                 'tnc'=>$request->tnc,                                                               'custom_package_details'=>$request->custom_package_details,
                                 'isactive'=>$request->isactive,
+                'partneractive'=>$request->partneractive,
                                 'markasfull'=>$request->markasfull,
                                 'creator_id'=>auth()->user()->id,
                                 'partner_id'=>$request->partner_id,
@@ -131,8 +132,9 @@ class EventController extends Controller
             'startdate'=>'required',
             'enddate'=>'nullable',
             'tnc'=>'required',
-            'custom_package_details'=>'required',
+            'custom_package_details'=>'nullable',
             'isactive'=>'required',
+            'partneractive'=>'required',
             'markasfull'=>'required',
             'istop'=>'required',
             'priority'=>'required|integer'
@@ -180,6 +182,7 @@ class EventController extends Controller
             'tnc'=>$request->tnc,
             'custom_package_details'=>$request->custom_package_details,
             'isactive'=>$request->isactive,
+            'partneractive'=>$request->partneractive,
             'markasfull'=>$request->markasfull,
             'creator_id'=>auth()->user()->id,
             'partner_id'=>$request->partner_id,
