@@ -225,12 +225,26 @@
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}">{{$collection->name}}</option>
                                         @endforeach
-                                        Select Entity
+
                                     </select>
 
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Collection</label>
+                                    <select class="form-control select2" name="collection_id[]" multiple>
+                                        <option value="">Include Packages</option>
+
+                                    </select>
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Do You want to put on home page?</label>
@@ -240,8 +254,6 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Home Position</label>
