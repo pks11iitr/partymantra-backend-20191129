@@ -61,7 +61,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
+                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -70,7 +70,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
+                                    <input type="text" class="form_datetime form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -141,7 +141,31 @@
                             </div>
                             <!-- /.col -->
                         </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Lang</label>
+                                    <input class="form-control" type="input" name="lang" value="" id="lang">
 
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group" >
+                                    <label for="exampleInputEmail1" id="locationField">Lat</label>
+                                    <input class="form-control" type="input" name="lat" value="" id="lat">
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
@@ -149,7 +173,7 @@
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
                                         <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -207,6 +231,23 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Do You want to put on home page?</label>
+                                    <select name="istop" class="form-control select2" style="width: 100%;">
+                                        <option selected="selected" value="0">No</option>
+                                        <option   value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Home Position</label>
+                                    <input type="text" class="form-control"  id="exampleInputEmail1" placeholder="Enter tnc" name="priority" value="100">
+                                </div>
+                            </div>
                         </div>
                             <div class="row">
                             <div class="col-md-12">
@@ -239,6 +280,10 @@
             theme: 'bootstrap4'
         })
     </script>
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    </script>
+
     <script>
         // This sample uses the Autocomplete widget to help the user select a
         // place, then it retrieves the address components associated with that
@@ -252,6 +297,7 @@
 
         var componentForm = {
             venue_name: 'short_name'
+
 
         };
 
@@ -277,15 +323,15 @@
             // Get the place details from the autocomplete object.
             var place = autocomplete.getPlace();
 
-            for (var component in componentForm) {
-                document.getElementById(component).value = '';
-                document.getElementById(component).disabled = false;
-            }
+            // for (var component in componentForm) {
+            //     document.getElementById(component).value = '';
+            //     document.getElementById(component).disabled = false;
+            // }
 
             // Get each component of the address from the place details,
             // and then fill-in the corresponding field on the form.
             for (var i = 0; i < place.address_components.length; i++) {
-                console.log(place.address_components[i])
+                console.log(place.getLatLng())
                 var addressType = place.address_components[i].types[0];
                 if (componentForm[addressType]) {
                     var val = place.address_components[i][componentForm[addressType]];

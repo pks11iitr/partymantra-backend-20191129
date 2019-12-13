@@ -62,7 +62,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="date" class="form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{$event->startdate}}">
+                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{$event->startdate}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{$event->enddate}}">
+                                    <input type="text" class="form_datetime  form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{$event->enddate}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -196,8 +196,24 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Do You want to put on home page?</label>
+                                    <select name="istop" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" {{$event->istop==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$event->istop==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-
+                        <div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Home Position</label>
+                                    <input type="text" class="form-control"  id="exampleInputEmail1" placeholder="Enter tnc" name="priority" value="{{$event->priority}}">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-12">
@@ -225,6 +241,9 @@
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
+    </script>
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
     </script>
     <script>
         // This sample uses the Autocomplete widget to help the user select a

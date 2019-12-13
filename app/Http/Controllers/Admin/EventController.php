@@ -58,7 +58,9 @@ class EventController extends Controller
                 'tnc'=>'required',
                 'custom_package_details'=>'required',
                 'isactive'=>'required',
-                'markasfull'=>'required'
+                'markasfull'=>'required',
+                'istop'=>'required',
+                'homeposition'=>'required|integer'
 			]);
 
             if(isset($request->header_image)){
@@ -99,7 +101,9 @@ class EventController extends Controller
                                 'isactive'=>$request->isactive,
                                 'markasfull'=>$request->markasfull,
                                 'creator_id'=>auth()->user()->id,
-                                'partner_id'=>$request->partner_id
+                                'partner_id'=>$request->partner_id,
+                                'istop'=>$request->istop,
+                                'priority'=>$request->priority,
                                 ]))
             {
                     if(!empty($request->collection_id)){
@@ -129,7 +133,9 @@ class EventController extends Controller
             'tnc'=>'required',
             'custom_package_details'=>'required',
             'isactive'=>'required',
-            'markasfull'=>'required'
+            'markasfull'=>'required',
+            'istop'=>'required',
+            'priority'=>'required|integer'
         ]);
 
         if(isset($request->header_image)){
@@ -176,7 +182,9 @@ class EventController extends Controller
             'isactive'=>$request->isactive,
             'markasfull'=>$request->markasfull,
             'creator_id'=>auth()->user()->id,
-            'partner_id'=>$request->partner_id
+            'partner_id'=>$request->partner_id,
+            'istop'=>$request->istop,
+            'priority'=>$request->priority,
         ]))
 
         {
