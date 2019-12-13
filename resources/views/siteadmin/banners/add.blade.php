@@ -125,7 +125,7 @@
 
      $.ajax({
            method: 'get', // Type of response and matches what we said in the route
-           url: '', // This is the url we gave in the route
+           url: '{{route('banner.ajax')}}', // This is the url we gave in the route
            data: {'type':id}, // a JSON object to send back
            datatype:'json',
            success: function(response){ // What to do if we succeed
