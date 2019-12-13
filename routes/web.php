@@ -67,7 +67,14 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::get('partner-package/{id}', 'Admin\MenuController@partnermenus')->name('partner.package');
 
 
-	Route::get('ajexdata','Admin\BannerController@ajexdataa')->name('banner.ajax');
+    Route::get('package', 'Admin\EventPackagesController@index')->name('admin.package');
+   Route::get('package/create', 'Admin\EventPackagesController@add')->name('admin.package.add');
+   Route::post('package', 'Admin\EventPackagesController@store')->name('admin.package.store');
+   Route::get('package/{id}', 'Admin\EventPackagesController@edit')->where('id', '[0-9]+')->name('admin.package.edit');
+   Route::post('package/{id}', 'Admin\EventPackagesController@update')->where('id', '[0-9]+')->name('admin.package.update');
+
+
+	   Route::get('ajexdata','Admin\BannerController@ajexdataa')->name('banner.ajax');
      Route::get('banner', 'Admin\BannerController@index')->name('admin.banner');
     Route::get('banner/create', 'Admin\BannerController@add')->name('admin.banner.add');
     Route::post('banner', 'Admin\BannerController@store')->name('admin.banner.store');
@@ -77,8 +84,17 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
 
 });
 
-Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
-Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
+
+
+
+
+
+
+
+
+
+    Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
+    Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
 
 
 Route::get('menu', 'Partner\MenuController@index')->name('partner.menu');
@@ -94,6 +110,14 @@ Route::get('event', 'Partner\EventController@index')->name('partner.event');
  Route::post('event', 'Partner\EventController@store')->name('partner.event.store');
  Route::get('event/{id}', 'Partner\EventController@edit')->where('id', '[0-9]+')->name('partner.event.edit');
  Route::post('event/{id}', 'Partner\EventController@update')->where('id', '[0-9]+')->name('partner.event.update');
+
+
+
+     Route::get('package', 'Partner\EventPackagesController@index')->name('partner.package');
+    Route::get('package/create', 'Partner\EventPackagesController@add')->name('partner.package.add');
+    Route::post('package', 'Partner\EventPackagesController@store')->name('partner.package.store');
+    Route::get('package/{id}', 'Partner\EventPackagesController@edit')->where('id', '[0-9]+')->name('partner.package.edit');
+    Route::post('package/{id}', 'Partner\EventPackagesController@update')->where('id', '[0-9]+')->name('partner.package.update');
 
 
 
