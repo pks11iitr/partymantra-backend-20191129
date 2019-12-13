@@ -6,6 +6,7 @@ use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use Illuminate\Support\Facades\DB;
 use Storage;
 class MenuController extends Controller
 {
@@ -57,7 +58,7 @@ class MenuController extends Controller
 							'isactive'=>$request->isactive,
 							'creator_id'=>auth()->user()->id,
 							'category_id'=>auth()->user()->id,
-							'partner_id'=>auth()->user()->id
+							'partner_id'=>$request->partner_id
 							]))
 
 							{
@@ -80,13 +81,18 @@ class MenuController extends Controller
 
       ]);
 
-    $file=$request->image->path();
+    if(isset($request->image)){
+        $file=$request->image->path();
 
-    $name=str_replace(' ', '_', $request->image->getClientOriginalName());
+        $name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
-    $path='menus/'.$name;
+        $path='menus/'.$name;
 
-    Storage::put($path, $file);
+        Storage::put($path, file_get_contents($file));
+
+    }else{
+        $path=DB::raw('image');
+    }
 
     $partners=Partner::where('isactive', 1)->get();
     $menu = Menu::findOrFail($id);
@@ -97,28 +103,15 @@ class MenuController extends Controller
 							'cut_pice'=>$request->cut_pice,
 							'description'=>$request->description,
 							'isactive'=>$request->isactive,
+                            'image'=>$path,
 							'creator_id'=>auth()->user()->id,
 							'category_id'=>auth()->user()->id,
-							'partner_id'=>auth()->user()->id
+                            'partner_id'=>$request->partner_id
   ])){
     		return redirect()->route('admin.menu')->with('success', 'Menus has been updated');
 
-    }else {
-      if($menu->update(['name'=>$request->name,
-
-  							'price'=>$request->price,
-  							'cut_pice'=>$request->cut_pice,
-  							'description'=>$request->description,
-  							'isactive'=>$request->isactive,
-  							'creator_id'=>auth()->user()->id,
-  							'category_id'=>auth()->user()->id,
-  							'partner_id'=>auth()->user()->id
-                ])){
-                  		return redirect()->route('admin.menu')->with('success', 'Menus has been updated');
-
-      }
-      	return redirect()->back()->with('error', 'Menus update failed');
     }
+      	return redirect()->back()->with('error', 'Menus update failed');
 
     }
 

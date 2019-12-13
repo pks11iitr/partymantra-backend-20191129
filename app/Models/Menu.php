@@ -20,4 +20,8 @@ class Menu extends Model
     public function getImageAttribute($value){
         return Storage::url($value);
     }
+
+    public function partner(){
+        return $this->belongsTo('App\Models\Partner', 'partner_id');
+    }
 }

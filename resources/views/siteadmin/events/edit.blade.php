@@ -39,7 +39,7 @@
                                     <select name="partner_id" class="form-control select2"
                                     style="width: 100%;">
                                         @foreach($organizers as $organizer)
-                                        <option  value="{{$organizer->id}}" >{{$organizer->name}}</option>
+                                        <option  value="{{$organizer->id}}"  {{$event->partner_id==$organizer->id?'selected':''}}>{{$organizer->name}}</option>
                                         @endforeach
 
                                     </select>
@@ -185,28 +185,21 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Include Menu Items</label>
-                                    <select name="menu_items" class="form-control select2" style="width: 100%;" multiple>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>Select Collection</label>
-                                    <select class="form-control select2" name="collection_id" id="lca2" multiple>
+                                    <select class="form-control select2" name="collection_id[]" id="lca2" multiple>
                                         <option value="">Select Collection</option>
                                         @foreach($collections as $collection)
-                                            <option value="{{$collection->id}}">{{$collection->name}}</option>
+                                            <option value="{{$collection->id}}" @foreach($event->collections as $c) @if($c->id==$collection->id){{'selected'}}@endif @endforeach>{{$collection->name}}</option>
                                         @endforeach
                                         Select Entity
                                     </select>
 
                                 </div>
+                            </div>
                         </div>
 
 
-                            <div class="row">
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">
                                     <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>

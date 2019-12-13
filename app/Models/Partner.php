@@ -33,4 +33,8 @@ class Partner extends Model
         return Storage::url($value);
     }
 
+    public function packages(){
+        return $this->hasMany('App\Models\Package', 'partner_id');
+    }
+
 }

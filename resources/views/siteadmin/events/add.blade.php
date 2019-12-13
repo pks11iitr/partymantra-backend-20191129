@@ -192,19 +192,11 @@
                         </div>
                         <div class="row">
                             <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Include Menu Items</label>
-                                    <select name="menu_items" class="form-control select2" style="width: 100%;" multiple>
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Select Collection</label>
-                                    <select class="form-control select2" name="collection_id" id="lca2" multiple>
+                                    <select class="form-control select2" name="collection_id[]" multiple>
                                         <option value="">Select Collection</option>
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}">{{$collection->name}}</option>
@@ -320,52 +312,4 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-qt3IABoiaTuVxP7-8dcJ7IBWx7-wyRA&libraries=places&callback=initAutocomplete"
             async defer></script>
-
-
-    <script type="text/javascript">
-        function getpartners(id)
-        {
-
-            $.ajax({
-                method: 'get', // Type of response and matches what we said in the route
-                url: '{{route('banner.ajax')}}', // This is the url we gave in the route
-                data: {'type':id}, // a JSON object to send back
-                datatype:'json',
-                success: function(response){ // What to do if we succeed
-                    $("#lca").empty();
-                    if(response){
-
-                        $.each(response,function(i, data){
-                            console.log(data)
-                            if(id=='event')
-                                $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
-
-                            else if(id=='party'){
-                                $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
-                            }else if(id=='restaurant'){
-                                $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
-                            }
-                        });
-
-                    }else{
-                        $("#lca").empty();
-
-                    }
-
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-                    console.log(JSON.stringify(jqXHR));
-                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
-                }
-            });
-        }
-
-
-    </script>
-    <script>
-        $(document).ready(function(){
-            getdata('event')
-        })
-    </script>
 @endsection

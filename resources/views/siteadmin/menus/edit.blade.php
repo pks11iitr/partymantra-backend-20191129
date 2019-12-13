@@ -81,8 +81,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image">
-                                <image src="{{Storage::url($menu->image)}}">
+                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image"><br>
+                                <image src="{{$menu->image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>

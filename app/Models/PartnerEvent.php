@@ -37,4 +37,8 @@ class PartnerEvent extends Model
     public function order(){
         return $this->morphMany('App\Models\OrderItem', 'entity');
     }
+
+    public function collections(){
+        return $this->belongsToMany('App\Models\Collection', 'collection_event', 'event_id', 'collection_id');
+    }
 }
