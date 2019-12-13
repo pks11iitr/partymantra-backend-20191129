@@ -31,6 +31,8 @@
                     <!-- /.card-header -->
                                <form action="{{route('partner.event.store')}}" method="post" enctype="multipart/form-data">
 						@csrf
+                       <div class="card-body">
+                           <div class="row">
 
                             <div class="col-md-6">
                                 <div class="form-group">

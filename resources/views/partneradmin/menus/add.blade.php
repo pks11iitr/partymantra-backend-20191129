@@ -31,15 +31,7 @@
 						@csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Isactive</label>
-                                    <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -47,6 +39,15 @@
                                     <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter name">
                                 </div>
                                 <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
                             </div>
                             <!-- /.col -->
                         </div>

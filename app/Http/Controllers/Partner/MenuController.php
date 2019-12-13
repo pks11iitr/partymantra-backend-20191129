@@ -6,13 +6,14 @@ use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use Illuminate\Support\Facades\DB;
 use Storage;
 class MenuController extends Controller
 {
     //
 
       public function index(Request $request){
-		  $menus=Menu::get();
+          $menus=Menu::get();
 
 		 return view('partneradmin.menus.index', ['menus'=>$menus]);
 
@@ -20,7 +21,7 @@ class MenuController extends Controller
 
     public function edit(Request $request, $id){
 
-        $menus=Menu::findOrFail($id);
+         $menus=Menu::findOrFail($id);
       	 return view('partneradmin.menus.edit',['menus'=>$menus]);
 
 
@@ -40,31 +41,31 @@ class MenuController extends Controller
 			'price'=>'required',
 			'cut_pice'=>'required',
 			'isactive'=>'required'
-
 			]);
-	$partner=Partner::where('user_id',auth()->user()->id)->first();
+	        $partner=Partner::where('user_id',auth()->user()->id)->first();
 
 
              if(isset($request->image)){
-		$file=$request->image->path();
+                    $file=$request->image->path();
 
-		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+                    $name=str_replace(' ', '_', $request->image->getClientOriginalName());
 
-		$path='menus/'.$name;
+                    $path='menus/'.$name;
 
-		Storage::put($path, $file);
+                    Storage::put($path, file_get_contents($file));
 
-}
+            }
 
-	if(Menu::create([
+	        if(Menu::create([
               'name'=>$request->name,
 							'image'=>$path,
 							'price'=>$request->price,
 							'cut_pice'=>$request->cut_pice,
 							'description'=>$request->description,
-							'isactive'=>$request->isactive,
+							'partneractive'=>$request->isactive,
 							'creator_id'=>auth()->user()->id,
 							'partner_id'=>$partner->id,
+                            'isactive'=>false
 							]))
 
 							{
@@ -79,64 +80,45 @@ class MenuController extends Controller
 
     public function update(Request $request, $id){
 
-      $request->validate([
-      'name'=>'required|max:100',
-      'image'=>'required|image',
-      'price'=>'required',
-      'cut_pice'=>'required',
-      'isactive'=>'required'
-
-      ]);
+          $request->validate([
+          'name'=>'required|max:100',
+          'price'=>'required',
+          'cut_pice'=>'required',
+          'isactive'=>'required'
+          ]);
 
 
-                 if(isset($request->image)){
-    		$file=$request->image->path();
+             if(isset($request->image)) {
+                 $file = $request->image->path();
 
-    		$name=str_replace(' ', '_', $request->image->getClientOriginalName());
+                 $name = str_replace(' ', '_', $request->image->getClientOriginalName());
 
-    		$path='menus/'.$name;
+                 $path = 'menus/' . $name;
 
-    		Storage::put($path, $file);
+                 Storage::put($path, $file);
+             }else{
+                 $path=DB::raw('image');
+             }
+             $menus=Menu::findOrFail($id);
 
-     $menus=Menu::findOrFail($id);
+             $partner=Partner::where('user_id',auth()->user()->id)->first();
+                if($menus->update([
+                  'name'=>$request->name,
+                  'image'=>$path,
+                  'price'=>$request->price,
+                  'cut_pice'=>$request->cut_pice,
+                  'description'=>$request->description,
+                  'partneractive'=>$request->isactive,
+                  'creator_id'=>auth()->user()->id,
+                  'partner_id'=>$partner->id,
+                  'isactive'=>false
+                                        ]))
+                {
+                              return redirect()->route('partner.menu')->with('success', 'Menus has been created');
 
-  	$partner=Partner::where('user_id',auth()->user()->id)->first();
-        if($menus->update([
-          'name'=>$request->name,
-          'image'=>$path,
-          'price'=>$request->price,
-          'cut_pice'=>$request->cut_pice,
-          'description'=>$request->description,
-          'isactive'=>$request->isactive,
-          'creator_id'=>auth()->user()->id,
-          'partner_id'=>$partner->id,
 
-      							])){
-                      return redirect()->route('partner.menu')->with('success', 'Menus has been created');
+                }
 
-
-                    }
-
-    }
-    else
-    {
-      if($menus->update([
-
-        'name'=>$request->name,
-
-        'price'=>$request->price,
-        'cut_pice'=>$request->cut_pice,
-        'description'=>$request->description,
-        'isactive'=>$request->isactive,
-        'creator_id'=>auth()->user()->id,
-        'partner_id'=>$partner->id,
-    							])){
-
-                    return redirect()->route('partner.menu')->with('success', 'Menus has been created');
-
-                  }
-
-    }
 	return redirect()->back()->with('error', 'Menus create failed');
 }
 

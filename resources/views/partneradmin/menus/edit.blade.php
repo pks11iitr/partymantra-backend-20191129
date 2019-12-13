@@ -35,10 +35,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Isactive</label>
-                                    <select name="isactive" class="form-control select2"
-                                    value="<?php echo $menus->isactive?>" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" {{$menus->isactive==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$menus->isactive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -82,8 +81,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image">
-                                    <image src="{{Storage::url($menus->image)}}">
+                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image"><br>
+                                    <image src="{{$menus->image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>

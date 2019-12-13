@@ -52,6 +52,8 @@
                        <th>Venue Address</th>
 
                           <th>Markas Full</th>
+                          <th>Is active</th>
+
                              <th>Action</th>
 
 
@@ -67,11 +69,12 @@
                   <td>{{$event->startdate}}</td>
                   <td>{{$event->enddate}}</td>
 
-                  
+
                   <td>{{$event->venue_name}}</td>
                   <td>{{$event->venue_adderss}}</td>
 
                   <td>{{$event->markasfull}}</td>
+                    <td>{{$event->isactive && $event->partneractive?'active':($event->partneractive==1?'moderation':'inactive')}}</td>
                     <td>
 					<a href="{{route('partner.event.edit', ['id'=>$event->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>

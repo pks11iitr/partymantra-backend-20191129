@@ -46,7 +46,7 @@
 				<th>Name</th>
                  <th>Price</th>
                     <th>Cut Pice</th>
-                    
+
                       <th>Isactive</th>
 
                        <th>Action</th>
@@ -59,7 +59,7 @@
                   <td>{{$menu->price}}</td>
                   <td>{{$menu->cut_pice}}</td>
 
-                  <td>{{$menu->isactive}}</td>
+                  <td>{{$menu->isactive && $menu->partneractive?'active':($menu->partneractive==1?'moderation':'inactive')}}</td>
 
 
                     <td>
