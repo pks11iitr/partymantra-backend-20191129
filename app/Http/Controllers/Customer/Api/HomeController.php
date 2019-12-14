@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         $banners=Banner::where('isactive', true)->get();
 
-        $collections=Collection::active()->where('istop', true)->has($type)->get();
+        $collections=Collection::active()->where('istop', true)->has($type)->orderBy('priority', 'asc')->get();
 
         //return $collections;
 
