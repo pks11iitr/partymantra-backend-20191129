@@ -10,4 +10,10 @@ class OrderItem extends Model
 
     protected $fillable=['order_id','entity_type','entity_id','other_id','men','women','couple'];
 
+    public function entity(){
+        return $this->morphTo();
+    }
+
+
+
 }

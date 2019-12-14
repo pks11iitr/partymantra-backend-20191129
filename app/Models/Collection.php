@@ -12,7 +12,7 @@ class Collection extends Model
 
     protected $table ='collections';
 
-	protected $fillable=['name', 'cover_image', 'small_image', 'created_by','isactive'];
+	protected $fillable=['name', 'cover_image', 'small_image', 'created_by','isactive', 'priority', 'istop'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'priority'];
 

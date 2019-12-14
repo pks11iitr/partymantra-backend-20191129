@@ -12,16 +12,19 @@ class HomeController extends Controller
     public function index(Request $request){
         switch($request->type){
             case 'event': $type=$request->type;
+            break;
             case 'restaurant': $type=$request->type;
+            break;
             case 'party': $type=$request->type;
+            break;
             default: $type='event';
         }
 
-        $banners=Banner::where('isactive', true)->get()->toArray();
+        $banners=Banner::where('isactive', true)->get();
 
-        $collections=Collection::active()->where('istop', true)->has($type)->get()->toArray();
+        $collections=Collection::active()->where('istop', true)->has($type)->get();
 
-        $othercollections=Collection::active()->where('istop', false)->orderby('priority', 'desc')->with($type)->get();
+        $othercollections=Collection::active()->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections];
 

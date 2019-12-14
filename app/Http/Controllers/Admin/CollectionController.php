@@ -36,7 +36,9 @@ class CollectionController extends Controller
 			'name'=>'required|max:250',
 			'cover_image'=>'required|image',
             'small_image'=>'required|image',
-            'isactive'=>'required|in:0,1'
+            'isactive'=>'required|in:0,1',
+            'istop' =>'required|in:0,1',
+            'priority'=>'required|integer'
 		]);
 
 		$file=$request->cover_image->path();
@@ -59,6 +61,9 @@ class CollectionController extends Controller
         if(Collection::create(['name'=>$request->name,
 					'cover_image'=>$path1,
                     'small_image'=>$path2,
+					'istop'=>$request->istop,
+					'priority'=>$request->priority,
+					'isactive'=>$request->isactive,
 					'created_by'=>auth()->user()->id])){
 				return redirect()->route('admin.collection')->with('success', 'Collection has been created');
 		}
@@ -70,8 +75,9 @@ class CollectionController extends Controller
     public function update(Request $request, $id){
       $request->validate([
         'name'=>'required|max:250',
-          'isactive'=>'required|in:0,1'
-
+          'isactive'=>'required|in:0,1',
+            'istop' =>'required|in:0,1',
+            'priority'=>'required|integer'
       ]);
 
       if(isset($request->cover_image)){
@@ -104,7 +110,10 @@ class CollectionController extends Controller
 		'created_by'=>auth()->user()->id,
           'small_image'=>$path2,
           'cover_image'=>$path1,
-          'isactive'=>$request->isactive
+          'istop'=>$request->istop,
+          'priority'=>$request->priority,
+          'isactive'=>$request->isactive,
+
       ])){
 
         		return redirect()->route('admin.collection')->with('success', 'Collection has been updated');

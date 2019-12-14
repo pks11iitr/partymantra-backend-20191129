@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
         Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
+        Route::get('orders', 'Admin\OrderController@index')->name('admin.orders');
         Route::get('partners', 'Admin\PartnerController@index')->name('admin.partners');
         Route::get('partners/create', 'Admin\PartnerController@add')->name('admin.partners.add');
         Route::post('partners', 'Admin\PartnerController@store')->name('admin.partners.store');
