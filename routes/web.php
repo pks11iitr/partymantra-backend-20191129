@@ -96,7 +96,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
         Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
-
+    Route::get('orders', 'Partner\OrderController@index')->name('partner.orders');
 
         Route::get('menu', 'Partner\MenuController@index')->name('partner.menu');
         Route::get('menu/create', 'Partner\MenuController@add')->name('partner.menu.add');

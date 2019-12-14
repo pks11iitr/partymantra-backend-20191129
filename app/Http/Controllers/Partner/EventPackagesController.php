@@ -39,6 +39,7 @@ class EventPackagesController extends Controller
     }
 
     public function store(Request $request){
+      $partner=Partner::active()->where('user_id', auth()->user()->id)->firstOrFail();
       $request->validate([
         'package_name'=>'required|max:50',
         'text_under_name'=>'required|max:50',
@@ -48,15 +49,22 @@ class EventPackagesController extends Controller
 
       ]);
 
-      if(Package::create([
+      if($package=Package::create([
         'package_name'=>$request->package_name,
         'text_under_name'=>$request->text_under_name,
         'price'=>$request->price,
         'custom_package_detail'=>$request->custom_package_detail,
-        'isactive'=>$request->isactive,
-        'event_id'=>auth()->user()->id
+        'isactive'=>false,
+        'partneractive'=>$request->isactive,
+        'event_id'=>auth()->user()->id,
+         'partner_id'=>$partner->id,
+          'created_by'=>auth()->user()->id,
         ])){
+          if(!empty($request->menus)){
+              $package->menus()->attach($request->menus);
+          }else{
 
+          }
             return redirect()->route('partner.package')->with('success', 'Package has been created');
       }
 
@@ -75,18 +83,24 @@ class EventPackagesController extends Controller
                   'isactive'=>'required',
 
                 ]);
-                  $package = Package::findOrfail($id);
-                $events=PartnerEvent::where('isactive', 1)->get();
+                  $partner=auth()->user()->partner;
+                  $package = Package::where('id', $id)->where('partner_id', $partner->id)->firstOrfail();
 
                 if($package->update([
                   'package_name'=>$request->package_name,
                   'text_under_name'=>$request->text_under_name,
                   'price'=>$request->price,
                   'custom_package_detail'=>$request->custom_package_detail,
-                  'isactive'=>$request->isactive,
+                  'isactive'=>false,
+                  'partneractive'=>$request->isactive,
                   'event_id'=>auth()->user()->id
                   ])){
-
+                    if(!empty($request->menus)){
+                        $package->menus()->detach();
+                        $package->menus()->attach($request->menus);
+                    }else{
+                        $package->menus()->detach();
+                    }
                       return redirect()->route('partner.package')->with('success', 'Package has been updated');
                 }
 

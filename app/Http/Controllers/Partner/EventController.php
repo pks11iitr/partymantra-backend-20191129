@@ -55,9 +55,9 @@ class EventController extends Controller
 			'tnc'=>'required',
 			'custom_package_details'=>'required',
 			'isactive'=>'required',
-			'markasfull'=>'required'
+			'markasfull'=>'required',
 			]);
-	        $partner=Partner::where('user_id',auth()->user()->id)->first();
+	        $partner=Partner::where('user_id',auth()->user()->id)->firstOrFail();
 		if(isset($request->header_image)){
             $file=$request->header_image->path();
 
@@ -85,7 +85,7 @@ class EventController extends Controller
 //var_dump(auth()->user()->id);
 //die();
 
-		if(PartnerEvent::create(['title'=>$request->title,
+		if($event=PartnerEvent::create(['title'=>$request->title,
 							'header_image'=>$path1,
 							'small_image'=>$path2,
 							'description'=>$request->description,
@@ -105,6 +105,10 @@ class EventController extends Controller
 							]))
 
 							{
+                                if(!empty($request->collection_id)){
+                                    $event->collections()->detach();
+                                    $event->collections()->attach($request->collection_id);
+                                }
 				                return redirect()->route('partner.event')->with('success', 'Events has been created');
 
 
@@ -174,42 +178,23 @@ class EventController extends Controller
          							 'enddate'=>$request->enddate,
          							 'tnc'=>$request->tnc,
          							 'custom_package_details'=>$request->custom_package_details,
-                                     'isactive'=>0,
+                                     'isactive'=>false,
                                      'partneractive'=>$request->isactive,
          							  'markasfull'=>$request->markasfull,
          							'partner_id'=>$partner->id,
                        'creator_id'=>auth()->user()->id,
                	])){
-
+                 if(!empty($request->collection_id)){
+                     if(!empty($request->collection_id)){
+                         $events->collections()->detach();
+                         $events->collections()->attach($request->collection_id);
+                     }
+                 }else{
+                     $events->collections()->detach();
+                 }
                     return redirect()->route('partner.event')->with('success', 'Events has been created');
 
-                } else {
-
-                  if($events->update(['title'=>$request->title,
-              							'description'=>$request->description,
-              							'venue_name'=>$request->venue_name,
-              							'venue_adderss'=>$request->venue_adderss,
-              							 'lat'=>$request->lat,
-              							 'lang'=>$request->lang,
-              							 'startdate'=>$request->startdate,
-              							 'enddate'=>$request->enddate,
-              							 'tnc'=>$request->tnc,
-              							 'custom_package_details'=>$request->custom_package_details,
-              							  'isactive'=>$request->isactive,
-              							  'markasfull'=>$request->markasfull,
-              							'partner_id'=>$partner->id,
-                            'creator_id'=>auth()->user()->id,
-
-
-
-
-                     ])){
-
-                          return redirect()->route('partner.event')->with('success', 'Events has been created');
-                     }
-
-
                 }
-                return redirect()->back()->with('error', 'Events create failed');
+                return redirect()->back()->with('error', 'Events update failed');
     }
 }

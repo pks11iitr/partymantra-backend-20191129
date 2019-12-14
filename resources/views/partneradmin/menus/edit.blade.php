@@ -36,8 +36,8 @@
                                 <div class="form-group">
                                     <label>Isactive</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1" {{$menus->isactive==1?'selected':''}}>Yes</option>
-                                        <option value="0" {{$menus->isactive==0?'selected':''}}>No</option>
+                                        <option value="1" {{$menus->partneractive==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$menus->partneractive==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>

@@ -61,6 +61,7 @@ class OrderController extends Controller
             'email'=>$request->email,
             'mobile'=>$request->mobile,
             'name'=>$request->name,
+            'partner_id'=>$package->partner_id
 
         ])){
             return [
@@ -107,7 +108,8 @@ class OrderController extends Controller
                     'other_id'=>$item->other_id,
                     'men'=>$item->men,
                     'women'=>$item->women,
-                    'couple'=>$item->couple
+                    'couple'=>$item->couple,
+                    'partner_id'=>$item->partner_id
                 ]);
                 $order->details()->save($item);
             }

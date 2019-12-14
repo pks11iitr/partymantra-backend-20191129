@@ -62,7 +62,7 @@
                   <td>{{$packages->price}}</td>
                   <td>{{$packages->text_under_name}}</td>
                   <td>{{$packages->custom_package_detail}}</td>
-                  <td>{{$packages->isactive}}</td>
+                  <td>{{$packages->statustext()}}</td>
                     <td>
 					<a href="{{route('partner.package.edit', ['id'=>$packages->id])}}"><span class="badge bg-success">Edit</span></a>
                     </td>

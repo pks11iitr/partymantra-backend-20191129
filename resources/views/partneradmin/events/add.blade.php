@@ -153,7 +153,7 @@
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
                                         <option  selected="selected" value="1">Yes</option>
-                                        <option value="organizer" value="0">No</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                             </div>
@@ -199,7 +199,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Select Collection</label>
-                                    <select name="collection_id" class="form-control select2" style="width: 100%;" multiple>
+                                    <select name="collection_id[]" class="form-control select2" style="width: 100%;" multiple>
                                     @foreach($collections as $c)
                                             <option value="{{$c->id}}">{{$c->name}}</option>
                                     @endforeach

@@ -8,7 +8,7 @@ class OrderItem extends Model
 {
     protected $table = 'order_details';
 
-    protected $fillable=['order_id','entity_type','entity_id','other_id','men','women','couple'];
+    protected $fillable=['order_id','entity_type','entity_id','other_id','men','women','couple', 'partner_id'];
 
     public function entity(){
         return $this->morphTo();

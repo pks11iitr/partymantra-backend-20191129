@@ -98,9 +98,10 @@ class EventPackagesController extends Controller
                     'created_by'=>auth()->user()->id
                   ])){
                     if(!empty($request->menus)){
+                        $package->menus()->detach();
                         $package->menus()->attach($request->menus);
                     }else{
-
+                        $package->menus()->detach();
                     }
 
                     return redirect()->route('admin.package')->with('success', 'Package has been updated');

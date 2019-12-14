@@ -108,7 +108,7 @@
                                     <label>Select Menu</label>
                                     <select name="menus[]" class="form-control select2" style="width: 100%;" multiple>
                                         @foreach($menus as $m)
-                                            <option value="{{$m->id}}" >{{$m->name}}</option>
+                                            <option value="{{$m->id}}"  @foreach($package->menus as $menu) @if($m->id==$menu->id){{'selected'}}@endif @endforeach>{{$m->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
