@@ -17,7 +17,7 @@ class Collection extends Model
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive', 'priority'];
 
     public function event(){
-        return $this->belongsToMany('App\Models\PartnerEvent', 'collection_event', 'collection_id', 'event_id')->where('isactive', true)->orderBy('priority', 'asc')->skip(0)->take(9);
+        return $this->belongsToMany('App\Models\PartnerEvent', 'collection_event', 'collection_id', 'event_id');
     }
 
     public function party(){
