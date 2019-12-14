@@ -24,7 +24,9 @@ class HomeController extends Controller
 
         $collections=Collection::active()->where('istop', true)->has($type)->get();
 
-        $othercollections=Collection::active()->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
+        //return $collections;
+
+        $othercollections=Collection::active()->with($type)->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections];
 
