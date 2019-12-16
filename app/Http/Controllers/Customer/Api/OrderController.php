@@ -8,7 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
-use BaconQrCode\Encoder\QrCode;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -191,6 +191,7 @@ class OrderController extends Controller
                 'ratio'=>'Men: '.$detail->men.' Women: '.$detail->women.' Couple:'.$detail->couple,
                 'amount'=>$order->total,
                 'taxes'=>0,
+                'qrcode'=>route('api.order.qr', ['id'=>$order->id])
             ]
         ];
 
@@ -198,6 +199,6 @@ class OrderController extends Controller
 
     public function getQRcode(Request $request, $id){
         $order=Order::findOrFail($id);
-        return view(QrCode::generate($order->refid));
+        return QrCode::size(100)->generate($order->refid);
     }
 }

@@ -36,7 +36,7 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
 
     });
-    $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
+
     /*
     authenticated routes starts
     */
