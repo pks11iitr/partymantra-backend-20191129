@@ -28,10 +28,11 @@ $api = app('Dingo\Api\Routing\Router');
         $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\Api\ProfileController@updateAddress']);
         $api->post('update-profile', ['as'=>'api.updateprofile', 'uses'=>'Customer\Api\ProfileController@updateProfile']);
         $api->post('book', ['as'=>'api.order.book', 'uses'=>'Customer\Api\OrderController@addtocart']);
-        $api->post('pay-now', ['as'=>'api.order.pay', 'uses'=>'Customer\Api\OrderController@makeOrder']);
+        $api->post('pay-now/{id?}', ['as'=>'api.order.pay', 'uses'=>'Customer\Api\OrderController@makeOrder']);
         //$api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
         //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
-
+        $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
+        $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
     });
 
     /*

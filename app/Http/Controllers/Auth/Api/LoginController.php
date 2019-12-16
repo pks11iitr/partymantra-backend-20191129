@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Api;
+use App\Services\SMS\Msg91;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use App\Models\OTPModel;
 use App\User;
@@ -77,7 +78,13 @@ class LoginController extends Controller
                 //event(new Registered($user));
                 //sendotp
                $user->assignRole('customer');
-               OTPModel::createOTP($user->id, 'login');
+                if($otp=OTPModel::createOTP($user->id, 'login')){
+                    $msg=config('sms-template.login-otp');
+                    $msg=str_replace('{{otp}}', $otp, $msg);
+                    if(Msg91::send($request->mobile, $msg)){
+
+                    }
+                }
             }
         }else if(!in_array($user->status, [0 , 1])){
             //send OTP
@@ -96,7 +103,13 @@ class LoginController extends Controller
                     ],
                 ], 401);
             }
-            OTPModel::createOTP($user->id, 'login');
+            if($otp=OTPModel::createOTP($user->id, 'login')){
+                $msg=config('sms-template.login-otp');
+                $msg=str_replace('{{otp}}', $otp, $msg);
+                if(Msg91::send($request->mobile, $msg)){
+
+                }
+            }
         }
         return [
             'message'=>'Please verify OTP to continue'

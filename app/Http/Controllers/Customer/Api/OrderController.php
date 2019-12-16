@@ -68,10 +68,16 @@ class OrderController extends Controller
                 'message'=>'success',
                 'data'=>[
                     'title'=>$package->event->title,
+                    'package'=>$package->title,
+                    'image'=>$package->event->small_image,
                     'date'=>$package->event->startdate.'-'.$package->event->enddate,
-                    'total'=>$cart->men+$cart->women+$cart->couple,
+                    'totalpass'=>$cart->men+$cart->women+$cart->couple,
+                    'name'=>$cart->name,
+                    'mobile'=>$cart->mobile,
+                    'email'=>$cart->email,
                     'ratio'=>'Men: '.$cart->men.' Women: '.$cart->women.' Couple:'.$cart->couple,
-                    'amount'=>($cart->men+$cart->women+$cart->couple)*$package->price
+                    'amount'=>($cart->men+$cart->women+$cart->couple)*$package->price,
+                    'taxes'=>0,
                 ]
             ];
         }
@@ -84,8 +90,11 @@ class OrderController extends Controller
 
     }
 
-    public function makeOrder(Request $request){
+    public function makeOrder(Request $request, $id=null){
         $user=auth()->user();
+        if(!empty($id)){
+            return $this->payExistingOrder($request, $id);
+        }
         $cartitems=$user->cart;
         if(!$cartitems){
             return response()->json([
@@ -132,6 +141,45 @@ class OrderController extends Controller
             ],
         ], 404);
 
+
+    }
+
+    private function payExistingOrder(Request $request, $id){
+        $order=Order::where('user_id', auth()->user()->id)->where('refid', $id)->where('status', 'pending')->firstOrFail();
+    }
+
+    public function history(Request $request){
+        $user=auth()->user();
+        return Order::where('user_id', $user->id)->get();
+    }
+
+    public function details(Request $request, $id){
+        $user=auth()->user();
+        $order=Order::where('user_id', $user->id)->where('refid', $id)->firstOrFail();
+        $details=$order->details;
+
+        foreach($details as $d){
+            $product=$d->entity;
+            $detail=$d;
+        }
+        //print_r($detail);die;
+        return [
+            'message'=>'success',
+            'data'=>[
+                'orderid'=>$order->refid,
+                'title'=>$product->title,
+                'package'=>'',
+                'image'=>$product->small_image,
+                'date'=>$product->startdate.'-'.$product->enddate,
+                'totalpass'=>$detail->men+$detail->women+$detail->couple,
+                'name'=>$detail->name,
+                'mobile'=>$detail->mobile,
+                'email'=>$detail->email,
+                'ratio'=>'Men: '.$detail->men.' Women: '.$detail->women.' Couple:'.$detail->couple,
+                'amount'=>$order->total,
+                'taxes'=>0,
+            ]
+        ];
 
     }
 }
