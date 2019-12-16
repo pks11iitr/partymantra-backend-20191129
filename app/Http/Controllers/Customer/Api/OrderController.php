@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
+use BaconQrCode\Encoder\QrCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -150,7 +151,19 @@ class OrderController extends Controller
 
     public function history(Request $request){
         $user=auth()->user();
-        return Order::where('user_id', $user->id)->get();
+        //var_dump($user->id);die;
+        $orders=Order::where('user_id', $user->id)->get();
+        $ordersdetail=[];
+        $i=0;
+        foreach($orders as $o){
+            $ordersdetail[$i]=$o->toArray();
+            foreach($o->details as $d){
+                $ordersdetail[$i]['title']=$d->entity->title;
+                $ordersdetail[$i]['image']=$d->entity->small_image;
+            }
+        }
+
+        return $ordersdetail;
     }
 
     public function details(Request $request, $id){
@@ -181,5 +194,10 @@ class OrderController extends Controller
             ]
         ];
 
+    }
+
+    public function getQRcode(Request $request, $id){
+        $order=Order::findOrFail($id);
+        return view(QrCode::generate($order->refid));
     }
 }

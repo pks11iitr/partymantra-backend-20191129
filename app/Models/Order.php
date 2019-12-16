@@ -10,6 +10,8 @@ class Order extends Model
 
     protected $fillable=['refid'];
 
+    protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at'];
+
     public function details(){
         return $this->hasMany('App\Models\OrderItem', 'order_id');
     }

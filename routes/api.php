@@ -33,8 +33,10 @@ $api = app('Dingo\Api\Routing\Router');
         //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
-    });
+        $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
 
+    });
+    $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
     /*
     authenticated routes starts
     */
