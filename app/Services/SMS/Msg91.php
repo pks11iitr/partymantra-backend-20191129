@@ -10,11 +10,10 @@ class Msg91
     protected static $authkey='308501AiM8VCGp6w4I5df71314';
 
     public static function send($mobile, $message){
-
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.msg91.com/api/sendhttp.php?authkey=".self::$authkey."&mobiles=$mobile&unicode=&country=91&message=$message&sender=PTMNRA&route=4&flash=&schtime=&afterminutes=&response=&campaign=",
+            CURLOPT_URL => "https://api.msg91.com/api/sendhttp.php?authkey=".self::$authkey."&mobiles=$mobile&unicode=&country=91&message=$message&sender=PTMNRA&route=4",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -30,7 +29,7 @@ class Msg91
 
         curl_close($curl);
 
-
+        //var_dump($response);die;
         if ($err) {
           return false;
         } else {

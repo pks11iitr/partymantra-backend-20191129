@@ -79,7 +79,7 @@ class LoginController extends Controller
                 //sendotp
                $user->assignRole('customer');
                 if($otp=OTPModel::createOTP($user->id, 'login')){
-                    $msg=config('sms-template.login-otp');
+                    $msg=config('sms-templates.login-otp');
                     $msg=str_replace('{{otp}}', $otp, $msg);
                     if(Msg91::send($request->mobile, $msg)){
 
@@ -104,7 +104,7 @@ class LoginController extends Controller
                 ], 401);
             }
             if($otp=OTPModel::createOTP($user->id, 'login')){
-                $msg=config('sms-template.login-otp');
+                $msg=config('sms-templates.login-otp');
                 $msg=str_replace('{{otp}}', $otp, $msg);
                 if(Msg91::send($request->mobile, $msg)){
 
