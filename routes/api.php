@@ -34,7 +34,7 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
-
+        $api->post('submit-review/{id}', ['as'=>'api.order.review', 'uses'=>'Customer\Api\OrderController@review']);
     });
 
     /*
@@ -42,17 +42,16 @@ $api = app('Dingo\Api\Routing\Router');
     */
 
 
-//home page
+    //home page
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
+
     //colections list
     $api->get('collections', ['as'=>'api.collections', 'uses'=>'Customer\Api\CollectionController@index']);
     //collection events
     $api->get('collection/{id}/events', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@events']);
+
     //event details
     $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
-
-
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+    $api->get('event/{id}/gallery', ['as'=>'api.event.gallery', 'uses'=>'Customer\Api\EventController@gallery']);
+    $api->get('event/{id}/reviews', ['as'=>'api.event.reviews', 'uses'=>'Customer\Api\EventController@reviews']);
 

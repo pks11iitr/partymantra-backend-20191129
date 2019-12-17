@@ -21,4 +21,15 @@ class EventController extends Controller
 
         return ['event'=>$event];
     }
+
+    public function gallery(Request $request, $id){
+        $product=PartnerEvent::findOrFail($id);
+        return $product->gallery;
+    }
+
+    public function reviews(Request $request, $id){
+        $product=PartnerEvent::findOrFail($id);
+        return $product->reviews;
+    }
+
 }

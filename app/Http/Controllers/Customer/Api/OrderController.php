@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
+use App\Models\Review;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -200,5 +201,46 @@ class OrderController extends Controller
     public function getQRcode(Request $request, $id){
         $order=Order::findOrFail($id);
         return QrCode::size(100)->generate($order->refid);
+    }
+
+    public function review(Request $request, $id){
+        $user=auth()->user();
+        $request->validate([
+            'rating'=>'required|integer|min:1|max:5',
+            'comment'=>'nullable|string|max:200'
+        ]);
+        $order=Order::with('details')->where('user_id', $user->id)->where('payment_status', 'paid')->findOrFail($id);
+
+        if($order->review)
+            return response()->json([
+                'message'=>'You have already reviewed this order',
+                'errors'=>[
+
+                ],
+            ], 200);
+        foreach($order->details as $d){
+            $product=$d->entity;
+        }
+        $review=new Review([
+            'user_id'=>$user->id,
+            'description'=>$request->comment,
+            'rating'=>$request->rating,
+            'order_id'=>$id
+        ]);
+        if($product->reviews()->save($review)){
+            return response()->json([
+                'message'=>'Review has been submitted successfully',
+                'errors'=>[
+
+                ],
+            ], 200);
+        }else{
+            return response()->json([
+                'message'=>'some error occurred',
+                'errors'=>[
+
+                ],
+            ], 404);
+        }
     }
 }

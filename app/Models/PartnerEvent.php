@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Traits\Active;
+use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class PartnerEvent extends Model
 {
-    use Active;
+    use Active, ReviewTrait;
 
     protected $table='events';
 
@@ -41,4 +42,6 @@ class PartnerEvent extends Model
     public function collections(){
         return $this->belongsToMany('App\Models\Collection', 'collection_event', 'event_id', 'collection_id');
     }
+
+
 }

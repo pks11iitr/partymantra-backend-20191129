@@ -20,4 +20,8 @@ class Order extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    public function review(){
+        return $this->hasOne('App\Models\Review', 'order_id');
+    }
+
 }

@@ -12,7 +12,7 @@ class OTPModel extends Model
     protected $fillable=['user_id', 'otp', 'type', 'expiry'];
 
     public static function createOTP($userid, $type){
-        $rand=rand(1111, 9999).''.rand(1111, 9999).''.rand(1111, 9999).''.rand(1111, 9999).''.rand(1111, 9999).''.rand(1111, 9999);
+        $rand=rand(1, 9).''.rand(1, 9).''.rand(1, 9).''.rand(1, 9).''.rand(1, 9).''.rand(1, 9);
         $otp=self::where('user_id', $userid)
                         ->where('isverified', false)
                         ->where('type', $type)
