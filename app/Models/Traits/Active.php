@@ -4,6 +4,8 @@ namespace App\Models\Traits;
 
 trait Active{
     public static function active(){
+        if(property_exists(get_class(), 'partneractive'))
+            return self::where('isactive', true)->where('partneractive', true);
         return self::where('isactive', true);
     }
 

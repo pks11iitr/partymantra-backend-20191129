@@ -34,7 +34,7 @@ class CollectionController extends Controller
             ], 404);
         //PartnerEvent::where('')
 
-        return ['events'=>$collection->allevents()->get()];
+        return ['events'=>$collection->event()->where('isactive',true)->where('partneractive', true)->get()];
 
     }
 

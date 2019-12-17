@@ -28,10 +28,6 @@ class Collection extends Model
         return $this->belongsToMany();
     }
 
-    public function allevents(){
-        return $this->belongsToMany('App\Models\PartnerEvent', 'collection_event', 'collection_id', 'event_id')->where('isactive', true);
-    }
-
     public function getCoverImageAttribute($value)
     {
         return Storage::url($value);

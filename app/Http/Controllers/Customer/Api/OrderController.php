@@ -167,6 +167,43 @@ class OrderController extends Controller
         return $ordersdetail;
     }
 
+    public function cartdetails(Request $request){
+        $user=auth()->user();
+
+        if(count($user->cart)){
+            foreach($user->cart as $d){
+                $product=$d->entity;
+                $detail=$d;
+            }
+            //print_r($detail);die;
+            $package=Package::findOrFail($detail->other_id);
+            return [
+                'message'=>'success',
+                'data'=>[
+                    'title'=>$product->title,
+                    'package'=>$package->package_name,
+                    'image'=>$product->small_image,
+                    'date'=>$product->startdate.'-'.$product->enddate,
+                    'totalpass'=>$detail->men+$detail->women+$detail->couple,
+                    'name'=>$detail->name,
+                    'mobile'=>$detail->mobile,
+                    'email'=>$detail->email,
+                    'ratio'=>'Men: '.$detail->men.' Women: '.$detail->women.' Couple:'.$detail->couple,
+                    'amount'=>($detail->men+$detail->women+$detail->couple)*$package->price,
+                    'taxes'=>0,
+                ]
+            ];
+        }else{
+            return [
+                'message'=>'success',
+                'data'=>[
+
+                ]
+            ];
+        }
+
+
+    }
     public function details(Request $request, $id){
         $user=auth()->user();
         $order=Order::where('user_id', $user->id)->where('refid', $id)->firstOrFail();
@@ -177,12 +214,13 @@ class OrderController extends Controller
             $detail=$d;
         }
         //print_r($detail);die;
+        $package=Package::findOrFail($detail->other_id);
         return [
             'message'=>'success',
             'data'=>[
                 'orderid'=>$order->refid,
                 'title'=>$product->title,
-                'package'=>'',
+                'package'=>$package->package_name,
                 'image'=>$product->small_image,
                 'date'=>$product->startdate.'-'.$product->enddate,
                 'totalpass'=>$detail->men+$detail->women+$detail->couple,
@@ -243,4 +281,6 @@ class OrderController extends Controller
             ], 404);
         }
     }
+
+
 }

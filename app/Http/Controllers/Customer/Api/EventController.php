@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class EventController extends Controller
 {
     public function view(Request $request, $id ){
-        $event=PartnerEvent::with(['partner', 'packages.activemenus'])->findOrFail($id);
+        $event=PartnerEvent::active()->with(['partner', 'packages.activemenus'])->findOrFail($id);
         if(!$event){
             return response()->json([
                 'message'=>'invalid request',
@@ -24,12 +24,12 @@ class EventController extends Controller
 
     public function gallery(Request $request, $id){
         $product=PartnerEvent::findOrFail($id);
-        return $product->gallery;
+        return $product->gallery->where('isactive', true);
     }
 
     public function reviews(Request $request, $id){
         $product=PartnerEvent::findOrFail($id);
-        return $product->reviews;
+        return $product->reviews->where('isactive', true);
     }
 
 }

@@ -35,6 +35,7 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
         $api->post('submit-review/{id}', ['as'=>'api.order.review', 'uses'=>'Customer\Api\OrderController@review']);
+        $api->get('cart-details', ['as'=>'api.order.cartdetails', 'uses'=>'Customer\Api\OrderController@cartdetails']);
     });
 
     /*

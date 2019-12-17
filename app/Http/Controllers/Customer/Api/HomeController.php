@@ -22,12 +22,14 @@ class HomeController extends Controller
 
         $banners=Banner::where('isactive', true)->get();
 
-        $collections=Collection::active()->where('istop', true)->has($type)->orderBy('priority', 'asc')->get();
+        $collections=Collection::active()->where('istop', true)->whereHas($type,function($query){
+            $query=$query->where('isactive',true)->where('partneractive', true);
+        })->orderBy('priority', 'asc')->get();
 
         //return $collections;
 
         $othercollections=Collection::active()->with([$type=>function($query){
-            return $query->where('isactive',true)->orderBy('priority', 'asc');
+            return $query->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
         }])->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections];

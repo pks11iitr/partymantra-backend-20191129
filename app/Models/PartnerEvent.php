@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use App\Models\Traits\Active;
+use App\Models\Traits\Gallery;
 use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class PartnerEvent extends Model
 {
-    use Active, ReviewTrait;
+    use Active, ReviewTrait, Gallery;
 
     protected $table='events';
 
     protected $fillable=['title', 'creator_id','startdate', 'enddate', 'description', 'venue_name', 'venue_adderss', 'lat', 'lang', 'header_image', 'small_image', 'tnc', 'custom_package_details', 'isactive', 'markasfull','partner_id','partneractive'];
 
-    protected $hidden=['created_at', 'deleted_at', 'updated_at', 'partner_id','lat', 'lang'];
+    protected $hidden=['created_at', 'deleted_at', 'updated_at', 'partner_id','lat', 'lang','isactive', 'markasfull','partner_id','partneractive','pivot','istop'];
 
     public function partner(){
         return $this->belongsTo('App\Models\Partner', 'partner_id');
