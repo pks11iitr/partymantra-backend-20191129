@@ -98,6 +98,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Partner Active</label>
+                                    <select name="partneractive" class="form-control select2"
+                                     style="width: 100%;">
+                                    <option   value="1" {{$menu->partneractive==1?'selected':''}}>Yes</option>
+                                      <option   value="0" {{$menu->partneractive==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
