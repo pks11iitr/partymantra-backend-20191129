@@ -76,7 +76,8 @@ class MenuController extends Controller
       'name'=>'required|max:100',
       'price'=>'required',
       'cut_pice'=>'required',
-      'isactive'=>'required'
+      'isactive'=>'required',
+      'partneractive'=>'required'
 
       ]);
 
@@ -102,6 +103,7 @@ class MenuController extends Controller
 							'cut_pice'=>$request->cut_pice,
 							'description'=>$request->description,
 							'isactive'=>$request->isactive,
+              'partneractive'=>$request->partneractive,
                             'image'=>$path,
 							'creator_id'=>auth()->user()->id,
 							'category_id'=>auth()->user()->id,

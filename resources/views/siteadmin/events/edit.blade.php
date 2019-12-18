@@ -169,7 +169,14 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Per Person Text</label>
+                                      <input type="text" class="form-control" id="exampleInputEmail1"
+                                        value="{{$event->per_person_text}}" placeholder="Enter email" name="per_person_text">
 
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
