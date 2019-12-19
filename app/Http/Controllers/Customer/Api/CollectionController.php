@@ -24,6 +24,7 @@ class CollectionController extends Controller
     }
 
     public function events(Request $request, $id){
+        die;
         $collection=Collection::find($id);
         if(!$collection)
             return response()->json([
