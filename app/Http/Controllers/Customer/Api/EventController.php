@@ -29,7 +29,9 @@ class EventController extends Controller
 
     public function reviews(Request $request, $id){
         $product=PartnerEvent::findOrFail($id);
-        return $product->reviews()->with('user')->where('isactive', true)->get();
+        return $product->reviews()->with(array('user'=>function($query){
+            $query->select('name','image');
+        }))->where('isactive', true)->get();
     }
 
 }
