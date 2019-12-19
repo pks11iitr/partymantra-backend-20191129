@@ -28,7 +28,7 @@ class EventController extends Controller
     }
 
     public function reviews(Request $request, $id){
-        $product=PartnerEvent::findOrFail($id);
+        $product=PartnerEvent::with('user')->findOrFail($id);
         return $product->reviews->where('isactive', true);
     }
 
