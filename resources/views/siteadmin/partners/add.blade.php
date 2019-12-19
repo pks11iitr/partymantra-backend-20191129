@@ -120,7 +120,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Per Person Text</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="per_person_text">
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    placeholder="Enter email" name="per_person_text">
                                 </div>
                                 <!-- /.form-group -->
                             </div>

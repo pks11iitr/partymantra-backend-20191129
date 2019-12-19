@@ -61,7 +61,7 @@
                   <td>{{$menu->cut_pice}}</td>
                   <td>{{$menu->partner->name??''}}</td>
 
-                  <td>{{$menu->isactive}}</td>
+                  <td>{{$menu->statustext()}}</td>
 
 
                     <td>

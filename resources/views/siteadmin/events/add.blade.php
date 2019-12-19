@@ -199,7 +199,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Per Person Text</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                      placeholder="Enter email" name="per_person_text">
+
+                                </div>
+                            </div>
                         </div>
+
                         <div class="row">
                             <!-- /.col -->
                             <div class="col-md-12">
