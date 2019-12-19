@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Kodeine\Acl\Traits\HasRole;
 
@@ -69,6 +70,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function partner(){
         return $this->hasOne('App\Models\Partner', 'user_id');
+    }
+
+    public function getImageAttribute($value){
+        return Storage::url($value);
     }
 
 }
