@@ -16,6 +16,12 @@ Route::get('/', function () {
     return redirect(route('login'));
 });
 
+
+Route::get('privacy', 'Website\TncController@privacy');
+Route::get('tnc', 'Website\TncController@tnc');
+Route::get('about', 'Website\TncController@about');
+
+
 Auth::routes();
 
 //this will be removed after setting proper redirection
@@ -123,4 +129,3 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner
 
 
 });
-
