@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,9 +21,7 @@
 <body>
 <header class="header-container-wrapper">
     <!-- Static navbar -->
-    <?php
-    include_once("include/header.php");
-    ?>
+
 </header>
 
 <!-- /body-container start here -->
@@ -108,7 +106,6 @@
 
 <!-- /body-container end here -->
 
-<?php include_once("include/footer.php") ?>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->

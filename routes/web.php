@@ -17,9 +17,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('privacy', 'Website\TncController@privacy');
-Route::get('tnc', 'Website\TncController@tnc');
-Route::get('about', 'Website\TncController@about');
+Route::get('privacy-polcy', 'Website\TncController@privacy');
+Route::get('terms-and-condition', 'Website\TncController@tnc');
+Route::get('about-us', 'Website\TncController@about');
 
 
 Auth::routes();
