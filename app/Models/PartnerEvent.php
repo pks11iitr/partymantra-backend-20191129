@@ -16,7 +16,7 @@ class PartnerEvent extends Model
 
     protected $fillable=['title', 'creator_id','startdate', 'enddate', 'description', 'venue_name', 'venue_adderss', 'lat', 'lang', 'header_image', 'small_image', 'tnc', 'custom_package_details','per_person_text', 'isactive', 'markasfull','partner_id','partneractive'];
 
-    protected $hidden=['created_at', 'deleted_at', 'updated_at', 'partner_id','lat', 'lang','isactive', 'markasfull','partner_id','partneractive','pivot','istop'];
+    protected $hidden=['created_at', 'deleted_at', 'updated_at', 'partner_id','isactive', 'markasfull','partner_id','partneractive','pivot','istop'];
 
     public function partner(){
         return $this->belongsTo('App\Models\Partner', 'partner_id');
