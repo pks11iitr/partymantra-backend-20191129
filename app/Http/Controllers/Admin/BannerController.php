@@ -43,7 +43,8 @@ class BannerController extends Controller
 			'entity_type'=>'nullable',
 			'entity_id'=>'nullable',
 			'isactive'=>'required',
-			'image'=>'required|image'
+			'image'=>'required|image',
+            'priority'=>'required|integer'
 
 		]);
 
@@ -59,7 +60,7 @@ class BannerController extends Controller
 					'entity_id'=>$request->entity_id,
 					'isactive'=>$request->isactive,
 					'image'=>$path,
-
+                    'priority'=>$request->priority
 					])){
 				return redirect()->route('admin.banner')->with('success', 'Banner has been created');
 		}
@@ -81,7 +82,8 @@ class BannerController extends Controller
             	$request->validate([
             			'entity_type'=>'nullable',
             			'entity_id'=>'nullable',
-            			'isactive'=>'required'
+            			'isactive'=>'required',
+                        'priority'=>'required|integer'
 
             		]);
                 $banner = banner::findOrFail($id);
@@ -104,7 +106,8 @@ class BannerController extends Controller
                     'entity_type'=>$request->entity_type,
         			'entity_id'=>$request->entity_id,
         			'isactive'=>$request->isactive,
-                    'image'=>$path
+                    'image'=>$path,
+                    'priority'=>$request->priority
           ])){
                 return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
 

@@ -152,7 +152,7 @@
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
-                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
+                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Update</button>
 
                             </div>
                         </div>
@@ -163,7 +163,54 @@
 
                 </div>
                 <!-- /.card -->
-</form>
+            </form>
+
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">Change Partner Password</h3>
+                    </div>
+                    <form action="{{route('admin.partner.changepass',['id'=>$partners->id])}}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                    <!-- /.card-header -->
+                        <div class="card-body">
+                            <!-- /.row -->
+
+                            <!-- /.row -->
+                            <!-- /.row -->
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Enter New Password</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               value="" placeholder="Enter email" name="password">
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group"  style="algin:center;">
+                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Update</button>
+
+                                </div>
+                            </div>
+
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.card-body -->
+
+                </div>
+                <!-- /.card -->
+                </form>
 
             </div><!-- /.container-fluid -->
         </section>

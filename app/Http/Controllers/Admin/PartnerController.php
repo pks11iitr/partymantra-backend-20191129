@@ -61,6 +61,7 @@ class PartnerController extends Controller
 			$user=User::create([
 				'mobile' => $request->mobile,
 				'password' => Hash::make($request->password),
+                'status'=>$request->isactive
 			]);
         else{
             return redirect()->back()->with('error', 'Partner Mobile Already registered');
@@ -131,6 +132,10 @@ class PartnerController extends Controller
 
 			]);
 
+      //enable disable user to login
+      $user=$partners->user;
+      $user->status=$request->isactive;
+      $user->save();
 
       if(isset($request->header_image)){
           $file=$request->header_image->path();
@@ -178,6 +183,13 @@ class PartnerController extends Controller
         return redirect()->route('admin.partners')->with('error', 'Partner Update failed');
 
 
+    }
+
+    public function changepartnerpassword(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        $user=$partner->user();
+        $user->password=Hash::make($request->password);
+        return redirect()->back()->with('success', 'Pasword has been changed');
     }
 
 

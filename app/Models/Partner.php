@@ -14,10 +14,10 @@ class Partner extends Model
 
     protected $fillable=['name', 'header_image', 'small_image', 'description', 'address', 'short_address', 'lat', 'lang', 'contact_no', 'type', 'per_person_text', 'isactive', 'user_id'];
 
-    protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','lat', 'lang', 'user_id'];
+    protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','user_id'];
 
     public function user(){
-        return $this->belongsTo('App\Users', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function events(){

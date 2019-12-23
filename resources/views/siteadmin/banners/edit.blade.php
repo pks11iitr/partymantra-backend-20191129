@@ -84,7 +84,20 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                    </div>
+                        <div class="row">
+                            <!-- /.col -->
 
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Priority(Set priority between 1-10 to show it in top slider)</label>
+                                    <input type="text" class="form-control" name="priority" id="exampleInputEmail1" placeholder="Enter a number" value="{{$banner->priority}}">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
                         <div class="row">
 
                                 <div class="form-group"  style="algin:center;">

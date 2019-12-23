@@ -35,6 +35,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::post('partners', 'Admin\PartnerController@store')->name('admin.partners.store');
         Route::get('partners/{id}', 'Admin\PartnerController@edit')->where('id', '[0-9]+')->name('admin.partners.edit');
         Route::post('partners/{id}', 'Admin\PartnerController@update')->where('id', '[0-9]+')->name('admin.partners.update');
+        Route::post('partner/{id}/change-password', 'Admin\PartnerController@changepartnerpassword')->name('admin.partner.changepass');
 
 
         Route::get('category', 'Admin\CategoryController@index')->name('admin.category');

@@ -20,7 +20,8 @@ class HomeController extends Controller
             default: $type='event';
         }
 
-        $banners=Banner::where('isactive', true)->get();
+        $banners=Banner::where('isactive', true)->orderBy('priority', 'asc')->where('priority', '<=', 10)->get();
+        $otherbanners=Banner::where('isactive', true)->orderBy('priority', 'asc')->where('priority', '>', 10)->get();
 
         $collections=Collection::active()->where('istop', true)->whereHas($type,function($query){
             $query=$query->where('isactive',true)->where('partneractive', true);
@@ -32,7 +33,7 @@ class HomeController extends Controller
             return $query->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
         }])->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
 
-        return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections];
+        return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections, 'otherbanners'=>$otherbanners];
 
     }
 

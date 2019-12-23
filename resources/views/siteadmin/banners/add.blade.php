@@ -65,12 +65,12 @@
                             </div>
                             <!-- /.col -->
                         </div>
-					<div class="row">
+                        <div class="row">
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Image</label>
-                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image">
+                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Enter image"><br>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -78,15 +78,28 @@
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                     <label>Isactive</label>
-                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="0" value="0">No</option>
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" >Yes</option>
+                                        <option value="0">No</option>
                                     </select>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                        </div>
+					<div class="row">
+                            <!-- /.col -->
 
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                     <label>Priority(Set priority between 1-10 to show it in top slider)</label>
+                                    <input type="text" class="form-control" name="priority" id="exampleInputEmail1" placeholder="Enter a number">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                    </div>
                         <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
