@@ -65,4 +65,9 @@ class ProfileController extends Controller
             'message'=>'Address has been updated'
         ];
     }
+
+    public function getProfileInfo(Request $request){
+        $user=$this->auth->user();
+        return $user->only('name', 'dob', 'email', 'mobile', 'address', 'gender');
+    }
 }

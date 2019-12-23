@@ -76,4 +76,29 @@ class User extends Authenticatable implements JWTSubject
         return Storage::url($value);
     }
 
+    public function getDobAttribute($value){
+        return $value??'';
+    }
+
+    public function getNameAttribute($value){
+        return $value??'';
+    }
+
+    public function getEmailAttribute($value){
+        return $value??'';
+    }
+
+    public function getGenderAttribute($value){
+        return $value??'';
+    }
+
+    public function getMobileAttribute($value){
+        return $value??'';
+    }
+
+    public function getAddressAttribute($value){
+        return $value??'';
+    }
+
+
 }
