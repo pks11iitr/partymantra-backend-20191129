@@ -6,7 +6,7 @@ use App\Models\Collection;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 class CollectionController extends Controller
 {
     public function index(Request $request){
@@ -34,7 +34,7 @@ class CollectionController extends Controller
             ], 404);
         //PartnerEvent::where('')
 
-        return ['events'=>$collection->event()->where('isactive',true)->where('partneractive', true)->get()];
+        return ['events'=>$collection->event()->with('avgreviews')->where('isactive',true)->where('partneractive', true)->get()];
 
     }
 

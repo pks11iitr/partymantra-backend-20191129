@@ -59,10 +59,15 @@ class PartnerEvent extends Model
     {
         $date=$this->getOriginal('startdate');
         $diff=strtotime($date)-strtotime("now");
-        $hours=intval($diff/(60*60));
-        $days=intval($hours/24);
-        $hours=$hours%24;
-        return $days.' days '.$hours.' hrs';
+        if($diff<0) {
+            $hours = intval($diff / (60 * 60));
+            $days = intval($hours / 24);
+            $hours = $hours % 24;
+            return $days . ' days ' . $hours . ' hrs';
+        }else{
+            return 'Started';
+        }
     }
+
 
 }
