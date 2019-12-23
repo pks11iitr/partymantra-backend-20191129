@@ -18,7 +18,7 @@ class EventController extends Controller
                 ],
             ], 404);
         }
-        $event->time_to_start='very soon';
+        //$event->time_to_start='very soon';
         return ['event'=>$event];
     }
 
