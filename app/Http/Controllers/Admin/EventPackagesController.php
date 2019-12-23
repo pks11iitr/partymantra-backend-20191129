@@ -93,7 +93,7 @@ class EventPackagesController extends Controller
                   'custom_package_detail'=>$request->custom_package_detail,
                   'isactive'=>$request->isactive,
                   'partneractive'=>$request->partneractive,
-                  'event_id'=>$request->id,
+                  'event_id'=>$request->event_id,
                     'partner_id'=>$event->partner_id,
                     'created_by'=>auth()->user()->id
                   ])){
