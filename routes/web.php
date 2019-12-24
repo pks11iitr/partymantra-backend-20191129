@@ -56,6 +56,8 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('event', 'Admin\EventController@index')->name('admin.event');
         Route::get('event/create', 'Admin\EventController@add')->name('admin.event.add');
         Route::post('event', 'Admin\EventController@store')->name('admin.event.store');
+        Route::post('events/{id}/add-gallery', 'Admin\EventController@addgallery')->name('admin.event.gallery');
+        Route::get('events/del-gallery/{id}', 'Admin\EventController@deletegallery')->name('admin.event.galleryrm');
         Route::get('event/{id}', 'Admin\EventController@edit')->where('id', '[0-9]+')->name('admin.event.edit');
         Route::post('event/{id}', 'Admin\EventController@update')->where('id', '[0-9]+')->name('admin.event.update');
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Active;
+use App\Models\Traits\DocumentUploadTrait;
 use App\Models\Traits\Gallery;
 use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PartnerEvent extends Model
 {
-    use Active, ReviewTrait, Gallery;
+    use Active, ReviewTrait, DocumentUploadTrait;
 
     protected $table='events';
 

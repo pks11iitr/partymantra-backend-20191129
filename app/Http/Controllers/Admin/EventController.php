@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Collection;
+use App\Models\Document;
 use App\Models\Menu;
 use App\Models\Package;
 use App\Models\Partner;
@@ -212,4 +213,20 @@ class EventController extends Controller
 
 
     }
+
+    public function addgallery(Request $request, $id){
+        $event=PartnerEvent::findOrFail($id);
+        if(isset($request->gallery)){
+            foreach($request->gallery as $file){
+                $event->saveDocument($file, 'events');
+            }
+        }
+        return redirect()->back()->with('success', 'Images have been uploaded');
+    }
+
+    public function deletegallery(Request $request, $id){
+        Document::where('id', $id)->where('entity_type', 'App\Models\PartnerEvent')->delete();
+        return redirect()->back()->with('success', 'Images has been deleted');
+    }
+
 }
