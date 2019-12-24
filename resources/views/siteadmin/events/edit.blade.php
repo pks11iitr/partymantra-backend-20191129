@@ -62,7 +62,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{$event->startdate}}">
+                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{$event->getOriginal('startdate')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="text" class="form_datetime  form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{$event->enddate}}">
+                                    <input type="text" class="form_datetime  form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{$event->getOriginal('enddate')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -325,22 +325,24 @@
         function fillInAddress() {
             // Get the place details from the autocomplete object.
             var place = autocomplete.getPlace();
-
-            for (var component in componentForm) {
-                document.getElementById(component).value = '';
-                document.getElementById(component).disabled = false;
-            }
-
-            // Get each component of the address from the place details,
-            // and then fill-in the corresponding field on the form.
-            for (var i = 0; i < place.address_components.length; i++) {
-                console.log(place.address_components[i])
-                var addressType = place.address_components[i].types[0];
-                if (componentForm[addressType]) {
-                    var val = place.address_components[i][componentForm[addressType]];
-                    document.getElementById(addressType).value = val;
-                }
-            }
+            console.log(place.geometry.location.lat())
+            document.getElementById('lat').value = place.geometry.location.lat()
+            document.getElementById('lang').value = place.geometry.location.lng()
+            // for (var component in componentForm) {
+            //     document.getElementById(component).value = '';
+            //     document.getElementById(component).disabled = false;
+            // }
+            //
+            // // Get each component of the address from the place details,
+            // // and then fill-in the corresponding field on the form.
+            // for (var i = 0; i < place.address_components.length; i++) {
+            //     console.log(place.address_components[i])
+            //     var addressType = place.address_components[i].types[0];
+            //     if (componentForm[addressType]) {
+            //         var val = place.address_components[i][componentForm[addressType]];
+            //         document.getElementById(addressType).value = val;
+            //     }
+            // }
         }
 
         // Bias the autocomplete object to the user's geographical location,
@@ -359,7 +361,7 @@
             }
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnYbA75_Aglq40HbF0O8iVIaIQeY2tHGQ&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdnpGnI038nDRtvM7LbCrBClPnLeXvpfc&libraries=places&callback=initAutocomplete"
             async defer></script>
 
 @endsection

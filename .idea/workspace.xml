@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CollectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CollectionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Collection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/collections/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/collections/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/collections/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/collections/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/add.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/events/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/events/edit.blade.php" afterDir="false" />
     </list>
@@ -193,14 +188,7 @@
       <workItem from="1576590218156" duration="4431000" />
       <workItem from="1576732113796" duration="4802000" />
       <workItem from="1576845556107" duration="8012000" />
-      <workItem from="1577019558211" duration="22003000" />
-    </task>
-    <task id="LOCAL-00017" summary="change in banner edit">
-      <created>1576143948476</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1576143948476</updated>
+      <workItem from="1577019558211" duration="25289000" />
     </task>
     <task id="LOCAL-00018" summary="change in banner edit">
       <created>1576148487061</created>
@@ -538,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577111592139</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="minor fixes">
+      <created>1577171227185</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1577171227186</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +577,8 @@
     <MESSAGE value="set static pages" />
     <MESSAGE value="get profile api" />
     <MESSAGE value="set banner priority, set partner status, change partner password" />
-    <option name="LAST_COMMIT_MESSAGE" value="set banner priority, set partner status, change partner password" />
+    <MESSAGE value="minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576752167559">
@@ -625,10 +621,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577111614282">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577171236539">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577111614282" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577171236539" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577029874115">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
