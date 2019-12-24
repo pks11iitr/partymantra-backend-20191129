@@ -138,6 +138,31 @@
                                     </div>
                                 </div>
                             </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Lang</label>
+                                    <input class="form-control" type="input" name="lang" value="{{$event->lang}}" id="lang">
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group" >
+                                    <label for="exampleInputEmail1" id="locationField">Lat</label>
+                                    <input class="form-control" type="input" name="lat" value="{{$event->lat}}" id="lat">
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
 
                         <div class="row">
                           <div class="col-md-6">
@@ -334,7 +359,7 @@
             }
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbXTYhfpiOi-Y-Wd_TK4OWPkmu3z7vPbU&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnYbA75_Aglq40HbF0O8iVIaIQeY2tHGQ&libraries=places&callback=initAutocomplete"
             async defer></script>
 
 @endsection

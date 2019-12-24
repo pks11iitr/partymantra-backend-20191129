@@ -129,13 +129,6 @@
                                     <label for="exampleInputEmail1" id="locationField">Venue Address</label>
                                     <input type="text" class="form-control" id="autocomplete"
                                     placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()">
-                                    <input type="hidden" name="lat" value="23.5">
-                                    <input type="hidden" name="lang" value="22.1">
-
-
-
-
-
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -372,6 +365,6 @@
             }
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-qt3IABoiaTuVxP7-8dcJ7IBWx7-wyRA&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnYbA75_Aglq40HbF0O8iVIaIQeY2tHGQ&libraries=places&callback=initAutocomplete"
             async defer></script>
 @endsection

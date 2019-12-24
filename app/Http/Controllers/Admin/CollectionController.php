@@ -38,7 +38,8 @@ class CollectionController extends Controller
             'small_image'=>'required|image',
             'isactive'=>'required|in:0,1',
             'istop' =>'required|in:0,1',
-            'priority'=>'required|integer'
+            'priority'=>'required|integer',
+            'about'=>'required'
 		]);
 
 		$file=$request->cover_image->path();
@@ -64,7 +65,9 @@ class CollectionController extends Controller
 					'istop'=>$request->istop,
 					'priority'=>$request->priority,
 					'isactive'=>$request->isactive,
-					'created_by'=>auth()->user()->id])){
+					'created_by'=>auth()->user()->id,
+                    'about'=>$request->about
+            ])){
 				return redirect()->route('admin.collection')->with('success', 'Collection has been created');
 		}
 
@@ -77,7 +80,8 @@ class CollectionController extends Controller
         'name'=>'required|max:250',
           'isactive'=>'required|in:0,1',
             'istop' =>'required|in:0,1',
-            'priority'=>'required|integer'
+            'priority'=>'required|integer',
+          'about'=>'required'
       ]);
 
       if(isset($request->cover_image)){
@@ -113,6 +117,7 @@ class CollectionController extends Controller
           'istop'=>$request->istop,
           'priority'=>$request->priority,
           'isactive'=>$request->isactive,
+          'about'=>$request->about
 
       ])){
 

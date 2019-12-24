@@ -92,6 +92,16 @@
                             </div>
                             <!-- /.col -->
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">About</label>
+                                    <input type="text" class="form-control" name="about" id="exampleInputEmail1" placeholder="Max 60 characters">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">

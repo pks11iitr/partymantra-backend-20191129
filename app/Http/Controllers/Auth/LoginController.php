@@ -58,10 +58,10 @@ class LoginController extends Controller
                     return route($value);
                 }
             }
-            Auth::logout();
+            //Auth::logout();
             abort(401);
         }else{
-            Auth::logout();
+            //Auth::logout();
             abort(401);
         }
 //        if(auth()->user()->hasRole('admin'))
