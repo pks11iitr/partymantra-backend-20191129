@@ -38,7 +38,7 @@
                                     <label>Select Organizer</label>
                                     <select name="partner_id" class="form-control select2" style="width: 100%;">
                                         @foreach($organizers as $organizer)
-                                        <option  value="{{$organizer->id}}" >{{$organizer->name}}</option>
+                                        <option  value="{{$organizer->id}}"  {{old('id')==$organizer->id?'selected':''}}>{{$organizer->name}}</option>
                                         @endforeach
 
                                     </select>
@@ -49,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> Title</label>
-                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title">
+                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter title" value="{{old('title')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -61,7 +61,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Start Date</label>
-                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" >
+                                    <input type="text" class="form_datetime form-control" name="startdate" id="exampleInputEmail1" placeholder="Enter startdate" value="{{old('startdate')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -70,7 +70,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">End Date</label>
-                                    <input type="text" class="form_datetime form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate">
+                                    <input type="text" class="form_datetime form-control" id="exampleInputEmail1" placeholder="Enter enddate" name="enddate" value="{{old('enddate')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -103,7 +103,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control"></textarea>
+                                    <textarea name="description" class="form-control">{{old('description')}}</textarea>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -115,7 +115,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Venue Name</label>
-                                    <input type="text" class="form-control" name="venue_name" id="exampleInputEmail1" placeholder="Enter venue" >
+                                    <input type="text" class="form-control" name="venue_name" id="exampleInputEmail1" placeholder="Enter venue" value="{{old('venue_name')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -128,23 +128,13 @@
                                 <div class="form-group" >
                                     <label for="exampleInputEmail1" id="locationField">Venue Address</label>
                                     <input type="text" class="form-control" id="autocomplete"
-                                    placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()">
+                                    placeholder="Search venue address....." name="venue_adderss" onFocus="geolocate()" value="{{old('venue_address')}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
                         </div>
                         <div class="row">
-                            <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Lang</label>
-                                    <input class="form-control" type="input" name="lang" value="" id="lang">
-
-                                </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
                             <!-- /.col -->
 
 
@@ -152,12 +142,23 @@
                             <div class="col-md-6">
                                 <div class="form-group" >
                                     <label for="exampleInputEmail1" id="locationField">Lat</label>
-                                    <input class="form-control" type="input" name="lat" value="" id="lat">
+                                    <input class="form-control" type="input" name="lat" id="lat" value="{{old('lat')}}">
 
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                             <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Lang</label>
+                                    <input class="form-control" type="input" name="lang" id="lang" value="{{old('lang')}}">
+
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+
                         </div>
                         <div class="row">
                             <!-- /.col -->
@@ -165,8 +166,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Is Active</label>
                                     <select name="isactive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option  selected="selected" value="1" {{old('isactive')==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{old('isactive')==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -174,8 +175,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Partner Active</label>
                                     <select name="partneractive" class="form-control select2" style="width: 100%;">
-                                        <option  selected="selected" value="1" >Yes</option>
-                                        <option value="0" >No</option>
+                                        <option value="1" {{old('partneractive')==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{old('partneractive')==0?'selected':''}}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -186,8 +187,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mark as Full</label>
                                     <select name="markasfull" class="form-control select2" style="width: 100%;">
-                                        <option value="0" selected="selected">No</option>
-                                        <option   value="1">Yes</option>
+                                        <option value="0" {{old('markasfull')==1?'selected':''}}>No</option>
+                                        <option   value="1" {{old('markasfull')==0?'selected':''}}>Yes</option>
 
                                     </select>
                                 </div>
@@ -196,7 +197,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Per Person Text</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                      placeholder="Enter email" name="per_person_text">
+                                      placeholder="Enter email" name="per_person_text" value="{{old('per_person_text')}}">
 
                                 </div>
                             </div>
@@ -207,7 +208,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">TNC</label>
-                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address">
+                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" value="{{old('tnc')}}">
 
                                 </div>
                                 <!-- /.form-group -->
@@ -217,7 +218,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Custom Package Details</label>
-                                    <textarea type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" ></textarea>
+                                    <textarea type="text" class="form-control" name="custom_package_details" id="exampleInputEmail1" placeholder="Enter custom package details" >{{old('custom_package_details')}}</textarea>
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -228,15 +229,15 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Do You want to put on home page?</label>
                                     <select name="istop" class="form-control select2" style="width: 100%;">
-                                        <option selected="selected" value="0">No</option>
-                                        <option   value="1">Yes</option>
+                                        <option value="0" {{old('markasfull')==0?'selected':''}}>No</option>
+                                        <option   value="1" {{old('markasfull')==1?'selected':''}}>Yes</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Home Position</label>
-                                    <input type="text" class="form-control"  id="exampleInputEmail1" placeholder="Enter tnc" name="priority" value="100">
+                                    <input type="text" class="form-control"  id="exampleInputEmail1" placeholder="Enter tnc" name="priority" value="{{old('markasfull')??100}}">
                                 </div>
                             </div>
                         </div>

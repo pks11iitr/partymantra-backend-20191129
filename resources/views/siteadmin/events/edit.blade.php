@@ -208,7 +208,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">TNC</label>
-                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" name="address" value="{{$event->tnc}}">
+                                    <input type="text" class="form-control" name="tnc" id="exampleInputEmail1" placeholder="Enter tnc" value="{{$event->tnc}}">
                                 </div>
                             </div>
                         </div>
