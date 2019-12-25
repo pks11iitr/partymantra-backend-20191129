@@ -128,7 +128,9 @@ class PartnerController extends Controller
 			'contact_no'=>'required',
 			'type'=>'required',
 			'per_person_text'=>'required',
-			'isactive'=>'required'
+			'isactive'=>'required',
+            'header_image'=>'nullable|image',
+            'small_image'=>'nullable|image',
 
 			]);
 
@@ -137,7 +139,7 @@ class PartnerController extends Controller
       $user->status=$request->isactive;
       $user->save();
 
-      if(isset($request->header_image)){
+      if(!empty($request->header_image)){
           $file=$request->header_image->path();
 
           $name=str_replace(' ', '_', $request->header_image->getClientOriginalName());
@@ -149,7 +151,7 @@ class PartnerController extends Controller
           $path1=DB::raw('header_image');
       }
 
-      if(isset($request->small_image)){
+      if(!empty($request->small_image)){
           // 2nd image
           $file=$request->small_image->path();
 
@@ -175,6 +177,8 @@ class PartnerController extends Controller
             'type'=>$request->type,
             'per_person_text'=>$request->per_person_text,
             'isactive'=>$request->isactive,
+            'header_image'=>$path1,
+            'small_image'=>$path2,
 		])) {
                 return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
 

@@ -70,8 +70,8 @@ class CategoryController extends Controller
 
                   $request->validate([
                   'name'=>'required|max:100',
-                  'isactive'=>'required'
-
+                  'isactive'=>'required',
+                   'image'=>'nullable|image'
                   ]);
                 if(isset($request->image)){
                   $file=$request->image->path();

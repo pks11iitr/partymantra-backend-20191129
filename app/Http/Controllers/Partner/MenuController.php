@@ -84,11 +84,12 @@ class MenuController extends Controller
           'name'=>'required|max:100',
           'price'=>'required',
           'cut_pice'=>'required',
-          'isactive'=>'required'
+          'isactive'=>'required',
+              'image'=>'nullable|image',
           ]);
 
 
-             if(isset($request->image)) {
+             if(!empty($request->image)) {
                  $file = $request->image->path();
 
                  $name = str_replace(' ', '_', $request->image->getClientOriginalName());

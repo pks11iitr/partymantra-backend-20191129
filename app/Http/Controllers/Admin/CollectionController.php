@@ -81,10 +81,12 @@ class CollectionController extends Controller
           'isactive'=>'required|in:0,1',
             'istop' =>'required|in:0,1',
             'priority'=>'required|integer',
-          'about'=>'required'
+          'about'=>'required',
+          'cover_image'=>'nullable|image',
+          'small_image'=>'nullable|image',
       ]);
 
-      if(isset($request->cover_image)){
+      if(!empty($request->cover_image)){
           $file=$request->cover_image->path();
 
           $name=str_replace(' ', '_', $request->cover_image->getClientOriginalName());
@@ -96,7 +98,7 @@ class CollectionController extends Controller
           $path1=DB::raw('cover_image');
       }
 
-        if(isset($request->small_image)){
+        if(!empty($request->small_image)){
             $file=$request->small_image->path();
 
             $name=str_replace(' ', '_', $request->small_image->getClientOriginalName());
@@ -105,7 +107,7 @@ class CollectionController extends Controller
 
             Storage::put($path2, file_get_contents($file));
         }else{
-            $path2=DB::raw('cover_image');
+            $path2=DB::raw('small_image');
         }
 
       $collection = collection::findOrfail($id);

@@ -141,10 +141,12 @@ class EventController extends Controller
             'partneractive'=>'required',
             'markasfull'=>'required',
             'istop'=>'required',
-            'priority'=>'required|integer'
+            'priority'=>'required|integer',
+            'header_image'=>'nullable|image',
+            'small_image'=>'nullable|image',
         ]);
 
-        if(isset($request->header_image)){
+        if(!empty($request->header_image)){
             $file=$request->header_image->path();
 
             $name=str_replace(' ', '_',                                   $request->header_image->getClientOriginalName());
@@ -157,7 +159,7 @@ class EventController extends Controller
             $path1=DB::raw('header_image');
         }
 
-        if(isset($request->small_image)){
+        if(!empty($request->small_image)){
             // 2nd image
             $file=$request->small_image->path();
 
@@ -216,8 +218,14 @@ class EventController extends Controller
 
     public function addgallery(Request $request, $id){
         $event=PartnerEvent::findOrFail($id);
-        if(isset($request->gallery)){
+        if(!empty($request->gallery)){
+
+            $request->validate([
+               'gallery.*'=>'required|image'
+            ]);
+
             foreach($request->gallery as $file){
+
                 $event->saveDocument($file, 'events');
             }
         }

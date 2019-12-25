@@ -53,7 +53,7 @@ class ProfileController extends Controller
             'image'=>'nullable|image'
         ]);
 
-        if(isset($request->image)){
+        if(!empty($request->image)){
             $file = $request->image->path();
 
             $name = str_replace(' ', '_', $request->image->getClientOriginalName());

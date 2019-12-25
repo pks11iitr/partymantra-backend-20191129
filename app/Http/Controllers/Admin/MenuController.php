@@ -74,6 +74,7 @@ class MenuController extends Controller
     public function update(Request $request, $id){
       $request->validate([
       'name'=>'required|max:100',
+          'image'=>'nullable|image',
       'price'=>'required',
       'cut_pice'=>'required',
       'isactive'=>'required',
@@ -81,7 +82,7 @@ class MenuController extends Controller
 
       ]);
 
-    if(isset($request->image)){
+    if(!empty($request->image)){
         $file=$request->image->path();
 
         $name=str_replace(' ', '_', $request->image->getClientOriginalName());

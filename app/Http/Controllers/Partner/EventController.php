@@ -133,10 +133,12 @@ class EventController extends Controller
       'tnc'=>'required',
       'custom_package_details'=>'required',
       'isactive'=>'required',
-      'markasfull'=>'required'
+      'markasfull'=>'required',
+          'header_image'=>'nullable|image',
+          'small_image'=>'nullable|image',
       ]);
 
-      if(isset($request->header_image)){
+      if(!empty($request->header_image)){
               $file=$request->header_image->path();
 
               $name=str_replace(' ', '_',
@@ -150,7 +152,7 @@ class EventController extends Controller
           $path1=DB::raw('header_image');
       }
 
-      if(isset($request->small_image)){
+      if(!empty($request->small_image)){
               // 2nd image
               $file=$request->small_image->path();
 

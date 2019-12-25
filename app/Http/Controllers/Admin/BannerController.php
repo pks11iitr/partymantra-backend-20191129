@@ -83,11 +83,12 @@ class BannerController extends Controller
             			'entity_type'=>'nullable',
             			'entity_id'=>'nullable',
             			'isactive'=>'required',
-                        'priority'=>'required|integer'
+                        'priority'=>'required|integer',
+                        'image'=>'nullable|image',
 
             		]);
                 $banner = banner::findOrFail($id);
-                if($request->image){
+                if(!empty($request->image)){
                     $file=$request->image->path();
 
                     $name=str_replace(' ', '_', $request->image->getClientOriginalName());
