@@ -235,8 +235,62 @@
                 <!-- /.card -->
 
 
-            </div><!-- /.container-fluid -->
+
         </section>
+        <section class="content">
+        <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Add Gallery Images</h3>
+                </div>
+                <!-- /.card-header -->
+                <form action="{{route('partner.event.gallery',['id'=>$events->id])}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <!-- /.row -->
+
+                        <!-- /.row -->
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Header Image</label>
+                                    <input type="file" class="form-control" name="gallery[]" id="exampleInputEmail1" placeholder="Enter image" multiple>
+                                    <br>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">.</label>
+                                    <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            @foreach($events->gallery as $g)
+                                <div class="form-group">
+                                    <img src="{{$g->doc_path}}" height="100" width="200"> &nbsp; &nbsp; <a href="{{route('partner.event.galleryrm', ['id'=>$g->id])}}">X</a>
+                                    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;          &nbsp; &nbsp; &nbsp; &nbsp;            </div>
+                        @endforeach
+                        <!-- /.form-group -->
+                            <!-- /.form-group -->
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                </form>
+            </div>
+
+
+
+        </div>
+    </section>
         <!-- /.content -->
     </div>
 @endsection

@@ -120,7 +120,8 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner
         Route::post('event', 'Partner\EventController@store')->name('partner.event.store');
         Route::get('event/{id}', 'Partner\EventController@edit')->where('id', '[0-9]+')->name('partner.event.edit');
         Route::post('event/{id}', 'Partner\EventController@update')->where('id', '[0-9]+')->name('partner.event.update');
-
+    Route::post('events/{id}/add-gallery', 'Partner\EventController@addgallery')->name('partner.event.gallery');
+    Route::get('events/del-gallery/{id}', 'Partner\EventController@deletegallery')->name('partner.event.galleryrm');
 
 
         Route::get('package', 'Partner\EventPackagesController@index')->name('partner.package');

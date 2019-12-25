@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partner;
 
 use App\Models\Collection;
+use App\Models\Document;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -198,5 +199,29 @@ class EventController extends Controller
 
                 }
                 return redirect()->back()->with('error', 'Events update failed');
+    }
+
+    public function addgallery(Request $request, $id){
+        $user=auth()->user();
+        $partner=$user->partner;
+        $event=PartnerEvent::where('partner_id', $partner->id)->findOrFail($id);
+        if(!empty($request->gallery)){
+
+            $request->validate([
+                'gallery.*'=>'required|image'
+            ]);
+
+            foreach($request->gallery as $file){
+
+                $event->saveDocument($file, 'events');
+            }
+        }
+        return redirect()->back()->with('success', 'Images have been uploaded');
+    }
+
+    public function deletegallery(Request $request, $id){
+        $user=auth()->user();
+        Document::where('id', $id)->where('uploaded_by', $user->id)->where('entity_type', 'App\Models\PartnerEvent')->delete();
+        return redirect()->back()->with('success', 'Images has been deleted');
     }
 }

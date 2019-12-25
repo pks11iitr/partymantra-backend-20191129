@@ -268,9 +268,6 @@
                     </div>
 					</form>
                 </div>
-
-
-
             </div>
         </section>
         <section class="content">
