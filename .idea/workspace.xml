@@ -4,6 +4,7 @@
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,14 +188,7 @@
       <workItem from="1576590218156" duration="4431000" />
       <workItem from="1576732113796" duration="4802000" />
       <workItem from="1576845556107" duration="8012000" />
-      <workItem from="1577019558211" duration="34513000" />
-    </task>
-    <task id="LOCAL-00021" summary="working on event menu and collection select">
-      <created>1576160869771</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1576160869771</updated>
+      <workItem from="1577019558211" duration="35310000" />
     </task>
     <task id="LOCAL-00022" summary="working on event menu and collection select">
       <created>1576224405800</created>
@@ -532,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577189389003</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="profile image update added">
+      <created>1577254901164</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1577254901165</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +554,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="address updated api" />
     <MESSAGE value="setting rolewise login redirections" />
     <MESSAGE value="setting rolwise login access" />
     <MESSAGE value="theme setup done" />
@@ -578,17 +578,18 @@
     <MESSAGE value="set banner priority, set partner status, change partner password" />
     <MESSAGE value="minor fixes" />
     <MESSAGE value="api new key added" />
-    <option name="LAST_COMMIT_MESSAGE" value="api new key added" />
+    <MESSAGE value="profile image update added" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile image update added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577254418464">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577254418464" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577254886795">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577254900788">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577254886795" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577254900788" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -621,10 +622,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577189396559">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577254914327">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577189396559" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577254914327" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577029874115">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

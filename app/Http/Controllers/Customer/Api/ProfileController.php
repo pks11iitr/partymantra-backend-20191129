@@ -49,7 +49,8 @@ class ProfileController extends Controller
            'name'=>'required|max:25',
            'email'=>'required|email',
            'gender'=>'required|in:male,female,other',
-           'dob'=>'required|date_format:Y-m-d'
+           'dob'=>'required|date_format:Y-m-d',
+            'image'=>'nullable|image'
         ]);
 
         if(isset($request->image)){
