@@ -52,7 +52,7 @@ class LoginController extends Controller
     }
 
     public function redirectTo(){
-        if(auth()->user()->status) {
+        if(auth()->user()->status==1) {
             foreach (config('allowedusers.admins') as $key => $value) {
                 if (auth()->user()->hasRole($key)) {
                     return route($value);
