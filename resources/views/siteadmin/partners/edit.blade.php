@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Header Image</label>
                                     <input type="file" class="form-control" name="header_image" id="exampleInputEmail1" placeholder="Enter email"><br>
-                                      <image src="{{$partners->header_image}}">
+                                      <image src="{{$partners->header_image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -73,7 +73,7 @@
                                     <label for="exampleInputEmail1">Small Icon Image</label>
                                     <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="small_image">
                                     <br>
-                                    <image src="{{$partners->header_image}}">
+                                    <image src="{{$partners->small_image}}" height="100" width="200">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
