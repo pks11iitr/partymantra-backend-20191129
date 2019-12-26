@@ -131,26 +131,35 @@ class OrderController extends Controller
 
         $order->total=$total;
         if($order->save()){
-//            $response=$this->pay->generateorderid([
-//                "amount"=>$order->total,
-//                "currency"=>"INR",
-//                "receipt"=>$order->refid,
-//            ]);
-//
-//            var_dump($response);die;
-
-            return response()->json([
-                'message'=>'success',
-                'data'=>[
-                    'orderid'=> $order->id,
-                    'total'=>$order->total,
-                    'email'=>$user->email,
-                    'mobile'=>$user->mobile,
-                    'description'=>$item->entity->title,
-                    'address'=>$user->address
-                ],
-            ], 200);
-
+            $response=$this->pay->generateorderid([
+                "amount"=>$order->total,
+                "currency"=>"INR",
+                "receipt"=>$order->refid,
+            ]);
+            $responsearr=json_decode($response);
+            if(isset($responsearr->id)){
+                $order->order_id=$responsearr->id;
+                $order->order_id_response=$response;
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'success',
+                    'data'=>[
+                        'orderid'=> $order->order_id,
+                        'total'=>$order->total,
+                        'email'=>$user->email,
+                        'mobile'=>$user->mobile,
+                        'description'=>$item->entity->title,
+                        'address'=>$user->address
+                    ],
+                ], 200);
+            }else{
+                return response()->json([
+                    'status'=>'failed',
+                    'message'=>'Payment cannot be initiated',
+                    'data'=>[
+                    ],
+                ], 200);
+            }
         }
         return response()->json([
             'message'=>'some error occurred',
@@ -321,29 +330,29 @@ class OrderController extends Controller
     }
 
     public function verifyPayment(Request $request){
-        $paymentresult=$this->pay->verifypayment([]);
+        $order=Order::where('order_id', $request->razorpay_order_id)->firstOrFail();
+        $paymentresult=$this->pay->verifypayment($request->all());
         if($paymentresult){
-            $order=Order::where('refid', $request->id)->first();
+            $order->payment_id=$request->razorpay_payment_id;
+            $order->payment_id_response=$request->razorpay_signature;
             $order->payment_status='paid';
-            if($order->save()){
-                return response()->json([
-                    'status'=>'success',
-                    'message'=>'Payment is successfull',
-                    'errors'=>[
+            $order->save();
+            return response()->json([
+                'status'=>'success',
+                'message'=>'Payment is successfull',
+                'errors'=>[
 
-                    ],
-                ], 200);
-            }else{
-                return response()->json([
-                    'status'=>'failed',
-                    'message'=>'Payment is not successfull',
-                    'errors'=>[
+                ],
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=>'failed',
+                'message'=>'Payment is not successfull',
+                'errors'=>[
 
-                    ],
-                ], 200);
-            }
+                ],
+            ], 200);
         }
     }
-
 
 }

@@ -32,6 +32,7 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('profile', ['as'=>'api.profile', 'uses'=>'Customer\Api\ProfileController@getProfileInfo']);
         $api->post('book', ['as'=>'api.order.book', 'uses'=>'Customer\Api\OrderController@addtocart']);
         $api->post('pay-now/{id?}', ['as'=>'api.order.pay', 'uses'=>'Customer\Api\OrderController@makeOrder']);
+        $api->post('verify-payment', ['as'=>'api.payment.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
         //$api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
         //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
