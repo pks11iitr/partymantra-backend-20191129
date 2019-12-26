@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Contracts\Auth\Factory as Auth1;
+use Illuminate\Support\Facades\Session;
+use Auth;
 
 class Authenticate extends Middleware
 {
@@ -12,6 +15,21 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
+    public function __construct(Auth1 $auth)
+    {
+        parent::__construct($auth);
+        if(auth()->user()->status==1) {
+        }else if(auth()->user()->status==0){
+            Auth::logout();
+            Session::flash('error', 'Account is not active');
+            return redirect(route('login'));
+        }else if(auth()->user()->status==2){
+            Auth::logout();
+            Session::flash('error', 'Account has been blocked');
+            return redirect(route('login'));
+        }
+    }
+
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {

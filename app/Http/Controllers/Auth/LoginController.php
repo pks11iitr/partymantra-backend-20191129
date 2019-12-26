@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Session;
+
 class LoginController extends Controller
 {
     /*
@@ -60,9 +62,14 @@ class LoginController extends Controller
             }
             Auth::logout();
             abort(401);
-        }else{
+        }else if(auth()->user()->status==0){
             Auth::logout();
-            abort(401);
+            Session::flash('error', 'Account is not active');
+            return route('login');
+        }else if(auth()->user()->status==2){
+            Auth::logout();
+            Session::flash('error', 'Account has been blocked');
+            return route('login');
         }
 //        if(auth()->user()->hasRole('admin'))
 //            return route('admin.dashboard');
