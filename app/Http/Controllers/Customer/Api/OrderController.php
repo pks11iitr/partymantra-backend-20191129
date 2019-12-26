@@ -180,12 +180,15 @@ class OrderController extends Controller
             return response()->json([
                 'message' => 'success',
                 'data' => [
-                    'orderid' => $order->id,
+                    'orderid' => $order->order_id,
                     'total' => $order->total,
                     'email' => $user->email,
                     'mobile' => $user->mobile,
                     'description' => $order->details[0]->entity->title,
-                    'address' => $user->address
+                    'address' => $user->address,
+                    'currency'=>'INR',
+                    'merchantid'=>$this->pay->merchantkey,
+
                 ],
             ], 200);
         }
