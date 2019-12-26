@@ -149,7 +149,9 @@ class OrderController extends Controller
                         'email'=>$user->email,
                         'mobile'=>$user->mobile,
                         'description'=>$item->entity->title,
-                        'address'=>$user->address
+                        'address'=>$user->address,
+                        'currency'=>'INR',
+                        'merchantid'=>$this->pay->merchantkey,
                     ],
                 ], 200);
             }else{

@@ -8,7 +8,7 @@ use GuzzleHttp;
 class RazorPayService
 {
 
-    protected $merchantkey='Dvd9xhIQc0l4L3';
+    public $merchantkey='Dvd9xhIQc0l4L3';
     protected $api_key='rzp_test_zAvfify4pZWTAH';
     protected $api_secret='R47Ub82h0pGfoMiyYZu1BKGc';
 
