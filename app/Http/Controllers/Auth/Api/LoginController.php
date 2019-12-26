@@ -89,7 +89,7 @@ class LoginController extends Controller
         }else if(!in_array($user->status, [0 , 1])){
             //send OTP
             return response()->json([
-                'message'=>'invalid login attempt',
+                'message'=>'account has been blocked',
                 'errors'=>[
 
                 ],
@@ -138,9 +138,9 @@ class LoginController extends Controller
                 'errors'=>[
                 ],
             ], 404);
-        }else if(!($user->status==0 || $user->status==1)){
+        }else if(!in_array($user->status, [0 , 1])){
             return response()->json([
-                'message'=>'account is not active',
+                'message'=>'account has been blocked',
                 'errors'=>[
 
                 ],

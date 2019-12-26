@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/allowedusers.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/allowedusers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,14 +189,7 @@
       <workItem from="1576590218156" duration="4431000" />
       <workItem from="1576732113796" duration="4802000" />
       <workItem from="1576845556107" duration="8012000" />
-      <workItem from="1577019558211" duration="51230000" />
-    </task>
-    <task id="LOCAL-00029" summary="Merge branch 'monika-branch' of github.com:pks11iitr/partymantra-backend-20191129&#10;&#10;# Conflicts:&#10;#&#9;routes/web.php">
-      <created>1576237338522</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1576237338522</updated>
+      <workItem from="1577019558211" duration="52848000" />
     </task>
     <task id="LOCAL-00030" summary="final check pushed">
       <created>1576247553466</created>
@@ -532,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577341413243</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="integration of payment gateway start">
+      <created>1577342098619</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1577342098620</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +555,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="event packages cerated, working on orders" />
     <MESSAGE value="update profile api" />
     <MESSAGE value="change in event create" />
     <MESSAGE value="change in banner edit" />
@@ -578,17 +579,18 @@
     <MESSAGE value="securing image update" />
     <MESSAGE value="add galler in partner dashboard" />
     <MESSAGE value="setting logout user when user is blocked or inactive" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting logout user when user is blocked or inactive" />
+    <MESSAGE value="integration of payment gateway start" />
+    <option name="LAST_COMMIT_MESSAGE" value="integration of payment gateway start" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577340616771">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577340616771" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577341412371">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577342098375">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577341412371" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577342098375" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -621,10 +623,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577274020558">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577342109579">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577274020558" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577342109579" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577029874115">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

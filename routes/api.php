@@ -21,6 +21,8 @@ $api = app('Dingo\Api\Routing\Router');
     $api->post('verify-otp', ['as'=>'api.otp.verify', 'uses'=>'Auth\Api\LoginController@verifyOTP']);
 
     /*
+    Customer application api routes
+    /*
     authenticated routes starts
     */
 
@@ -40,20 +42,24 @@ $api = app('Dingo\Api\Routing\Router');
     });
 
     /*
-    authenticated routes starts
+    authenticated routes ends
     */
-
 
     //home page
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
-
     //colections list
     $api->get('collections', ['as'=>'api.collections', 'uses'=>'Customer\Api\CollectionController@index']);
     //collection events
     $api->get('collection/{id}/events', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@events']);
-
     //event details
     $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
     $api->get('event/{id}/gallery', ['as'=>'api.event.gallery', 'uses'=>'Customer\Api\EventController@gallery']);
     $api->get('event/{id}/reviews', ['as'=>'api.event.reviews', 'uses'=>'Customer\Api\EventController@reviews']);
 
+    /*
+     * customer api routes ends
+     */
+
+    $api->group(['middleware' => ['auth:api','acl'], 'is'=>'partner'], function ($api) {
+        $api->get('mark-entry', ['as'=>'api.mark.entry', 'uses'=>'Customer\Api\OrderController@mark']);
+    });
