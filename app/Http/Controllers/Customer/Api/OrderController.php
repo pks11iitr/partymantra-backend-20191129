@@ -130,8 +130,13 @@ class OrderController extends Controller
         if($order->save()){
             return response()->json([
                 'message'=>'success',
-                'errors'=>[
-
+                'data'=>[
+                    'orderid'=> $order->id,
+                    'total'=>$order->total,
+                    'email'=>$user->email,
+                    'mobile'=>$user->mobile,
+                    'description'=>$item->entity->title,
+                    'address'=>$user->address
                 ],
             ], 200);
 
@@ -147,7 +152,27 @@ class OrderController extends Controller
     }
 
     private function payExistingOrder(Request $request, $id){
+        $user=auth()->user();
         $order=Order::where('user_id', auth()->user()->id)->where('refid', $id)->where('status', 'pending')->firstOrFail();
+        if($order->details[0]->entity instanceof PartnerEven) {
+            return response()->json([
+                'message' => 'success',
+                'data' => [
+                    'orderid' => $order->id,
+                    'total' => $order->total,
+                    'email' => $user->email,
+                    'mobile' => $user->mobile,
+                    'description' => $order->details[0]->entity->title,
+                    'address' => $user->address
+                ],
+            ], 200);
+        }
+        return response()->json([
+            'message'=>'some error occurred',
+            'errors'=>[
+
+            ],
+        ], 404);
     }
 
     public function history(Request $request){
