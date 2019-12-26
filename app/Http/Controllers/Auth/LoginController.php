@@ -61,7 +61,8 @@ class LoginController extends Controller
                 }
             }
             Auth::logout();
-            abort(401);
+            Session::flash('error', 'You dont have permissions to login here');
+            return route('login');
         }else if(auth()->user()->status==0){
             Auth::logout();
             Session::flash('error', 'Account is not active');
