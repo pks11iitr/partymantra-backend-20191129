@@ -9,6 +9,7 @@ use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
 use App\Models\Review;
+use App\Services\Payment\RazorPayService;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,9 @@ class OrderController extends Controller
      * keep latest order in cart
      * on next order
      */
-
+    public function __construct(RazorPayService $pay){
+        $this->pay=$pay;
+    }
 
     public function addtocart(Request $request){
         $request->validate([
@@ -128,6 +131,14 @@ class OrderController extends Controller
 
         $order->total=$total;
         if($order->save()){
+//            $response=$this->pay->generateorderid([
+//                "amount"=>$order->total,
+//                "currency"=>"INR",
+//                "receipt"=>$order->refid,
+//            ]);
+//
+//            var_dump($response);die;
+
             return response()->json([
                 'message'=>'success',
                 'data'=>[
@@ -306,6 +317,31 @@ class OrderController extends Controller
 
                 ],
             ], 404);
+        }
+    }
+
+    public function verifyPayment(Request $request){
+        $paymentresult=$this->pay->verifypayment([]);
+        if($paymentresult){
+            $order=Order::where('refid', $request->id)->first();
+            $order->payment_status='paid';
+            if($order->save()){
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'Payment is successfull',
+                    'errors'=>[
+
+                    ],
+                ], 200);
+            }else{
+                return response()->json([
+                    'status'=>'failed',
+                    'message'=>'Payment is not successfull',
+                    'errors'=>[
+
+                    ],
+                ], 200);
+            }
         }
     }
 
