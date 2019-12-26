@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/partymantra.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/partymantra.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +124,11 @@
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <path value="$PROJECT_DIR$/vendor/milon/barcode" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1UEORgdlKWEGZxoV6GD6nQ11rVZ" />
@@ -131,7 +141,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../carecover" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../letsmd_frontend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -187,14 +197,8 @@
       <workItem from="1576590218156" duration="4431000" />
       <workItem from="1576732113796" duration="4802000" />
       <workItem from="1576845556107" duration="8012000" />
-      <workItem from="1577019558211" duration="58697000" />
-    </task>
-    <task id="LOCAL-00033" summary="final check pushed">
-      <created>1576323133987</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1576323133987</updated>
+      <workItem from="1577019558211" duration="60660000" />
+      <workItem from="1577355242454" duration="1545000" />
     </task>
     <task id="LOCAL-00034" summary="final check pushed">
       <created>1576323866857</created>
@@ -532,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577352286046</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="current session redirect done for invalid users">
+      <created>1577353075909</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1577353075909</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="change in banner edit" />
     <MESSAGE value="working on event menu and collection select" />
     <MESSAGE value="Merge branch 'monika-branch' of github.com:pks11iitr/partymantra-backend-20191129&#10;&#10;# Conflicts:&#10;#&#9;routes/web.php" />
     <MESSAGE value="final check pushed" />
@@ -578,25 +588,26 @@
     <MESSAGE value="integration of payment gateway start" />
     <MESSAGE value="mark order entry by partner api added" />
     <MESSAGE value="correction is login and redirection, current session redirect pending" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction is login and redirection, current session redirect pending" />
+    <MESSAGE value="current session redirect done for invalid users" />
+    <option name="LAST_COMMIT_MESSAGE" value="current session redirect done for invalid users" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577348789794">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577348789794" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577352285442">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577359179843">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577352285442" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577359179843" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1576751305402" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577352446152">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577355287522">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1577352446152" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1577355287522" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -605,10 +616,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1576231874612" />
-    <state x="487" y="210" width="457" height="373" key="NewPhpClassDialog" timestamp="1576567668954">
+    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog" timestamp="1577354007708">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="487" y="210" width="457" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1576567668954" />
+    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1577354007708" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1576913724854">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -621,10 +632,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577344663430">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577353084059">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577344663430" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577353084059" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577029874115">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
