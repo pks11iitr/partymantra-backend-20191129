@@ -43,7 +43,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Partner Type</th>
+                  <th>Partner Name</th>
                   <th>Mobile</th>
                      <th>Short Address</th>
                       <th>Per Person Text</th>
@@ -60,7 +60,7 @@
 
                @foreach($partners as $partner)
                 <tr>
-                  <td>{{$partner->type}}</td>
+                  <td>{{$partner->name}}</td>
                   <td>{{$partner->contact_no}}</td>
 
                   <td>{{$partner->short_address}}</td>
