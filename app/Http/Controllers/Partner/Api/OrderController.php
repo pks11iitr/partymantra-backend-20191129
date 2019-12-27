@@ -21,7 +21,7 @@ class OrderController extends Controller
             ], 200);
         }
 
-        $order->entry_marked=true;
+        //$order->entry_marked=true;
         if($order->save()){
             return response()->json([
                 'status'=>'success',
