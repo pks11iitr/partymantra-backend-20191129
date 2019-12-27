@@ -195,14 +195,7 @@
       <workItem from="1576845556107" duration="8012000" />
       <workItem from="1577019558211" duration="60660000" />
       <workItem from="1577355242454" duration="14156000" />
-      <workItem from="1577383346103" duration="8658000" />
-    </task>
-    <task id="LOCAL-00046" summary="cart detail get api">
-      <created>1576751551796</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1576751551796</updated>
+      <workItem from="1577383346103" duration="10046000" />
     </task>
     <task id="LOCAL-00047" summary="cart detail get api">
       <created>1576751702060</created>
@@ -540,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577443220375</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="removing price double for couple">
+      <created>1577444327849</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1577444327849</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="qr code generated" />
     <MESSAGE value="sms api integrated" />
     <MESSAGE value="reviews created" />
     <MESSAGE value="cart detail get api" />
@@ -586,17 +585,18 @@
     <MESSAGE value="name changed partner" />
     <MESSAGE value="set live mode razor pay" />
     <MESSAGE value="skip sugnature check rajor pay" />
-    <option name="LAST_COMMIT_MESSAGE" value="skip sugnature check rajor pay" />
+    <MESSAGE value="removing price double for couple" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing price double for couple" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577429837741">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577429837741" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577443220261">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577444327709">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577443220261" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577444327709" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -629,10 +629,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577443230056">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577444330587">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577443230056" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577444330587" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

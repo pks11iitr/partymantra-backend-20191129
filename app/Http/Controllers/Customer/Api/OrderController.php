@@ -140,6 +140,7 @@ class OrderController extends Controller
             if(isset($responsearr->id)){
                 $order->order_id=$responsearr->id;
                 $order->order_id_response=$response;
+                $order->save();
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
