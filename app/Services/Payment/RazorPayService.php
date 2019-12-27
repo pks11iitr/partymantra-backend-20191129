@@ -9,8 +9,10 @@ class RazorPayService
 {
 
     public $merchantkey='Dvd9xhIQc0l4L3';
-    protected $api_key='rzp_test_zAvfify4pZWTAH';
-    protected $api_secret='R47Ub82h0pGfoMiyYZu1BKGc';
+//    protected $api_key='rzp_test_zAvfify4pZWTAH';
+//    protected $api_secret='R47Ub82h0pGfoMiyYZu1BKGc';
+    protected $api_key='rzp_live_SChlKx3R6N9pbQ';
+    protected $api_secret='qHjt9dFUSZGEAh3dTbxriGzg';
 
     public function __construct(GuzzleHttp\Client $client){
         $this->client=$client;
