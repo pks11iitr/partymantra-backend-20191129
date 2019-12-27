@@ -115,7 +115,7 @@ class OrderController extends Controller
         $total=0;
         foreach($cartitems as $item){
             if($item->entity instanceof PartnerEvent) {
-                $total = ($item->men + $item->women + 2*$item->couple) * $item->entity->packages->first()->price;
+                $total = ($item->men + $item->women + $item->couple) * $item->entity->packages->first()->price;
                 $item=new OrderItem([
                     'entity_id'=>$item->entity_id,
                     'entity_type'=>$item->entity_type,
