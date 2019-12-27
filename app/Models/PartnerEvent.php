@@ -17,7 +17,7 @@ class PartnerEvent extends Model
 
     protected $appends = array('time_to_start');
 
-    protected $fillable=['title', 'creator_id','startdate', 'enddate', 'description', 'venue_name', 'venue_adderss', 'lat', 'lang', 'header_image', 'small_image', 'tnc', 'custom_package_details','per_person_text', 'isactive', 'markasfull','partner_id','partneractive'];
+    protected $fillable=['title', 'creator_id','startdate', 'enddate', 'description', 'venue_name', 'venue_adderss', 'lat', 'lang', 'header_image', 'small_image', 'tnc', 'custom_package_details','per_person_text', 'isactive', 'markasfull','partner_id','partneractive', 'priority', 'istop'];
 
     protected $hidden=['created_at', 'deleted_at', 'updated_at', 'partner_id','isactive', 'markasfull','partner_id','partneractive','pivot','istop'];
 
