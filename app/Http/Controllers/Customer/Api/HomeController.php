@@ -30,7 +30,7 @@ class HomeController extends Controller
         //return $collections;
 
         $othercollections=Collection::active()->with([$type=>function($query){
-            return $query->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
+            return $query->with('avgreviews')->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
         }])->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections, 'otherbanners'=>$otherbanners];
