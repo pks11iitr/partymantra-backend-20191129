@@ -65,5 +65,5 @@ $api = app('Dingo\Api\Routing\Router');
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'partner'], function ($api) {
         $api->get('mark-entry/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@mark']);
         $api->get('partner-profile', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\ProfileController@profile']);
-        $api->get('partner-order-details/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@mark']);
+        $api->get('partner-order-details/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@details']);
     });
