@@ -49,6 +49,7 @@ $api = app('Dingo\Api\Routing\Router');
 
     //home page
     $api->get('home', ['as'=>'api.home', 'uses'=>'Customer\Api\HomeController@index']);
+    $api->get('search', ['as'=>'api.earch', 'uses'=>'Customer\Api\HomeController@search']);
     //colections list
     $api->get('collections', ['as'=>'api.collections', 'uses'=>'Customer\Api\CollectionController@index']);
     //collection events

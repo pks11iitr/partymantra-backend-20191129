@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Banner;
 use App\Models\Collection;
+use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,6 +36,30 @@ class HomeController extends Controller
 
         return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$othercollections, 'otherbanners'=>$otherbanners];
 
+    }
+
+    public function search(Request $request){
+        if(!empty($request->search)){
+            $events=PartnerEvent::active()
+                ->with('partner')
+                ->where('title', 'like', '%'.$request->search.'%')
+                ->orWhere('venue_adderss', 'like', '%'.$request->search.'%')
+                ->orWhereHas('partner', function($query) use($request){
+                    return $query->where('name', 'like', '%'.$request->search.'%');
+                    })
+                ->get()
+                ->sortBy(function($event){
+                    return $event->away;
+                });
+        }else{
+            $events=PartnerEvent::active()
+                ->with('partner')
+                ->get()
+                ->sortBy(function($event){
+                return $event->away;
+            });
+        }
+        return $events;
     }
 
 }
