@@ -67,7 +67,7 @@ class LoginController extends Controller
             Auth::logout();
             Session::flash('error', 'Account is not active');
             return route('login');
-        }else if(auth()->user()->status==2){
+        }else{
             Auth::logout();
             Session::flash('error', 'Account has been blocked');
             return route('login');

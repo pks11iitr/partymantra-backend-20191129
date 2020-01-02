@@ -34,9 +34,15 @@ class CollectionController extends Controller
             ], 404);
         //PartnerEvent::where('')
 
-        $events=$collection->event()->with('avgreviews')->where('isactive',true)->where('partneractive', true)->orderBy('priority','asc')->get()->sortBy    (function($product){
-            return $product->away;
-        });;
+        $events=$collection->event()
+            ->with('avgreviews')
+            ->where('isactive',true)
+            ->where('partneractive', true)
+            ->orderBy('priority','asc')
+            ->get()
+            ->sortBy(function($product){
+                return $product->away;
+            });
         $i=0;
         foreach($events as $e){
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
