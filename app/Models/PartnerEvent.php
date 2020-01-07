@@ -102,4 +102,8 @@ class PartnerEvent extends Model
         }
     }
 
+    public function facilities(){
+        return $this->belongsToMany('App\Models\Facility', 'event_facility', 'event_id', 'facility_id');
+    }
+
 }

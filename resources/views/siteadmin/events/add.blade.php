@@ -248,7 +248,7 @@
                                 <div class="form-group">
                                     <label>Select Collection</label>
                                     <select class="form-control select2" name="collection_id[]" multiple>
-                                        <option value="">Select Collection</option>
+
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}">{{$collection->name}}</option>
                                         @endforeach
@@ -257,6 +257,36 @@
 
                                 </div>
                                 <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                    <select name="facilities[]" class="form-control select2" style="width: 100%;" multiple>
+                                        @foreach($facilities as $c)
+                                            <option value="{{$c->id}}">{{$c->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Select Collection</label>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                </div>
                             </div>
                         </div>
                             <div class="row">

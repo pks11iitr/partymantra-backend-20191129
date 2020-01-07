@@ -247,13 +247,22 @@
                                 <div class="form-group">
                                     <label>Select Collection</label>
                                     <select class="form-control select2" name="collection_id[]" id="lca2" multiple>
-                                        <option value="">Select Collection</option>
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}" @foreach($event->collections as $c) @if($c->id==$collection->id){{'selected'}}@endif @endforeach>{{$collection->name}}</option>
                                         @endforeach
                                         Select Entity
                                     </select>
 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                    <select name="facilities[]" class="form-control select2" style="width: 100%;" multiple>
+                                        @foreach($facilities as $f)
+                                            <option value="{{$f->id}}" @foreach($event->facilities as $c) @if($c->id==$f->id){{'selected'}}@endif @endforeach>{{$f->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

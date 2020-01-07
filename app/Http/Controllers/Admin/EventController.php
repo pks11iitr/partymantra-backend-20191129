@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Collection;
 use App\Models\Document;
+use App\Models\Facility;
 use App\Models\Menu;
 use App\Models\Package;
 use App\Models\Partner;
@@ -28,18 +29,21 @@ class EventController extends Controller
 
 
     public function edit(Request $request, $id){
+
           $organizers=Partner::active()->get();
           $event = PartnerEvent::findOrFail($id);
           $collections=Collection::active()->get();
-          return view('siteadmin.events.edit',['event'=>$event, 'organizers'=>$organizers, 'collections'=>$collections]);
+          $facilities=Facility::get();
+          return view('siteadmin.events.edit',['event'=>$event, 'organizers'=>$organizers, 'collections'=>$collections, 'facilities'=>$facilities]);
     }
 
 
 
     public function add(Request $request){
         $organizers=Partner::active()->whereIn('type', ['organizers', 'restaurant'])->get();
+        $facilities=Facility::get();
         $collections=Collection::active()->get();
-        return view('siteadmin.events.add', ['organizers'=>$organizers, 'collections'=>$collections]);
+        return view('siteadmin.events.add', ['organizers'=>$organizers, 'collections'=>$collections, 'facilities'=>$facilities]);
     }
 
     public function store(Request $request){
@@ -113,6 +117,10 @@ class EventController extends Controller
                     if(!empty($request->collection_id)){
                         $event->collections()->detach();
                         $event->collections()->attach($request->collection_id);
+                    }
+                    if(!empty($request->facilities)){
+                        $event->facilities()->detach();
+                        $event->facilities()->attach($request->facilities);
                     }
                     return redirect()->route('admin.event')->with('success', 'Events has been created');
             }
@@ -206,6 +214,12 @@ class EventController extends Controller
                 }
             }else{
                 $event->collections()->detach();
+            }
+            if(!empty($request->facilities)){
+                $event->facilities()->detach();
+                $event->facilities()->attach($request->facilities);
+            }else{
+                $event->facilities()->detach();
             }
             return redirect()->route('admin.event')->with('success', 'Events has been created');
 
