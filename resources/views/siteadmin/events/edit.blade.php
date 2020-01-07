@@ -266,7 +266,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <!-- /.col -->
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Enable Cover Charges Men</label>
+                                    <input type="checkbox" name="cover[]" value="men" {{isset($covers['men'])?'checked':''}}>
+                                    <input name="charge[men]" value="{{$covers['men']??0}}" placeholder="charge">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Enable Cover Charges Women</label>
+                                    <input type="checkbox" name="cover[]" value="women" {{isset($covers['women'])?'checked':''}}>
+                                    <input name="charge[women]" value="{{$covers['women']??0}}" placeholder="charge">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Enable Cover Charges Couple</label>
+                                    <input type="checkbox" name="cover[]" value="couple" {{isset($covers['couple'])?'checked':''}}>
+                                    <input name="charge[couple]" value="{{$covers['couple']??0}}" placeholder="charge">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">

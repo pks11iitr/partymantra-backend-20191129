@@ -274,18 +274,24 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Select Collection</label>
+                                    <label>Enable Cover Charges Men</label>
+                                    <input type="checkbox" name="cover[]" value="men">
+                                    <input name="charge[men]" value="0" placeholder="charge">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                    <label for="exampleInputEmail1">Enable Cover Charges Women</label>
+                                    <input type="checkbox" name="cover[]" value="women">
+                                    <input name="charge[women]" value="0" placeholder="charge">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                    <label for="exampleInputEmail1">Enable Cover Charges Couple</label>
+                                    <input type="checkbox" name="cover[]" value="couple">
+                                    <input name="charge[couple]" value="0" placeholder="charge">
                                 </div>
                             </div>
                         </div>
