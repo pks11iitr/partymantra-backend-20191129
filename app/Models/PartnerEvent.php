@@ -27,7 +27,12 @@ class PartnerEvent extends Model
 
     public function packages()
     {
-        return $this->hasMany('App\Models\Package', 'event_id');
+        return $this->hasMany('App\Models\Package', 'event_id')->where('package_type', 'other');
+    }
+
+    public function covers()
+    {
+        return $this->hasMany('App\Models\Package', 'event_id')->where('package_type', 'cover');
     }
 
     public function getHeaderImageAttribute($value)
