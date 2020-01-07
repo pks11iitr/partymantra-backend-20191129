@@ -175,6 +175,7 @@ class OrderController extends Controller
         $order->women=$women;
         $order->couple=$couple;
         if($order->save()){
+            auth()->user()->cart()->delete();
             $response=$this->pay->generateorderid([
                 "amount"=>$order->total,
                 "currency"=>"INR",
