@@ -14,7 +14,7 @@ class EventPackagesController extends Controller
 
     public function index(Request $request){
 
-      	$event_packages=Package::get();
+      	$event_packages=Package::where('package_type', 'other')->get();
       return view('siteadmin.package.index',['event_packages'=>$event_packages]);
 
     }

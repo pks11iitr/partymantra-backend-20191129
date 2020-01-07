@@ -135,9 +135,9 @@ class EventController extends Controller
                         $event->facilities()->attach($request->facilities);
                     }
 
-                    $men=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Men', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user(), 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
-                    $women=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Women', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user(), 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
-                    $couple=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Couple', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user(), 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+                    $men=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Men', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+                    $women=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Women', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+                    $couple=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Couple', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
 
                     if(!empty($request->cover)){
                         if(in_array('men', $request->cover)){
