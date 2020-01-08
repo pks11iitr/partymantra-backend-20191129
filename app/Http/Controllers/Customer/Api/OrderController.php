@@ -346,7 +346,7 @@ class OrderController extends Controller
             if($order->payment_status=='pending'){
                 $amount=$amount+$c->no_of_pass*$c->package->price;
             }else{
-                $amount=$c->no_of_pass*$c->price;
+                $amount=$amount+$c->no_of_pass*$c->price;
             }
             $address=$c->entity->venue_address;
             $image=$c->entity->small_image;

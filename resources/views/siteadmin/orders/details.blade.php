@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{$order->order_id}}</td>
+                                        <td>{{$order->refid}}</td>
                                         <td>{{$order->details[0]->entity->title??''}}</td>
                                         <td>{{$order->details[0]->entity->partner->name??''}}</td>
                                         <td>{{$order->customer->mobile}}</td>

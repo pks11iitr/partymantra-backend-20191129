@@ -67,4 +67,5 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('mark-entry/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@mark']);
         $api->get('partner-profile', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\ProfileController@profile']);
         $api->get('partner-order-details/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@details']);
+        $api->get('my-orders', ['as'=>'api.orders', 'uses'=>'Partner\Api\OrderController@index']);
     });
