@@ -38,7 +38,7 @@ class CollectionController extends Controller
             ->with('avgreviews')
             ->where('isactive',true)
             ->where('partneractive', true)
-            ->orderBy('priority','asc')
+            //->orderBy('priority','asc')
             ->get()
             ->sortBy(function($product){
                 return $product->away;
