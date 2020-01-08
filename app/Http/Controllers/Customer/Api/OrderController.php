@@ -105,6 +105,7 @@ class OrderController extends Controller
                         'mobile'=>$request->mobile,
                         'email'=>$request->email,
                         'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
+                        'subtotal'=>$amount,
                         'amount'=>$amount,
                         'taxes'=>0,
                     ]
@@ -313,6 +314,7 @@ class OrderController extends Controller
                     'date'=>$date,
                     'time_to_start'=>'very soon',
                     'ratio'=>'Men: '.$c->men.' Women: '.$c->women.' Couple:'.$c->couple,
+                    'subtotal'=>$amount,
                     'amount'=>$amount,
                     'taxes'=>0,
                 ]
@@ -367,6 +369,7 @@ class OrderController extends Controller
                 'email'=>$order->email,
                 'ratio'=>'Men: '.$order->men.' Women: '.$order->women.' Couple:'.$order->couple,
                 'amount'=>$amount,
+                'subtotal'=>$amount,
                 'taxes'=>0,
                 'qrcode'=>route('api.order.qr', ['id'=>$order->id])
             ]
