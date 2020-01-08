@@ -446,4 +446,29 @@ class OrderController extends Controller
         }
     }
 
+    public function cancel(Request $request, $id){
+        $user=auth()->user();
+        $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
+        if($order){
+            $order->payment_status='cancel-request';
+            $order->save();
+            return response()->json([
+                'status'=>'success',
+                'message'=>'Your cancellation request has been raid. Our team will process your request.',
+                'errors'=>[
+
+                ],
+            ], 200);
+        }
+
+        return response()->json([
+            'status'=>'failed',
+            'message'=>'You cannot cancel this request',
+            'errors'=>[
+
+            ],
+        ], 200);
+
+    }
+
 }

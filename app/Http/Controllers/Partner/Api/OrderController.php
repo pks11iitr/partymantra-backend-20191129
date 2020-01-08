@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function mark(Request $request, $refid){
         $user=auth()->user();
         $partner=$user->partner;
-        $order=Order::with('details.entity.partner')->where('refid', $refid)->where()->firstOrFail();
+        $order=Order::with('details.entity.partner')->where('refid', $refid)->where('payment_status', 'paid')->firstOrFail();
         if($order->details[0]->entity->partner->id!=$partner->id){
             return response()->json([
                 'status'=>'fail',

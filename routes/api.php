@@ -37,6 +37,7 @@ $api = app('Dingo\Api\Routing\Router');
         //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
+        $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
 
         $api->post('submit-review/{id}', ['as'=>'api.order.review', 'uses'=>'Customer\Api\OrderController@review']);
         $api->get('cart-details', ['as'=>'api.order.cartdetails', 'uses'=>'Customer\Api\OrderController@cartdetails']);
