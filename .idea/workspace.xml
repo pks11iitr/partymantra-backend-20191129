@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/orders/details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/orders/details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,14 +207,7 @@
       <workItem from="1577944045129" duration="2573000" />
       <workItem from="1577963766571" duration="2613000" />
       <workItem from="1578130187970" duration="682000" />
-      <workItem from="1578375092217" duration="25855000" />
-    </task>
-    <task id="LOCAL-00064" summary="get profile api">
-      <created>1577108433516</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1577108433517</updated>
+      <workItem from="1578375092217" duration="26537000" />
     </task>
     <task id="LOCAL-00065" summary="set banner priority, set partner status, change partner password">
       <created>1577111592138</created>
@@ -551,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578467419685</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="order cancel api created">
+      <created>1578468362580</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1578468362580</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="integration of payment gateway start" />
     <MESSAGE value="mark order entry by partner api added" />
     <MESSAGE value="correction is login and redirection, current session redirect pending" />
     <MESSAGE value="current session redirect done for invalid users" />
@@ -597,17 +597,18 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="order display at admin" />
     <MESSAGE value="order details and my orders api for partners" />
-    <option name="LAST_COMMIT_MESSAGE" value="order details and my orders api for partners" />
+    <MESSAGE value="order cancel api created" />
+    <option name="LAST_COMMIT_MESSAGE" value="order cancel api created" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577429837741">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577429837741" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1578467419552">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1578468362496">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1578467419552" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1578468362496" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -640,10 +641,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1578463434032">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1578468366933">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1578463434032" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1578468366933" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

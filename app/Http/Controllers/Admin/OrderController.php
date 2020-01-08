@@ -19,4 +19,13 @@ class OrderController extends Controller
         //var_dump($orders);
         return view('siteadmin.orders.details', compact('order'));
     }
+
+    public function cancelapprove(Request $request, $id){
+
+        $order=Order::where('payment_status', 'cancel-request')->where('id', $id)->first();
+        $order->payment_status='cancelled';
+        $order->save();
+        return redirect()->back()->with('success', 'Order cancel request has been approved');
+
+    }
 }

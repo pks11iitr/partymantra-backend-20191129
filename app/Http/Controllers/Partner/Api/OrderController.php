@@ -106,7 +106,7 @@ class OrderController extends Controller
         $partner=$user->partner;
         $orders=Order::whereHas('details', function($details) use($partner){
             $details->where('partner_id', $partner->id);
-        })->whereIn('payment_status',['paid', 'cancelled'])->orderBy('updated_at','desc')->get();
+        })->whereIn('payment_status',['paid', 'cancelled', 'cancel-request'])->orderBy('updated_at','desc')->get();
         $orderarray=[];
         foreach($orders as $order){
             $orderarray[]=[

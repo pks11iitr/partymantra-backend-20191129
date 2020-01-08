@@ -60,7 +60,7 @@
                                         <td>{{$order->customer->mobile}}</td>
 
                                         <td>{{$order->total}}</td>
-                                        <td>{{$order->payment_status}}</td>
+                                        <td>{{$order->payment_status}}@if($order->payment_status=='cancel-request')<br><a href="{{route('admin.orders.cancelapprove', ['id'=>$order->id])}}">approve</a>@endif</td>
                                         <td>
                                             {{$order->updated_at}}
                                         </td>
