@@ -50,30 +50,58 @@
                                     <th>Total Amount</th>
                                     <th>Order Status</th>
                                     <th>Date</th>
-                                    <th>Details</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach($orders as $order)
                                     <tr>
-                                            <td>{{$order->order_id}}</td>
-                                            <td>{{$order->details[0]->entity->title??''}}</td>
-                                            <td>{{$order->details[0]->entity->partner->name??''}}</td>
-                                                <td>{{$order->customer->mobile}}</td>
+                                        <td>{{$order->order_id}}</td>
+                                        <td>{{$order->details[0]->entity->title??''}}</td>
+                                        <td>{{$order->details[0]->entity->partner->name??''}}</td>
+                                        <td>{{$order->customer->mobile}}</td>
 
-                                            <td>{{$order->total}}</td>
-                                            <td>{{$order->payment_status}}</td>
-                                            <td>
-                                                {{$order->updated_at}}
-                                            </td>
-                                        <td><a href="{{route('admin.orders.details', ['id'=>$order->id])}}">View</a></td>
-                                                                                                                   </tr>
-                                @endforeach
-
+                                        <td>{{$order->total}}</td>
+                                        <td>{{$order->payment_status}}</td>
+                                        <td>
+                                            {{$order->updated_at}}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            {{ $orders->links() }}
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Package Name</th>
+                                    <th>Price</th>
+                                    <th>No. of pass</th>
+                                    <th>Total Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php
+                                    $pass=0;
+                                    $total=0;
+                                @endphp
+                                @foreach($order->details as $item)
+                                    <tr>
+                                        <td>{{$item->package->package_name}}</td>
+                                        <td>{{$item->price}}</td>
+                                        <td>{{$item->no_of_pass}}</td>
+                                        <td>{{$item->no_of_pass*$item->price}}</td>
+                                    </tr>
+                                    @php
+                                        $pass=$pass+$item->no_of_pass;
+                                        $total=$total+$item->no_of_pass*$item->price;
+                                    @endphp
+                                @endforeach
+                                <tr>
+                                    <td></td>
+                                    <td><b>Total</b></td>
+                                    <td><b>{{$pass}}</b></td>
+                                    <td><b>{{$total}}</b></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
 
                         <!-- /.card-body -->
@@ -86,20 +114,6 @@
         </section>
         <!-- /.content -->
     </div>
-
-    <script>
-        $(function () {
-            $("#example1").DataTable();
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-            });
-        });
-    </script>
 
 @endsection
 
