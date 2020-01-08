@@ -273,8 +273,8 @@ class OrderController extends Controller
                 $ordersdetail[$i]['title']=$d->entity->title;
                 $ordersdetail[$i]['image']=$d->entity->small_image;
             }
+            $i++;
         }
-
         return $ordersdetail;
     }
 
