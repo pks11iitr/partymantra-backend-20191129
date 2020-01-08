@@ -94,6 +94,7 @@ class OrderController extends Controller
                 'email'=>$order->email,
                 'ratio'=>'Men: '.$order->men.' Women: '.$order->women.' Couple:'.$order->couple,
                 'amount'=>$amount,
+                'subtotal'=>$amount,
                 'taxes'=>0,
                 'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):''
             ]
