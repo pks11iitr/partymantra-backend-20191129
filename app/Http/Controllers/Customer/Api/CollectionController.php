@@ -38,11 +38,11 @@ class CollectionController extends Controller
             ->with('avgreviews')
             ->where('isactive',true)
             ->where('partneractive', true)
-            //->orderBy('priority','asc')
+            ->orderBy('priority','asc')
             ->get()
-            ->sortBy(function($product){
+            /*->sortBy(function($product){
                 return $product->away;
-            });
+            })*/;
         $i=0;
         foreach($events as $e){
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
