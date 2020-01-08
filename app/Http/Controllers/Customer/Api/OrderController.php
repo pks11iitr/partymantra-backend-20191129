@@ -76,13 +76,14 @@ class OrderController extends Controller
 
             $cartpackages[]=[
                 'package'=>$package->title,
-                'image'=>$package->event->small_image,
                 'pass'=>$request->pass[$i],
                 'price'=>$package->price,
                 'package_type'=>$package->package_type
             ];
             $title=$package->event->title;
             $date=$package->event->startdate.'-'.$package->event->enddate;
+            $address=$package->event->venue_address;
+            $image=$package->event->small_image;
             $amount=$amount+$request->pass[$i]*$package->price;
             $i++;
         }
@@ -95,6 +96,8 @@ class OrderController extends Controller
                     'message'=>'success',
                     'data'=>[
                         'title'=>$title,
+                        'image'=>$image,
+                        'address'=>$address,
                         'packages'=>$cartpackages,
                         'date'=>$date,
                         'totalpass'=>array_sum($request->pass),
@@ -285,7 +288,6 @@ class OrderController extends Controller
                 //$package=$c->package;
                 $cartpackages[]=[
                     'package'=>$c->package->package_name,
-                    'image'=>$c->entity->small_image,
                     'pass'=>$c->no_of_pass,
                     'price'=>$c->package->price,
                     'package_type'=>$c->package->package_type
@@ -294,12 +296,16 @@ class OrderController extends Controller
                 $date=$c->entity->startdate.'-'.$c->entity->enddate;
                 $amount=$amount+$c->no_of_pass*$c->package->price;
                 $totalpass=$totalpass+$c->no_of_pass;
+                $address=$c->entity->venue_address;
+                $image=$c->entity->small_image;
             }
             return [
                 'message'=>'success',
                 'data'=>[
                     'title'=>$title,
-                    'package'=>$cartpackages,
+                    'image'=>$image,
+                    'address'=>$address,
+                    'packages'=>$cartpackages,
                     'totalpass'=>$totalpass,
                     'name'=>$c->name,
                     'mobile'=>$c->mobile,
@@ -331,7 +337,6 @@ class OrderController extends Controller
             //$package=$c->package;
             $cartpackages[]=[
                 'package'=>$c->package->package_name,
-                'image'=>$c->entity->small_image,
                 'pass'=>$c->no_of_pass,
                 'price'=>$c->package->price,
                 'package_type'=>$c->package->package_type
@@ -343,7 +348,8 @@ class OrderController extends Controller
             }else{
                 $amount=$c->no_of_pass*$c->price;
             }
-
+            $address=$c->entity->venue_address;
+            $image=$c->entity->small_image;
             $totalpass=$totalpass+$c->no_of_pass;
         }
         return [
@@ -351,6 +357,8 @@ class OrderController extends Controller
             'data'=>[
                 'orderid'=>$order->refid,
                 'title'=>$title,
+                'image'=>$image,
+                'address'=>$address,
                 'packages'=>$cartpackages,
                 'date'=>$date,
                 'totalpass'=>$totalpass,
