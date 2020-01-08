@@ -75,7 +75,7 @@ class OrderController extends Controller
             ];
 
             $cartpackages[]=[
-                'package'=>$package->title,
+                'package'=>$package->package_name,
                 'pass'=>$request->pass[$i],
                 'price'=>$package->price,
                 'package_type'=>$package->package_type
