@@ -186,7 +186,7 @@ class OrderController extends Controller
         if($order->save()){
             auth()->user()->cart()->delete();
             $response=$this->pay->generateorderid([
-                "amount"=>$order->total,
+                "amount"=>$order->total*100,
                 "currency"=>"INR",
                 "receipt"=>$order->refid,
             ]);
