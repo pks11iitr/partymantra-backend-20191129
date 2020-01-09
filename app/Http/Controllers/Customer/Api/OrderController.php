@@ -56,7 +56,7 @@ class OrderController extends Controller
         $amount=0;
         $i=0;
         $eventids=[];
-        
+
         $maps=[];
         foreach($request->itemid as $key=>$val){
 			$maps[$val]=$request->pass[$key];
@@ -87,7 +87,7 @@ class OrderController extends Controller
             ];
             $title=$package->event->title;
             $date=$package->event->startdate.'-'.$package->event->enddate;
-            $address=$package->event->venue_address;
+            $address=$package->event->venue_adderss;
             $image=$package->event->small_image;
             $amount=$amount+$request->pass[$i]*$package->price;
             $i++;
@@ -302,7 +302,7 @@ class OrderController extends Controller
                 $date=$c->entity->startdate.'-'.$c->entity->enddate;
                 $amount=$amount+$c->no_of_pass*$c->package->price;
                 $totalpass=$totalpass+$c->no_of_pass;
-                $address=$c->entity->venue_address;
+                $address=$c->entity->venue_adderss;
                 $image=$c->entity->small_image;
             }
             return [
@@ -355,7 +355,7 @@ class OrderController extends Controller
             }else{
                 $amount=$amount+$c->no_of_pass*$c->price;
             }
-            $address=$c->entity->venue_address;
+            $address=$c->entity->venue_adderss;
             $image=$c->entity->small_image;
             $totalpass=$totalpass+$c->no_of_pass;
         }
