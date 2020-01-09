@@ -56,6 +56,11 @@ class OrderController extends Controller
         $amount=0;
         $i=0;
         $eventids=[];
+        
+        $maps=[];
+        foreach($request->itemid as $key=>$val){
+			$maps[$val]=$request->pass[$key];
+		}
         foreach($packages as $package){
             if(!in_array($package->event->id, $eventids))
                 $eventids[]=$package->event->id;
@@ -71,7 +76,7 @@ class OrderController extends Controller
                 'name'=>$request->name,
                 'partner_id'=>$package->partner_id,
                 'user_id'=>auth()->user()->id,
-                'no_of_pass'=>$request->pass[$i],
+                'no_of_pass'=>$maps[$package->id],
             ];
 
             $cartpackages[]=[
