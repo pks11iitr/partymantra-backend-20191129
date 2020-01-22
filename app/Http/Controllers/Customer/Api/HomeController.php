@@ -41,6 +41,7 @@ class HomeController extends Controller
             $bannerorder[$banner->placeholder][]=$banner;
         }
         unset($otherbanners);
+
         $i=0;
         $placeholderno=1;
         $collectionswithbanner=[];
@@ -48,8 +49,10 @@ class HomeController extends Controller
             if($i%2!=0){
                 $c->banners=$bannerorder[$placeholderno];
                 $collectionswithbanner[]=$c;
-                $i++;
+                $placeholderno++;
+
             }
+            $i++;
         }
         unset($othercollections);
         //return $collections;
