@@ -48,10 +48,10 @@ class HomeController extends Controller
         foreach($othercollections as $c){
             if($i%2!=0){
                 $c->banners=$bannerorder[$placeholderno];
-                $collectionswithbanner[]=$c;
                 $placeholderno++;
 
             }
+            $collectionswithbanner[]=$c;
             $i++;
         }
         unset($othercollections);
