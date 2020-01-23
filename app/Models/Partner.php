@@ -38,4 +38,8 @@ class Partner extends Model
         return $this->hasMany('App\Models\Package', 'partner_id');
     }
 
+    public function facilities(){
+        return $this->belongsToMany('App\Models\Facility', 'event_facility', 'event_id', 'facility_id');
+    }
+
 }

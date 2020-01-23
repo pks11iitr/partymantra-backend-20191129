@@ -59,6 +59,11 @@ $api = app('Dingo\Api\Routing\Router');
     $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
     $api->get('event/{id}/gallery', ['as'=>'api.event.gallery', 'uses'=>'Customer\Api\EventController@gallery']);
     $api->get('event/{id}/reviews', ['as'=>'api.event.reviews', 'uses'=>'Customer\Api\EventController@reviews']);
+    //restaurant details
+    $api->get('restaurant/{id}', ['as'=>'api.restaurant.view', 'uses'=>'Customer\Api\RestaurantController@view']);
+    $api->get('party/{id}', ['as'=>'api.restaurant.view', 'uses'=>'Customer\Api\RestaurantController@partyview']);
+    $api->get('restaurant/{id}/gallery', ['as'=>'api.restaurant.gallery', 'uses'=>'Customer\Api\RestaurantController@gallery']);
+    $api->get('restaurant/{id}/reviews', ['as'=>'api.restaurant.reviews', 'uses'=>'Customer\Api\RestaurantController@reviews']);
 
     /*
      * customer api routes ends
