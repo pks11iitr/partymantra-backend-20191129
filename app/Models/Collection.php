@@ -21,11 +21,11 @@ class Collection extends Model
     }
 
     public function party(){
-        return $this->belongsToMany();
+        return $this->belongsToMany('App\Models\Partner', 'collection_restaurant', 'collection_id', 'restaurant_id')->where('allow_party', true);
     }
 
     public function restaurant(){
-        return $this->belongsToMany();
+        return $this->belongsToMany('App\Models\Partner', 'collection_restaurant', 'collection_id', 'restaurant_id');
     }
 
     public function getCoverImageAttribute($value)

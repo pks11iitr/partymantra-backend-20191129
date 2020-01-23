@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Traits\Active;
+use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
 {
-    use Active;
+    use Active,ReviewTrait;
 
     protected $table = 'partners';
 
