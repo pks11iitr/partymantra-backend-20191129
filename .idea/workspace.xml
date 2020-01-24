@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/RestaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/RestaurantController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,14 +213,7 @@
       <workItem from="1579157289652" duration="983000" />
       <workItem from="1579513908433" duration="3096000" />
       <workItem from="1579688488302" duration="14961000" />
-      <workItem from="1579842436239" duration="5705000" />
-    </task>
-    <task id="LOCAL-00079" summary="mark order entry by partner api added">
-      <created>1577343726915</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1577343726915</updated>
+      <workItem from="1579842436239" duration="5750000" />
     </task>
     <task id="LOCAL-00080" summary="mark order entry by partner api added">
       <created>1577344544707</created>
@@ -559,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579767457697</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="restaurant/party details api, review, gallery">
+      <created>1579860367817</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1579860367817</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,10 +611,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1579765701244" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579767457560">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1579860366720">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579767457560" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1579860366720" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -648,10 +647,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579767462070">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579860369777">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579767462070" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579860369777" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
