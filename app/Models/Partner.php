@@ -42,4 +42,8 @@ class Partner extends Model
         return $this->belongsToMany('App\Models\Facility', 'event_facility', 'event_id', 'facility_id');
     }
 
+    public function menu(){
+        return $this->hasMany('App\Models\Menu', 'partner_id');
+    }
+
 }

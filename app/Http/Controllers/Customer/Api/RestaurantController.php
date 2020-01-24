@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class RestaurantController extends Controller
 {
     public function view(Request $request, $id){
-        $restaurant=Partner::active()->with(['avgreviews', 'facilities'])->with(['packages'=>function($package){
+        $restaurant=Partner::active()->with(['avgreviews', 'facilities', 'menus'])->with(['packages'=>function($package){
             $package->where('isactive', true)->where('partneractive', true)->with('activemenus');
         }])->findOrFail($id);
         if(!$restaurant){
