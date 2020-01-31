@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/WalletController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Wallet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventPackagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventPackagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/RestaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/RestaurantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Document.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Document.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrderItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Traits/DocumentUploadTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Traits/DocumentUploadTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/package/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/package/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/package/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/package/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/package/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/package/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/partners/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/partners/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/partners/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/partners/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,14 +216,8 @@
       <workItem from="1579513908433" duration="3096000" />
       <workItem from="1579688488302" duration="14961000" />
       <workItem from="1579842436239" duration="6357000" />
-      <workItem from="1580360300277" duration="34791000" />
-    </task>
-    <task id="LOCAL-00081" summary="correction is login and redirection, current session redirect pending">
-      <created>1577352286046</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1577352286046</updated>
+      <workItem from="1580360300277" duration="36112000" />
+      <workItem from="1580465012568" duration="674000" />
     </task>
     <task id="LOCAL-00082" summary="current session redirect done for invalid users">
       <created>1577353075909</created>
@@ -581,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579860412414</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="wallet added, dining book, party book, pay now added">
+      <created>1580457971367</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1580457971367</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="name changed partner" />
     <MESSAGE value="set live mode razor pay" />
     <MESSAGE value="skip sugnature check rajor pay" />
     <MESSAGE value="removing price double for couple" />
@@ -627,17 +607,18 @@
     <MESSAGE value="banner related changes" />
     <MESSAGE value="home page changes for party and restaurants" />
     <MESSAGE value="restaurant/party details api, review, gallery" />
-    <option name="LAST_COMMIT_MESSAGE" value="restaurant/party details api, review, gallery" />
+    <MESSAGE value="wallet added, dining book, party book, pay now added" />
+    <option name="LAST_COMMIT_MESSAGE" value="wallet added, dining book, party book, pay now added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580378718078">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580378718078" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580457970193">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580478867552">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580457970193" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580478867552" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -670,10 +651,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579860415453">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580457979548">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1579860415453" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1580457979548" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
