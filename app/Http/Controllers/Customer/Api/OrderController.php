@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Cart;
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Package;
@@ -26,7 +27,22 @@ class OrderController extends Controller
 
     public function addtocart(Request $request){
         $request->validate([
-            'type'=>'required|in:event',
+            'type'=>'required|in:event,restaurant,party',
+        ]);
+
+        //clear previous cart
+        auth()->user()->cart()->delete();
+
+        switch($request->type){
+            case 'event': return $this->addEventToCart($request);
+            case 'restaurant': return $this->addDiningToCart($request);
+            case 'party': return $this->addPartyToCart($request);
+        }
+
+    }
+
+    private function addEventToCart(Request $request){
+        $request->validate([
             'itemid'=>'required|array',
             'itemid.*'=>'required|integer',
             'pass'=>'required|array',
@@ -38,18 +54,6 @@ class OrderController extends Controller
             'mobile'=>'required|integer|digits:10',
             'email'=>'required|email'
         ]);
-
-        //clear previous cart
-        auth()->user()->cart()->delete();
-
-        switch($request->type){
-            case 'event': return $this->addEventToCart($request);
-        }
-
-    }
-
-    private function addEventToCart(Request $request){
-
         $packages=Package::with('event')->whereIn('id', $request->itemid)->get();
         $cartitems=[];
         $cartpackages=[];
@@ -67,6 +71,7 @@ class OrderController extends Controller
             $cartitems[]=[
                 'entity_type'=>'App\Models\PartnerEvent',
                 'entity_id'=>$package->event_id,
+                'other_type'=>'App\Models\Package',
                 'other_id'=>$package->id,
                 'men'=>$request->men,
                 'women'=>$request->women,
@@ -123,16 +128,277 @@ class OrderController extends Controller
             'errors'=>[
 
             ],
-        ], 404);
+        ]);
 
     }
 
+    private function addDiningToCart(Request $request){
+        $request->validate([
+            'entity_id'=>'required|integer',
+            'itemid'=>'array',
+            'itemid.*'=>'required|integer',
+            'pass'=>'array',
+            'pass.*'=>'required|integer|min:1',
+            'menuid'=>'array',
+            'menuid.*'=>'required|integer',
+            'quantity'=>'array',
+            'quantity.*'=>'required|integer|min:1',
+            'men'=>'required|integer|min:0',
+            'women'=>'required|integer|min:0',
+            'couple'=>'required|integer|min:0',
+            'name'=>'required|string|max:50',
+            'mobile'=>'required|integer|digits:10',
+            'email'=>'required|email',
+            'date'=>'required|date_format:Y-m-d',
+            'time'=>'required|date_format:h:iA'
+        ]);
+        $cartitems=[];
+        $cartpackages=[];
+        $amount=0;
+
+        // select packages from inputs
+
+        $partner=Partner::with(['packages'=>function($packages)use($request){
+            $packages->whereIn('event_packages.id', $request->itemid)->where('fordining', true)->where('package_type', 'other');
+        }, 'menus'=>function($menus)use($request){
+            $menus->whereIn('menus.id', $request->menuid);
+        }])->findOrFail($request->entity_id);
+
+        if(!empty($request->itemid) ){
+            $maps=[];
+            foreach($request->itemid as $key=>$val){
+                $maps[$val]=$request->pass[$key];
+            }
+            $i = 0;
+            foreach ($partner->packages as $package) {
+                $cartitems[] = [
+                    'entity_type' => 'App\Models\Partner',
+                    'entity_id' => $package->partner_id,
+                    'optional_type' => 'dining',
+                    'other_id' => $package->id,
+                    'other_type' => 'App\Models\Package',
+                    'men' => $request->men,
+                    'women' => $request->women,
+                    'couple' => $request->couple,
+                    'email' => $request->email,
+                    'mobile' => $request->mobile,
+                    'name' => $request->name,
+                    'partner_id' => $partner->id,
+                    'user_id' => auth()->user()->id,
+                    'no_of_pass' => $maps[$package->id],
+                    'date'=>$request->date,
+                    'time'=>$request->time
+                ];
+
+                $cartpackages[] = [
+                    'name' => $package->package_name,
+                    'quantity' => $request->pass[$i],
+                    'price' => $package->price,
+                    'package_type' => 'package'
+                ];
+                $amount = $amount + $request->pass[$i] * $package->price;
+                $i++;
+            }
+        }
+
+        //select menus from inputs
+        if(!empty($request->menuid)){
+            $menumaps=[];
+            foreach($request->menuid as $key=>$val){
+                $menumaps[$val]=$request->quantity[$key];
+            }
+
+            $i = 0;
+            foreach($partner->menus as $menu){
+
+                $cartitems[]=[
+                    'entity_type'=>'App\Models\Partner',
+                    'entity_id'=>$partner->id,
+                    'other_id'=>$menu->id,
+                    'optional_type' => 'dining',
+                    'other_type'=>'App\Models\Menu',
+                    'men'=>$request->men,
+                    'women'=>$request->women,
+                    'couple'=>$request->couple,
+                    'email'=>$request->email,
+                    'mobile'=>$request->mobile,
+                    'name'=>$request->name,
+                    'partner_id'=>$partner->id,
+                    'user_id'=>auth()->user()->id,
+                    'no_of_pass'=>$menumaps[$menu->id],
+                    'date'=>$request->date,
+                    'time'=>$request->time
+                ];
+
+                $cartpackages[]=[
+                    'package'=>$menu->name,
+                    'pass'=>$request->quantity[$i],
+                    'price'=>$menu->pivot->price,
+                    'package_type'=>'menu'
+                ];
+
+                $amount=$amount+$request->quantity[$i]*$menu->pivot->price;
+                $i++;
+            }
+
+        }
+
+
+
+        if(!empty($cartitems)){
+            $title=$partner->name;
+            $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
+            $address=$partner->adderss;
+            $image=$partner->small_image;
+
+            if(Cart::insert($cartitems)){
+                return [
+                    'message'=>'success',
+                    'data'=>[
+                        'title'=>$title,
+                        'image'=>$image,
+                        'address'=>$address,
+                        'packages'=>$cartpackages,
+                        'date'=>$date,
+                        'totalitems'=>(!empty($request->pass)?array_sum($request->pass):0)+(!empty($request->quantity)?array_sum($request->quantity):0),
+                        'name'=>$request->name,
+                        'mobile'=>$request->mobile,
+                        'email'=>$request->email,
+                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
+                        'subtotal'=>$amount,
+                        'amount'=>$amount,
+                        'taxes'=>0,
+                    ]
+                ];
+            }
+        }
+
+        return response()->json([
+            'message'=>'some error occurred',
+            'errors'=>[
+
+            ],
+        ]);
+
+    }
+
+    public function addPartyToCart(Request $request){
+        $request->validate([
+            'entity_id'=>'required|integer',
+            'itemid'=>'array',
+            'itemid.*'=>'required|integer',
+            'pass'=>'array',
+            'pass.*'=>'required|integer|min:1',
+            'men'=>'required|integer|min:0',
+            'women'=>'required|integer|min:0',
+            'couple'=>'required|integer|min:0',
+            'name'=>'required|string|max:50',
+            'mobile'=>'required|integer|digits:10',
+            'email'=>'required|email',
+            'date'=>'required|date_format:Y-m-d',
+            'time'=>'required|string|max:20'
+        ]);
+        $cartitems=[];
+        $cartpackages=[];
+        $amount=0;
+
+        // select packages from inputs
+
+        $partner=Partner::where('allow_party', true)->with(['packages'=>function($packages)use($request){
+            $packages->whereIn('event_packages.id', $request->itemid)->where('forparty', true)->where('package_type', 'other');
+        }])->findOrFail($request->entity_id);
+
+        if(!empty($request->itemid) ){
+            $maps=[];
+            foreach($request->itemid as $key=>$val){
+                $maps[$val]=$request->pass[$key];
+            }
+
+            $i = 0;
+            foreach ($partner->packages as $package) {
+                $cartitems[] = [
+                    'entity_type' => 'App\Models\Partner',
+                    'entity_id' => $package->partner_id,
+                    'optional_type' => 'party',
+                    'other_id' => $package->id,
+                    'other_type' => 'App\Models\Package',
+                    'men' => $request->men,
+                    'women' => $request->women,
+                    'couple' => $request->couple,
+                    'email' => $request->email,
+                    'mobile' => $request->mobile,
+                    'name' => $request->name,
+                    'partner_id' => $partner->id,
+                    'user_id' => auth()->user()->id,
+                    'no_of_pass' => $maps[$package->id],
+                    'date'=>$request->date,
+                    'time'=>$request->time
+                ];
+
+                $cartpackages[] = [
+                    'name' => $package->package_name,
+                    'quantity' => $request->pass[$i],
+                    'price' => $package->price,
+                    'package_type' => 'package'
+                ];
+                $amount = $amount + $request->pass[$i] * $package->price;
+                $i++;
+            }
+        }
+
+        if(!empty($cartitems)){
+            $title=$partner->name;
+            $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
+            $address=$partner->adderss;
+            $image=$partner->small_image;
+
+            if(Cart::insert($cartitems)){
+                return [
+                    'message'=>'success',
+                    'data'=>[
+                        'title'=>$title,
+                        'image'=>$image,
+                        'address'=>$address,
+                        'packages'=>$cartpackages,
+                        'date'=>$date,
+                        'totalitems'=>array_sum($request->pass),
+                        'name'=>$request->name,
+                        'mobile'=>$request->mobile,
+                        'email'=>$request->email,
+                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
+                        'subtotal'=>$amount,
+                        'amount'=>$amount,
+                        'taxes'=>0,
+                    ]
+                ];
+            }
+        }
+
+        return response()->json([
+            'message'=>'some error occurred',
+            'errors'=>[
+
+            ],
+        ]);
+
+    }
+
+
     public function makeOrder(Request $request, $id=null){
         $user=auth()->user();
+
+        if(!$user){
+            return [
+                'status'=>'failed',
+                'message'=>'logout'
+            ];
+        }
+
         if(!empty($id)){
             return $this->payExistingOrder($request, $id);
         }
-        $cartitems=$user->cart;
+
+        $cartitems=$user->cart()->with(['other','entity'])->get();
         if(!$cartitems){
             return response()->json([
                 'message'=>'Cart is empty',
@@ -141,30 +407,75 @@ class OrderController extends Controller
                 ],
             ], 200);
         }
+
+        //delete all pending orders and items
+        OrderItem::whereHas('order', function($order)use($user){
+            $order->where('payment_status', 'pending')->where('user_id', $user->id);
+        })->delete();
+        Order::where('payment_status', 'pending')->where('user_id', $user->id)->delete();
+
+
+
         $order=new Order(['refid'=>date('YmdHis')]);
         $user->orders()->save($order);
 
         $total=0;
         $items=[];
+        $menus=null;
         foreach($cartitems as $item){
-            if($item->entity instanceof PartnerEvent) {
 
+            if($item->entity instanceof PartnerEvent) {
                 $items[]=new OrderItem([
                     'entity_id'=>$item->entity_id,
                     'entity_type'=>$item->entity_type,
+                    'optional_type'=>$item->optional_type,
+                    'other_type'=>$item->other_type,
                     'other_id'=>$item->other_id,
                     'partner_id'=>$item->partner_id,
                     'no_of_pass'=>$item->no_of_pass,
-                    'price'=>$item->package->price,
+                    'price'=>$item->other->price,
                 ]);
+                $total = $total+$item->no_of_pass*$item->other->price;
+            }elseif($item->entity instanceof Partner) {
+                if($item->other instanceof Menu){
 
-                $total = $total+$item->no_of_pass*$item->package->price;
-                $email=$item->email;
-                $mobile=$item->mobile;
-                $name=$item->name;
-                $men=$item->men;
-                $women=$item->women;
-                $couple=$item->couple;
+                    if(!$menus){
+                        $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($item){
+                            $partner->where('partners.id', $item->partner_id);
+                        })->get();
+                        //return $menus;
+                        $menuarr=[];
+                        foreach($menus as $menu){
+                            $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                        }
+                    }
+
+                    $items[]=new OrderItem([
+                        'entity_id'=>$item->entity_id,
+                        'entity_type'=>$item->entity_type,
+                        'optional_type'=>$item->optional_type,
+                        'other_type'=>$item->other_type,
+                        'other_id'=>$item->other_id,
+                        'partner_id'=>$item->partner_id,
+                        'no_of_pass'=>$item->no_of_pass,
+                        'price'=>$menuarr[$item->other_id]??0,
+                    ]);
+                    $total = $total+$item->no_of_pass*($menuarr[$item->other_id]??0);
+                }else{
+                    $items[]=new OrderItem([
+                        'entity_id'=>$item->entity_id,
+                        'entity_type'=>$item->entity_type,
+                        'optional_type'=>$item->optional_type,
+                        'other_type'=>$item->other_type,
+                        'other_id'=>$item->other_id,
+                        'partner_id'=>$item->partner_id,
+                        'no_of_pass'=>$item->no_of_pass,
+                        'price'=>$item->other->price,
+                    ]);
+                    $total = $total+$item->no_of_pass*$item->other->price;
+                }
+
+
             }
         }
         if(!count($items)){
@@ -175,6 +486,24 @@ class OrderController extends Controller
                 ],
             ], 404);
         }
+
+        $email=$item->email;
+        $mobile=$item->mobile;
+        $name=$item->name;
+        $men=$item->men;
+        $women=$item->women;
+        $couple=$item->couple;
+
+        if($item->entity instanceof PartnerEvent){
+            $description=$item->entity->title;
+        }else{
+            if($item->optional_type=='dining'){
+                $description=$item->entity->name." (Dining)";
+            }else{
+                $description=$item->entity->name." (Party)";
+            }
+        }
+
         $order->details()->saveMany($items);
         $order->total=$total;
         $order->email=$email;
@@ -184,7 +513,7 @@ class OrderController extends Controller
         $order->women=$women;
         $order->couple=$couple;
         if($order->save()){
-            auth()->user()->cart()->delete();
+            //auth()->user()->cart()->delete();
             $response=$this->pay->generateorderid([
                 "amount"=>$order->total*100,
                 "currency"=>"INR",
@@ -203,7 +532,7 @@ class OrderController extends Controller
                         'total'=>$order->total,
                         'email'=>$email,
                         'mobile'=>$mobile,
-                        'description'=>$item->entity->title,
+                        'description'=>$description,
                         'address' => '',
                         'name'=>$name,
                         'currency'=>'INR',
@@ -231,11 +560,27 @@ class OrderController extends Controller
 
     private function payExistingOrder(Request $request, $id){
         $user=auth()->user();
-        $order=Order::with(['details.entity', 'details.package'])->where('user_id', auth()->user()->id)->where('refid', $id)->where('payment_status', 'pending')->firstOrFail();
+        $order=Order::with(['details.entity', 'details.other'])->where('user_id', auth()->user()->id)->where('refid', $id)->where('payment_status', 'pending')->firstOrFail();
 
         $amount=0;
+        $menus=null;
         foreach($order->details as $item){
-            $amount=$amount+$item->no_of_pass*$item->package->price;
+            if($item->other instanceof Package){
+                $amount=$amount+$item->no_of_pass*$item->other->price;
+            }else{
+                if(!$menus){
+                    $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($item){
+                        $partner->where('partners.id', $item->partner_id);
+                    })->get();
+                    //return $menus;
+                    $menuarr=[];
+                    foreach($menus as $menu){
+                        $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                    }
+                }
+                $amount=$amount+$item->no_of_pass*($menuarr[$item->other_id]??0);
+            }
+
         }
 
         $order->total=$amount;
@@ -250,6 +595,22 @@ class OrderController extends Controller
                     'email' => $order->email,
                     'mobile' => $order->mobile,
                     'description' => $order->details[0]->entity->title,
+                    'address' => '',
+                    'name'=>$order->name,
+                    'currency'=>'INR',
+                    'merchantid'=>$this->pay->merchantkey,
+
+                ],
+            ], 200);
+        }else{
+            return response()->json([
+                'message' => 'success',
+                'data' => [
+                    'orderid' => $order->order_id,
+                    'total' => $amount,
+                    'email' => $order->email,
+                    'mobile' => $order->mobile,
+                    'description' => ($order->details[0]->entity->name??'').' ('.ucfirst($order->details[0]->optional_type??'').')',
                     'address' => '',
                     'name'=>$order->name,
                     'currency'=>'INR',
@@ -285,7 +646,7 @@ class OrderController extends Controller
 
     public function cartdetails(Request $request){
         $user=auth()->user();
-        $cart=$user->cart()->with(['entity', 'package'])->get();
+        $cart=$user->cart()->with(['entity', 'other'])->get();
         $cartpackages=[];
         $amount=0;
         $totalpass=0;
@@ -293,10 +654,10 @@ class OrderController extends Controller
             foreach($cart as $c){
                 //$package=$c->package;
                 $cartpackages[]=[
-                    'package'=>$c->package->package_name,
+                    'package'=>$c->other->package_name??$c->other->name,
                     'pass'=>$c->no_of_pass,
-                    'price'=>$c->package->price,
-                    'package_type'=>$c->package->package_type
+                    'price'=>$c->other->price,
+                    'package_type'=>$c->other->package_type
                 ];
                 $title=$c->entity->title;
                 $date=$c->entity->startdate.'-'.$c->entity->enddate;

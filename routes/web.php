@@ -38,6 +38,12 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('partners/{id}', 'Admin\PartnerController@edit')->where('id', '[0-9]+')->name('admin.partners.edit');
         Route::post('partners/{id}', 'Admin\PartnerController@update')->where('id', '[0-9]+')->name('admin.partners.update');
         Route::post('partner/{id}/change-password', 'Admin\PartnerController@changepartnerpassword')->name('admin.partner.changepass');
+        Route::post('attach-menu/{id}', 'Admin\PartnerController@attachMenu')->name('admin.partner.addmenu');
+        Route::get('detach-menu/{pid}/{mid}', 'Admin\PartnerController@detachMenu')->name('admin.partner.delmenu');
+        Route::post('attach-facility/{id}', 'Admin\PartnerController@attachFacility')->name('admin.partner.addfacility');
+        Route::get('detach-facility/{pid}/{fid}', 'Admin\PartnerController@detachFacility')->name('admin.partner.delfacility');
+        Route::post('partner/{id}/add-gallery', 'Admin\PartnerController@addgallery')->name('admin.partner.gallery');
+        Route::get('partner/del-gallery/{id}', 'Admin\PartnerController@deletegallery')->name('admin.partner.galleryrm');
 
 
         Route::get('category', 'Admin\CategoryController@index')->name('admin.category');

@@ -20,7 +20,7 @@ class EventPackagesController extends Controller
     }
 
     public function edit(Request $request, $id){
-      	$events=PartnerEvent::where('isactive', 1)->get();
+      $events=PartnerEvent::where('isactive', 1)->get();
       $package = Package::findOrfail($id);
       //var_dump($package->menus);die;
       return view('siteadmin.package.edit',['package'=>$package,'events'=>$events]);
@@ -29,9 +29,8 @@ class EventPackagesController extends Controller
     }
 
     public function add(Request $request){
-
         $events=PartnerEvent::where('isactive', 1)->get();
-      return view('siteadmin.package.add',['events'=>$events]);
+        return view('siteadmin.package.add',['events'=>$events]);
     }
 
     public function store(Request $request){
@@ -55,7 +54,9 @@ class EventPackagesController extends Controller
         'partneractive'=>$request->partneractive,
         'event_id'=>$request->event_id,
           'partner_id'=>$event->partner_id,
-          'created_by'=>auth()->user()->id
+          'created_by'=>auth()->user()->id,
+          'forparty'=>$request->forparty,
+          'fordining'=>$request->fordining,
         ])){
 
             if(!empty($request->menus)){
@@ -95,7 +96,9 @@ class EventPackagesController extends Controller
                   'partneractive'=>$request->partneractive,
                   'event_id'=>$request->event_id,
                     'partner_id'=>$event->partner_id,
-                    'created_by'=>auth()->user()->id
+                    'created_by'=>auth()->user()->id,
+                    'forparty'=>$request->forparty,
+                    'fordining'=>$request->fordining,
                   ])){
                     if(!empty($request->menus)){
                         $package->menus()->detach();
@@ -113,11 +116,9 @@ class EventPackagesController extends Controller
 
 
     public function ajaxselectmenuevent(Request $request, $id){
-            $event=PartnerEvent::findOrFail($id);
+            $event=PartnerEvent::with('partner')->findOrFail($id);
             //var_dump($event->partner_id);
-            return $menus=Menu::active()->where('partner_id', $event->partner_id)->get();
-            echo '<pre>';
-            var_dump($menus->toArray());die;
+            return $event->partner->menus->where('isactive', 1);
     }
 
 

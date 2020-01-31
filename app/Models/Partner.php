@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use App\Models\Traits\Active;
+use App\Models\Traits\DocumentUploadTrait;
 use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
 {
-    use Active,ReviewTrait;
+    use Active,ReviewTrait,DocumentUploadTrait;
 
     protected $table = 'partners';
 
-    protected $fillable=['name', 'header_image', 'small_image', 'description', 'address', 'short_address', 'lat', 'lang', 'contact_no', 'type', 'per_person_text', 'isactive', 'user_id'];
+    protected $fillable=['name', 'header_image', 'small_image', 'description', 'address', 'short_address', 'lat', 'lang', 'contact_no', 'type', 'per_person_text', 'isactive', 'user_id', 'allow_party','timings','party_timings'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','user_id'];
 
@@ -39,11 +40,11 @@ class Partner extends Model
     }
 
     public function facilities(){
-        return $this->belongsToMany('App\Models\Facility', 'event_facility', 'event_id', 'facility_id');
+        return $this->belongsToMany('App\Models\Facility', 'restaurant_facility', 'restaurant_id', 'facility_id');
     }
 
     public function menus(){
-        return $this->hasMany('App\Models\Menu', 'partner_id');
+        return $this->belongsToMany('App\Models\Menu', 'partner_menus', 'partner_id', 'menu_id')->withPivot(['price','cut_price']);
     }
 
 }

@@ -11,7 +11,7 @@ class RestaurantController extends Controller
 {
     public function view(Request $request, $id){
         $restaurant=Partner::active()->with(['avgreviews', 'facilities', 'menus'])->with(['packages'=>function($package){
-            $package->where('isactive', true)->where('partneractive', true)->with('activemenus');
+            $package->where('isactive', true)->where('partneractive', true)->where('fordining', true)->where('package_type', 'other')->with('activemenus');
         }])->findOrFail($id);
         if(!$restaurant){
             return response()->json([
@@ -27,7 +27,7 @@ class RestaurantController extends Controller
 
     public function partyview(Request $request, $id){
         $restaurant=Partner::active()->with(['avgreviews', 'facilities'])->with(['packages'=>function($package){
-            $package->where('isactive', true)->where('partneractive', true)->with('activemenus');
+            $package->where('isactive', true)->where('partneractive', true)->where('forparty', true)->where('package_type', 'other')->with('activemenus');
         }])->findOrFail($id);
         if(!$restaurant){
             return response()->json([
@@ -43,7 +43,12 @@ class RestaurantController extends Controller
 
     public function gallery(Request $request, $id){
         $product=Partner::findOrFail($id);
-        return $product->gallery->where('isactive', true);
+        return $product->gallery->where('isactive', true)->whereIn('other_type', ['restaurant', 'both']);
+    }
+
+    public function partygallery(Request $request, $id){
+        $product=Partner::findOrFail($id);
+        return $product->gallery->where('isactive', true)->whereIn('other_type', ['party', 'both']);
     }
 
     public function reviews(Request $request, $id){

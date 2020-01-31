@@ -96,7 +96,7 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                    <div row="row">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Isactive</label>
@@ -119,8 +119,52 @@
 
                         <!-- /.col -->
                     </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Isactive</label>
+                                    <select name="isactive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Partner active</label>
+                                    <select name="partneractive" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
 
 
+                            <!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Package available in party</label>
+                                    <select name="forparty" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Package available in dining</label>
+                                    <select name="fordining" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- /.col -->
+                        </div>
                         <div class="row">
 
                                 <div class="form-group"  style="algin:center;">

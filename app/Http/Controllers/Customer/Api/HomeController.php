@@ -46,6 +46,8 @@ class HomeController extends Controller
         $collections=Collection::active()->where('istop', true)->whereHas($type,function($query) use($type){
             if($type=='event')
                 $query->where('isactive',true)->where('partneractive', true);
+            else if($type=='party')
+                $query->where('isactive',true)->where('allow_party', true);
             else
                 $query->where('isactive',true);
         })->orderBy('priority', 'asc')->get();
@@ -56,6 +58,8 @@ class HomeController extends Controller
         $othercollections=Collection::active()->with([$type=>function($query) use($type){
             if($type=='event')
                 return $query->with('avgreviews')->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
+            else if($type=='party')
+                return $query->with('avgreviews')->where('isactive',true)->where('allow_party', true)->orderBy('priority', 'asc');
             else
                 return $query->with('avgreviews')->where('isactive',true)->orderBy('priority', 'asc');
         }])->where('istop', false)->orderby('priority', 'desc')->has($type)->get();

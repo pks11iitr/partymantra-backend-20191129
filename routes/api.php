@@ -27,20 +27,41 @@ $api = app('Dingo\Api\Routing\Router');
     */
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'customer'], function ($api) {
+
+        //profile apis
         $api->post('update-address', ['as'=>'api.updateaddress', 'uses'=>'Customer\Api\ProfileController@updateAddress']);
         $api->post('update-profile', ['as'=>'api.updateprofile', 'uses'=>'Customer\Api\ProfileController@updateProfile']);
         $api->get('profile', ['as'=>'api.profile', 'uses'=>'Customer\Api\ProfileController@getProfileInfo']);
+
+        //cart apis starts
+        //booking event
         $api->post('book', ['as'=>'api.order.book', 'uses'=>'Customer\Api\OrderController@addtocart']);
+        //booking party
+        //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        //booking-table
+        //$api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        $api->get('cart-details', ['as'=>'api.order.cartdetails', 'uses'=>'Customer\Api\OrderController@cartdetails']);
+        //cart api ends
+
+        //payment apis starts
         $api->post('pay-now/{id?}', ['as'=>'api.order.pay', 'uses'=>'Customer\Api\OrderController@makeOrder']);
         $api->post('verify-payment', ['as'=>'api.payment.verify', 'uses'=>'Customer\Api\OrderController@verifyPayment']);
-        //$api->post('book-table', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
-        //$api->post('book-party', ['as'=>'api.event.view', 'uses'=>'Customer\Api\OrderController@bookevent']);
+        //payment apis ends
+
+        //add wallet money
+        $api->post('add-money', ['as'=>'api.wallet.add', 'uses'=>'Customer\Api\WalletController@addMoney']);
+        $api->post('verify-recharge', ['as'=>'api.wallet.add', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
+
+
+        //order apis starts
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
         $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
+        //order apis ends
 
+        //feedback apis starts
         $api->post('submit-review/{id}', ['as'=>'api.order.review', 'uses'=>'Customer\Api\OrderController@review']);
-        $api->get('cart-details', ['as'=>'api.order.cartdetails', 'uses'=>'Customer\Api\OrderController@cartdetails']);
+        //feedback apis ends
     });
 
     $api->get('get-qr/{id}', ['as'=>'api.order.qr', 'uses'=>'Customer\Api\OrderController@getQRcode']);
@@ -64,9 +85,15 @@ $api = app('Dingo\Api\Routing\Router');
     $api->get('party/{id}', ['as'=>'api.restaurant.view', 'uses'=>'Customer\Api\RestaurantController@partyview']);
     $api->get('restaurant/{id}/gallery', ['as'=>'api.restaurant.gallery', 'uses'=>'Customer\Api\RestaurantController@gallery']);
     $api->get('restaurant/{id}/reviews', ['as'=>'api.restaurant.reviews', 'uses'=>'Customer\Api\RestaurantController@reviews']);
+$api->get('party/{id}/gallery', ['as'=>'api.party.gallery', 'uses'=>'Customer\Api\RestaurantController@partygallery']);
+$api->get('party/{id}/reviews', ['as'=>'api.party.reviews', 'uses'=>'Customer\Api\RestaurantController@partyreviews']);
 
     /*
      * customer api routes ends
+     */
+
+    /*
+     * Partner Api Routes Starts
      */
 
     $api->group(['middleware' => ['auth:api','acl'], 'is'=>'partner'], function ($api) {
@@ -75,3 +102,7 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('partner-order-details/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@details']);
         $api->get('my-orders', ['as'=>'api.orders', 'uses'=>'Partner\Api\OrderController@index']);
     });
+
+    /*
+     * Partner API route ends
+     */

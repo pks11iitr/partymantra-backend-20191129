@@ -55,7 +55,7 @@
 
                @foreach($event_packages as $packages)
                 <tr>
-                  <td>{{$packages->partner->name??''}}</td>
+                  <td>{{$packages->event->partner->name??''}}</td>
                   <td>{{$packages->event->title??''}}</td>
                   <td>{{$packages->package_name}}</td>
                   <td>{{$packages->price}}</td>

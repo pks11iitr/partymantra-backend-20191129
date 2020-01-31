@@ -47,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Package Name</label>
                                     <input type="text" class="form-control" name="package_name" id="exampleInputEmail1"
-                                    value="<?=$package->package_name?>" placeholder="Enter name">
+                                    value="{{$package->package_name}}" placeholder="Enter name">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Price</label>
                                     <input type="text" class="form-control" name="price" id="exampleInputEmail1"
-                                    value="<?=$package->price?>" placeholder="Enter price" >
+                                    value="{{$package->price}}" placeholder="Enter price" >
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Text under Name</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                    value="<?=$package->text_under_name?>" placeholder="Enter text under name" name="text_under_name">
+                                    value="{{$package->text_under_name}}" placeholder="Enter text under name" name="text_under_name">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Customer Package Details</label>
                                     <input type="text" class="form-control" name="custom_package_detail" id="exampleInputEmail1"
-                                           value="<?=$package->custom_package_detail?>" placeholder="Enter package details">
+                                           value="{{$package->custom_package_detail}}" placeholder="Enter package details">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -124,7 +124,29 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Package available in party</label>
+                                    <select name="forparty" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" {{$package->forparty==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$package->forparty==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Package available in dining</label>
+                                    <select name="fordining" class="form-control select2" style="width: 100%;">
+                                        <option  selected="selected" value="1" {{$package->fordining==1?'selected':''}}>Yes</option>
+                                        <option value="0" {{$package->fordining==0?'selected':''}}>No</option>
+                                    </select>
+                                </div>
+                            </div>
 
+
+                            <!-- /.col -->
+                        </div>
 
 
                         <div class="row">
