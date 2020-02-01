@@ -656,20 +656,25 @@ class OrderController extends Controller
         $totalpass=0;
         if(count($user->cart)){
             foreach($cart as $c){
-                //$package=$c->package;
                 $cartpackages[]=[
                     'package'=>$c->other->package_name??$c->other->name,
                     'pass'=>$c->no_of_pass,
                     'price'=>$c->other->price,
-                    'package_type'=>$c->other->package_type
+                    'package_type'=>$c->other->package_type??'menu'
                 ];
-                $title=$c->entity->title;
-                $date=$c->entity->startdate.'-'.$c->entity->enddate;
+
                 $amount=$amount+$c->no_of_pass*$c->package->price;
                 $totalpass=$totalpass+$c->no_of_pass;
-                $address=$c->entity->venue_adderss;
-                $image=$c->entity->small_image;
+
             }
+            $title=$cart[0]->entity->title??($cart[0]->entity->name.' ('.$cart[0]->optional_type.')');
+            if($cart[0]->entity instanceof Partner){
+                $date=$cart[0]->date.' '.$cart[0]->time;
+            }else{
+                $date=$cart[0]->entity->startdate.'-'.$cart[0]->entity->enddate;
+            }
+            $address=$cart[0]->entity->venue_adderss??$cart[0]->entity->address;
+            $image=$cart[0]->entity->small_image;
             return [
                 'message'=>'success',
                 'data'=>[
@@ -703,7 +708,7 @@ class OrderController extends Controller
     }
     public function details(Request $request, $id){
         $user=auth()->user();
-        $order=Order::with(['details.entity', 'details.other'])->where('user_id', $user->id)->where('refid', $id)->where('payment_status', 'paid')->firstOrFail();
+        $order=Order::with(['details.entity', 'details.other'])->where('user_id', $user->id)->where('refid', $id)->where('payment_status', '!=', 'pending')->firstOrFail();
         $amount=0;
         $totalpass=0;
         if(!count($order->details))
