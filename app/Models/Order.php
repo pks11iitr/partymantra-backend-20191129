@@ -12,7 +12,7 @@ class Order extends Model
 
     protected $fillable=['refid'];
 
-    protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at', 'payment_id_response', 'order_id_response'];
+    protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at', 'payment_id_response', 'order_id_response','usingwallet','fromwallet'];
 
 
     public function details(){

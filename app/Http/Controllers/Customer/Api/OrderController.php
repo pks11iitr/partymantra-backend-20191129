@@ -420,7 +420,7 @@ class OrderController extends Controller
 
 
 
-        $order=new Order(['refid'=>date('YmdHis')]);
+        $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false)]);
         $user->orders()->save($order);
 
         $total=0;
@@ -509,7 +509,15 @@ class OrderController extends Controller
         }
 
         $order->details()->saveMany($items);
+        if($request->usingwallet==1){
+            $walletbalance=Wallet::balance($user->id);
+            $fromwallet=($total>=$walletbalance)?$walletbalance:$total;
+        }
+        else{
+            $fromwallet=0;
+        }
         $order->total=$total;
+        $order->fromwallet=$fromwallet;
         $order->email=$email;
         $order->mobile=$mobile;
         $order->name=$name;
@@ -518,20 +526,22 @@ class OrderController extends Controller
         $order->couple=$couple;
         if($order->save()){
             //auth()->user()->cart()->delete();
-            $response=$this->pay->generateorderid([
-                "amount"=>$order->total*100,
-                "currency"=>"INR",
-                "receipt"=>$order->refid,
-            ]);
-            $responsearr=json_decode($response);
-            if(isset($responsearr->id)){
-                $order->order_id=$responsearr->id;
-                $order->order_id_response=$response;
-                $order->save();
-                return response()->json([
-                    'status'=>'success',
-                    'message'=>'success',
-                    'data'=>[
+            if($order->total!=$fromwallet){
+                $response=$this->pay->generateorderid([
+                    "amount"=>$order->total*100,
+                    "currency"=>"INR",
+                    "receipt"=>$order->refid,
+                ]);
+                $responsearr=json_decode($response);
+                if(isset($responsearr->id)){
+                    $order->order_id=$responsearr->id;
+                    $order->order_id_response=$response;
+                    $order->save();
+                    return response()->json([
+                        'status'=>'success',
+                        'message'=>'success',
+                        'paymentdone'=>'no',
+                        'data'=>[
                         'orderid'=> $order->order_id,
                         'total'=>$order->total,
                         'email'=>$email,
@@ -544,13 +554,33 @@ class OrderController extends Controller
                     ],
                 ], 200);
             }else{
-                return response()->json([
-                    'status'=>'failed',
-                    'message'=>'Payment cannot be initiated',
-                    'data'=>[
-                    ],
-                ], 200);
+                    return response()->json([
+                        'status'=>'failed',
+                        'message'=>'Payment cannot be initiated',
+                        'data'=>[
+                        ],
+                    ], 200);
+                }
+            }else{
+                    Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
+                    return response()->json([
+                        'status'=>'success',
+                        'message'=>'success',
+                        'paymentdone'=>'yes',
+                        'data'=>[
+                            'orderid'=> '',
+                            'total'=>$order->total,
+                            'email'=>$email,
+                            'mobile'=>$mobile,
+                            'description'=>$description,
+                            'address' => '',
+                            'name'=>$name,
+                            'currency'=>'INR',
+                            'merchantid'=>$this->pay->merchantkey,
+                        ],
+                    ], 200);
             }
+
         }
         return response()->json([
             'message'=>'some error occurred',
@@ -862,7 +892,12 @@ class OrderController extends Controller
             $order->payment_id=$request->razorpay_payment_id;
             $order->payment_id_response=$request->razorpay_signature;
             $order->payment_status='paid';
+
             $order->save();
+            if($order->usingwallet==true){
+                $balance=Wallet::balance($order->user_id);
+                Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
+            }
             return response()->json([
                 'status'=>'success',
                 'message'=>'Payment is successfull',
