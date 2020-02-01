@@ -10,6 +10,7 @@ use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
 use App\Models\Review;
+use App\Models\Wallet;
 use App\Services\Payment\RazorPayService;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Request;
@@ -118,6 +119,7 @@ class OrderController extends Controller
                         'subtotal'=>$amount,
                         'amount'=>$amount,
                         'taxes'=>0,
+                        'walletbalance'=>Wallet::balance(auth()->user()->id)
                     ]
                 ];
             }
@@ -246,7 +248,7 @@ class OrderController extends Controller
 
 
         if(!empty($cartitems)){
-            $title=$partner->name;
+            $title=$partner->name.' (Dining)';
             $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
             $address=$partner->adderss;
             $image=$partner->small_image;
@@ -268,6 +270,7 @@ class OrderController extends Controller
                         'subtotal'=>$amount,
                         'amount'=>$amount,
                         'taxes'=>0,
+                        'walletbalance'=>Wallet::balance(auth()->user()->id)
                     ]
                 ];
             }
@@ -347,7 +350,7 @@ class OrderController extends Controller
         }
 
         if(!empty($cartitems)){
-            $title=$partner->name;
+            $title=$partner->name.' (Party)';
             $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
             $address=$partner->adderss;
             $image=$partner->small_image;
@@ -369,6 +372,7 @@ class OrderController extends Controller
                         'subtotal'=>$amount,
                         'amount'=>$amount,
                         'taxes'=>0,
+                        'walletbalance'=>Wallet::balance(auth()->user()->id)
                     ]
                 ];
             }
@@ -630,7 +634,7 @@ class OrderController extends Controller
     public function history(Request $request){
         $user=auth()->user();
         //var_dump($user->id);die;
-        $orders=Order::where('user_id', $user->id)->get();
+        $orders=Order::where('user_id', $user->id)->where('payment_status', 'paid')->get();
         $ordersdetail=[];
         $i=0;
         foreach($orders as $o){
@@ -683,6 +687,7 @@ class OrderController extends Controller
                     'subtotal'=>$amount,
                     'amount'=>$amount,
                     'taxes'=>0,
+                    'walletbalance'=>Wallet::balance($user->id)
                 ]
             ];
         }else{
@@ -698,27 +703,83 @@ class OrderController extends Controller
     }
     public function details(Request $request, $id){
         $user=auth()->user();
-        $order=Order::with(['details.package', 'details.entity'])->where('user_id', $user->id)->where('refid', $id)->firstOrFail();
+        $order=Order::with(['details.entity', 'details.other'])->where('user_id', $user->id)->where('refid', $id)->where('payment_status', 'paid')->firstOrFail();
         $amount=0;
         $totalpass=0;
+        if(!count($order->details))
+            return [
+                'status'=>'failed',
+                'message'=>'Invalid resquest'
+            ];
+
+        $entity=$order->details[0]->entity;
+
+        $menus=null;
+        if($entity instanceof Partner && $order->payment_status=='pending'){
+            if(!$menus){
+                $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($entity){
+                    $partner->where('partners.id', $entity->id);
+                })->get();
+                //return $menus;
+                $menuarr=[];
+                foreach($menus as $menu){
+                    $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                }
+            }
+        }
+
         foreach($order->details as $c){
             //$package=$c->package;
-            $cartpackages[]=[
-                'package'=>$c->package->package_name,
-                'pass'=>$c->no_of_pass,
-                'price'=>$c->package->price,
-                'package_type'=>$c->package->package_type
-            ];
-            $title=$c->entity->title;
-            $date=$c->entity->startdate.'-'.$c->entity->enddate;
             if($order->payment_status=='pending'){
-                $amount=$amount+$c->no_of_pass*$c->package->price;
+                if($c->other instanceof Package){
+                    $cartpackages[]=[
+                        'package'=>$c->other->package_name,
+                        'pass'=>$c->no_of_pass,
+                        'price'=>$c->other->price,
+                        'package_type'=>$c->other->package_type
+                    ];
+                    $amount=$amount+$c->no_of_pass*$c->other->price;
+                }else{
+                    $cartpackages[]=[
+                        'package'=>$c->other->name,
+                        'pass'=>$c->no_of_pass,
+                        'price'=>$menuarr[$c->other->id]??0,
+                        'package_type'=>'menu'
+                    ];
+                    $amount=$amount+$c->no_of_pass*($menuarr[$c->other->id]??0);
+                }
+
             }else{
+                if($c->other instanceof Package){
+                    $cartpackages[]=[
+                        'package'=>$c->other->package_name,
+                        'pass'=>$c->no_of_pass,
+                        'price'=>$c->price,
+                        'package_type'=>$c->other->package_type
+                    ];
+                }else{
+                    $cartpackages[]=[
+                        'package'=>$c->other->name,
+                        'pass'=>$c->no_of_pass,
+                        'price'=>$c->price,
+                        'package_type'=>'menu'
+                    ];
+                }
                 $amount=$amount+$c->no_of_pass*$c->price;
             }
-            $address=$c->entity->venue_adderss;
-            $image=$c->entity->small_image;
             $totalpass=$totalpass+$c->no_of_pass;
+        }
+
+        if($entity instanceof Partner) {
+            $title = $c->entity->name;
+            $date = $c->date . ' ' . $c->time;
+            $address = $c->entity->adderss;
+            $image = $c->entity->small_image;
+        }else{
+            $title = $c->entity->title;
+            $date = $c->entity->startdate . '-' . $c->entity->enddate;
+            $address = $c->entity->venue_adderss;
+            $image = $c->entity->small_image;
         }
         return [
             'message'=>'success',
