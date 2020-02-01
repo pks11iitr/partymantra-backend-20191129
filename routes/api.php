@@ -76,6 +76,8 @@ $api = app('Dingo\Api\Routing\Router');
     $api->get('collections', ['as'=>'api.collections', 'uses'=>'Customer\Api\CollectionController@index']);
     //collection events
     $api->get('collection/{id}/events', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@events']);
+    $api->get('collection/{id}/restaurants', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@restaurants']);
+    $api->get('collection/{id}/party', ['as'=>'api.collection.events', 'uses'=>'Customer\Api\CollectionController@party']);
     //event details
     $api->get('event/{id}', ['as'=>'api.event.view', 'uses'=>'Customer\Api\EventController@view']);
     $api->get('event/{id}/gallery', ['as'=>'api.event.gallery', 'uses'=>'Customer\Api\EventController@gallery']);

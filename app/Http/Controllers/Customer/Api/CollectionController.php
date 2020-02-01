@@ -51,6 +51,59 @@ class CollectionController extends Controller
         return ['events'=>$events];
     }
 
+    public function restaurants(Request $request, $id){
+        $collection=Collection::find($id);
+        if(!$collection)
+            return response()->json([
+                'message'=>'invalid request',
+                'errors'=>[
+
+                ],
+            ], 404);
+        //PartnerEvent::where('')
+
+        $events=$collection->restaurant()
+            ->with('avgreviews')
+            ->where('isactive',true)
+            ->orderBy('priority','asc')
+            ->get()
+            /*->sortBy(function($product){
+                return $product->away;
+            })*/;
+        $i=0;
+        foreach($events as $e){
+            $events[$i]->rating=$e->avgreviews[0]->rating??0;
+            $i++;
+        }
+        return ['events'=>$events];
+    }
+
+    public function party(Request $request, $id){
+        $collection=Collection::find($id);
+        if(!$collection)
+            return response()->json([
+                'message'=>'invalid request',
+                'errors'=>[
+
+                ],
+            ], 404);
+        //PartnerEvent::where('')
+
+        $events=$collection->party()
+            ->with('avgreviews')
+            ->where('isactive',true)
+            ->orderBy('priority','asc')
+            ->get()
+            /*->sortBy(function($product){
+                return $product->away;
+            })*/;
+        $i=0;
+        foreach($events as $e){
+            $events[$i]->rating=$e->avgreviews[0]->rating??0;
+            $i++;
+        }
+        return ['events'=>$events];
+    }
 
 }
 
