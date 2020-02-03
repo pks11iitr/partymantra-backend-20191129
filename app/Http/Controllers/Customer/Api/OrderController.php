@@ -274,6 +274,49 @@ class OrderController extends Controller
                     ]
                 ];
             }
+        }else{
+            $title=$partner->name.' (Dining)';
+            $date=$request->date.' '.$request->time;
+            $address=$partner->adderss;
+            $image=$partner->small_image;
+
+            $cartitems[]=[
+                'entity_type'=>'App\Models\Partner',
+                'entity_id'=>$partner->id,
+                'optional_type' => 'dining',
+                'men'=>$request->men,
+                'women'=>$request->women,
+                'couple'=>$request->couple,
+                'email'=>$request->email,
+                'mobile'=>$request->mobile,
+                'name'=>$request->name,
+                'partner_id'=>$partner->id,
+                'user_id'=>auth()->user()->id,
+                'no_of_pass'=>0,
+                'date'=>$request->date,
+                'time'=>$request->time
+            ];
+            if(Cart::insert($cartitems)){
+                return [
+                    'message'=>'success',
+                    'data'=>[
+                        'title'=>$title,
+                        'image'=>$image,
+                        'address'=>$address,
+                        'packages'=>[],
+                        'date'=>$date,
+                        'totalitems'=>0,
+                        'name'=>$request->name,
+                        'mobile'=>$request->mobile,
+                        'email'=>$request->email,
+                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
+                        'subtotal'=>0,
+                        'amount'=>0,
+                        'taxes'=>0,
+                        'walletbalance'=>Wallet::balance(auth()->user()->id)
+                    ]
+                ];
+            }
         }
 
         return response()->json([
@@ -351,9 +394,55 @@ class OrderController extends Controller
 
         if(!empty($cartitems)){
             $title=$partner->name.' (Party)';
+            $date=$request->date.' '.$request->time;
+            $address=$partner->adderss;
+            $image=$partner->small_image;
+
+            if(Cart::insert($cartitems)){
+                return [
+                    'message'=>'success',
+                    'data'=>[
+                        'title'=>$title,
+                        'image'=>$image,
+                        'address'=>$address,
+                        'packages'=>[],
+                        'date'=>$date,
+                        'totalitems'=>0,
+                        'name'=>$request->name,
+                        'mobile'=>$request->mobile,
+                        'email'=>$request->email,
+                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
+                        'subtotal'=>0,
+                        'amount'=>0,
+                        'taxes'=>0,
+                        'walletbalance'=>Wallet::balance(auth()->user()->id)
+                    ]
+                ];
+            }
+        }else{
+            $title=$partner->name.' (Party)';
             $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
             $address=$partner->adderss;
             $image=$partner->small_image;
+
+            $cartitems[] = [
+                'entity_type' => 'App\Models\Partner',
+                'entity_id' => $package->partner_id,
+                'optional_type' => 'party',
+                'other_id' => $package->id,
+                'other_type' => 'App\Models\Package',
+                'men' => $request->men,
+                'women' => $request->women,
+                'couple' => $request->couple,
+                'email' => $request->email,
+                'mobile' => $request->mobile,
+                'name' => $request->name,
+                'partner_id' => $partner->id,
+                'user_id' => auth()->user()->id,
+                'no_of_pass' => $maps[$package->id],
+                'date'=>$request->date,
+                'time'=>$request->time
+            ];
 
             if(Cart::insert($cartitems)){
                 return [
