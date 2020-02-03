@@ -613,9 +613,9 @@ class OrderController extends Controller
         $order->couple=$couple;
         if($order->save()){
             //auth()->user()->cart()->delete();
-            if($order->total!=$fromwallet){
+            if($order->total-$fromwallet>0){
                 $response=$this->pay->generateorderid([
-                    "amount"=>$order->total*100,
+                    "amount"=>$order->total*100-$fromwallet*100,
                     "currency"=>"INR",
                     "receipt"=>$order->refid,
                 ]);
@@ -630,7 +630,7 @@ class OrderController extends Controller
                         'paymentdone'=>'no',
                         'data'=>[
                         'orderid'=> $order->order_id,
-                        'total'=>$order->total,
+                        'total'=>$order->total-$fromwallet*100,
                         'email'=>$email,
                         'mobile'=>$mobile,
                         'description'=>$description,
@@ -706,13 +706,27 @@ class OrderController extends Controller
 
         $order->total=$amount;
         $order->save();
+        if($request->usingwallet==1){
+            $walletbalance=Wallet::balance($user->id);
+            $fromwallet=($amount>=$walletbalance)?$walletbalance:$amount;
+        }
+        else{
+            $fromwallet=0;
+        }
 
+        if($amount-$fromwallet>0){
+            $paymentdone='no';
+            $amount=$amount-$fromwallet;
+        }else{
+            $paymentdone='yes';
+            $amount=$amount;
+        }
         if($order->details[0]->entity instanceof PartnerEvent) {
             return response()->json([
                 'message' => 'success',
                 'data' => [
                     'orderid' => $order->order_id,
-                    'total' => $amount,
+                    'total' => ($amount-$fromwallet)*100,
                     'email' => $order->email,
                     'mobile' => $order->mobile,
                     'description' => $order->details[0]->entity->title,
@@ -720,6 +734,7 @@ class OrderController extends Controller
                     'name'=>$order->name,
                     'currency'=>'INR',
                     'merchantid'=>$this->pay->merchantkey,
+                    'paymentdone'=>$paymentdone
 
                 ],
             ], 200);
@@ -736,7 +751,7 @@ class OrderController extends Controller
                     'name'=>$order->name,
                     'currency'=>'INR',
                     'merchantid'=>$this->pay->merchantkey,
-
+                    'paymentdone'=>$paymentdone
                 ],
             ], 200);
         }
