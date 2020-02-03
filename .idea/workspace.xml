@@ -218,14 +218,7 @@
       <workItem from="1579842436239" duration="6357000" />
       <workItem from="1580360300277" duration="36112000" />
       <workItem from="1580465012568" duration="11736000" />
-      <workItem from="1580556211072" duration="6489000" />
-    </task>
-    <task id="LOCAL-00093" summary="set live mode razor pay">
-      <created>1577441455338</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1577441455338</updated>
+      <workItem from="1580556211072" duration="6717000" />
     </task>
     <task id="LOCAL-00094" summary="skip sugnature check rajor pay">
       <created>1577443220375</created>
@@ -563,7 +556,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580712307253</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="payment exsting order change">
+      <created>1580715705302</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1580715705302</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="change in hash function razorpay" />
     <MESSAGE value="minor change login" />
     <MESSAGE value="major changes in apis for cover changes" />
     <MESSAGE value="facility added with events" />
@@ -609,17 +608,18 @@
     <MESSAGE value="order changed for no package booking dining or party" />
     <MESSAGE value="changed cart details for dining and party" />
     <MESSAGE value="add cart changes for party" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cart changes for party" />
+    <MESSAGE value="payment exsting order change" />
+    <option name="LAST_COMMIT_MESSAGE" value="payment exsting order change" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580378718078">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580378718078" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580712307075">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580715704971">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580712307075" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580715704971" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -652,10 +652,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580712310356">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580715871486">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1580712310356" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1580715871486" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

@@ -766,7 +766,7 @@ class OrderController extends Controller
     public function history(Request $request){
         $user=auth()->user();
         //var_dump($user->id);die;
-        $orders=Order::where('user_id', $user->id)->where('payment_status', 'paid')->get();
+        $orders=Order::where('user_id', $user->id)->whereIn('payment_status', ['paid','declined','cancel-request','cancelled', 'refunded'])->get();
         $ordersdetail=[];
         $i=0;
         foreach($orders as $o){
