@@ -9,8 +9,16 @@ use App\Http\Controllers\Controller;
 class WalletController extends Controller
 {
     public function history(Request $request){
-        $history=Wallet::where('iscomplete', true)->get();
-        return compact('history');
+        $user=auth()->user();
+        if($user){
+            $history=Wallet::where('user_id', $user->id)->where('iscomplete', true)->get();
+            $balance=Wallet::balance($user->id);
+        }else{
+            $history=[];
+            $balance=0;
+        }
+
+        return compact('history','balance');
     }
 
     public function addMoney(Request $request){

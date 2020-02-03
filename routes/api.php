@@ -51,6 +51,8 @@ $api = app('Dingo\Api\Routing\Router');
         //add wallet money
         $api->post('add-money', ['as'=>'api.wallet.add', 'uses'=>'Customer\Api\WalletController@addMoney']);
         $api->post('verify-recharge', ['as'=>'api.wallet.add', 'uses'=>'Customer\Api\WalletController@verifyRecharge']);
+        $api->get('wallet-history', ['as'=>'api.wallet.history', 'uses'=>'Customer\Api\WalletController@history']);
+        $api->get('wallet-balance', ['as'=>'api.wallet.balance', 'uses'=>'Customer\Api\WalletController@getWalletBalance']);
 
 
         //order apis starts
