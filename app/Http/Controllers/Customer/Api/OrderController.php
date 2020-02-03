@@ -161,9 +161,9 @@ class OrderController extends Controller
         // select packages from inputs
 
         $partner=Partner::with(['packages'=>function($packages)use($request){
-            $packages->whereIn('event_packages.id', $request->itemid)->where('fordining', true)->where('package_type', 'other');
+            $packages->whereIn('event_packages.id', $request->itemid??[])->where('fordining', true)->where('package_type', 'other');
         }, 'menus'=>function($menus)use($request){
-            $menus->whereIn('menus.id', $request->menuid);
+            $menus->whereIn('menus.id', $request->menuid??[]);
         }])->findOrFail($request->entity_id);
 
         if(!empty($request->itemid) ){
@@ -351,7 +351,7 @@ class OrderController extends Controller
         // select packages from inputs
 
         $partner=Partner::where('allow_party', true)->with(['packages'=>function($packages)use($request){
-            $packages->whereIn('event_packages.id', $request->itemid)->where('forparty', true)->where('package_type', 'other');
+            $packages->whereIn('event_packages.id', $request->itemid??[])->where('forparty', true)->where('package_type', 'other');
         }])->findOrFail($request->entity_id);
 
         if(!empty($request->itemid) ){
