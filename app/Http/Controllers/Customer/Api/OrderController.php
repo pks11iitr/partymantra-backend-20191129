@@ -421,7 +421,7 @@ class OrderController extends Controller
             }
         }else{
             $title=$partner->name.' (Party)';
-            $date=$cartitems[0]['date'].' '.$cartitems[0]['time'];
+            $date=$request->date.' '.$request->time;
             $address=$partner->adderss;
             $image=$partner->small_image;
 
@@ -429,8 +429,6 @@ class OrderController extends Controller
                 'entity_type' => 'App\Models\Partner',
                 'entity_id' => $package->partner_id,
                 'optional_type' => 'party',
-                'other_id' => $package->id,
-                'other_type' => 'App\Models\Package',
                 'men' => $request->men,
                 'women' => $request->women,
                 'couple' => $request->couple,
@@ -451,15 +449,15 @@ class OrderController extends Controller
                         'title'=>$title,
                         'image'=>$image,
                         'address'=>$address,
-                        'packages'=>$cartpackages,
+                        'packages'=>[],
                         'date'=>$date,
-                        'totalitems'=>array_sum($request->pass),
+                        'totalitems'=>0,
                         'name'=>$request->name,
                         'mobile'=>$request->mobile,
                         'email'=>$request->email,
                         'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>$amount,
-                        'amount'=>$amount,
+                        'subtotal'=>0,
+                        'amount'=>0,
                         'taxes'=>0,
                         'walletbalance'=>Wallet::balance(auth()->user()->id)
                     ]
