@@ -219,14 +219,7 @@
       <workItem from="1580360300277" duration="36112000" />
       <workItem from="1580465012568" duration="11736000" />
       <workItem from="1580556211072" duration="8480000" />
-      <workItem from="1580723148870" duration="2472000" />
-    </task>
-    <task id="LOCAL-00095" summary="removing price double for couple">
-      <created>1577444327849</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1577444327849</updated>
+      <workItem from="1580723148870" duration="3204000" />
     </task>
     <task id="LOCAL-00096" summary="minor fix">
       <created>1577447641150</created>
@@ -564,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580715887760</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="minor fixes">
+      <created>1580735376187</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1580735376188</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +588,6 @@
     <MESSAGE value="major changes in apis for cover changes" />
     <MESSAGE value="facility added with events" />
     <MESSAGE value="cover charges added in apis admin panel" />
-    <MESSAGE value="minor fixes" />
     <MESSAGE value="order display at admin" />
     <MESSAGE value="order details and my orders api for partners" />
     <MESSAGE value="order cancel api created" />
@@ -610,17 +609,18 @@
     <MESSAGE value="add cart changes for party" />
     <MESSAGE value="payment exsting order change" />
     <MESSAGE value="order history condition changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="order history condition changed" />
+    <MESSAGE value="minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580378718078">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580378718078" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580715887681">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580735376037">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580715887681" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580735376037" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -653,10 +653,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580715890460">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580735378952">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1580715890460" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1580735378952" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

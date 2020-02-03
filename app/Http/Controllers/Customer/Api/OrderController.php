@@ -789,42 +789,47 @@ class OrderController extends Controller
         $menus=null;
         if(count($user->cart)){
             foreach($cart as $c){
+                if(!empty($c->other)){
+                    if($c->other instanceof Package) {
 
-                if($c->other instanceof Package) {
+                        $cartpackages[] = [
+                            'package' => $c->other->package_name ?? $c->other->name,
+                            'pass' => $c->no_of_pass,
+                            'price' => $c->other->price,
+                            'package_type' => $c->other->package_type ?? 'menu'
+                        ];
 
-                    $cartpackages[] = [
-                        'package' => $c->other->package_name ?? $c->other->name,
-                        'pass' => $c->no_of_pass,
-                        'price' => $c->other->price,
-                        'package_type' => $c->other->package_type ?? 'menu'
-                    ];
+                        $amount = $amount + $c->no_of_pass * $c->other->price;
+                        $totalpass = $totalpass + $c->no_of_pass;
 
-                    $amount = $amount + $c->no_of_pass * $c->other->price;
-                    $totalpass = $totalpass + $c->no_of_pass;
-
-                }else{
-                    if(!$menus){
-                        $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($c){
-                            $partner->where('partners.id', $c->partner_id);
-                        })->get();
-                        //return $menus;
-                        $menuarr=[];
-                        foreach($menus as $menu){
-                            $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                    }else{
+                        if(!$menus){
+                            $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($c){
+                                $partner->where('partners.id', $c->partner_id);
+                            })->get();
+                            //return $menus;
+                            $menuarr=[];
+                            foreach($menus as $menu){
+                                $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                            }
                         }
+
+                        $cartpackages[] = [
+                            'package' => $c->other->package_name ?? $c->other->name,
+                            'pass' => $c->no_of_pass,
+                            'price' => $menuarr[$c->other_id]??0,
+                            'package_type' => $c->other->package_type ?? 'menu'
+                        ];
+
+                        $amount = $amount + $c->no_of_pass * $c->other->price;
+                        $totalpass = $totalpass + $c->no_of_pass;
+
                     }
-
-                    $cartpackages[] = [
-                        'package' => $c->other->package_name ?? $c->other->name,
-                        'pass' => $c->no_of_pass,
-                        'price' => $menuarr[$c->other_id]??0,
-                        'package_type' => $c->other->package_type ?? 'menu'
-                    ];
-
-                    $amount = $amount + $c->no_of_pass * $c->other->price;
-                    $totalpass = $totalpass + $c->no_of_pass;
-
+                }else{
+                    $amount = 0;
+                    $totalpass = 0;
                 }
+
 
             }
             $title=$cart[0]->entity->title??($cart[0]->entity->name.' ('.$cart[0]->optional_type.')');
