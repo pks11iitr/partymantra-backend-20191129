@@ -38,7 +38,7 @@ class RestaurantController extends Controller
             ], 404);
         }
         //$event->time_to_start='very soon';
-        return ['restaurant'=>$restaurant];
+        return ['party'=>$restaurant];
     }
 
     public function gallery(Request $request, $id){
