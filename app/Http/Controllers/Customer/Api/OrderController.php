@@ -567,6 +567,13 @@ class OrderController extends Controller
                         $total = $total + $item->no_of_pass * $item->other->price;
                     }
                 }else{
+                    $items[] = new OrderItem([
+                        'entity_id' => $item->entity_id,
+                        'entity_type' => $item->entity_type,
+                        'partner_id' => $item->partner_id,
+                        'no_of_pass' => $item->no_of_pass,
+                        'price' => $item->other->price,
+                    ]);
                     $total = $total+0;
                 }
 
