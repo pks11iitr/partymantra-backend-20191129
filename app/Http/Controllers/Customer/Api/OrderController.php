@@ -528,42 +528,46 @@ class OrderController extends Controller
                 ]);
                 $total = $total+$item->no_of_pass*$item->other->price;
             }elseif($item->entity instanceof Partner) {
-                if($item->other instanceof Menu){
+                if (!empty($item->other)){
+                    if ($item->other instanceof Menu) {
 
-                    if(!$menus){
-                        $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($item){
-                            $partner->where('partners.id', $item->partner_id);
-                        })->get();
-                        //return $menus;
-                        $menuarr=[];
-                        foreach($menus as $menu){
-                            $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                        if (!$menus) {
+                            $menus = Menu::with('partner')->whereHas('partner', function ($partner) use ($item) {
+                                $partner->where('partners.id', $item->partner_id);
+                            })->get();
+                            //return $menus;
+                            $menuarr = [];
+                            foreach ($menus as $menu) {
+                                $menuarr[$menu->id] = $menu->partner[0]->pivot->price ?? 0;
+                            }
                         }
-                    }
 
-                    $items[]=new OrderItem([
-                        'entity_id'=>$item->entity_id,
-                        'entity_type'=>$item->entity_type,
-                        'optional_type'=>$item->optional_type,
-                        'other_type'=>$item->other_type,
-                        'other_id'=>$item->other_id,
-                        'partner_id'=>$item->partner_id,
-                        'no_of_pass'=>$item->no_of_pass,
-                        'price'=>$menuarr[$item->other_id]??0,
-                    ]);
-                    $total = $total+$item->no_of_pass*($menuarr[$item->other_id]??0);
+                        $items[] = new OrderItem([
+                            'entity_id' => $item->entity_id,
+                            'entity_type' => $item->entity_type,
+                            'optional_type' => $item->optional_type,
+                            'other_type' => $item->other_type,
+                            'other_id' => $item->other_id,
+                            'partner_id' => $item->partner_id,
+                            'no_of_pass' => $item->no_of_pass,
+                            'price' => $menuarr[$item->other_id] ?? 0,
+                        ]);
+                        $total = $total + $item->no_of_pass * ($menuarr[$item->other_id] ?? 0);
+                    } else {
+                        $items[] = new OrderItem([
+                            'entity_id' => $item->entity_id,
+                            'entity_type' => $item->entity_type,
+                            'optional_type' => $item->optional_type,
+                            'other_type' => $item->other_type,
+                            'other_id' => $item->other_id,
+                            'partner_id' => $item->partner_id,
+                            'no_of_pass' => $item->no_of_pass,
+                            'price' => $item->other->price,
+                        ]);
+                        $total = $total + $item->no_of_pass * $item->other->price;
+                    }
                 }else{
-                    $items[]=new OrderItem([
-                        'entity_id'=>$item->entity_id,
-                        'entity_type'=>$item->entity_type,
-                        'optional_type'=>$item->optional_type,
-                        'other_type'=>$item->other_type,
-                        'other_id'=>$item->other_id,
-                        'partner_id'=>$item->partner_id,
-                        'no_of_pass'=>$item->no_of_pass,
-                        'price'=>$item->other->price,
-                    ]);
-                    $total = $total+$item->no_of_pass*$item->other->price;
+                    $total = $total+0;
                 }
 
 
@@ -596,11 +600,15 @@ class OrderController extends Controller
         }
 
         $order->details()->saveMany($items);
-        if($request->usingwallet==1){
-            $walletbalance=Wallet::balance($user->id);
-            $fromwallet=($total>=$walletbalance)?$walletbalance:$total;
-        }
-        else{
+        if($total>0){
+            if($request->usingwallet==1){
+                $walletbalance=Wallet::balance($user->id);
+                $fromwallet=($total>=$walletbalance)?$walletbalance:$total;
+            }
+            else{
+                $fromwallet=0;
+            }
+        }else{
             $fromwallet=0;
         }
         $order->total=$total;
@@ -613,7 +621,24 @@ class OrderController extends Controller
         $order->couple=$couple;
         if($order->save()){
             //auth()->user()->cart()->delete();
-            if($order->total-$fromwallet>0){
+            if($total==0){
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'success',
+                    'paymentdone'=>'yes',
+                    'data'=>[
+                        'orderid'=> $order->order_id,
+                        'total'=>0,
+                        'email'=>$email,
+                        'mobile'=>$mobile,
+                        'description'=>$description,
+                        'address' => '',
+                        'name'=>$name,
+                        'currency'=>'INR',
+                        'merchantid'=>$this->pay->merchantkey,
+                    ],
+                ], 200);
+            }else if($order->total-$fromwallet>0){
                 $response=$this->pay->generateorderid([
                     "amount"=>$order->total*100-$fromwallet*100,
                     "currency"=>"INR",
@@ -629,34 +654,8 @@ class OrderController extends Controller
                         'message'=>'success',
                         'paymentdone'=>'no',
                         'data'=>[
-                        'orderid'=> $order->order_id,
-                        'total'=>$order->total-$fromwallet*100,
-                        'email'=>$email,
-                        'mobile'=>$mobile,
-                        'description'=>$description,
-                        'address' => '',
-                        'name'=>$name,
-                        'currency'=>'INR',
-                        'merchantid'=>$this->pay->merchantkey,
-                    ],
-                ], 200);
-            }else{
-                    return response()->json([
-                        'status'=>'failed',
-                        'message'=>'Payment cannot be initiated',
-                        'data'=>[
-                        ],
-                    ], 200);
-                }
-            }else{
-                    Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
-                    return response()->json([
-                        'status'=>'success',
-                        'message'=>'success',
-                        'paymentdone'=>'yes',
-                        'data'=>[
-                            'orderid'=> '',
-                            'total'=>$order->total,
+                            'orderid'=> $order->order_id,
+                            'total'=>($order->total-$fromwallet)*100,
                             'email'=>$email,
                             'mobile'=>$mobile,
                             'description'=>$description,
@@ -666,9 +665,38 @@ class OrderController extends Controller
                             'merchantid'=>$this->pay->merchantkey,
                         ],
                     ], 200);
+                }else{
+                    return response()->json([
+                        'status'=>'failed',
+                        'message'=>'Payment cannot be initiated',
+                        'data'=>[
+                        ],
+                    ], 200);
+                }
+            }else{
+                Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'success',
+                    'paymentdone'=>'yes',
+                    'data'=>[
+                        'orderid'=> '',
+                        'total'=>$order->total,
+                        'email'=>$email,
+                        'mobile'=>$mobile,
+                        'description'=>$description,
+                        'address' => '',
+                        'name'=>$name,
+                        'currency'=>'INR',
+                        'merchantid'=>$this->pay->merchantkey,
+                    ],
+                ], 200);
             }
 
         }
+
+
+
         return response()->json([
             'message'=>'some error occurred',
             'errors'=>[
@@ -686,44 +714,56 @@ class OrderController extends Controller
         $amount=0;
         $menus=null;
         foreach($order->details as $item){
-            if($item->other instanceof Package){
-                $amount=$amount+$item->no_of_pass*$item->other->price;
-            }else{
-                if(!$menus){
-                    $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($item){
-                        $partner->where('partners.id', $item->partner_id);
-                    })->get();
-                    //return $menus;
-                    $menuarr=[];
-                    foreach($menus as $menu){
-                        $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+            if(!empty($item->other)){
+                if($item->other instanceof Package){
+                    $amount=$amount+$item->no_of_pass*$item->other->price;
+                }else{
+                    if(!$menus){
+                        $menus=Menu::with('partner')->whereHas('partner',   function($partner) use($item){
+                            $partner->where('partners.id', $item->partner_id);
+                        })->get();
+                        //return $menus;
+                        $menuarr=[];
+                        foreach($menus as $menu){
+                            $menuarr[$menu->id]=$menu->partner[0]->pivot->price??0;
+                        }
                     }
+                    $amount=$amount+$item->no_of_pass*($menuarr[$item->other_id]??0);
                 }
-                $amount=$amount+$item->no_of_pass*($menuarr[$item->other_id]??0);
+            }else{
+                $amount=$amount+0;
             }
-
         }
 
         $order->total=$amount;
         $order->save();
-        if($request->usingwallet==1){
-            $walletbalance=Wallet::balance($user->id);
-            $fromwallet=($amount>=$walletbalance)?$walletbalance:$amount;
-        }
-        else{
+
+        if($amount>0){
+            if($request->usingwallet==1){
+                $walletbalance=Wallet::balance($user->id);
+                $fromwallet=($amount>=$walletbalance)?$walletbalance:$amount;
+            }
+            else{
+                $fromwallet=0;
+            }
+        }else{
             $fromwallet=0;
         }
 
-        if($amount-$fromwallet>0){
+        if($amount==0){
+            $paymentdone='yes';
+            //$amount=$amount;
+        }else if($amount-$fromwallet>0){
             $paymentdone='no';
-            $amount=$amount-$fromwallet;
+            //$amount=$amount-$fromwallet;
         }else{
             $paymentdone='yes';
-            $amount=$amount;
+            //$amount=$amount;
         }
         if($order->details[0]->entity instanceof PartnerEvent) {
             return response()->json([
                 'message' => 'success',
+                'paymentdone'=>$paymentdone,
                 'data' => [
                     'orderid' => $order->order_id,
                     'total' => ($amount-$fromwallet)*100,
@@ -741,9 +781,10 @@ class OrderController extends Controller
         }else{
             return response()->json([
                 'message' => 'success',
+                'paymentdone'=>$paymentdone,
                 'data' => [
                     'orderid' => $order->order_id,
-                    'total' => $amount,
+                    'total' => ($amount-$fromwallet)*100,
                     'email' => $order->email,
                     'mobile' => $order->mobile,
                     'description' => ($order->details[0]->entity->name??'').' ('.ucfirst($order->details[0]->optional_type??'').')',
