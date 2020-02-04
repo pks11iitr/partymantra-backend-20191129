@@ -437,7 +437,7 @@ class OrderController extends Controller
                 'name' => $request->name,
                 'partner_id' => $partner->id,
                 'user_id' => auth()->user()->id,
-                'no_of_pass' => $maps[$package->id],
+                'no_of_pass' => 0,
                 'date'=>$request->date,
                 'time'=>$request->time
             ];
@@ -571,8 +571,8 @@ class OrderController extends Controller
                         'entity_id' => $item->entity_id,
                         'entity_type' => $item->entity_type,
                         'partner_id' => $item->partner_id,
-                        'no_of_pass' => $item->no_of_pass,
-                        'price' => $item->other->price,
+                        'no_of_pass' => 0,
+                        'price' => 0,
                     ]);
                     $total = $total+0;
                 }
