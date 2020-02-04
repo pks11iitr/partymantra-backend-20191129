@@ -622,6 +622,8 @@ class OrderController extends Controller
         if($order->save()){
             //auth()->user()->cart()->delete();
             if($total==0){
+                $order->payment_status='paid';
+                $order->save();
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
@@ -675,6 +677,10 @@ class OrderController extends Controller
                 }
             }else{
                 Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
+
+                $order->payment_status='paid';
+                $order->save();
+
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
@@ -752,12 +758,16 @@ class OrderController extends Controller
 
         if($amount==0){
             $paymentdone='yes';
+            $order->payment_status='paid';
+            $order->save();
             //$amount=$amount;
         }else if($amount-$fromwallet>0){
             $paymentdone='no';
             //$amount=$amount-$fromwallet;
         }else{
             $paymentdone='yes';
+            $order->payment_status='paid';
+            $order->save();
             //$amount=$amount;
         }
         if($order->details[0]->entity instanceof PartnerEvent) {
