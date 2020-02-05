@@ -63,6 +63,7 @@ $api = app('Dingo\Api\Routing\Router');
 
         //pay bill api
         $api->post('pay-bill', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\BillPayController@initiateBillPay']);
+        $api->post('verify-bill', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\BillPayController@verifyBillPay']);
 
 
         //feedback apis starts
