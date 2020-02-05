@@ -27,4 +27,25 @@ class Wallet extends Model
     }
 
 
+    // deduct amount from wallet if applicable
+    public static function payUsingWallet($order){
+        $walletbalance=Wallet::balance($order->user_id);
+        $fromwallet=($order->total>=$walletbalance)?$walletbalance:$order->total;
+        $order->usingwallet=true;
+        $order->fromwallet=$fromwallet;
+        if($order->total-$fromwallet>0){
+            $paymentdone='no';
+        }else{
+            Wallet::updatewallet($order->user_id,'Paid for Order ID:'.$order->refid, 'Debit',$fromwallet);
+            $order->payment_status='paid';
+            $paymentdone='yes';
+        }
+        $order->save();
+        return [
+            'paymentdone'=>$paymentdone,
+            'fromwallet'=>$fromwallet
+        ];
+    }
+
+
 }

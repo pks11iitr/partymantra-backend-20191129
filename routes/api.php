@@ -61,6 +61,10 @@ $api = app('Dingo\Api\Routing\Router');
         $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
         //order apis ends
 
+        //pay bill api
+        $api->post('pay-bill', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\BillPayController@initiateBillPay']);
+
+
         //feedback apis starts
         $api->post('submit-review/{id}', ['as'=>'api.order.review', 'uses'=>'Customer\Api\OrderController@review']);
         //feedback apis ends

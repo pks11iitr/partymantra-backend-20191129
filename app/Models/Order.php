@@ -10,9 +10,9 @@ class Order extends Model
 
     protected $appends = array('order_date');
 
-    protected $fillable=['refid'];
+    protected $fillable=['refid','payment_id_response', 'order_id_response','usingwallet','fromwallet','discount_type','instant_discount','total'];
 
-    protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at', 'payment_id_response', 'order_id_response','usingwallet','fromwallet'];
+    protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at', 'payment_id_response', 'order_id_response'];
 
 
     public function details(){
@@ -34,23 +34,34 @@ class Order extends Model
 
     //delete pending order of given type and create new
     public static function deleteAndCreate($user, $request, $data=[]){
-        $orders=Order::where('user_id',$user->id)->where('payment_status', 'pending');
-        if(isset($data['optional_type'])){
-            $orders=$orders->where('optional_type', $data['optional_type']);
-        }
-        $orders->details()->delete();
-        $orders->delete();
+        OrderItem::whereHas('order', function($order)use($user){
+            $order->where('payment_status', 'pending')->where('user_id', $user->id);
+        })->delete();
+        Order::where('payment_status', 'pending')->where('user_id', $user->id)->delete();
 
         if(isset($data['optional_type']) && $data['optional_type']=='billpay'){
-            $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount]);
+
+            $instant_discount=Discount::calculateDiscount($request->amount, $request->discount_type);
+
+            if($request->discount_type=='instant'){
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount-$instant_discount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
+            }else if($request->discount_type=='cashback'){
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
+            }else{
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>'none']);
+            }
+
             $user->orders()->save($order);
-            $items=Order::createItemsArray('billpay', $request);
-            $order->details()->saveMany($items);
+            //var_dump($order->toArray());die('an');
         }
+
+        $items=Order::createItemsArray('billpay', $request);
+        $order->details()->saveMany($items);
 
         return $order;
     }
 
+    //create array of items
     public static function createItemsArray($type, $request){
         if($type=='billpay'){
             $items[]=new OrderItem([

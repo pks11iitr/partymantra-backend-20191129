@@ -609,6 +609,7 @@ class OrderController extends Controller
         $order->details()->saveMany($items);
         if($total>0){
             if($request->usingwallet==1){
+                $order->usingwallet=true;
                 $walletbalance=Wallet::balance($user->id);
                 $fromwallet=($total>=$walletbalance)?$walletbalance:$total;
             }
@@ -755,28 +756,40 @@ class OrderController extends Controller
             if($request->usingwallet==1){
                 $walletbalance=Wallet::balance($user->id);
                 $fromwallet=($amount>=$walletbalance)?$walletbalance:$amount;
-            }
-            else{
+                $order->usingwallet=true;
+                $order->fromwallet=$fromwallet;
+                if($amount-$fromwallet>0){
+                    $paymentdone='no';
+                }else{
+                    $order->payment_status='paid';
+                    $paymentdone='yes';
+                }
+                $order->save();
+            }else{
+                $paymentdone='no';
                 $fromwallet=0;
             }
         }else{
             $fromwallet=0;
+            $paymentdone='yes';
+            $order->payment_status='paid';
+            $order->save();
         }
 
-        if($amount==0){
-            $paymentdone='yes';
-            $order->payment_status='paid';
-            $order->save();
-            //$amount=$amount;
-        }else if($amount-$fromwallet>0){
-            $paymentdone='no';
-            //$amount=$amount-$fromwallet;
-        }else{
-            $paymentdone='yes';
-            $order->payment_status='paid';
-            $order->save();
-            //$amount=$amount;
-        }
+//        if($amount==0){
+//            $paymentdone='yes';
+//            $order->payment_status='paid';
+//            $order->save();
+//            //$amount=$amount;
+//        }else if($amount-$fromwallet>0){
+//            $paymentdone='no';
+//            //$amount=$amount-$fromwallet;
+//        }else{
+//            $paymentdone='yes';
+//            $order->payment_status='paid';
+//            $order->save();
+//            //$amount=$amount;
+//        }
         if($order->details[0]->entity instanceof PartnerEvent) {
             return response()->json([
                 'message' => 'success',
@@ -1093,6 +1106,15 @@ class OrderController extends Controller
             $order->save();
             if($order->usingwallet==true){
                 $balance=Wallet::balance($order->user_id);
+                if($balance >= $order->fromwallet){
+                    return response()->json([
+                        'status'=>'failed',
+                        'message'=>'Payment is not successfull',
+                        'errors'=>[
+
+                        ],
+                    ], 200);
+                }
                 Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
             }
             return response()->json([
