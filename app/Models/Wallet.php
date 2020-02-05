@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Storage;
+
 class Wallet extends Model
 {
     protected $table='wallet';
@@ -11,6 +13,8 @@ class Wallet extends Model
     protected $fillable=['refid','type','amount','description','iscomplete', 'order_id', 'order_id_response', 'payment_id', 'payment_id_response','user_id'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at','iscomplete'];
+
+    protected $appends=['icon','date'];
 
     public static function balance($userid){
         $wallet=Wallet::where('user_id', $userid)->where('iscomplete', true)->select(DB::raw('sum(amount) as total'), 'type')->groupBy('type')->get();
@@ -45,6 +49,18 @@ class Wallet extends Model
             'paymentdone'=>$paymentdone,
             'fromwallet'=>$fromwallet
         ];
+    }
+
+    public function getIconAttribute($value){
+        if($this->type=='Debit')
+            return Storage::url('images/red.png');
+        else
+            return Storage::url('images/green.png');
+
+    }
+
+    public function getDateAttribute($value){
+        return date('D, d-M-Y H:iA', strtotime($this->updated_at));
     }
 
 
