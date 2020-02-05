@@ -824,13 +824,17 @@ class OrderController extends Controller
     public function history(Request $request){
         $user=auth()->user();
         //var_dump($user->id);die;
-        $orders=Order::where('user_id', $user->id)->whereIn('payment_status', ['paid','declined','cancel-request','cancelled', 'refunded'])->get();
+        $orders=Order::with('details.entity')->where('user_id', $user->id)->whereIn('payment_status', ['pending', 'paid','declined','cancel-request','cancelled', 'refunded'])->get();
         $ordersdetail=[];
         $i=0;
         foreach($orders as $o){
             $ordersdetail[$i]=$o->toArray();
             foreach($o->details as $d){
-                $ordersdetail[$i]['title']=$d->entity->title;
+                if($d->entity instanceof PartnerEvent){
+                    $ordersdetail[$i]['title']=$d->entity->title;
+                }else{
+                    $ordersdetail[$i]['title']=$d->entity->name.('( '.$o->optional_type??''.' )');
+                }
                 $ordersdetail[$i]['image']=$d->entity->small_image;
             }
             $i++;
