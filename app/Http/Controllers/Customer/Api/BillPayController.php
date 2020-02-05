@@ -125,4 +125,8 @@ class BillPayController extends Controller
         }
     }
 
+    public function getPartners(Request $request){
+        return Partner::active()->select('name', 'id')->get();
+    }
+
 }
