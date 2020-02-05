@@ -53,9 +53,9 @@ class Wallet extends Model
 
     public function getIconAttribute($value){
         if($this->type=='Debit')
-            return Storage::url('images/red.png');
+            return asset('images/red.png');
         else
-            return Storage::url('images/green.png');
+            return asset('images/green.png');
 
     }
 

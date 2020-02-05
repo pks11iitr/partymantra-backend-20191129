@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/BillPayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/BillPayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Wallet.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +156,7 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/Models/Traits" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
@@ -224,14 +223,7 @@
       <workItem from="1580556211072" duration="8480000" />
       <workItem from="1580723148870" duration="9854000" />
       <workItem from="1580801773964" duration="3766000" />
-      <workItem from="1580835438457" duration="19831000" />
-    </task>
-    <task id="LOCAL-00108" summary="cover charges added in apis admin panel">
-      <created>1578397128016</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1578397128016</updated>
+      <workItem from="1580835438457" duration="20675000" />
     </task>
     <task id="LOCAL-00109" summary="cover charges added in apis admin panel">
       <created>1578400698154</created>
@@ -569,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580902434520</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="partners list api">
+      <created>1580902750202</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1580902750202</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +589,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="cover charges added in apis admin panel" />
     <MESSAGE value="order display at admin" />
     <MESSAGE value="order details and my orders api for partners" />
     <MESSAGE value="order cancel api created" />
@@ -615,17 +613,18 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="minor fixes for make order and pay now" />
     <MESSAGE value="bill pay controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="bill pay controller" />
+    <MESSAGE value="partners list api" />
+    <option name="LAST_COMMIT_MESSAGE" value="partners list api" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580888529525">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580888529525" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580902434403">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1580902750121">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580902434403" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1580902750121" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
