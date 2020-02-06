@@ -44,11 +44,11 @@ class Order extends Model
             $instant_discount=Discount::calculateDiscount($request->amount, $request->discount_type);
 
             if($request->discount_type=='instant'){
-                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount-$instant_discount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false),'total'=>$request->amount-$instant_discount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
             }else if($request->discount_type=='cashback'){
-                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>$request->discount_type]);
             }else{
-                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>'none']);
+                $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false),'total'=>$request->amount, 'instant_discount'=>$instant_discount,'discount_type'=>'none']);
             }
 
             $user->orders()->save($order);
