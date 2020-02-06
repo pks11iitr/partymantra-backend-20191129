@@ -26,5 +26,9 @@ class OrderItem extends Model
         return $this->belongsTo('App\Models\Order', 'order_id');
     }
 
+    public function partner(){
+        return $this->belongsTo('App\Models\Partner', 'partner_id');
+    }
+
 
 }

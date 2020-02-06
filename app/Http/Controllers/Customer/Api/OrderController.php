@@ -843,12 +843,17 @@ class OrderController extends Controller
         foreach($orders as $o){
             $ordersdetail[$i]=$o->toArray();
             foreach($o->details as $d){
-                if($d->entity instanceof PartnerEvent){
-                    $ordersdetail[$i]['title']=$d->entity->title;
+                if($d->optional_type=='billpay') {
+                    $ordersdetail[$i]['title'] = $d->partner->name. ('( ' . $o->optional_type ?? '' . ' )');
+                    $ordersdetail[$i]['image'] = $d->partner->small_image;
                 }else{
-                    $ordersdetail[$i]['title']=$d->entity->name.('( '.$o->optional_type??''.' )');
+                    if ($d->entity instanceof PartnerEvent) {
+                        $ordersdetail[$i]['title'] = $d->entity->title;
+                    } else {
+                        $ordersdetail[$i]['title'] = $d->entity->name . ('( ' . $o->optional_type ?? '' . ' )');
+                    }
+                    $ordersdetail[$i]['image'] = $d->entity->small_image;
                 }
-                $ordersdetail[$i]['image']=$d->entity->small_image;
             }
             $i++;
         }
