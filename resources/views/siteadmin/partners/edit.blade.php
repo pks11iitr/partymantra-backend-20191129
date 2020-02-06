@@ -198,7 +198,20 @@
                             </div>
                             <!-- /.col -->
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Select Collection</label>
+                                    <select class="form-control select2" name="collection_id[]" id="lca2" multiple>
+                                        @foreach($collections as $collection)
+                                            <option value="{{$collection->id}}" @foreach($partners->collections as $c) @if($c->id==$collection->id){{'selected'}}@endif @endforeach>{{$collection->name}}</option>
+                                        @endforeach
+                                        Select Entity
+                                    </select>
 
+                                </div>
+                            </div>
+                        </div>
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
@@ -248,6 +261,7 @@
                                     <!-- /.form-group -->
                                 </div>
                             </div>
+
                             <div class="row">
 
                                 <div class="form-group"  style="algin:center;">

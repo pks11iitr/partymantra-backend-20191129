@@ -51,4 +51,7 @@ class Partner extends Model
         return $this->gallery()->whereIn('other_type', ['eventonrestaurant', 'partyonrestaurant']);
     }
 
+    public function collections(){
+        return $this->belongsToMany('App\Models\Collection', 'collection_restaurant', 'restaurant_id', 'collection_id');
+    }
 }

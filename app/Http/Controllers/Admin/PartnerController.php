@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Collection;
 use App\Models\Document;
 use App\Models\Facility;
 use App\Models\Menu;
@@ -27,11 +28,12 @@ class PartnerController extends Controller
 
     public function edit(Request $request, $id){
         $menus=Menu::active()->get();
+        $collections=Collection::active()->get();
 		$partners=Partner::with('eventparty')->findOrFail($id);
 //		echo "<pre>";
 //		print_r($partners);die;
 		$facilities=Facility::all();
-		return view('siteadmin.partners.edit', ['partners'=>$partners, 'menus'=>$menus, 'facilities'=>$facilities]);
+		return view('siteadmin.partners.edit', ['partners'=>$partners, 'menus'=>$menus, 'facilities'=>$facilities, 'collections'=>$collections]);
 
     }
 
@@ -198,6 +200,15 @@ class PartnerController extends Controller
             'open'=>$request->open,
             'close'=>$request->close
 		])) {
+
+            if(!empty($request->collection_id)){
+                if(!empty($request->collection_id)){
+                    $partners->collections()->detach();
+                    $partners->collections()->attach($request->collection_id);
+                }
+            }else{
+                $partners->collections()->detach();
+            }
                 return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
 
             }
