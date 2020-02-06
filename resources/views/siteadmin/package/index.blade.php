@@ -48,14 +48,14 @@
                   <th>Package Name</th>
                   <th>Price</th>
                   <th>Isactive</th>
-                 <th>Action</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
 
                @foreach($event_packages as $packages)
                 <tr>
-                  <td>{{$packages->event->partner->name??''}}</td>
+                  <td>{{$packages->partner->name??''}}</td>
                   <td>{{$packages->event->title??''}}</td>
                   <td>{{$packages->package_name}}</td>
                   <td>{{$packages->price}}</td>

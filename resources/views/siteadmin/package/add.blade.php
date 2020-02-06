@@ -33,6 +33,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>Select Restaurant or Organizer</label>
+                                    <select name="partner_id" class="form-control select2" style="width: 100%;">
+                                        @foreach($organizers as $organizer)
+                                            <option  value="{{$organizer->id}}"  {{old('id')==$organizer->id?'selected':''}}>{{$organizer->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label>Select Event</label>
                                     <select name="event_id" class="form-control select2" style="width: 100%;" onchange="getdata($(this).val())" id="events">
                                       @foreach($events as $event)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Menu;
+use App\Models\Partner;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,17 +21,19 @@ class EventPackagesController extends Controller
     }
 
     public function edit(Request $request, $id){
+        $organizers=Partner::active()->get();
       $events=PartnerEvent::where('isactive', 1)->get();
       $package = Package::findOrfail($id);
       //var_dump($package->menus);die;
-      return view('siteadmin.package.edit',['package'=>$package,'events'=>$events]);
+      return view('siteadmin.package.edit',['package'=>$package,'events'=>$events, 'organizers'=>$organizers]);
 
 
     }
 
     public function add(Request $request){
+        $organizers=Partner::active()->get();
         $events=PartnerEvent::where('isactive', 1)->get();
-        return view('siteadmin.package.add',['events'=>$events]);
+        return view('siteadmin.package.add',['events'=>$events, 'organizers'=>$organizers]);
     }
 
     public function store(Request $request){
@@ -42,7 +45,8 @@ class EventPackagesController extends Controller
         'custom_package_detail'=>'required',
         'isactive'=>'required',
         'partneractive'=>'required',
-        'event_id'=>'required'
+        'event_id'=>'nullable',
+          'partner_id'=>'nullable'
       ]);
         $event=PartnerEvent::findOrFail($request->event_id);
       if($package=Package::create([
@@ -53,7 +57,7 @@ class EventPackagesController extends Controller
         'isactive'=>$request->isactive,
         'partneractive'=>$request->partneractive,
         'event_id'=>$request->event_id,
-          'partner_id'=>$event->partner_id,
+          'partner_id'=>$request->partner_id,
           'created_by'=>auth()->user()->id,
           'forparty'=>$request->forparty,
           'fordining'=>$request->fordining,
@@ -95,7 +99,7 @@ class EventPackagesController extends Controller
                   'isactive'=>$request->isactive,
                   'partneractive'=>$request->partneractive,
                   'event_id'=>$request->event_id,
-                    'partner_id'=>$event->partner_id,
+                    'partner_id'=>$request->partner_id,
                     'created_by'=>auth()->user()->id,
                     'forparty'=>$request->forparty,
                     'fordining'=>$request->fordining,
