@@ -846,13 +846,17 @@ class OrderController extends Controller
                 if($d->optional_type=='billpay') {
                     $ordersdetail[$i]['title'] = $d->partner->name. ('( ' . ($d->optional_type ?? '' ). ' )');
                     $ordersdetail[$i]['image'] = $d->partner->small_image;
+                    $ordersdetail[$i]['ordertype']='billpay';
                 }else{
                     if ($d->entity instanceof PartnerEvent) {
                         $ordersdetail[$i]['title'] = $d->entity->title;
+                        $ordersdetail[$i]['ordertype']='event';
                     } else {
                         $ordersdetail[$i]['title'] = $d->entity->name . ('( ' . ($d->optional_type ?? '') . ' )');
+                        $ordersdetail[$i]['ordertype']=$d->optional_type ?? '';
                     }
                     $ordersdetail[$i]['image'] = $d->entity->small_image;
+
                 }
             }
             $i++;
