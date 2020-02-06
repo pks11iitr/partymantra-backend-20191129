@@ -27,7 +27,9 @@ class PartnerController extends Controller
 
     public function edit(Request $request, $id){
         $menus=Menu::active()->get();
-		$partners=Partner::findOrFail($id);
+		$partners=Partner::with('eventparty')->findOrFail($id);
+//		echo "<pre>";
+//		print_r($partners);die;
 		$facilities=Facility::all();
 		return view('siteadmin.partners.edit', ['partners'=>$partners, 'menus'=>$menus, 'facilities'=>$facilities]);
 
@@ -56,7 +58,9 @@ class PartnerController extends Controller
 			'contact_no'=>'required',
 			'type'=>'required',
 			'per_person_text'=>'required',
-			'isactive'=>'required'
+			'isactive'=>'required',
+			'open'=>'nullable',
+			'close'=>'nullable'
 			]);
 
 		//create use
@@ -110,7 +114,9 @@ class PartnerController extends Controller
 							'user_id'=>$user->id,
                             'allow_party'=>$request->allow_party,
                             'timings'=>$request->timings,
-                            'party_timings'=>$request->party_timings
+                            'party_timings'=>$request->party_timings,
+                            'open'=>$request->open,
+                            'close'=>$request->close
 							]))
 
 							{
@@ -188,7 +194,9 @@ class PartnerController extends Controller
             'small_image'=>$path2,
             'allow_party'=>$request->allow_party,
             'timings'=>$request->timings,
-            'party_timings'=>$request->party_timings
+            'party_timings'=>$request->party_timings,
+            'open'=>$request->open,
+            'close'=>$request->close
 		])) {
                 return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
 
@@ -251,6 +259,24 @@ class PartnerController extends Controller
     public function deletegallery(Request $request, $id){
         Document::where('id', $id)->where('entity_type', 'App\Models\Partner')->delete();
         return redirect()->back()->with('success', 'Images has been deleted');
+    }
+
+    public function addEventPartyImage(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        if(!empty($request->gallery)){
+
+            $request->validate([
+                'gallery.*'=>'required|image',
+            ]);
+
+            foreach($request->gallery as $file){
+                if($request->type=='partyonrestaurant')
+                    $partner->saveDocument($file, 'events', ['type'=>'partyonrestaurant']);
+                else
+                    $partner->saveDocument($file, 'events', ['type'=>'eventonrestaurant', 'other_id'=>$request->type]);
+            }
+        }
+        return redirect()->back()->with('success', 'Images have been uploaded');
     }
 
 }

@@ -44,6 +44,8 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('detach-facility/{pid}/{fid}', 'Admin\PartnerController@detachFacility')->name('admin.partner.delfacility');
         Route::post('partner/{id}/add-gallery', 'Admin\PartnerController@addgallery')->name('admin.partner.gallery');
         Route::get('partner/del-gallery/{id}', 'Admin\PartnerController@deletegallery')->name('admin.partner.galleryrm');
+    Route::post('partner/{id}/add-event-party', 'Admin\PartnerController@addEventPartyImage')->name('admin.partner.partyevent');
+
 
 
         Route::get('category', 'Admin\CategoryController@index')->name('admin.category');

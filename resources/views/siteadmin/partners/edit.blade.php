@@ -177,6 +177,28 @@
                                 <!-- /.form-group -->
                             </div>
                         </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Open Time</label>
+                                    <input type="text" class="form-control" name="open" id="exampleInputEmail1" placeholder="Enter email" name="short_address" value="{{$partners->open}}">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Close Time</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Enter email" name="close" value="{{$partners->close}}">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
@@ -461,11 +483,84 @@
                                 <!-- /.col -->
 {{--                                <div class="col-md-6">--}}
                                 @foreach($partners->gallery as $g)
+                                    @if(in_array($g->other_type, ['both','party', 'restaurant']))
                                     <div class="form-group">
                                         <img src="{{$g->doc_path}}" height="100" width="200"> &nbsp; &nbsp; <a href="{{route('admin.partner.galleryrm', ['id'=>$g->id])}}">X</a>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;          &nbsp; &nbsp; &nbsp; &nbsp;            </div>
-                            @endforeach
+                                    @endif
+                                    @endforeach
 {{--                                </div>--}}
+
+                            <!-- /.form-group -->
+                                <!-- /.form-group -->
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                    </form>
+                </div>
+
+
+
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- SELECT2 EXAMPLE -->
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Party or Event images for Restaurant Detail Screen</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <form action="{{route('admin.partner.partyevent',['id'=>$partners->id])}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <!-- /.row -->
+
+                            <!-- /.row -->
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Header Image</label>
+                                        <input type="file" class="form-control" name="gallery[]" id="exampleInputEmail1" placeholder="Enter image" multiple>
+                                        <br>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Show Image in</label>
+                                        <select name="type" class="form-control select2"
+                                                style="width: 100%;">
+                                            <option   value="partyonrestaurant">Party</option>
+                                            @foreach($partners->events as $e)
+                                                <option   value="{{$e->id}}">{{$e->title}}</option>
+                                                @endforeach
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <!-- /.col -->
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">.</label>
+                                        <button type="submit" class="btn btn-block btn-primary btn-sm">Add</button>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <!-- /.col -->
+                                {{--                                <div class="col-md-6">--}}
+                                @foreach($partners->eventparty as $g)
+                                    <div class="form-group">
+                                        <img src="{{$g->doc_path}}" height="100" width="200"> &nbsp;{{$g->other_type}} &nbsp; &nbsp; <a href="{{route('admin.partner.galleryrm', ['id'=>$g->id])}}">X</a>
+                                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;          &nbsp; &nbsp; &nbsp; &nbsp;            </div>
+                            @endforeach
+                            {{--                                </div>--}}
 
                             <!-- /.form-group -->
                                 <!-- /.form-group -->

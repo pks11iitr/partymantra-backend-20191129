@@ -14,7 +14,7 @@ class Partner extends Model
 
     protected $table = 'partners';
 
-    protected $fillable=['name', 'header_image', 'small_image', 'description', 'address', 'short_address', 'lat', 'lang', 'contact_no', 'type', 'per_person_text', 'isactive', 'user_id', 'allow_party','timings','party_timings'];
+    protected $fillable=['name', 'header_image', 'small_image', 'description', 'address', 'short_address', 'lat', 'lang', 'contact_no', 'type', 'per_person_text', 'isactive', 'user_id', 'allow_party','timings','party_timings','open','close'];
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','user_id'];
 
@@ -45,6 +45,10 @@ class Partner extends Model
 
     public function menus(){
         return $this->belongsToMany('App\Models\Menu', 'partner_menus', 'partner_id', 'menu_id')->withPivot(['price','cut_price']);
+    }
+
+    public function eventparty(){
+        return $this->gallery()->whereIn('other_type', ['eventonrestaurant', 'partyonrestaurant']);
     }
 
 }

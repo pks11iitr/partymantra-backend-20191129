@@ -96,7 +96,7 @@ $api = app('Dingo\Api\Routing\Router');
     $api->get('restaurant/{id}/gallery', ['as'=>'api.restaurant.gallery', 'uses'=>'Customer\Api\RestaurantController@gallery']);
     $api->get('restaurant/{id}/reviews', ['as'=>'api.restaurant.reviews', 'uses'=>'Customer\Api\RestaurantController@reviews']);
 $api->get('party/{id}/gallery', ['as'=>'api.party.gallery', 'uses'=>'Customer\Api\RestaurantController@partygallery']);
-$api->get('party/{id}/reviews', ['as'=>'api.party.reviews', 'uses'=>'Customer\Api\RestaurantController@partyreviews']);
+$api->get('party/{id}/reviews', ['as'=>'api.party.reviews', 'uses'=>'Customer\Api\RestaurantController@reviews']);
 
     /*
      * customer api routes ends

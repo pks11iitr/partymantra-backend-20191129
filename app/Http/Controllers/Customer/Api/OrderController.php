@@ -1060,7 +1060,7 @@ class OrderController extends Controller
             'rating'=>'required|integer|min:1|max:5',
             'comment'=>'nullable|string|max:200'
         ]);
-        $order=Order::with('details')->where('user_id', $user->id)->where('payment_status', 'paid')->findOrFail($id);
+        $order=Order::with('details.entity')->where('user_id', $user->id)->where('payment_status', 'paid')->findOrFail($id);
 
         if($order->review)
             return response()->json([

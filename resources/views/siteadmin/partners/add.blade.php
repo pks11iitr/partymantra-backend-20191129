@@ -185,6 +185,27 @@
                                 <!-- /.form-group -->
                             </div>
                         </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Open Time</label>
+                                    <input type="text" class="form-control" name="open" id="exampleInputEmail1" placeholder="Enter email" name="short_address">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Close Time</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Enter email" name="close">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">
