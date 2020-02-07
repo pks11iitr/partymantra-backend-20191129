@@ -44,9 +44,10 @@
                                 <thead>
                                 <tr>
                                     <th>OrderID</th>
-                                    <th>Event</th>
-                                    <th>Organizer Name</th>
+                                    <th>Customer Name</th>
                                     <th>Customer Mobile</th>
+                                    <th>Organizer Name</th>
+                                    <th>Type</th>
                                     <th>Total Amount</th>
                                     <th>Order Status</th>
                                     <th>Date</th>
@@ -55,10 +56,10 @@
                                 <tbody>
                                     <tr>
                                         <td>{{$order->refid}}</td>
-                                        <td>{{$order->details[0]->entity->title??''}}</td>
-                                        <td>{{$order->details[0]->entity->partner->name??''}}</td>
-                                        <td>{{$order->customer->mobile}}</td>
-
+                                        <td>{{$order->customer->name??''}}</td>
+                                        <td>{{$order->customer->mobile??''}}</td>
+                                        <td>{{$order->details[0]->partner->name??''}}</td>
+                                        <td></td>
                                         <td>{{$order->total}}</td>
                                         <td>{{$order->payment_status}}@if($order->payment_status=='cancel-request')<br><a href="{{route('admin.orders.cancelapprove', ['id'=>$order->id])}}">approve</a>@endif</td>
                                         <td>
@@ -71,6 +72,7 @@
                                 <thead>
                                 <tr>
                                     <th>Package Name</th>
+                                    <th></th>
                                     <th>Price</th>
                                     <th>No. of pass</th>
                                     <th>Total Price</th>
@@ -83,7 +85,11 @@
                                 @endphp
                                 @foreach($order->details as $item)
                                     <tr>
-                                        <td>{{$item->package->package_name}}</td>
+                                        @if(!empty($item->other))
+                                            <td>{{$item->other->package_name}}</td>
+                                        @else
+                                            <td>{{$item->other->package_name}}</td>
+                                        @endif
                                         <td>{{$item->price}}</td>
                                         <td>{{$item->no_of_pass}}</td>
                                         <td>{{$item->no_of_pass*$item->price}}</td>

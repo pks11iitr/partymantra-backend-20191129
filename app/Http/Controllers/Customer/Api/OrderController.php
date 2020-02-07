@@ -296,6 +296,7 @@ class OrderController extends Controller
                 'date'=>$request->date,
                 'time'=>$request->time
             ];
+            //var_dump($cartitems);die;
             if(Cart::insert($cartitems)){
                 return [
                     'message'=>'success',
@@ -570,6 +571,7 @@ class OrderController extends Controller
                     $items[] = new OrderItem([
                         'entity_id' => $item->entity_id,
                         'entity_type' => $item->entity_type,
+                        'optional_type' => $item->optional_type,
                         'partner_id' => $item->partner_id,
                         'no_of_pass' => 0,
                         'price' => 0,

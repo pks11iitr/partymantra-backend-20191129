@@ -44,7 +44,6 @@
                                 <thead>
                                 <tr>
                                     <th>OrderID</th>
-                                    <th>Event</th>
                                     <th>Organizer Name</th>
                                     <th>Customer Mobile</th>
                                     <th>Total Amount</th>
@@ -58,9 +57,8 @@
                                 @foreach($orders as $order)
                                     <tr>
                                             <td>{{$order->refid}}</td>
-                                            <td>{{$order->details[0]->entity->title??''}}</td>
-                                            <td>{{$order->details[0]->entity->partner->name??''}}</td>
-                                                <td>{{$order->customer->mobile}}</td>
+                                            <td>{{$order->details[0]->partner->name??''}}</td>
+                                            <td>{{$order->customer->mobile}}</td>
 
                                             <td>{{$order->total}}</td>
                                             <td>{{$order->payment_status}}</td>
