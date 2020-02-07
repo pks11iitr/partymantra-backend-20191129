@@ -59,7 +59,7 @@
                                         <td>{{$order->customer->name??''}}</td>
                                         <td>{{$order->customer->mobile??''}}</td>
                                         <td>{{$order->details[0]->partner->name??''}}</td>
-                                        <td></td>
+                                        <td>{{$order->details[0]->optional_type??'eventbook'}}</td>
                                         <td>{{$order->total}}</td>
                                         <td>{{$order->payment_status}}@if($order->payment_status=='cancel-request')<br><a href="{{route('admin.orders.cancelapprove', ['id'=>$order->id])}}">approve</a>@endif</td>
                                         <td>
@@ -71,10 +71,9 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Package Name</th>
-                                    <th></th>
+                                    <th>Item Name</th>
                                     <th>Price</th>
-                                    <th>No. of pass</th>
+                                    <th>Quantity</th>
                                     <th>Total Price</th>
                                 </tr>
                                 </thead>
@@ -86,9 +85,9 @@
                                 @foreach($order->details as $item)
                                     <tr>
                                         @if(!empty($item->other))
-                                            <td>{{$item->other->package_name}}</td>
+                                            <td>{{$item->other->package_name??$item->other->name}}</td>
                                         @else
-                                            <td>{{$item->other->package_name}}</td>
+                                            <td></td>
                                         @endif
                                         <td>{{$item->price}}</td>
                                         <td>{{$item->no_of_pass}}</td>
@@ -96,14 +95,29 @@
                                     </tr>
                                     @php
                                         $pass=$pass+$item->no_of_pass;
-                                        $total=$total+$item->no_of_pass*$item->price;
+                                        if($item->optional_type=='billpay')
+                                            $total=$item->price;
+                                        else
+                                            $total=$total+$item->no_of_pass*$item->price;
                                     @endphp
                                 @endforeach
                                 <tr>
                                     <td></td>
-                                    <td><b>Total</b></td>
-                                    <td><b>{{$pass}}</b></td>
+                                    <td></td>
+                                    <td><b>Total Amount</b></td>
                                     <td><b>{{$total}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Total Paid</b></td>
+                                    <td><b>{{$order->total}}</b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Instant Discount</b></td>
+                                    <td><b>{{$order->instant_discount}}</b></td>
                                 </tr>
                                 </tbody>
                             </table>
