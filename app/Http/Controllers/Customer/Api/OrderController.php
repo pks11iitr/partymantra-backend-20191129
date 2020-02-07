@@ -365,7 +365,7 @@ class OrderController extends Controller
             foreach ($partner->packages as $package) {
                 $cartitems[] = [
                     'entity_type' => 'App\Models\Partner',
-                    'entity_id' => $package->partner_id,
+                    'entity_id' => $partner->id,
                     'optional_type' => 'party',
                     'other_id' => $package->id,
                     'other_type' => 'App\Models\Package',
@@ -428,7 +428,7 @@ class OrderController extends Controller
 
             $cartitems[] = [
                 'entity_type' => 'App\Models\Partner',
-                'entity_id' => $package->partner_id,
+                'entity_id' => $partner->id,
                 'optional_type' => 'party',
                 'men' => $request->men,
                 'women' => $request->women,
