@@ -18,6 +18,8 @@ class Partner extends Model
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','user_id'];
 
+    protected $appends=['discounts'];
+
     public function user(){
         return $this->belongsTo('App\User', 'user_id');
     }
@@ -53,5 +55,13 @@ class Partner extends Model
 
     public function collections(){
         return $this->belongsToMany('App\Models\Collection', 'collection_restaurant', 'restaurant_id', 'collection_id');
+    }
+
+    public function getDiscountsAttribute($value){
+        $discount=Discount::where('discount_type', 'instant')->first();
+        if($discount){
+            return "Pay bill using TPM & get ".($discount->value)."% instant discount";
+        }
+        return null;
     }
 }
