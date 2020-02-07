@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Models\Discount;
 use App\Models\Order;
 use App\Models\Partner;
 use App\Models\Wallet;
@@ -126,7 +127,9 @@ class BillPayController extends Controller
     }
 
     public function getPartners(Request $request){
-        return Partner::active()->select('name', 'id')->get();
+        $partners= Partner::active()->select('name', 'id')->get();
+        $discounts=Discount::get();
+        return compact('partners','discounts');
     }
 
 }
