@@ -57,7 +57,7 @@ class OrderController extends Controller
             ];
         }
 
-        if($order->details[0]->entity->partner->id!=$partner->id){
+        if($order->details[0]->partner_id!=$partner->id){
             return response()->json([
                 'status'=>'failed',
                 'message'=>'You cannot view this order',
@@ -69,6 +69,7 @@ class OrderController extends Controller
 
         $amount=0;
         $totalpass=0;
+        $cartpackages=[];
 
 //        foreach($order->details as $c){
 //            //$package=$c->package;
