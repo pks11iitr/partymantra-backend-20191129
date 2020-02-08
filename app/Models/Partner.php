@@ -18,7 +18,7 @@ class Partner extends Model
 
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by','user_id'];
 
-    protected $appends=['discounts'];
+    protected $appends=['discounts','away'];
 
     public function user(){
         return $this->belongsTo('App\User', 'user_id');
@@ -63,5 +63,32 @@ class Partner extends Model
             return "Pay bill using TPM & get ".($discount->value)."% instant discount";
         }
         return null;
+    }
+
+    public function getAwayAttribute(){
+        return intval($this->distance(request('lat'), request('lang'), $this->lat, $this->lang, 'K'));
+    }
+
+
+    function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+            return 0;
+        }
+        else {
+            $theta = $lon1 - $lon2;
+            $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $unit = strtoupper($unit);
+
+            if ($unit == "K") {
+                return ($miles * 1.609344);
+            } else if ($unit == "N") {
+                return ($miles * 0.8684);
+            } else {
+                return $miles;
+            }
+        }
     }
 }
