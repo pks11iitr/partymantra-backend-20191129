@@ -597,6 +597,8 @@ class OrderController extends Controller
         $men=$item->men;
         $women=$item->women;
         $couple=$item->couple;
+        $date=$item->date;
+        $time=$item->time;
 
         if($item->entity instanceof PartnerEvent){
             $description=$item->entity->title;
@@ -629,6 +631,8 @@ class OrderController extends Controller
         $order->men=$men;
         $order->women=$women;
         $order->couple=$couple;
+        $order->date=$date;
+        $order->time=$time;
         if($order->save()){
             //auth()->user()->cart()->delete();
             if($total==0){
@@ -986,42 +990,44 @@ class OrderController extends Controller
 
         foreach($order->details as $c){
             //$package=$c->package;
-            if($order->payment_status=='pending'){
-                if($c->other instanceof Package){
-                    $cartpackages[]=[
-                        'package'=>$c->other->package_name,
-                        'pass'=>$c->no_of_pass,
-                        'price'=>$c->other->price,
-                        'package_type'=>$c->other->package_type
-                    ];
-                    $amount=$amount+$c->no_of_pass*$c->other->price;
-                }else{
-                    $cartpackages[]=[
-                        'package'=>$c->other->name,
-                        'pass'=>$c->no_of_pass,
-                        'price'=>$menuarr[$c->other->id]??0,
-                        'package_type'=>'menu'
-                    ];
-                    $amount=$amount+$c->no_of_pass*($menuarr[$c->other->id]??0);
-                }
+            if(!empty($c->other)){
+                if($order->payment_status=='pending'){
+                    if($c->other instanceof Package){
+                        $cartpackages[]=[
+                            'package'=>$c->other->package_name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$c->other->price,
+                            'package_type'=>$c->other->package_type
+                        ];
+                        $amount=$amount+$c->no_of_pass*$c->other->price;
+                    }else{
+                        $cartpackages[]=[
+                            'package'=>$c->other->name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$menuarr[$c->other->id]??0,
+                            'package_type'=>'menu'
+                        ];
+                        $amount=$amount+$c->no_of_pass*($menuarr[$c->other->id]??0);
+                    }
 
-            }else{
-                if($c->other instanceof Package){
-                    $cartpackages[]=[
-                        'package'=>$c->other->package_name,
-                        'pass'=>$c->no_of_pass,
-                        'price'=>$c->price,
-                        'package_type'=>$c->other->package_type
-                    ];
                 }else{
-                    $cartpackages[]=[
-                        'package'=>$c->other->name,
-                        'pass'=>$c->no_of_pass,
-                        'price'=>$c->price,
-                        'package_type'=>'menu'
-                    ];
+                    if($c->other instanceof Package){
+                        $cartpackages[]=[
+                            'package'=>$c->other->package_name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$c->price,
+                            'package_type'=>$c->other->package_type
+                        ];
+                    }else{
+                        $cartpackages[]=[
+                            'package'=>$c->other->name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$c->price,
+                            'package_type'=>'menu'
+                        ];
+                    }
+                    $amount=$amount+$c->no_of_pass*$c->price;
                 }
-                $amount=$amount+$c->no_of_pass*$c->price;
             }
             $totalpass=$totalpass+$c->no_of_pass;
         }

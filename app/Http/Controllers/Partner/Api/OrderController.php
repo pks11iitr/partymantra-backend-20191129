@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Partner\Api;
 
 use App\Models\Order;
 use App\Models\Package;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -48,10 +49,17 @@ class OrderController extends Controller
     public function details(Request $request, $id){
         $user=auth()->user();
         $partner=$user->partner;
-        $order=Order::with(['details.package', 'details.entity'])->where('refid', $id)->firstOrFail();
+        $order=Order::with(['details.entity', 'details.other'])->where('refid', $id)->where('payment_status', '!=', 'pending')->firstOrFail();
+        if(empty($order->details)){
+            return [
+                'status'=>'failed',
+                'message'=>'No details found for this order'
+            ];
+        }
+
         if($order->details[0]->entity->partner->id!=$partner->id){
             return response()->json([
-                'status'=>'fail',
+                'status'=>'failed',
                 'message'=>'You cannot view this order',
                 'errors'=>[
 
@@ -62,25 +70,66 @@ class OrderController extends Controller
         $amount=0;
         $totalpass=0;
 
+//        foreach($order->details as $c){
+//            //$package=$c->package;
+//            $cartpackages[]=[
+//                'package'=>$c->package->package_name,
+//                'pass'=>$c->no_of_pass,
+//                'price'=>$c->package->price,
+//                'package_type'=>$c->package->package_type
+//            ];
+//            $title=$c->entity->title;
+//            $date=$c->entity->startdate.'-'.$c->entity->enddate;
+//
+//            $amount=$amount+$c->no_of_pass*$c->price;
+//
+//            $address=$c->entity->venue_address;
+//            $image=$c->entity->small_image;
+//            $totalpass=$totalpass+$c->no_of_pass;
+//        }
+
         foreach($order->details as $c){
-            //$package=$c->package;
-            $cartpackages[]=[
-                'package'=>$c->package->package_name,
-                'pass'=>$c->no_of_pass,
-                'price'=>$c->package->price,
-                'package_type'=>$c->package->package_type
-            ];
-            $title=$c->entity->title;
-            $date=$c->entity->startdate.'-'.$c->entity->enddate;
+            if($c->optional_type=='billpay'){
+                $amount=$c->price;
+                $totalpass=0;
+            }else{
+                if(!empty($c->other)){
+                    if($c->other instanceof Package){
+                        $cartpackages[]=[
+                            'package'=>$c->other->package_name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$c->price,
+                            'package_type'=>$c->other->package_type
+                        ];
+                    }else{
+                        $cartpackages[]=[
+                            'package'=>$c->other->name,
+                            'pass'=>$c->no_of_pass,
+                            'price'=>$c->price,
+                            'package_type'=>'menu'
+                        ];
+                    }
 
-            $amount=$amount+$c->no_of_pass*$c->price;
-
-            $address=$c->entity->venue_address;
-            $image=$c->entity->small_image;
-            $totalpass=$totalpass+$c->no_of_pass;
+                    $amount=$amount+$c->no_of_pass*$c->price;
+                    $totalpass=$totalpass+$c->no_of_pass;
+                }
+            }
         }
+
+        if($c->entity instanceof Partner){
+            $title=$c->entity->name. ("($c->optional_type)"??'');
+            $address=$c->entity->address;
+            $date=date('D,d-M-Y', strtotime($c->date)).' '.$c->time;
+        }else{
+            $title=$c->entity->title. ("($c->optional_type)"??'');
+            $date=$c->entity->startdate.'-'.$c->entity->enddate;
+            $address=$c->entity->venue_adderss;
+        }
+
+        $image=$c->entity->small_image;
+
         return [
-            'message'=>'success',
+            'status'=>'success',
             'data'=>[
                 'orderid'=>$order->refid,
                 'title'=>$title,
