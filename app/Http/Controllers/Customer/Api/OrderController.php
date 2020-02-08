@@ -966,6 +966,8 @@ class OrderController extends Controller
         $order=Order::with(['details.entity', 'details.other'])->where('user_id', $user->id)->where('refid', $id)->where('payment_status', '!=', 'pending')->firstOrFail();
         $amount=0;
         $totalpass=0;
+        $cartpackages=[];
+
         if(!count($order->details))
             return [
                 'status'=>'failed',
@@ -990,46 +992,51 @@ class OrderController extends Controller
 
         foreach($order->details as $c){
             //$package=$c->package;
-            if(!empty($c->other)){
-                if($order->payment_status=='pending'){
-                    if($c->other instanceof Package){
-                        $cartpackages[]=[
-                            'package'=>$c->other->package_name,
-                            'pass'=>$c->no_of_pass,
-                            'price'=>$c->other->price,
-                            'package_type'=>$c->other->package_type
-                        ];
-                        $amount=$amount+$c->no_of_pass*$c->other->price;
-                    }else{
-                        $cartpackages[]=[
-                            'package'=>$c->other->name,
-                            'pass'=>$c->no_of_pass,
-                            'price'=>$menuarr[$c->other->id]??0,
-                            'package_type'=>'menu'
-                        ];
-                        $amount=$amount+$c->no_of_pass*($menuarr[$c->other->id]??0);
-                    }
+            if($c->optional_type=='billpay'){
+                $amount=$c->price;
+                $totalpass=0;
+            }else{
+                if(!empty($c->other)){
+                    if($order->payment_status=='pending'){
+                        if($c->other instanceof Package){
+                            $cartpackages[]=[
+                                'package'=>$c->other->package_name,
+                                'pass'=>$c->no_of_pass,
+                                'price'=>$c->other->price,
+                                'package_type'=>$c->other->package_type
+                            ];
+                            $amount=$amount+$c->no_of_pass*$c->other->price;
+                        }else{
+                            $cartpackages[]=[
+                                'package'=>$c->other->name,
+                                'pass'=>$c->no_of_pass,
+                                'price'=>$menuarr[$c->other->id]??0,
+                                'package_type'=>'menu'
+                            ];
+                            $amount=$amount+$c->no_of_pass*($menuarr[$c->other->id]??0);
+                        }
 
-                }else{
-                    if($c->other instanceof Package){
-                        $cartpackages[]=[
-                            'package'=>$c->other->package_name,
-                            'pass'=>$c->no_of_pass,
-                            'price'=>$c->price,
-                            'package_type'=>$c->other->package_type
-                        ];
                     }else{
-                        $cartpackages[]=[
-                            'package'=>$c->other->name,
-                            'pass'=>$c->no_of_pass,
-                            'price'=>$c->price,
-                            'package_type'=>'menu'
-                        ];
+                        if($c->other instanceof Package){
+                            $cartpackages[]=[
+                                'package'=>$c->other->package_name,
+                                'pass'=>$c->no_of_pass,
+                                'price'=>$c->price,
+                                'package_type'=>$c->other->package_type
+                            ];
+                        }else{
+                            $cartpackages[]=[
+                                'package'=>$c->other->name,
+                                'pass'=>$c->no_of_pass,
+                                'price'=>$c->price,
+                                'package_type'=>'menu'
+                            ];
+                        }
+                        $amount=$amount+$c->no_of_pass*$c->price;
+                        $totalpass=$totalpass+$c->no_of_pass;
                     }
-                    $amount=$amount+$c->no_of_pass*$c->price;
                 }
             }
-            $totalpass=$totalpass+$c->no_of_pass;
         }
 
         if($entity instanceof Partner) {

@@ -120,9 +120,9 @@ class OrderController extends Controller
         if($c->entity instanceof Partner){
             $title=$c->entity->name. ("($c->optional_type)"??'');
             $address=$c->entity->address;
-            $date=date('D,d-M-Y', strtotime($c->date)).' '.$c->time;
+            $date=date('D,d-M-Y', strtotime($order->date)).' '.$order->time;
         }else{
-            $title=$c->entity->title. ("($c->optional_type)"??'');
+            $title=$c->entity->title;
             $date=$c->entity->startdate.'-'.$c->entity->enddate;
             $address=$c->entity->venue_adderss;
         }
