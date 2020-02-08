@@ -1040,7 +1040,7 @@ class OrderController extends Controller
         }
 
         if($entity instanceof Partner) {
-            $title = $c->entity->name;
+            $title = $c->entity->name.(" ($c->optional_type)");
             $date = date('D,d M Y', strtotime($order->date)).'-'.$order->time;
             $address = $c->entity->address;
             $image = $c->entity->small_image;
