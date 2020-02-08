@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/.idea/Api.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,14 +231,7 @@
       <workItem from="1580987435915" duration="8154000" />
       <workItem from="1581057360216" duration="11092000" />
       <workItem from="1581142282272" duration="4396000" />
-      <workItem from="1581146688436" duration="2046000" />
-    </task>
-    <task id="LOCAL-00134" summary="modified order details">
-      <created>1580542953970</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1580542953970</updated>
+      <workItem from="1581146688436" duration="2614000" />
     </task>
     <task id="LOCAL-00135" summary="modified order details">
       <created>1580546143445</created>
@@ -575,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581147891464</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="change in bill pay order generate customer">
+      <created>1581149741427</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1581149741427</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,10 +629,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580990820671" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581147891384">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581149741324">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581147891384" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581149741324" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -664,10 +665,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581149738927">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581149744928">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581149738927" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581149744928" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1580988261944">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

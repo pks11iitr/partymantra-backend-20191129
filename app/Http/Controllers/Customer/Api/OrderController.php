@@ -1093,9 +1093,14 @@ class OrderController extends Controller
 
                 ],
             ], 200);
-        foreach($order->details as $d){
-            $product=$d->entity;
+        if(empty($order->details)){
+            return [
+                'message'=>'No details found for this order'
+            ];
         }
+
+        $product=$order->details[0]->entity;
+
         $review=new Review([
             'user_id'=>$user->id,
             'description'=>$request->comment,
