@@ -18,7 +18,7 @@ class CollectionController extends Controller
             default: $type='event';
         }
 
-        $collections=Collection::active()->has($type)->where('collections.istop',true)->orderBy('priority', 'desc')->get();
+        $collections=Collection::active()->has($type)->where('collections.istop',true)->where('type', $type)->orderBy('priority', 'desc')->get();
 
         return ['collections'=>$collections];
     }
