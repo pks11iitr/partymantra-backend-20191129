@@ -26,7 +26,7 @@ class BannerController extends Controller
 					$type='event';
 				switch($type){
 					case 'event':return $events=PartnerEvent::get();
-					case 'party':return [];
+					case 'party':return $restaurants=Partner::where('type', 'restaurant')->where('allow_party', true)->get();
 					case 'restaurant':return $restaurants=Partner::where('type', 'restaurant')->get();
 				}
                         }
@@ -44,7 +44,8 @@ class BannerController extends Controller
 			'entity_id'=>'nullable',
 			'isactive'=>'required',
 			'image'=>'required|image',
-            'priority'=>'required|integer'
+            'priority'=>'required|integer',
+            'placeholder'=>'required|integer'
 
 		]);
 
@@ -60,7 +61,8 @@ class BannerController extends Controller
 					'entity_id'=>$request->entity_id,
 					'isactive'=>$request->isactive,
 					'image'=>$path,
-                    'priority'=>$request->priority
+                    'priority'=>$request->priority,
+        'placeholder'=>$request->placeholder
 					])){
 				return redirect()->route('admin.banner')->with('success', 'Banner has been created');
 		}
@@ -85,6 +87,8 @@ class BannerController extends Controller
             			'isactive'=>'required',
                         'priority'=>'required|integer',
                         'image'=>'nullable|image',
+                    'placeholder'=>'required|integer',
+
 
             		]);
                 $banner = banner::findOrFail($id);
@@ -108,7 +112,8 @@ class BannerController extends Controller
         			'entity_id'=>$request->entity_id,
         			'isactive'=>$request->isactive,
                     'image'=>$path,
-                    'priority'=>$request->priority
+                    'priority'=>$request->priority,
+                    'placeholder'=>$request->placeholder
           ])){
                 return redirect()->route('admin.banner')->with('success', 'Banner has been updated');
 

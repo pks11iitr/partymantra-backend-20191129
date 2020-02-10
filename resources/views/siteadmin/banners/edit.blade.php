@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label >Select Type</label>
                                     <select name="entity_type" class="form-control select2"
-                                    style="width: 100%;"  onchange="getdata(this.value)" >
+                                    style="width: 100%;"  onchange="getdata(this.value)" id="entity_type">
 
                                         <option  value="event" {{$banner->entity_type=='event'?'selected': ''}}>Event</option>
                                         <option  value="restaurant" {{$banner->entity_type=='restaurant'?'selected': ''}}>Restaurant</option>
@@ -53,9 +53,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                      <label>Entities</label>
-										 <select class="form-control select2" name="entity_id"
-                  value="<?=$banner->entity_id?>" id="lca">
-											 Select Entity  </select>
+										 <select class="form-control select2" name="entity_id" id="lca">
+                                         </select>
 
                                 </div>
                                 <!-- /.form-group -->
@@ -94,6 +93,14 @@
                                 <div class="form-group">
                                     <label>Priority(Set priority between 1-10 to show it in top slider)</label>
                                     <input type="text" class="form-control" name="priority" id="exampleInputEmail1" placeholder="Enter a number" value="{{$banner->priority}}">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Banner Placeholder</label>
+                                    <input type="text" class="form-control" name="placeholder" id="exampleInputEmail1" placeholder="Enter a number" value="{{$banner->placeholder}}">
                                 </div>
                                 <!-- /.form-group -->
                             </div>
@@ -149,7 +156,7 @@
                                    $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
 
                                else if(id=='party'){
-                                   $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
+                                   $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
                                }else if(id=='restaurant'){
                                    $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
                                }
@@ -174,8 +181,8 @@
    </script>
     <script>
         $(document).ready(function(){
-            getdata('event')
-            //$('#lca').select2("val", '{{$banner->entity_id}}');
+            getdata($('#entity_type').val())
+            $('#lca').select2("val", '{{$banner->entity_id}}');
 
         })
     </script>

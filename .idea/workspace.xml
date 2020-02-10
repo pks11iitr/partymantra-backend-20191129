@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BannerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CollectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CollectionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/WalletController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/banners/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/banners/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../baapji" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -230,14 +236,8 @@
       <workItem from="1580987435915" duration="8154000" />
       <workItem from="1581057360216" duration="11092000" />
       <workItem from="1581142282272" duration="4396000" />
-      <workItem from="1581146688436" duration="3781000" />
-    </task>
-    <task id="LOCAL-00136" summary="wallet added in payments">
-      <created>1580548046488</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1580548046488</updated>
+      <workItem from="1581146688436" duration="6308000" />
+      <workItem from="1581259669398" duration="3634000" />
     </task>
     <task id="LOCAL-00137" summary="menu items fixed">
       <created>1580552917927</created>
@@ -575,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581150515484</updated>
     </task>
-    <option name="localTasksCounter" value="185" />
+    <task id="LOCAL-00185" summary="minor fix">
+      <created>1581152262935</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1581152262935</updated>
+    </task>
+    <option name="localTasksCounter" value="186" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,18 +635,18 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580990820671" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581150515349">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581152262823">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581150515349" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581152262823" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1576751305402" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581083228792">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581316402557">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1581083228792" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1581316402557" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -664,14 +671,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581150517947">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581342699221">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581150517947" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1580988261944">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581342699221" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581259673919">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1580988261944" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1581259673919" />
     <state x="362" y="128" width="911" height="536" key="find.popup" timestamp="1581069910559">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
