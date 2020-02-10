@@ -39,7 +39,8 @@ class CollectionController extends Controller
             'isactive'=>'required|in:0,1',
             'istop' =>'required|in:0,1',
             'priority'=>'required|integer',
-            'about'=>'required'
+            'about'=>'required',
+            'type'=>'required|in:party,event,restaurant'
 		]);
 
 		$file=$request->cover_image->path();
@@ -66,7 +67,8 @@ class CollectionController extends Controller
 					'priority'=>$request->priority,
 					'isactive'=>$request->isactive,
 					'created_by'=>auth()->user()->id,
-                    'about'=>$request->about
+                    'about'=>$request->about,
+                    'type'=>$request->type
             ])){
 				return redirect()->route('admin.collection')->with('success', 'Collection has been created');
 		}
@@ -84,6 +86,7 @@ class CollectionController extends Controller
           'about'=>'required',
           'cover_image'=>'nullable|image',
           'small_image'=>'nullable|image',
+          'type'=>'required|in:party,event,restaurant'
       ]);
 
       if(!empty($request->cover_image)){
@@ -119,7 +122,8 @@ class CollectionController extends Controller
           'istop'=>$request->istop,
           'priority'=>$request->priority,
           'isactive'=>$request->isactive,
-          'about'=>$request->about
+          'about'=>$request->about,
+          'type'=>$request->type
 
       ])){
 

@@ -103,6 +103,20 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label >Collection Type</label>
+                                    <select name="type" class="form-control select2"
+                                            style="width: 100%;"  >
+
+                                        <option  value="event" @if($collection->type=='event'){{'selected'}}@endif>Event Collection</option>
+                                        <option  value="restaurant" @if($collection->type=='restaurant'){{'selected'}}@endif>Restaurant Collection</option>
+                                        <option  value="party"@if($collection->type=='party'){{'selected'}}@endif>Party Collection</option>
+
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                             <!-- /.col -->
                         </div>
                         <div class="row">
