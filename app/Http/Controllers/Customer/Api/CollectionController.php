@@ -12,9 +12,9 @@ class CollectionController extends Controller
     public function index(Request $request){
 
         switch($request->type){
-            case 'event': $type=$request->type;
-            case 'restaurant': $type=$request->type;
-            case 'party': $type=$request->type;
+            case 'event': $type=$request->type;break;
+            case 'restaurant': $type=$request->type;break;
+            case 'party': $type=$request->type;break;
             default: $type='event';
         }
 
