@@ -28,7 +28,7 @@ class PartnerController extends Controller
 
     public function edit(Request $request, $id){
         $menus=Menu::active()->get();
-        $collections=Collection::active()->get();
+        $collections=Collection::active()->whereIn('type', ['party','restaurant'])->get();
 		$partners=Partner::with('eventparty')->findOrFail($id);
 //		echo "<pre>";
 //		print_r($partners);die;
