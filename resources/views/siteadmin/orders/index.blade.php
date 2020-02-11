@@ -38,6 +38,22 @@
                         <div class="card-header">
                             <h3 class="card-title">View Orders Table</h3>
                         </div>
+                        <div class="card-body">
+                            <form method="get" action="{{route('admin.orders')}}">
+                                <label>Select Partner</label>
+                                <select name="partner">
+                                    <option value="0" >Select Partner</option>
+                                    @foreach($partners as $p)
+                                        <option value="{{$p->id}}" @if($p->id==$partner){{'selected'}}@endif>{{$p->name}}</option>
+                                    @endforeach
+                                </select>
+                                <label>Date From</label>
+                                <input type="date" name="datefrom" value="{{$datefrom??''}}">
+                                <label>Date To</label>
+                                <input type="date" name="dateto" value="{{$dateto??''}}">
+                                <button type="submit">Search</button>
+                            </form>
+                        </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
