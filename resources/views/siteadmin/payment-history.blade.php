@@ -53,6 +53,7 @@
                                 <thead>
                                 <tr>
                                     <th>Partner Name</th>
+                                    <th>Total Bills Amount</th>
                                     <th>Total Paid</th>
                                     <th>Instant Discount</th>
                                     <th>Cashback Discount</th>
@@ -64,10 +65,11 @@
                                 @foreach($orders as $order)
                                     <tr>
                                         <td>{{$order->name??''}}</td>
-                                        <td>{{$order->total??''}}</td>
-                                        <td>{{$order->instant_discount??''}}</td>
+                                        <td>{{($order->total??0)+($order->instant_discount??0)}}</td>
+                                        <td>{{$order->total??0}}</td>
+                                        <td>{{$order->instant_discount??0}}</td>
 
-                                        <td>{{$order->cashback_discount??''}}</td>
+                                        <td>{{$order->cashback_discount??0}}</td>
                                         <td><a href="{{route('admin.orders')}}?partner={{$order->id}}&datefrom={{$datefrom}}&dateto={{$dateto}}">View Details</a></td>
                                     </tr>
                                 @endforeach
