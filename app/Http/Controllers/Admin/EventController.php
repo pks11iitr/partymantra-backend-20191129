@@ -32,7 +32,7 @@ class EventController extends Controller
 
           $organizers=Partner::active()->get();
           $event = PartnerEvent::findOrFail($id);
-          $collections=Collection::active()->get();
+          $collections=Collection::active()->where('type', 'event')->get();
           $facilities=Facility::get();
           $covers=[];
           foreach($event->covers as $c){
@@ -54,7 +54,7 @@ class EventController extends Controller
     public function add(Request $request){
         $organizers=Partner::active()->whereIn('type', ['organizers', 'restaurant'])->get();
         $facilities=Facility::get();
-        $collections=Collection::active()->get();
+        $collections=Collection::active()->where('type', 'event')->get();
         return view('siteadmin.events.add', ['organizers'=>$organizers, 'collections'=>$collections, 'facilities'=>$facilities]);
     }
 

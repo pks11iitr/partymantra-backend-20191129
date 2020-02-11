@@ -44,6 +44,7 @@
                 <thead>
                 <tr>
                   <th>Name</th>
+                  <th>Type</th>
                    <th>Image</th>
                     <th>Is Active</th>
 					<th>Action</th>
@@ -53,8 +54,9 @@
 				@foreach($collections as $collection)
                 <tr>
                   <td>{{$collection->name}}</td>
-                  <td>{{$collection->cover_image}}</td>
-                    <td>{{$collection->isactive}}</td>
+                  <td>{{$collection->type}}</td>
+                  <td><img src="{{$collection->cover_image}}" height="100" width="100"></td>
+                    <td>{{$collection->statustext()}}</td>
 
                     <td>
 					<a href="{{route('admin.collection.edit', ['id'=>$collection->id])}}"><span class="badge bg-success">Edit</span></a>
