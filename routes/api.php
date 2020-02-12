@@ -116,3 +116,11 @@ $api->get('party/{id}/reviews', ['as'=>'api.party.reviews', 'uses'=>'Customer\Ap
     /*
      * Partner API route ends
      */
+
+    /**
+     * common apis
+     */
+
+$api->group(['middleware' => ['auth:api']], function ($api) {
+    $api->get('notifications', ['as'=>'api.notifications', 'uses'=>'Customer\Api\NotificationController@index']);
+});
