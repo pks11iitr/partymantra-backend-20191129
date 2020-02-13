@@ -22,6 +22,10 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\OrderSuccessfull::class=>[
             \App\Listeners\OrderSmsAlert::class,
             \App\Listeners\OrderPushNotification::class,
+        ],
+
+        \App\Events\RechargeSuccess::class=>[
+            \App\Listeners\RechargePushNotification::class,
         ]
     ];
 

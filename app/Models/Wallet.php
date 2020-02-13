@@ -63,5 +63,9 @@ class Wallet extends Model
         return date('D, d-M-Y H:iA', strtotime($this->updated_at));
     }
 
+    public function customer()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Events\RechargeSuccess;
 use App\Models\Wallet;
 use App\Services\Payment\RazorPayService;
 use Illuminate\Http\Request;
@@ -85,6 +86,7 @@ class WalletController extends Controller
             $wallet->payment_id_response=$request->razorpay_signature;
             $wallet->iscomplete=true;
             $wallet->save();
+            event(new RechargeSuccess($wallet));
             return response()->json([
                 'status'=>'success',
                 'message'=>'Payment is successfull',
