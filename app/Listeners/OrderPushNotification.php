@@ -29,7 +29,7 @@ class OrderPushNotification
     public function handle(OrderSuccessfull $event)
     {
         $title='Order Successfull';
-        $body='Your order at TPM is successfull. Booking ID:'.$event->refid;
+        $body='Your order at TPM is successfull. Booking ID:'.$event->order->refid;
         $dids=[$event->order->customer->token];
         $msg=[
             'title'=>$title,
