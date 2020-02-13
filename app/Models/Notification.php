@@ -11,11 +11,17 @@ class Notification extends Model
 
     protected $fillable=['title','description', 'image', 'user_id','receiver_type','is_sent'];
 
+    protected $appends=['date'];
+
     public function getImageAttribute($value)
     {
         if(empty($value))
             return '';
         else
             return Storage::url($value);
+    }
+
+    public function getDateAttribute(){
+        return date('D, d M Y', strtotime($this->created_at));
     }
 }
