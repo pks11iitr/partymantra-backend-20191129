@@ -46,7 +46,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('partner/del-gallery/{id}', 'Admin\PartnerController@deletegallery')->name('admin.partner.galleryrm');
     Route::post('partner/{id}/add-event-party', 'Admin\PartnerController@addEventPartyImage')->name('admin.partner.partyevent');
 
-
+        Route::get('users', 'Admin\UserController@index')->name('admin.users');
 
         Route::get('category', 'Admin\CategoryController@index')->name('admin.category');
         Route::get('category/create', 'Admin\CategoryController@add')->name('admin.category.add');
@@ -102,6 +102,9 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::post('banner/{id}', 'Admin\BannerController@update')->where('id', '[0-9]+')->name('admin.banner.update');
         Route::get('select-menu-for-package/{id}', 'Admin\EventPackagesController@ajaxselectmenuevent')->name('partner.packagemenu.ajax');
     Route::get('payment-history', 'Admin\OrderController@paymenthistory')->name('payment.history');
+
+    Route::get('notification-form', 'Admin\NotificationController@create')->name('admin.notification.create');
+    Route::post('send', 'Admin\NotificationController@send')->name('admin.notification.send');
 
 });
 
