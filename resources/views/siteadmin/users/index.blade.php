@@ -107,7 +107,7 @@
                         </div>
                         <div class="row">
                         <label>Description</label>
-                        <textarea name="decription" required id="description"></textarea>
+                        <textarea name="description" required id="description"></textarea>
                         <input type="hidden" name="receipents" id="receipents">
                         </div>
                             <button type="button" onclick="sendnotification()">Send</button>

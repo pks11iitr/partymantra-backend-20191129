@@ -236,14 +236,7 @@
       <workItem from="1581526537636" duration="22000" />
       <workItem from="1581571714431" duration="15232000" />
       <workItem from="1581592647951" duration="1308000" />
-      <workItem from="1581594041924" duration="916000" />
-    </task>
-    <task id="LOCAL-00172" summary="order detail change at admin">
-      <created>1581075540134</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1581075540134</updated>
+      <workItem from="1581594041924" duration="976000" />
     </task>
     <task id="LOCAL-00173" summary="change in addpartytocart">
       <created>1581084191465</created>
@@ -581,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581594838166</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="admin notifications">
+      <created>1581594961989</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1581594961989</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,10 +634,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1581583007475" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581594838075">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581594961910">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581594838075" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581594961910" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -670,10 +670,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581594840446">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581594964419">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581594840446" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581594964419" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581571715138">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
