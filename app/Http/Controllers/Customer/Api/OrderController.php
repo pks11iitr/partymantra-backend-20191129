@@ -508,7 +508,7 @@ class OrderController extends Controller
 
 
 
-        $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet=1?true:false)]);
+        $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false)]);
         $user->orders()->save($order);
 
         $total=0;
