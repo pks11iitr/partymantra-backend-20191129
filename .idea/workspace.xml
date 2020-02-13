@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/siteadmin/notifications-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/siteadmin/users/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/siteadmin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/siteadmin/users/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,21 +236,7 @@
       <workItem from="1581526537636" duration="22000" />
       <workItem from="1581571714431" duration="15232000" />
       <workItem from="1581592647951" duration="1308000" />
-      <workItem from="1581594041924" duration="763000" />
-    </task>
-    <task id="LOCAL-00170" summary="wallet refid added">
-      <created>1581069934714</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1581069934714</updated>
-    </task>
-    <task id="LOCAL-00171" summary="inor fixes">
-      <created>1581073641275</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1581073641275</updated>
+      <workItem from="1581594041924" duration="916000" />
     </task>
     <task id="LOCAL-00172" summary="order detail change at admin">
       <created>1581075540134</created>
@@ -584,7 +567,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581584868238</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="admin notifications">
+      <created>1581594819676</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1581594819676</updated>
+    </task>
+    <task id="LOCAL-00220" summary="admin notifications">
+      <created>1581594838166</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1581594838166</updated>
+    </task>
+    <option name="localTasksCounter" value="221" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +602,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="bill pay controller" />
     <MESSAGE value="partners list api" />
     <MESSAGE value="added event party images for restaurant home page" />
     <MESSAGE value="add colection to restaurant" />
@@ -630,17 +626,18 @@
     <MESSAGE value="notifications at order success" />
     <MESSAGE value="notifications at billpay success" />
     <MESSAGE value="date in notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="date in notifications" />
+    <MESSAGE value="admin notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin notifications" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581583007475">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1581583007475" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581594819322">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581594838075">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581594819322" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581594838075" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -673,10 +670,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581594832256">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581594840446">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581594832256" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581594840446" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581571715138">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

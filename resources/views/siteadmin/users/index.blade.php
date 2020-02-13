@@ -122,7 +122,7 @@
 @section('scripts')
     <script>
     function sendnotification(){
-        if($("#title").val()!='' && $("#description").val()!='')
+        if($("#title").val()=='' || $("#description").val()=='')
             return
         var contacts=[]
         $('.single-check').each(function(){
