@@ -168,6 +168,7 @@ class LoginController extends Controller
         return [
             'message'=>'Login Successfull',
             'token'=>$this->jwt->fromUser($user),
+            'type'=>$this->hasRole('customer')?'customer':'partner'
         ];
 
     }

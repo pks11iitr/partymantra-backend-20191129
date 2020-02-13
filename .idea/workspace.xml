@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Services/Notification/FirebaseNotification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,21 +234,9 @@
       <workItem from="1581142282272" duration="4396000" />
       <workItem from="1581146688436" duration="6308000" />
       <workItem from="1581259669398" duration="18162000" />
-      <workItem from="1581486724670" duration="2603000" />
-    </task>
-    <task id="LOCAL-00148" summary="minor fixes for make order and pay now">
-      <created>1580798621093</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1580798621093</updated>
-    </task>
-    <task id="LOCAL-00149" summary="minor fixes for make order and pay now">
-      <created>1580799008238</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1580799008239</updated>
+      <workItem from="1581486724670" duration="3363000" />
+      <workItem from="1581526537636" duration="22000" />
+      <workItem from="1581571714431" duration="2271000" />
     </task>
     <task id="LOCAL-00150" summary="minor fixes for make order and pay now">
       <created>1580810353551</created>
@@ -577,7 +567,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581487866341</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="notifications token added">
+      <created>1581498612025</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1581498612025</updated>
+    </task>
+    <task id="LOCAL-00198" summary="notifications token added">
+      <created>1581498632503</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1581498632503</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,7 +602,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="add cart changes for party" />
     <MESSAGE value="payment exsting order change" />
     <MESSAGE value="order history condition changed" />
     <MESSAGE value="minor fixes" />
@@ -623,25 +626,26 @@
     <MESSAGE value="collection changes" />
     <MESSAGE value="payment history added at admin panel" />
     <MESSAGE value="notifications added" />
-    <option name="LAST_COMMIT_MESSAGE" value="notifications added" />
+    <MESSAGE value="notifications token added" />
+    <option name="LAST_COMMIT_MESSAGE" value="notifications token added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580990820671">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1580990820671" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581498611909">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1581498632445">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581498611909" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1581498632445" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1576751305402" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581488617620">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581572967564">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1581488617620" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1581572967564" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -650,10 +654,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1576231874612" />
-    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog" timestamp="1577354007708">
+    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog" timestamp="1581573725069">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1577354007708" />
+    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1581573725069" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1581416807075">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -666,14 +670,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581487869907">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581498682181">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581487869907" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581259673919">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1581498682181" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1581571715138">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1581259673919" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1581571715138" />
     <state x="362" y="128" width="911" height="536" key="find.popup" timestamp="1581069910559">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
