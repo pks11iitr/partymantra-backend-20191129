@@ -1136,6 +1136,7 @@ class OrderController extends Controller
             if($order->usingwallet==true){
                 $balance=Wallet::balance($order->user_id);
                 if($balance >= $order->fromwallet){
+                    event(new OrderShipped($order));
                     return response()->json([
                         'status'=>'failed',
                         'message'=>'Payment is not successfull',
@@ -1146,6 +1147,7 @@ class OrderController extends Controller
                 }
                 Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
             }
+            event(new OrderShipped($order));
             return response()->json([
                 'status'=>'success',
                 'message'=>'Payment is successfull',
