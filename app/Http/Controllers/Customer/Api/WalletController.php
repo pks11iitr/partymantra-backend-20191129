@@ -17,7 +17,7 @@ class WalletController extends Controller
     public function history(Request $request){
         $user=auth()->user();
         if($user){
-            $history=Wallet::where('user_id', $user->id)->where('iscomplete', true)->get();
+            $history=Wallet::where('user_id', $user->id)->where('iscomplete', true)->orderBy('id','desc')->get();
             $balance=Wallet::balance($user->id);
         }else{
             $history=[];
