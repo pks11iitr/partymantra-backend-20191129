@@ -32,7 +32,7 @@ class FirebaseNotification
         $result = curl_exec($ch );
         curl_close( $ch );
 
-        echo $result;
+        //echo $result;
     }
 
     public static function sendNotificationByChannel($cids=[], $data){
