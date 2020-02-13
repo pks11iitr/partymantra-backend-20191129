@@ -36,7 +36,7 @@ class OrderPushNotification
             'body'=>$body
         ];
 
-        Notification::create(['title'=>$title,'decription'=>$body, 'user_id'=>$event->order->customer->id, 'is_sent'=>1]);
+        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->customer->id, 'is_sent'=>1]);
 
         FirebaseNotification::sendNotificationById($dids, $msg);
     }
