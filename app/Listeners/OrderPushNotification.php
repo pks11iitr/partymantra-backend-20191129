@@ -28,15 +28,32 @@ class OrderPushNotification
      */
     public function handle(OrderSuccessfull $event)
     {
+        //customer notification
         $title='Order Successfull';
-        $body='Your order at TPM is successfull. Booking ID:'.$event->order->refid;
-        $dids=[$event->order->customer->token];
+        $body='Your order at TPM is successfull. Booking ID:'.($event->order->refid??'');
+
+        $dids=[$event->order->customer->token??''];
         $msg=[
             'title'=>$title,
             'body'=>$body
         ];
 
-        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->customer->id, 'is_sent'=>1]);
+        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->customer->id??'', 'is_sent'=>1]);
+
+        FirebaseNotification::sendNotificationById($dids, $msg);
+
+
+        //partner notification
+        $title='Payment Successfull';
+        $body='Payment for Booking ID:'.($event->order->refid??'').' is successfull';
+
+        $dids=[$event->order->details[0]->partner->token??''];
+        $msg=[
+            'title'=>$title,
+            'body'=>$body
+        ];
+
+        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->details[0]->partner_id??'', 'is_sent'=>1]);
 
         FirebaseNotification::sendNotificationById($dids, $msg);
     }
