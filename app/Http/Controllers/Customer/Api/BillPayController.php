@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer\Api;
 
+use App\Events\OrderSuccessfull;
 use App\Models\Discount;
 use App\Models\Order;
 use App\Models\Partner;
@@ -66,6 +67,8 @@ class BillPayController extends Controller
             $order->order_id=$responsearr->id;
             $order->order_id_response=$response;
             $order->save();
+        }else{
+            event(new OrderSuccessfull($order));
         }
 
         return response()->json([
@@ -95,7 +98,7 @@ class BillPayController extends Controller
             $order->save();
             if($order->usingwallet==true){
                 $balance=Wallet::balance($order->user_id);
-                if($balance >=$order->fromwallet){
+                if($balance < $order->fromwallet){
                     Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->fromwallet, $order->id);
                 }else{
                     return response()->json([
@@ -108,6 +111,7 @@ class BillPayController extends Controller
                 }
 
             }
+            event(new OrderSuccessfull($order));
             return response()->json([
                 'status'=>'success',
                 'message'=>'Payment is successfull',
