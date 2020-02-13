@@ -639,6 +639,7 @@ class OrderController extends Controller
             if($total==0){
                 $order->payment_status='paid';
                 $order->save();
+                event(new OrderSuccessfull($order));
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
@@ -695,7 +696,7 @@ class OrderController extends Controller
 
                 $order->payment_status='paid';
                 $order->save();
-
+                event(new OrderSuccessfull($order));
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
@@ -1136,8 +1137,7 @@ class OrderController extends Controller
             $order->save();
             if($order->usingwallet==true){
                 $balance=Wallet::balance($order->user_id);
-                if($balance >= $order->fromwallet){
-                    event(new OrderSuccessfull($order));
+                if($balance < $order->fromwallet){
                     return response()->json([
                         'status'=>'failed',
                         'message'=>'Payment is not successfull',
