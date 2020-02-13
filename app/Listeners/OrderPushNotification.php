@@ -47,13 +47,13 @@ class OrderPushNotification
         $title='Payment Successfull';
         $body='Payment for Booking ID:'.($event->order->refid??'').' is successfull';
 
-        $dids=[$event->order->details[0]->partner->token??''];
+        $dids=[$event->order->details[0]->partner->user->token??''];
         $msg=[
             'title'=>$title,
             'body'=>$body
         ];
 
-        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->details[0]->partner_id??'', 'is_sent'=>1]);
+        Notification::create(['title'=>$title,'description'=>$body, 'user_id'=>$event->order->details[0]->partner->user->id??'', 'is_sent'=>1]);
 
         FirebaseNotification::sendNotificationById($dids, $msg);
     }
