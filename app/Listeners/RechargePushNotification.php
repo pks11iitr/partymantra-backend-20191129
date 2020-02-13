@@ -29,7 +29,7 @@ class RechargePushNotification
     public function handle(RechargeSuccess $event)
     {
         $title='Order Successfull';
-        $body='Your recharge at TPM is for Rs.'.($event->wallet->amount??0).' Recharge ID:'.$event->wallet->refid;
+        $body='Your recharge at TPM for Rs.'.($event->wallet->amount??0).' is successful. Recharge ID is:'.$event->wallet->refid;
         $dids=[$event->wallet->customer->token];
         $msg=[
             'title'=>$title,
