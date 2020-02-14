@@ -48,7 +48,7 @@ class CollectionController extends Controller
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
             $i++;
         }
-        return ['events'=>$events];
+        return ['events'=>$events,'image'=>$collection->cover_image];
     }
 
     public function restaurants(Request $request, $id){
