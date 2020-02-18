@@ -25,17 +25,19 @@ class HomeController extends Controller
          * get all banners for entity type
          */
         $banners=Banner::where('isactive', true)->where('entity_type', $type)->orderBy('priority', 'asc')->where('placeholder',  1)->get();
-        $otherbanners=Banner::where('isactive', true)->where('entity_type', $type)->where('placeholder',  '!=',1)->orderBy('priority', 'asc')->get();
+        $otherbanners=Banner::where('isactive', true)
+            ->where('entity_type', $type)->where('placeholder',  '>',1)
+            ->orderBy('priority', 'asc')->get();
 
         /*
          * Group banners as per position of plaeholder
          */
         $bannerorder=[];
         foreach($otherbanners as $banner){
-            if(!isset($bannerorder[$banner->placeholder])){
-                $bannerorder[$banner->placeholder]=[];
+            if(!isset($bannerorder[$banner->placeholder-1])){
+                $bannerorder[$banner->placeholder-1]=[];
             }
-            $bannerorder[$banner->placeholder][]=$banner;
+            $bannerorder[$banner->placeholder-1][]=$banner;
         }
         unset($otherbanners);
 
