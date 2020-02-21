@@ -16,6 +16,13 @@ Auth::routes();
 
 //website routes
 Route::get('/', 'Website\HomeController@index')->name('website.home');
+Route::get('collections', 'Website\CollectionController@index')->name('website.collections');
+Route::get('collections/{id}/{type}', 'Website\CollectionController@collectionItems')->name('website.collection.items');
+Route::get('event/{id}', 'Website\EventController@view')->name('website.event.details');
+Route::get('restaurant/{id}', 'Website\RestaurantController@view')->name('website.restaurant.details');
+Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('website.party.details');
+
+
 Route::get('privacy-policy', 'Website\TncController@privacy');
 Route::get('terms-and-condition', 'Website\TncController@tnc');
 Route::get('about-us', 'Website\TncController@about');
