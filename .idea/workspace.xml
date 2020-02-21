@@ -2,57 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/animate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/jasny-bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/owl.carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/owl.theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/responsive.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/plugins/scrolling-nav.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/banner1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/bg/bg1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/bg/bg2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/bg/bg3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/bg/bg4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/bg/hero-4-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/events/e1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/events/e2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/events/e3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/events/e4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/img/tplogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/contact-form-script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/form-validator.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jasny-bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.countTo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.easing.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.flexisel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.mixitup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/jquery.nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/owl.carousel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/owl.carousel.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/scrolling-nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/theme/js/plugins/tether.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/partials/carousal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,14 +241,7 @@
       <workItem from="1581752236791" duration="1843000" />
       <workItem from="1581935708707" duration="1910000" />
       <workItem from="1582010150705" duration="2177000" />
-      <workItem from="1582269286948" duration="14822000" />
-    </task>
-    <task id="LOCAL-00180" summary="change in order history customer">
-      <created>1581146814216</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1581146814216</updated>
+      <workItem from="1582269286948" duration="15380000" />
     </task>
     <task id="LOCAL-00181" summary="change in order history customer">
       <created>1581147649305</created>
@@ -634,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582272427112</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="working on home page, partialy completed">
+      <created>1582288745611</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1582288745612</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="order history changes" />
     <MESSAGE value="billpay change" />
     <MESSAGE value="instant discount line" />
     <MESSAGE value="wallet refid added" />
@@ -680,17 +631,18 @@
     <MESSAGE value="order changed" />
     <MESSAGE value="collecion image" />
     <MESSAGE value="login register forgot password redirections setup for website" />
-    <option name="LAST_COMMIT_MESSAGE" value="login register forgot password redirections setup for website" />
+    <MESSAGE value="working on home page, partialy completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on home page, partialy completed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582269980030">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582269980030" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582272426778">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582289319393">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582272426778" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582289319393" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

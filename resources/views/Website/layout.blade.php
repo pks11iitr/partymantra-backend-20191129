@@ -112,9 +112,9 @@
             </div>
             <div class="col-7 text-right">
                 <ul class="list-inline py-3 menu">
-                    <li class="list-inline-item"><a href="" class=""><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a></a></li>
-                    <li class="list-inline-item"><a href="" class=""><i class="fa fa-cutlery" aria-hidden="true"></i> Dinning</a></a></li>
-                    <li class="list-inline-item"><a href="" class=""><i class="fa fa-glass" aria-hidden="true"></i> Parties</a></a></li>
+                    <li class="list-inline-item"><a href="{{env('APP_URL')}}" class=""><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a></li>
+                    <li class="list-inline-item"><a href="{{env('APP_URL')}}?type=restaurant" class=""><i class="fa fa-cutlery" aria-hidden="true"></i> Dinning</a></li>
+                    <li class="list-inline-item"><a href="{{env('APP_URL')}}?type=party" class=""><i class="fa fa-glass" aria-hidden="true"></i> Parties</a></li>
                 </ul>
             </div>
 

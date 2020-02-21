@@ -165,7 +165,9 @@
                 <div class="row">
                     @foreach($other->$type as $item)
                         @if($type=='event')
-                           <a href="{{route('website.event.details',['id'=>$item->id])}}"><div class="col-4 mt-4 service-box">
+
+                               <div class="col-4 mt-4 service-box">
+                               <a href="{{route('website.event.details',['id'=>$item->id])}}">
                                 <div class="card">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="{{$item->small_image}}">
@@ -179,9 +181,11 @@
 
                                     </div>
                                 </div>
-                               </div></a>
+                               </a>
+                               </div>
                         @elseif($type=='restaurant')
-                            <a href="{{route('website.restaurant.details',['id'=>$item->id])}}"><div class="col-4 mt-4 service-box">
+                            <div class="col-4 mt-4 service-box">
+                                <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
                                     <div class="card">
                                         <div class="cardimg">
                                             <img class="card-img-top" src="{{$item->small_image}}">
@@ -195,9 +199,11 @@
 
                                         </div>
                                     </div>
-                                </div></a>
+                                </a>
+                                </div>
                         @else
                             <div class="col-4 mt-4 service-box">
+                                <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
                                 <div class="card">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="img/events/e1.jpg">
@@ -211,6 +217,7 @@
 
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         @endif
                     @endforeach
