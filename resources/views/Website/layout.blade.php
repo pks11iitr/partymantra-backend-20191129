@@ -308,30 +308,15 @@
 <script src="{{asset('theme/js/plugins/jquery.min.js')}}"></script>
 <script src="{{asset('theme/js/plugins/popper.min.js')}}"></script>
 <script src="{{asset('theme/js/plugins/bootstrap.min.js')}}"></script>
-<script src="{{asset('theme/js/plugins/owl.carousel.min.js')}}"></script>
+{{--<script src="{{asset('theme/js/plugins/owl.carousel.min.js')}}"></script>--}}
 <script src="{{asset('theme/js/plugins/form-validator.min.js')}}"></script>
 <script src="{{asset('theme/js/plugins/contact-form-script.js')}}"></script>
 <script src="{{mix('js/main.js')}}"></script>
-<script src="{{asset('theme/js/plugins/swiper.min.js')}}"></script>
-<script src="{{asset('theme/js/plugins/jqery.flexisel.js')}}"></script>
+{{--<script src="{{asset('theme/js/plugins/swiper.min.js')}}"></script>--}}
+{{--<script src="{{asset('theme/js/plugins/jqery.flexisel.js')}}"></script>--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $("#posts-carousel-3col").owlCarousel({
-            items: 3,
-            itemsDesktop: [1199, 3],
-            itemsDesktopSmall: [979, 3],
-        });
-
-    });
-</script>
-<!-- Initialize Swiper -->
-<script>
-    // optional
-    $('#blogCarousel').carousel({
-        interval: 5000
-    });
-</script>
+@yield('scripts')
 </body>
 
 </html>

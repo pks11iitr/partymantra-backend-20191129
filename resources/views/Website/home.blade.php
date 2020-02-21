@@ -6,136 +6,28 @@
 <section class="section events">
     <div class="container">
         <div class="section-heading">
-            <h2>Popular Collections<span class="pull-right"><a href="" class="btn btn-danger btn-small">View More</a></span>
+            <h2>Popular Collections<span class="pull-right"><a href="{{route('website.collections')}}" class="btn btn-danger btn-small">View More</a></span>
 {{--                <p>Popular Collection</p>--}}
         </div>
-        <div class="row blog">
-            <div class="col-md-12">
-                <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e1.jpg">
-                                            <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e4.jpg">
-                                            <span class="card-star">3.4 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e3.jpg">
-                                            <span class="card-star">4.2 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!--.row-->
-                            <!--.row-->
+        <div class="customer-logos row">
+            @foreach($collections as $collection)
+            <div class="slide col-4 mt-4 service-box">
+                <a href="{{route('website.collection.items',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                <div class="">
+                    <div class="card">
+                        <div class="cardimg">
+                            <img class="card-img-top" src="{{$collection->small_image}}"/>
+                            <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
-                        <!--.item-->
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e1.jpg">
-                                            <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e4.jpg">
-                                            <span class="card-star">3.4 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4 mt-4 service-box">
-                                    <div class="card">
-                                        <div class="cardimg">
-                                            <img class="card-img-top" src="img/events/e3.jpg">
-                                            <span class="card-star">4.2 <i class="fa fa-star" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="card-block text-center">
-                                            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-                                            <div class="meta">
-                                                <a href="#">Gurgaon</a>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!--.row-->
+                        <div class="card-block text-center">
+                            <h4 class="card-title">{{$collection->name}}</h4>
                         </div>
-                        <!--.item-->
-
-                    </div>
-                    <!--.carousel-inner-->
-                    <div class="controls pull-right">
-                        <a class="left fa fa-chevron-left btn btn-form" href="#blogCarousel"
-                           data-slide="prev"></a>
-                        <a class="right fa fa-chevron-right btn btn-form" href="#blogCarousel"
-                           data-slide="next"></a>
                     </div>
 
                 </div>
-                <!--.Carousel-->
-
+                </a>
             </div>
+                @endforeach
         </div>
     </div>
 </section>
@@ -159,7 +51,7 @@
         <section class="section parties" id="">
             <div class="container">
                 <div class="section-heading">
-                    <h2>{{$other->name}}<span class="pull-right"><a href="" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.items',['id'=>$other->id, 'type'=>$other->type])}}" class="btn btn-danger btn-small">View More</a></span></h2>
                         <p>{{$other->about}}</p>
                 </div>
                 <div class="row">
@@ -777,4 +669,20 @@
 {{--</section>--}}
 {{--<!-- Partner's Slider -->--}}
 {{--<!-- Footer -->--}}
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.customer-logos').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: true,
+
+            });
+        });
+    </script>
 @endsection
