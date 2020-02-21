@@ -11,18 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return redirect(route('login'));
-});
+Auth::routes();
 
 
+//website routes
+Route::get('/', 'Website\HomeController@index')->name('website.home');
 Route::get('privacy-policy', 'Website\TncController@privacy');
 Route::get('terms-and-condition', 'Website\TncController@tnc');
 Route::get('about-us', 'Website\TncController@about');
 
-
-Auth::routes();
 
 //this will be removed after setting proper redirection
 //Route::get('/home', 'HomeController@index')->name('home');
