@@ -17,7 +17,9 @@ Auth::routes();
 //website routes
 Route::get('/', 'Website\HomeController@index')->name('website.home');
 Route::get('collections', 'Website\CollectionController@index')->name('website.collections');
-Route::get('collections/{id}/{type}', 'Website\CollectionController@collectionItems')->name('website.collection.items');
+Route::get('collections/{id}/event', 'Website\CollectionController@events')->name('website.collection.event');
+Route::get('collections/{id}/restaurant', 'Website\CollectionController@restaurants')->name('website.collection.restaurant');
+Route::get('collections/{id}/party', 'Website\CollectionController@party')->name('website.collection.party');
 Route::get('event/{id}', 'Website\EventController@view')->name('website.event.details');
 Route::get('restaurant/{id}', 'Website\RestaurantController@view')->name('website.restaurant.details');
 Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('website.party.details');

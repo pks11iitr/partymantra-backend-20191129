@@ -12,7 +12,13 @@
         <div class="customer-logos row">
             @foreach($collections as $collection)
             <div class="slide col-4 mt-4 service-box">
-                <a href="{{route('website.collection.items',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                @if($collection->type=='event')
+                    <a href="{{route('website.collection.event',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                @elseif($collection->type=='restaurant')
+                    <a href="{{route('website.collection.restaurant',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                @else
+                    <a href="{{route('website.collection.party',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                @endif
                 <div class="">
                     <div class="card">
                         <div class="cardimg">
@@ -51,7 +57,13 @@
         <section class="section parties" id="">
             <div class="container">
                 <div class="section-heading">
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.items',['id'=>$other->id, 'type'=>$other->type])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    @if($other->type=='event')
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.event',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    @elseif($other->type=='restaurant')
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.restaurant',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    @else
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    @endif
                         <p>{{$other->about}}</p>
                 </div>
                 <div class="row">
