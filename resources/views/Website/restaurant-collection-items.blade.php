@@ -19,7 +19,7 @@
             <div class="row">
                 @foreach($events as $event)
                     <div class="col-4 mt-4 service-box">
-                        <a href="{{route('website.event.details', ['id'=>$event->id])}}">
+                        <a href="{{route('website.restaurant.details', ['id'=>$event->id])}}">
                             <div class="card">
                                 <div class="cardimg">
                                     <img class="card-img-top" src="{{$event->small_image}}">

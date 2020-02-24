@@ -6,18 +6,18 @@
 <section class="section events">
     <div class="container">
         <div class="section-heading">
-            <h2>Popular Collections<span class="pull-right"><a href="{{route('website.collections')}}" class="btn btn-danger btn-small">View More</a></span>
+            <h2>Popular Collections<span class="pull-right"><a href="{{route('website.collections', ['type'=>$type])}}" class="btn btn-danger btn-small">View More</a></span>
 {{--                <p>Popular Collection</p>--}}
         </div>
         <div class="customer-logos row">
             @foreach($collections as $collection)
             <div class="slide col-4 mt-4 service-box">
                 @if($collection->type=='event')
-                    <a href="{{route('website.collection.event',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                    <a href="{{route('website.collection.event',['id'=>$collection->id])}}">
                 @elseif($collection->type=='restaurant')
-                    <a href="{{route('website.collection.restaurant',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                    <a href="{{route('website.collection.restaurant',['id'=>$collection->id])}}">
                 @else
-                    <a href="{{route('website.collection.party',['id'=>$collection->id, 'type'=>$collection->type])}}">
+                    <a href="{{route('website.collection.party',['id'=>$collection->id])}}">
                 @endif
                 <div class="">
                     <div class="card">
@@ -58,11 +58,11 @@
             <div class="container">
                 <div class="section-heading">
                     @if($other->type=='event')
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.event',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.event',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
                     @elseif($other->type=='restaurant')
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.restaurant',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.restaurant',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
                     @else
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id,])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
                     @endif
                         <p>{{$other->about}}</p>
                 </div>
@@ -107,16 +107,16 @@
                                 </div>
                         @else
                             <div class="col-4 mt-4 service-box">
-                                <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
+                                <a href="{{route('website.party.details',['id'=>$item->id])}}">
                                 <div class="card">
                                     <div class="cardimg">
-                                        <img class="card-img-top" src="img/events/e1.jpg">
+                                        <img class="card-img-top" src="{{$item->small_image}}">
                                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
                                     </div>
                                     <div class="card-block text-center">
-                                        <h4 class="card-title">Tawshif Ahsan Khan</h4>
+                                        <h4 class="card-title">{{$item->name}}</h4>
                                         <div class="meta">
-                                            <a href="#">Gurgaon</a>
+                                            <a href="#">{{$item->short_address}}</a>
                                         </div>
 
                                     </div>

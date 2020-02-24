@@ -73,7 +73,7 @@ class CollectionController extends Controller
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
             $i++;
         }
-        return ['events'=>$events, 'image'=>$collection];
+        return view('Website.restaurant-collection-items', ['events'=>$events,'collection'=>$collection]);
     }
 
     public function party(Request $request, $id){
@@ -100,6 +100,6 @@ class CollectionController extends Controller
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
             $i++;
         }
-        return ['events'=>$events,'image'=>$collection->cover_image];
+        return view('Website.party-collection-items', ['events'=>$events,'collection'=>$collection]);
     }
 }
