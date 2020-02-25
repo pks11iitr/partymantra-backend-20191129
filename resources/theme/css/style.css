@@ -278,6 +278,7 @@ Author Url: http://www.bnextitsolutions.com/
     height: 150px;
     max-height: 150px;
 }
+}
 @media (max-width: 480px){
     .top-menu {
         height: 35px !important;
@@ -913,4 +914,36 @@ div.locdiv{width:380px; height:100vh; background:#fff; position:fixed; right:-40
 }
 .slick-arrow.slick-hidden {
     display: none;
+}
+.reviews
+{
+    padding: 10px;
+    border-bottom: 2px solid #f9f9f9;
+}
+.reviews:last-child{
+    border-bottom:none;
+}
+
+.event-section{
+    margin: 0px -6px;
+    margin-top: 15px;
+}
+
+
+
+.reviewer{
+    height: 125px;
+    width: 125px;
+    background: #f9f9f9;
+    padding: 5px;
+}
+
+button.close{
+    font-size: 25px;
+    color: #292626ee;
+    box-shadow: none;
+}
+
+.mdbtn a:hover{
+    color:black;
 }
