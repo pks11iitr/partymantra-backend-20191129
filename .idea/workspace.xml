@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="collection items, all collections page">
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" afterDir="false" />
+    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/OrderPushNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/OrderPushNotification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/Notification/FirebaseNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Notification/FirebaseNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/theme/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,13 +242,6 @@
       <workItem from="1582010150705" duration="2177000" />
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
-    </task>
-    <task id="LOCAL-00185" summary="minor fix">
-      <created>1581152262935</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1581152262935</updated>
     </task>
     <task id="LOCAL-00186" summary="fixes for banners">
       <created>1581342708541</created>
@@ -591,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582533424022</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="vendor firebase api key added">
+      <created>1582638060652</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1582638060652</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="inor fixes" />
     <MESSAGE value="order detail change at admin" />
     <MESSAGE value="change in addpartytocart" />
     <MESSAGE value="change in order detail vendors" />
@@ -637,17 +631,18 @@
     <MESSAGE value="modified gitignore" />
     <MESSAGE value="working on home page" />
     <MESSAGE value="collection items, all collections page" />
-    <option name="LAST_COMMIT_MESSAGE" value="collection items, all collections page" />
+    <MESSAGE value="vendor firebase api key added" />
+    <option name="LAST_COMMIT_MESSAGE" value="vendor firebase api key added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582618012581">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582618012581" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582637984596">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582638059983">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582637984596" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582638059983" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -680,10 +675,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582293374430">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582638076289">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582293374430" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582638076289" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

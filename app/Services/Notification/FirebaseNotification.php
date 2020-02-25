@@ -8,8 +8,7 @@ class FirebaseNotification
 {
     public static $API_ACCESS_KEY='AAAAjEBXAKM:APA91bFSVIrZjEtTsPv_Jyk7NHke5MJ-Q6zDqr2C5d6W9QUDEhI7DF4AJ6CGocffkW2ycoBW6qX2Krk4pCijTPYHX3jzE2Md75F56FdIN2UZ-H3AZVpnkJMQ4AEIoLI85WNnmAEgicgp';
 
-    public static $VENDOR_API_ACCESS_KEY='AAAAHorLR_0:APA91bGvzPBDUBea7Q03qmJvuj-XX-XnPJqBLqt4Rgyiuo-tFPP-hkUI0bxpSKPrAOEUlJHaH4tDpUWjIgfdPZ3j4Uzmxe3XdUnVIyTv3esMXNwhhKtDW3MpSKBAbOm28oszf5ccRTQU
-';
+    public static $VENDOR_API_ACCESS_KEY='AAAAHorLR_0:APA91bGvzPBDUBea7Q03qmJvuj-XX-XnPJqBLqt4Rgyiuo-tFPP-hkUI0bxpSKPrAOEUlJHaH4tDpUWjIgfdPZ3j4Uzmxe3XdUnVIyTv3esMXNwhhKtDW3MpSKBAbOm28oszf5ccRTQU';
 
     public static function sendNotificationById($divids=[], $data=[], $type='customer'){
 
