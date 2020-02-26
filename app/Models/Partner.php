@@ -94,31 +94,37 @@ class Partner extends Model
     }
 
     public static function nearBy($lat, $lang){
-        $haversine = "(6371 * acos(cos(radians($lat))
+        $restaurants=[];
+        if(!empty($lat) && !empty($lang)) {
+            $haversine = "(6371 * acos(cos(radians($lat))
                      * cos(radians(partners.lat))
                      * cos(radians(partners.lang)
                      - radians($lang))
                      + sin(radians($lat))
                      * sin(radians(partners.lat))))";
 
-        $restaurants = Partner::active()
-            ->with(["avgreviews"])
-            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+            $restaurants = Partner::active()
+                ->with(["avgreviews"])
+                ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"), '<', 10000)->get();
+        }
         return $restaurants;
     }
 
     public static function nearByParty($lat, $lang){
-        $haversine = "(6371 * acos(cos(radians($lat))
+        $party=[];
+        if(!empty($lat) && !empty($lang)) {
+            $haversine = "(6371 * acos(cos(radians($lat))
                      * cos(radians(partners.lat))
                      * cos(radians(partners.lang)
                      - radians($lang))
                      + sin(radians($lat))
                      * sin(radians(partners.lat))))";
 
-        $party = Partner::active()
-            ->where('allow_party')
-            ->with(["avgreviews"])
-            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+            $party = Partner::active()
+                ->where('allow_party')
+                ->with(["avgreviews"])
+                ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"), '<', 10000)->get();
+        }
         return $party;
     }
 

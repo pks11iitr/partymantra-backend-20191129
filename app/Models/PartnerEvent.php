@@ -109,16 +109,19 @@ class PartnerEvent extends Model
     }
 
     public static function nearBy($lat, $lang){
-        $haversine = "(6371 * acos(cos(radians($lat))
+        $events=[];
+        if(!empty($lat) && !empty($lang)){
+            $haversine = "(6371 * acos(cos(radians($lat))
                      * cos(radians(events.lat))
                      * cos(radians(events.lang)
                      - radians($lang))
                      + sin(radians($lat))
                      * sin(radians(events.lat))))";
 
-        $events = PartnerEvent::active()
-            ->with(["avgreviews"])
-            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+            $events = PartnerEvent::active()
+                ->with(["avgreviews"])
+                ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+        }
         return $events;
     }
 
