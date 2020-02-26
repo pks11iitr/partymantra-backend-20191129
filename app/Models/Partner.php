@@ -121,7 +121,7 @@ class Partner extends Model
                      * sin(radians(partners.lat))))";
 
             $party = Partner::active()
-                ->where('allow_party')
+                ->where('allow_party', true)
                 ->with(["avgreviews"])
                 ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"), '<', 10000)->get();
         }
