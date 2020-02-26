@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer\Api;
 
 use App\Models\Banner;
 use App\Models\Collection;
+use App\Models\Partner;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -84,8 +85,16 @@ class HomeController extends Controller
         }
         unset($othercollections);
         //return $collections;
-
-        return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$collectionswithbanner, 'otherbanners'=>[]];
+        if($type=='party'){
+            $nearby=Partner::nearByParty($request->lat, $request->lang);
+        }
+        elseif($type=='restaurant'){
+            $nearby=Partner::nearBy($request->lat, $request->lang);
+        }
+        else{
+            $nearby=PartnerEvent::nearBy($request->lat, $request->lang);
+        }
+        return ['banners'=>$banners, 'collections'=>$collections, 'others'=>$collectionswithbanner, 'otherbanners'=>[], 'nearby'=>$nearby];
 
     }
 

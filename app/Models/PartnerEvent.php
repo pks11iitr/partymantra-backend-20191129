@@ -6,7 +6,9 @@ use App\Models\Traits\Active;
 use App\Models\Traits\DocumentUploadTrait;
 use App\Models\Traits\Gallery;
 use App\Models\Traits\ReviewTrait;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PartnerEvent extends Model
@@ -104,6 +106,20 @@ class PartnerEvent extends Model
 
     public function facilities(){
         return $this->belongsToMany('App\Models\Facility', 'event_facility', 'event_id', 'facility_id');
+    }
+
+    public static function nearBy($lat, $lang){
+        $haversine = "(6371 * acos(cos(radians($lat))
+                     * cos(radians(events.lat))
+                     * cos(radians(events.lang)
+                     - radians($lang))
+                     + sin(radians($lat))
+                     * sin(radians(events.lat))))";
+
+        $events = PartnerEvent::active()
+            ->with(["avgreviews"])
+            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+        return $events;
     }
 
 }

@@ -6,6 +6,7 @@ use App\Models\Traits\Active;
 use App\Models\Traits\DocumentUploadTrait;
 use App\Models\Traits\ReviewTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
@@ -91,4 +92,36 @@ class Partner extends Model
             }
         }
     }
+
+    public static function nearBy($lat, $lang){
+        $haversine = "(6371 * acos(cos(radians($lat))
+                     * cos(radians(partners.lat))
+                     * cos(radians(partners.lang)
+                     - radians($lang))
+                     + sin(radians($lat))
+                     * sin(radians(partners.lat))))";
+
+        $restaurants = Partner::active()
+            ->with(["avgreviews"])
+            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+        return $restaurants;
+    }
+
+    public static function nearByParty($lat, $lang){
+        $haversine = "(6371 * acos(cos(radians($lat))
+                     * cos(radians(partners.lat))
+                     * cos(radians(partners.lang)
+                     - radians($lang))
+                     + sin(radians($lat))
+                     * sin(radians(partners.lat))))";
+
+        $party = Partner::active()
+            ->where('allow_party')
+            ->with(["avgreviews"])
+            ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
+        return $party;
+    }
+
+
+
 }
