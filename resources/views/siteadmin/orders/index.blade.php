@@ -38,33 +38,51 @@
                         <div class="card-header">
                             <h3 class="card-title">View Orders Table</h3>
                         </div>
+                        <div class="card-body">
+                            <form method="get" action="{{route('admin.orders')}}">
+                                <label>Select Partner</label>
+                                <select name="partner">
+                                    <option value="0" >Select Partner</option>
+                                    @foreach($partners as $p)
+                                        <option value="{{$p->id}}" @if($p->id==$partner){{'selected'}}@endif>{{$p->name}}</option>
+                                    @endforeach
+                                </select>
+                                <label>Date From</label>
+                                <input type="date" name="datefrom" value="{{$datefrom??''}}">
+                                <label>Date To</label>
+                                <input type="date" name="dateto" value="{{$dateto??''}}">
+                                <button type="submit">Search</button>
+                            </form>
+                        </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Event</th>
-                                    <th>Organizer</th>
-                                    <th>User Mobile</th>
+                                    <th>OrderID</th>
+                                    <th>Organizer Name</th>
+                                    <th>Customer Mobile</th>
                                     <th>Total Amount</th>
-                                    <th>Total Pass</th>
+                                    <th>Order Status</th>
                                     <th>Date</th>
+                                    <th>Details</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 @foreach($orders as $order)
                                     <tr>
-                                        @foreach($order->details as $item)
-                                            <td>{{$item->entity->title}}</td>
-                                            <td>{{$item->entity->partner->name}}</td>
-                                                <td>{{$order->customer->mobile}}</td>
-                                                    <td>{{$item->men+$item->women+$item->couple}}</td>
+                                            <td>{{$order->refid}}</td>
+                                            <td>{{$order->details[0]->partner->name??''}}</td>
+                                            <td>{{$order->customer->mobile}}</td>
+
                                             <td>{{$order->total}}</td>
+                                            <td>{{$order->payment_status}}</td>
                                             <td>
                                                 {{$order->updated_at}}
                                             </td>
-                                        @endforeach                                                                     </tr>
+                                        <td><a href="{{route('admin.orders.details', ['id'=>$order->id])}}">View</a></td>
+                                                                                                                   </tr>
                                 @endforeach
 
                                 </tbody>

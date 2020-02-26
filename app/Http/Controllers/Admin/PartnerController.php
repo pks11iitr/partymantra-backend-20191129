@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Collection;
+use App\Models\Document;
+use App\Models\Facility;
+use App\Models\Menu;
+use App\Models\PartnerEvent;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,9 +27,13 @@ class PartnerController extends Controller
     }
 
     public function edit(Request $request, $id){
-
-		$partners=Partner::findOrFail($id);
-		return view('siteadmin.partners.edit', ['partners'=>$partners]);
+        $menus=Menu::active()->get();
+        $collections=Collection::active()->whereIn('type', ['party','restaurant'])->get();
+		$partners=Partner::with('eventparty')->findOrFail($id);
+//		echo "<pre>";
+//		print_r($partners);die;
+		$facilities=Facility::all();
+		return view('siteadmin.partners.edit', ['partners'=>$partners, 'menus'=>$menus, 'facilities'=>$facilities, 'collections'=>$collections]);
 
     }
 
@@ -51,8 +60,9 @@ class PartnerController extends Controller
 			'contact_no'=>'required',
 			'type'=>'required',
 			'per_person_text'=>'required',
-			'isactive'=>'required'
-
+			'isactive'=>'required',
+			'open'=>'nullable',
+			'close'=>'nullable'
 			]);
 
 		//create use
@@ -103,7 +113,12 @@ class PartnerController extends Controller
 							 'type'=>$request->type,
                             'per_person_text'=>$request->per_person_text,
                             'isactive'=>$request->isactive,
-							'user_id'=>$user->id
+							'user_id'=>$user->id,
+                            'allow_party'=>$request->allow_party,
+                            'timings'=>$request->timings,
+                            'party_timings'=>$request->party_timings,
+                            'open'=>$request->open,
+                            'close'=>$request->close
 							]))
 
 							{
@@ -179,7 +194,21 @@ class PartnerController extends Controller
             'isactive'=>$request->isactive,
             'header_image'=>$path1,
             'small_image'=>$path2,
+            'allow_party'=>$request->allow_party,
+            'timings'=>$request->timings,
+            'party_timings'=>$request->party_timings,
+            'open'=>$request->open,
+            'close'=>$request->close
 		])) {
+
+            if(!empty($request->collection_id)){
+                if(!empty($request->collection_id)){
+                    $partners->collections()->detach();
+                    $partners->collections()->attach($request->collection_id);
+                }
+            }else{
+                $partners->collections()->detach();
+            }
                 return redirect()->route('admin.partners')->with('success', 'Partners has been updated');
 
             }
@@ -196,5 +225,69 @@ class PartnerController extends Controller
         return redirect()->back()->with('success', 'Pasword has been changed');
     }
 
+    public function attachMenu(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        $qids[$request->menuid]=['price'=>$request->price, 'cut_price'=>$request->cut_price];
+        $partner->menus()->syncWithoutDetaching($qids);
+        return redirect()->back()->with('success', 'Menu has been added');
+    }
+
+    public function detachMenu(Request $request, $pid, $mid){
+        $partner=Partner::findOrFail($pid);
+        $partner->menus()->detach($mid);
+        return redirect()->back()->with('success', 'Menu has been deleted');
+    }
+
+    public function attachFacility(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        $partner->facilities()->syncWithoutDetaching($request->facilities);
+        return redirect()->back()->with('success', 'Facility has been added');
+    }
+
+    public function detachFacility(Request $request, $pid, $fid){
+        $partner=Partner::findOrFail($pid);
+        $partner->facilities()->detach($fid);
+        return redirect()->back()->with('success', 'Facility has been deleted');
+    }
+
+    public function addgallery(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        if(!empty($request->gallery)){
+
+            $request->validate([
+                'gallery.*'=>'required|image',
+                'type'=>'required|in:both,restaurant,party'
+            ]);
+
+            foreach($request->gallery as $file){
+
+                $partner->saveDocument($file, 'events', ['type'=>$request->type]);
+            }
+        }
+        return redirect()->back()->with('success', 'Images have been uploaded');
+    }
+
+    public function deletegallery(Request $request, $id){
+        Document::where('id', $id)->where('entity_type', 'App\Models\Partner')->delete();
+        return redirect()->back()->with('success', 'Images has been deleted');
+    }
+
+    public function addEventPartyImage(Request $request, $id){
+        $partner=Partner::findOrFail($id);
+        if(!empty($request->gallery)){
+
+            $request->validate([
+                'gallery.*'=>'required|image',
+            ]);
+
+            foreach($request->gallery as $file){
+                if($request->type=='partyonrestaurant')
+                    $partner->saveDocument($file, 'events', ['type'=>'partyonrestaurant']);
+                else
+                    $partner->saveDocument($file, 'events', ['type'=>'eventonrestaurant', 'other_id'=>$request->type]);
+            }
+        }
+        return redirect()->back()->with('success', 'Images have been uploaded');
+    }
 
 }

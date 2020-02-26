@@ -48,7 +48,7 @@
                   <th>Package Name</th>
                   <th>Price</th>
                   <th>Isactive</th>
-                 <th>Action</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>

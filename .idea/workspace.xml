@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CollectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/CollectionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PartnerEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartnerEvent.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +17,11 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -146,9 +150,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/resources/theme" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/public/uploads/images" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
+      <recent name="$PROJECT_DIR$/app/Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/Models/Traits" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
@@ -198,352 +207,386 @@
       <workItem from="1577355242454" duration="14156000" />
       <workItem from="1577383346103" duration="25801000" />
       <workItem from="1577944045129" duration="2573000" />
-      <workItem from="1577963766571" duration="174000" />
+      <workItem from="1577963766571" duration="2613000" />
+      <workItem from="1578130187970" duration="682000" />
+      <workItem from="1578375092217" duration="30014000" />
+      <workItem from="1578480332872" duration="8691000" />
+      <workItem from="1578549817056" duration="6000" />
+      <workItem from="1578549855069" duration="356000" />
+      <workItem from="1578550228829" duration="3098000" />
+      <workItem from="1578560054946" duration="1964000" />
+      <workItem from="1579157289652" duration="983000" />
+      <workItem from="1579513908433" duration="3096000" />
+      <workItem from="1579688488302" duration="14961000" />
+      <workItem from="1579842436239" duration="6357000" />
+      <workItem from="1580360300277" duration="36112000" />
+      <workItem from="1580465012568" duration="11736000" />
+      <workItem from="1580556211072" duration="8480000" />
+      <workItem from="1580723148870" duration="9854000" />
+      <workItem from="1580801773964" duration="3766000" />
+      <workItem from="1580835438457" duration="21810000" />
+      <workItem from="1580907024249" duration="1795000" />
+      <workItem from="1580966463716" duration="10725000" />
+      <workItem from="1580987435915" duration="8154000" />
+      <workItem from="1581057360216" duration="11092000" />
+      <workItem from="1581142282272" duration="4396000" />
+      <workItem from="1581146688436" duration="6308000" />
+      <workItem from="1581259669398" duration="18162000" />
+      <workItem from="1581486724670" duration="3363000" />
+      <workItem from="1581526537636" duration="22000" />
+      <workItem from="1581571714431" duration="15232000" />
+      <workItem from="1581592647951" duration="1308000" />
+      <workItem from="1581594041924" duration="6346000" />
+      <workItem from="1581752236791" duration="1843000" />
+      <workItem from="1581935708707" duration="1910000" />
+      <workItem from="1582010150705" duration="2177000" />
+      <workItem from="1582269286948" duration="18802000" />
+      <workItem from="1582523568255" duration="5159000" />
     </task>
-    <task id="LOCAL-00055" summary="set static pages">
-      <created>1576914022050</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
+    <task id="LOCAL-00188" summary="collection changes">
+      <created>1581344532587</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
       <option name="project" value="LOCAL" />
-      <updated>1576914022050</updated>
+      <updated>1581344532587</updated>
     </task>
-    <task id="LOCAL-00056" summary="set static pages">
-      <created>1576914258579</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
+    <task id="LOCAL-00189" summary="collection changes">
+      <created>1581399802409</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
       <option name="project" value="LOCAL" />
-      <updated>1576914258579</updated>
+      <updated>1581399802409</updated>
     </task>
-    <task id="LOCAL-00057" summary="set static pages">
-      <created>1576914368297</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
+    <task id="LOCAL-00190" summary="collection changes">
+      <created>1581399937645</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
       <option name="project" value="LOCAL" />
-      <updated>1576914368297</updated>
+      <updated>1581399937645</updated>
     </task>
-    <task id="LOCAL-00058" summary="set static pages">
-      <created>1576925338935</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
+    <task id="LOCAL-00191" summary="payment history added at admin panel">
+      <created>1581418117897</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
       <option name="project" value="LOCAL" />
-      <updated>1576925338935</updated>
+      <updated>1581418117897</updated>
     </task>
-    <task id="LOCAL-00059" summary="set static pages">
-      <created>1576926445821</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
+    <task id="LOCAL-00192" summary="payment history added at admin panel">
+      <created>1581418355762</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
       <option name="project" value="LOCAL" />
-      <updated>1576926445821</updated>
+      <updated>1581418355762</updated>
     </task>
-    <task id="LOCAL-00060" summary="set static pages">
-      <created>1576926723348</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
+    <task id="LOCAL-00193" summary="payment history added at admin panel">
+      <created>1581418532053</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
       <option name="project" value="LOCAL" />
-      <updated>1576926723348</updated>
+      <updated>1581418532054</updated>
     </task>
-    <task id="LOCAL-00061" summary="set static pages">
-      <created>1577081596040</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
+    <task id="LOCAL-00194" summary="payment history added at admin panel">
+      <created>1581422069040</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
       <option name="project" value="LOCAL" />
-      <updated>1577081596040</updated>
+      <updated>1581422069041</updated>
     </task>
-    <task id="LOCAL-00062" summary="get profile api">
-      <created>1577082670138</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
+    <task id="LOCAL-00195" summary="notifications added">
+      <created>1581487853552</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
       <option name="project" value="LOCAL" />
-      <updated>1577082670138</updated>
+      <updated>1581487853553</updated>
     </task>
-    <task id="LOCAL-00063" summary="get profile api">
-      <created>1577082800171</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
+    <task id="LOCAL-00196" summary="notifications added">
+      <created>1581487866341</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
       <option name="project" value="LOCAL" />
-      <updated>1577082800171</updated>
+      <updated>1581487866341</updated>
     </task>
-    <task id="LOCAL-00064" summary="get profile api">
-      <created>1577108433516</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
+    <task id="LOCAL-00197" summary="notifications token added">
+      <created>1581498612025</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
       <option name="project" value="LOCAL" />
-      <updated>1577108433517</updated>
+      <updated>1581498612025</updated>
     </task>
-    <task id="LOCAL-00065" summary="set banner priority, set partner status, change partner password">
-      <created>1577111592138</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
+    <task id="LOCAL-00198" summary="notifications token added">
+      <created>1581498632503</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
       <option name="project" value="LOCAL" />
-      <updated>1577111592139</updated>
+      <updated>1581498632503</updated>
     </task>
-    <task id="LOCAL-00066" summary="minor fixes">
-      <created>1577171227185</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
+    <task id="LOCAL-00199" summary="type added on login">
+      <created>1581575057693</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
       <option name="project" value="LOCAL" />
-      <updated>1577171227186</updated>
+      <updated>1581575057694</updated>
     </task>
-    <task id="LOCAL-00067" summary="api new key added">
-      <created>1577182745161</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
+    <task id="LOCAL-00200" summary="type added on login">
+      <created>1581578553676</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
       <option name="project" value="LOCAL" />
-      <updated>1577182745161</updated>
+      <updated>1581578553677</updated>
     </task>
-    <task id="LOCAL-00068" summary="api new key added">
-      <created>1577184694833</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
+    <task id="LOCAL-00201" summary="notifications at order success">
+      <created>1581580157866</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
       <option name="project" value="LOCAL" />
-      <updated>1577184694833</updated>
+      <updated>1581580157866</updated>
     </task>
-    <task id="LOCAL-00069" summary="api new key added">
-      <created>1577189389003</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
+    <task id="LOCAL-00202" summary="notifications at order success">
+      <created>1581580176614</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
       <option name="project" value="LOCAL" />
-      <updated>1577189389003</updated>
+      <updated>1581580176614</updated>
     </task>
-    <task id="LOCAL-00070" summary="profile image update added">
-      <created>1577254901164</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
+    <task id="LOCAL-00203" summary="notifications at order success">
+      <created>1581580538939</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
       <option name="project" value="LOCAL" />
-      <updated>1577254901165</updated>
+      <updated>1581580538939</updated>
     </task>
-    <task id="LOCAL-00071" summary="profile image update added">
-      <created>1577259915528</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
+    <task id="LOCAL-00204" summary="notifications at order success">
+      <created>1581580732514</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
       <option name="project" value="LOCAL" />
-      <updated>1577259915528</updated>
+      <updated>1581580732514</updated>
     </task>
-    <task id="LOCAL-00072" summary="securing image update">
-      <created>1577260928033</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
+    <task id="LOCAL-00205" summary="notifications at order success">
+      <created>1581580971485</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
       <option name="project" value="LOCAL" />
-      <updated>1577260928033</updated>
+      <updated>1581580971485</updated>
     </task>
-    <task id="LOCAL-00073" summary="securing image update">
-      <created>1577262348332</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
+    <task id="LOCAL-00206" summary="notifications at order success">
+      <created>1581581042010</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
       <option name="project" value="LOCAL" />
-      <updated>1577262348332</updated>
+      <updated>1581581042010</updated>
     </task>
-    <task id="LOCAL-00074" summary="add galler in partner dashboard">
-      <created>1577265337845</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
+    <task id="LOCAL-00207" summary="notifications at order success">
+      <created>1581581104756</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
       <option name="project" value="LOCAL" />
-      <updated>1577265337845</updated>
+      <updated>1581581104756</updated>
     </task>
-    <task id="LOCAL-00075" summary="add galler in partner dashboard">
-      <created>1577268782357</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
+    <task id="LOCAL-00208" summary="notifications at order success">
+      <created>1581581219638</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
       <option name="project" value="LOCAL" />
-      <updated>1577268782357</updated>
+      <updated>1581581219638</updated>
     </task>
-    <task id="LOCAL-00076" summary="add galler in partner dashboard">
-      <created>1577274013792</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
+    <task id="LOCAL-00209" summary="notifications at order success">
+      <created>1581581919522</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
       <option name="project" value="LOCAL" />
-      <updated>1577274013792</updated>
+      <updated>1581581919522</updated>
     </task>
-    <task id="LOCAL-00077" summary="setting logout user when user is blocked or inactive">
-      <created>1577341413243</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
+    <task id="LOCAL-00210" summary="notifications at order success">
+      <created>1581581929215</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
       <option name="project" value="LOCAL" />
-      <updated>1577341413243</updated>
+      <updated>1581581929215</updated>
     </task>
-    <task id="LOCAL-00078" summary="integration of payment gateway start">
-      <created>1577342098619</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
+    <task id="LOCAL-00211" summary="notifications at order success">
+      <created>1581582367771</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
       <option name="project" value="LOCAL" />
-      <updated>1577342098620</updated>
+      <updated>1581582367772</updated>
     </task>
-    <task id="LOCAL-00079" summary="mark order entry by partner api added">
-      <created>1577343726915</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
+    <task id="LOCAL-00212" summary="notifications at order success">
+      <created>1581582502311</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
       <option name="project" value="LOCAL" />
-      <updated>1577343726915</updated>
+      <updated>1581582502311</updated>
     </task>
-    <task id="LOCAL-00080" summary="mark order entry by partner api added">
-      <created>1577344544707</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
+    <task id="LOCAL-00213" summary="notifications at order success">
+      <created>1581582853282</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
       <option name="project" value="LOCAL" />
-      <updated>1577344544707</updated>
+      <updated>1581582853282</updated>
     </task>
-    <task id="LOCAL-00081" summary="correction is login and redirection, current session redirect pending">
-      <created>1577352286046</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
+    <task id="LOCAL-00214" summary="notifications at billpay success">
+      <created>1581583287740</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
       <option name="project" value="LOCAL" />
-      <updated>1577352286046</updated>
+      <updated>1581583287740</updated>
     </task>
-    <task id="LOCAL-00082" summary="current session redirect done for invalid users">
-      <created>1577353075909</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
+    <task id="LOCAL-00215" summary="date in notifications">
+      <created>1581584083173</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
       <option name="project" value="LOCAL" />
-      <updated>1577353075909</updated>
+      <updated>1581584083173</updated>
     </task>
-    <task id="LOCAL-00083" summary="mak entry api change">
-      <created>1577359186901</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
+    <task id="LOCAL-00216" summary="date in notifications">
+      <created>1581584640164</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
       <option name="project" value="LOCAL" />
-      <updated>1577359186901</updated>
+      <updated>1581584640164</updated>
     </task>
-    <task id="LOCAL-00084" summary="jwt token generate change">
-      <created>1577365516976</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
+    <task id="LOCAL-00217" summary="date in notifications">
+      <created>1581584783060</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
       <option name="project" value="LOCAL" />
-      <updated>1577365516976</updated>
+      <updated>1581584783060</updated>
     </task>
-    <task id="LOCAL-00085" summary="rajor pay integrated">
-      <created>1577367900818</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
+    <task id="LOCAL-00218" summary="date in notifications">
+      <created>1581584868238</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
       <option name="project" value="LOCAL" />
-      <updated>1577367900818</updated>
+      <updated>1581584868238</updated>
     </task>
-    <task id="LOCAL-00086" summary="rajor pay integrated">
-      <created>1577368663526</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
+    <task id="LOCAL-00219" summary="admin notifications">
+      <created>1581594819676</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
       <option name="project" value="LOCAL" />
-      <updated>1577368663526</updated>
+      <updated>1581594819676</updated>
     </task>
-    <task id="LOCAL-00087" summary="rajor pay integrated">
-      <created>1577368935892</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
+    <task id="LOCAL-00220" summary="admin notifications">
+      <created>1581594838166</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
       <option name="project" value="LOCAL" />
-      <updated>1577368935892</updated>
+      <updated>1581594838166</updated>
     </task>
-    <task id="LOCAL-00088" summary="rajor pay integrated">
-      <created>1577430354508</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
+    <task id="LOCAL-00221" summary="admin notifications">
+      <created>1581594961989</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
       <option name="project" value="LOCAL" />
-      <updated>1577430354508</updated>
+      <updated>1581594961989</updated>
     </task>
-    <task id="LOCAL-00089" summary="rajor pay integrated">
-      <created>1577430570859</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
+    <task id="LOCAL-00222" summary="admin notifications">
+      <created>1581595021228</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
       <option name="project" value="LOCAL" />
-      <updated>1577430570859</updated>
+      <updated>1581595021228</updated>
     </task>
-    <task id="LOCAL-00090" summary="rajor pay integrated">
-      <created>1577430628933</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
+    <task id="LOCAL-00223" summary="order changed">
+      <created>1581598784033</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
       <option name="project" value="LOCAL" />
-      <updated>1577430628933</updated>
+      <updated>1581598784033</updated>
     </task>
-    <task id="LOCAL-00091" summary="rajor pay integrated">
-      <created>1577430741201</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
+    <task id="LOCAL-00224" summary="collecion image">
+      <created>1581666560208</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
       <option name="project" value="LOCAL" />
-      <updated>1577430741201</updated>
+      <updated>1581666560208</updated>
     </task>
-    <task id="LOCAL-00092" summary="name changed partner">
-      <created>1577439115746</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
+    <task id="LOCAL-00225" summary="collecion image">
+      <created>1581666643266</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
       <option name="project" value="LOCAL" />
-      <updated>1577439115746</updated>
+      <updated>1581666643267</updated>
     </task>
-    <task id="LOCAL-00093" summary="set live mode razor pay">
-      <created>1577441455338</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
+    <task id="LOCAL-00226" summary="collecion image">
+      <created>1582012901588</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
       <option name="project" value="LOCAL" />
-      <updated>1577441455338</updated>
+      <updated>1582012901589</updated>
     </task>
-    <task id="LOCAL-00094" summary="skip sugnature check rajor pay">
-      <created>1577443220375</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
+    <task id="LOCAL-00227" summary="collecion image">
+      <created>1582013085346</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
       <option name="project" value="LOCAL" />
-      <updated>1577443220375</updated>
+      <updated>1582013085346</updated>
     </task>
-    <task id="LOCAL-00095" summary="removing price double for couple">
-      <created>1577444327849</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
+    <task id="LOCAL-00228" summary="login register forgot password redirections setup for website">
+      <created>1582272427112</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
       <option name="project" value="LOCAL" />
-      <updated>1577444327849</updated>
+      <updated>1582272427112</updated>
     </task>
-    <task id="LOCAL-00096" summary="minor fix">
-      <created>1577447641150</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
+    <task id="LOCAL-00229" summary="working on home page, partialy completed">
+      <created>1582288745611</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
       <option name="project" value="LOCAL" />
-      <updated>1577447641150</updated>
+      <updated>1582288745612</updated>
     </task>
-    <task id="LOCAL-00097" summary="minor fix in events">
-      <created>1577451626063</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
+    <task id="LOCAL-00230" summary="working on home page, partialy completed">
+      <created>1582289352712</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
       <option name="project" value="LOCAL" />
-      <updated>1577451626063</updated>
+      <updated>1582289352712</updated>
     </task>
-    <task id="LOCAL-00098" summary="added reviews at home page">
-      <created>1577452625924</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
+    <task id="LOCAL-00231" summary="modified gitignore">
+      <created>1582289667558</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
       <option name="project" value="LOCAL" />
-      <updated>1577452625924</updated>
+      <updated>1582289667558</updated>
     </task>
-    <task id="LOCAL-00099" summary="added reviews at home page">
-      <created>1577454645624</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
+    <task id="LOCAL-00232" summary="working on home page">
+      <created>1582293369010</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
       <option name="project" value="LOCAL" />
-      <updated>1577454645624</updated>
+      <updated>1582293369010</updated>
     </task>
-    <task id="LOCAL-00100" summary="commented signature verify razorpay">
-      <created>1577459362010</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
+    <task id="LOCAL-00233" summary="collection items, all collections page">
+      <created>1582533424022</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
       <option name="project" value="LOCAL" />
-      <updated>1577459362010</updated>
+      <updated>1582533424022</updated>
     </task>
-    <task id="LOCAL-00101" summary="location added, search added, away added">
-      <created>1577512738201</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
+    <task id="LOCAL-00234" summary="vendor firebase api key added">
+      <created>1582638060652</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
       <option name="project" value="LOCAL" />
-      <updated>1577512738201</updated>
+      <updated>1582638060652</updated>
     </task>
-    <task id="LOCAL-00102" summary="email optional in profile">
-      <created>1577514417006</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
+    <task id="LOCAL-00235" summary="vendor firebase api key added">
+      <created>1582638524757</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
       <option name="project" value="LOCAL" />
-      <updated>1577514417006</updated>
+      <updated>1582638524757</updated>
     </task>
-    <task id="LOCAL-00103" summary="change in hash function razorpay">
-      <created>1577524781548</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
+    <task id="LOCAL-00236" summary="nearby api added">
+      <created>1582701067925</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
       <option name="project" value="LOCAL" />
-      <updated>1577524781548</updated>
+      <updated>1582701067926</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,50 +607,50 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="set banner priority, set partner status, change partner password" />
-    <MESSAGE value="minor fixes" />
-    <MESSAGE value="api new key added" />
-    <MESSAGE value="profile image update added" />
-    <MESSAGE value="securing image update" />
-    <MESSAGE value="add galler in partner dashboard" />
-    <MESSAGE value="setting logout user when user is blocked or inactive" />
-    <MESSAGE value="integration of payment gateway start" />
-    <MESSAGE value="mark order entry by partner api added" />
-    <MESSAGE value="correction is login and redirection, current session redirect pending" />
-    <MESSAGE value="current session redirect done for invalid users" />
-    <MESSAGE value="mak entry api change" />
-    <MESSAGE value="jwt token generate change" />
-    <MESSAGE value="rajor pay integrated" />
-    <MESSAGE value="name changed partner" />
-    <MESSAGE value="set live mode razor pay" />
-    <MESSAGE value="skip sugnature check rajor pay" />
-    <MESSAGE value="removing price double for couple" />
+    <MESSAGE value="change in addpartytocart" />
+    <MESSAGE value="change in order detail vendors" />
+    <MESSAGE value="change in order detail customer" />
+    <MESSAGE value="change in order history customer" />
+    <MESSAGE value="change in bill pay order generate customer" />
     <MESSAGE value="minor fix" />
-    <MESSAGE value="minor fix in events" />
-    <MESSAGE value="added reviews at home page" />
-    <MESSAGE value="commented signature verify razorpay" />
-    <MESSAGE value="location added, search added, away added" />
-    <MESSAGE value="email optional in profile" />
-    <MESSAGE value="change in hash function razorpay" />
-    <option name="LAST_COMMIT_MESSAGE" value="change in hash function razorpay" />
+    <MESSAGE value="fixes for banners" />
+    <MESSAGE value="collection changes" />
+    <MESSAGE value="payment history added at admin panel" />
+    <MESSAGE value="notifications added" />
+    <MESSAGE value="notifications token added" />
+    <MESSAGE value="type added on login" />
+    <MESSAGE value="notifications at order success" />
+    <MESSAGE value="notifications at billpay success" />
+    <MESSAGE value="date in notifications" />
+    <MESSAGE value="admin notifications" />
+    <MESSAGE value="order changed" />
+    <MESSAGE value="collecion image" />
+    <MESSAGE value="login register forgot password redirections setup for website" />
+    <MESSAGE value="working on home page, partialy completed" />
+    <MESSAGE value="modified gitignore" />
+    <MESSAGE value="working on home page" />
+    <MESSAGE value="collection items, all collections page" />
+    <MESSAGE value="vendor firebase api key added" />
+    <MESSAGE value="nearby api added" />
+    <option name="LAST_COMMIT_MESSAGE" value="nearby api added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577429837741">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582700393095">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1577429837741" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577524781153">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582700393095" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582701067579">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1577524781153" />
-    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1576751305402">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582701067579" />
+    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1576751305402" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1577702443649">
+    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1582292774640">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1577702443649" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1582292774640" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -616,14 +659,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1576231874612" />
-    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog" timestamp="1577354007708">
+    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog" timestamp="1581573725069">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="487" y="210" width="481" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1577354007708" />
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1576913724854">
+    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1581573725069" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1582617912232">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1576913724854" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1582617912232" />
     <state x="205" y="31" key="SettingsEditor" timestamp="1576932387042">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -632,21 +675,29 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577524787410">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582701070563">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1577524787410" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1577383346419">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582701070563" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1577383346419" />
-    <state x="362" y="128" width="743" height="536" key="find.popup" timestamp="1577382889129">
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1582010178858" />
+    <state x="362" y="128" width="911" height="536" key="find.popup" timestamp="1581069910559">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="362" y="128" width="743" height="536" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1577382889129" />
+    <state x="362" y="128" width="911" height="536" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1581069910559" />
     <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576751346241">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1576751346241" />
+    <state x="365" y="115" width="700" height="530" key="recent.locations.popup" timestamp="1580456748058">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="365" y="115" width="700" height="530" key="recent.locations.popup/67.27.1299.741@67.27.1299.741" timestamp="1580456748058" />
+    <state x="379" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580710779093">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="379" y="89" width="672" height="678" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1580710779093" />
   </component>
 </project>

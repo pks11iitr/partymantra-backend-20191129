@@ -158,6 +158,54 @@
                                 <!-- /.form-group -->
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Is Allow Party</label>
+                                    <select name="allow_party" class="form-control select2" style="width: 100%;">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Restaurant Booking Timings</label>
+                                    <textarea type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="timings"></textarea>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Party Booking Timings</label>
+                                    <textarea type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="party_timings"></textarea>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Open Time</label>
+                                    <input type="text" class="form-control" name="open" id="exampleInputEmail1" placeholder="Enter email" name="short_address">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Close Time</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Enter email" name="close">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
                          <div class="row">
 
                                 <div class="form-group"  style="algin:center;">

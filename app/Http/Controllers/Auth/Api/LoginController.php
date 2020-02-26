@@ -65,7 +65,8 @@ class LoginController extends Controller
     {
         return User::create([
             'mobile' => $data['mobile'],
-            'password' => Hash::make($data['mobile'])
+            'password' => Hash::make($data['mobile']),
+            'token'=>$data['token']??null
         ]);
     }
 
@@ -103,6 +104,8 @@ class LoginController extends Controller
                     ],
                 ], 401);
             }
+            $user->token=$request->token??null;
+            $user->save();
             if($otp=OTPModel::createOTP($user->id, 'login')){
                 $msg=config('sms-templates.login-otp');
                 $msg=str_replace('{{otp}}', $otp, $msg);
@@ -165,6 +168,7 @@ class LoginController extends Controller
         return [
             'message'=>'Login Successfull',
             'token'=>$this->jwt->fromUser($user),
+            'type'=>$user->hasRole('customer')?'customer':'partner'
         ];
 
     }

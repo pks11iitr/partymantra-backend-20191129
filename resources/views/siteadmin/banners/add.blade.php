@@ -99,6 +99,13 @@
                                 </div>
                                 <!-- /.form-group -->
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Banner placeholder</label>
+                                    <input type="text" class="form-control" name="placeholder" id="exampleInputEmail1" placeholder="Enter a number">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
                     </div>
                         <div class="row">
 
@@ -151,7 +158,7 @@
                                 $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
 
                             else if(id=='party'){
-                               $("#lca").append('<option value="'+data.id+'">'+data.title+'</option>');
+                               $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
                             }else if(id=='restaurant'){
                                $("#lca").append('<option value="'+data.id+'">'+data.name+'</option>');
                             }

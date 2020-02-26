@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Collection;
 use App\Models\Document;
+use App\Models\Facility;
 use App\Models\Menu;
 use App\Models\Package;
 use App\Models\Partner;
@@ -28,18 +29,33 @@ class EventController extends Controller
 
 
     public function edit(Request $request, $id){
+
           $organizers=Partner::active()->get();
           $event = PartnerEvent::findOrFail($id);
-          $collections=Collection::active()->get();
-          return view('siteadmin.events.edit',['event'=>$event, 'organizers'=>$organizers, 'collections'=>$collections]);
+          $collections=Collection::active()->where('type', 'event')->get();
+          $facilities=Facility::get();
+          $covers=[];
+          foreach($event->covers as $c){
+              if($c->package_name=='Men' && $c->isactive){
+                  $covers['men']=$c->price;
+              }
+              if($c->package_name=='Women' && $c->isactive){
+                  $covers['women']=$c->price;
+              }
+              if($c->package_name=='Couple' && $c->isactive){
+                  $covers['couple']=$c->price;
+              }
+          }
+          return view('siteadmin.events.edit',['event'=>$event, 'organizers'=>$organizers, 'collections'=>$collections, 'facilities'=>$facilities, 'covers'=>$covers]);
     }
 
 
 
     public function add(Request $request){
         $organizers=Partner::active()->whereIn('type', ['organizers', 'restaurant'])->get();
-        $collections=Collection::active()->get();
-        return view('siteadmin.events.add', ['organizers'=>$organizers, 'collections'=>$collections]);
+        $facilities=Facility::get();
+        $collections=Collection::active()->where('type', 'event')->get();
+        return view('siteadmin.events.add', ['organizers'=>$organizers, 'collections'=>$collections, 'facilities'=>$facilities]);
     }
 
     public function store(Request $request){
@@ -114,6 +130,34 @@ class EventController extends Controller
                         $event->collections()->detach();
                         $event->collections()->attach($request->collection_id);
                     }
+                    if(!empty($request->facilities)){
+                        $event->facilities()->detach();
+                        $event->facilities()->attach($request->facilities);
+                    }
+
+                    $men=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Men', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+                    $women=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Women', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+                    $couple=Package::create(['event_id'=>$event->id, 'partner_id'=>$event->partner_id, 'package_name'=>'Couple', 'text_under_name'=>'a', 'custom_package_detail'=>'a', 'created_by'=>auth()->user()->id, 'isactive'=>false, 'partneractive'=>true, 'price'=>0, 'package_type'=>'cover']);
+
+                    if(!empty($request->cover)){
+                        if(in_array('men', $request->cover)){
+                            $men->price=$request->charge['men'];
+                            $men->isactive=true;
+                            $men->save();
+                        }
+                        if(in_array('women', $request->cover)){
+                            $women->price=$request->charge['women'];
+                            $women->isactive=true;
+                            $women->save();
+                        }
+                        if(in_array('couple', $request->cover)){
+                            $couple->price=$request->charge['couple'];
+                            $couple->isactive=true;
+                            $couple->save();
+                        }
+                    }
+
+
                     return redirect()->route('admin.event')->with('success', 'Events has been created');
             }
             return redirect()->back()->with('error', 'Events create failed');
@@ -207,6 +251,55 @@ class EventController extends Controller
             }else{
                 $event->collections()->detach();
             }
+            if(!empty($request->facilities)){
+                $event->facilities()->detach();
+                $event->facilities()->attach($request->facilities);
+            }else{
+                $event->facilities()->detach();
+            }
+
+            $covers=$event->covers;
+
+            if(!empty($request->cover)){
+                foreach($covers as $c){
+                    if($c->package_name=='Men'){
+                        if(in_array('men', $request->cover)){
+                            $c->price=$request->charge['men'];
+                            $c->isactive=true;
+                            $c->save();
+                        }else{
+                            //$c->price=$request->charge['men'];
+                            $c->isactive=false;
+                            $c->save();
+                        }
+                    }
+                    if($c->package_name=='Women'){
+                        if(in_array('women', $request->cover)){
+                            $c->price=$request->charge['women'];
+                            $c->isactive=true;
+                            $c->save();
+                        }else{
+                            //$c->price=$request->charge['men'];
+                            $c->isactive=false;
+                            $c->save();
+                        }
+                    }
+                    if($c->package_name=='Couple'){
+                        if(in_array('couple', $request->cover)){
+                            $c->price=$request->charge['couple'];
+                            $c->isactive=true;
+                            $c->save();
+                        }else{
+                            //$c->price=$request->charge['men'];
+                            $c->isactive=false;
+                            $c->save();
+                        }
+                    }
+                }
+
+            }
+
+
             return redirect()->route('admin.event')->with('success', 'Events has been created');
 
 

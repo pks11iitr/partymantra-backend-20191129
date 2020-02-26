@@ -247,7 +247,6 @@
                                 <div class="form-group">
                                     <label>Select Collection</label>
                                     <select class="form-control select2" name="collection_id[]" id="lca2" multiple>
-                                        <option value="">Select Collection</option>
                                         @foreach($collections as $collection)
                                             <option value="{{$collection->id}}" @foreach($event->collections as $c) @if($c->id==$collection->id){{'selected'}}@endif @endforeach>{{$collection->name}}</option>
                                         @endforeach
@@ -256,8 +255,43 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Select Facilities</label>
+                                    <select name="facilities[]" class="form-control select2" style="width: 100%;" multiple>
+                                        @foreach($facilities as $f)
+                                            <option value="{{$f->id}}" @foreach($event->facilities as $c) @if($c->id==$f->id){{'selected'}}@endif @endforeach>{{$f->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+                        <div class="row">
+                            <!-- /.col -->
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Enable Cover Charges Men</label>
+                                    <input type="checkbox" name="cover[]" value="men" {{isset($covers['men'])?'checked':''}}>
+                                    <input name="charge[men]" value="{{$covers['men']??0}}" placeholder="charge">
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Enable Cover Charges Women</label>
+                                    <input type="checkbox" name="cover[]" value="women" {{isset($covers['women'])?'checked':''}}>
+                                    <input name="charge[women]" value="{{$covers['women']??0}}" placeholder="charge">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Enable Cover Charges Couple</label>
+                                    <input type="checkbox" name="cover[]" value="couple" {{isset($covers['couple'])?'checked':''}}>
+                                    <input name="charge[couple]" value="{{$covers['couple']??0}}" placeholder="charge">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group" style="align:center">

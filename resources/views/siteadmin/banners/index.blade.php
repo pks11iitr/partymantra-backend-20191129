@@ -54,7 +54,7 @@
 				@foreach($banners as $banner)
                 <tr>
                   <td>{{$banner->entity_type}}</td>
-                  <td>{{$banner->entity_id}}</td>
+                  <td>{{$banner->partner()->name??$banner->partner()->title??''}}</td>
                   <td>{{$banner->image}}</td>
                   <td>{{$banner->isactive}}</td>
                     <td>

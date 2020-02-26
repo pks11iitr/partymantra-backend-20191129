@@ -46,7 +46,6 @@
 				<th>Name</th>
                  <th>Price</th>
                     <th>Cut Pice</th>
-                    <th>Partner Name</th>
 
                       <th>Isactive</th>
 
@@ -59,7 +58,7 @@
                   <td>{{$menu->name}}</td>
                   <td>{{$menu->price}}</td>
                   <td>{{$menu->cut_pice}}</td>
-                  <td>{{$menu->partner->name??''}}</td>
+
 
                   <td>{{$menu->statustext()}}</td>
 

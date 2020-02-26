@@ -86,6 +86,6 @@ class ProfileController extends Controller
 
     public function getProfileInfo(Request $request){
         $user=$this->auth->user();
-        return $user->only('name', 'dob', 'email', 'mobile', 'address', 'gender');
+        return $user->only('name', 'dob', 'email', 'mobile', 'address', 'gender','image');
     }
 }

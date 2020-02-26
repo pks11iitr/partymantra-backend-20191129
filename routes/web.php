@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return redirect(route('login'));
-});
+Auth::routes();
+
+
+//website routes
+Route::get('/', 'Website\HomeController@index')->name('website.home');
+Route::get('collections', 'Website\CollectionController@index')->name('website.collections');
+Route::get('collections/{id}/event', 'Website\CollectionController@events')->name('website.collection.event');
+Route::get('collections/{id}/restaurant', 'Website\CollectionController@restaurants')->name('website.collection.restaurant');
+Route::get('collections/{id}/party', 'Website\CollectionController@party')->name('website.collection.party');
+Route::get('event/{id}', 'Website\EventController@view')->name('website.event.details');
+Route::get('restaurant/{id}', 'Website\RestaurantController@view')->name('website.restaurant.details');
+Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('website.party.details');
 
 
 Route::get('privacy-policy', 'Website\TncController@privacy');
@@ -22,21 +30,29 @@ Route::get('terms-and-condition', 'Website\TncController@tnc');
 Route::get('about-us', 'Website\TncController@about');
 
 
-Auth::routes();
-
 //this will be removed after setting proper redirection
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
         Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
         Route::get('orders', 'Admin\OrderController@index')->name('admin.orders');
+        Route::get('order-details/{id}', 'Admin\OrderController@details')->name('admin.orders.details');
+        Route::get('approve-cancel/{id}', 'Admin\OrderController@cancelapprove')->name('admin.orders.cancelapprove');
         Route::get('partners', 'Admin\PartnerController@index')->name('admin.partners');
         Route::get('partners/create', 'Admin\PartnerController@add')->name('admin.partners.add');
         Route::post('partners', 'Admin\PartnerController@store')->name('admin.partners.store');
         Route::get('partners/{id}', 'Admin\PartnerController@edit')->where('id', '[0-9]+')->name('admin.partners.edit');
         Route::post('partners/{id}', 'Admin\PartnerController@update')->where('id', '[0-9]+')->name('admin.partners.update');
         Route::post('partner/{id}/change-password', 'Admin\PartnerController@changepartnerpassword')->name('admin.partner.changepass');
+        Route::post('attach-menu/{id}', 'Admin\PartnerController@attachMenu')->name('admin.partner.addmenu');
+        Route::get('detach-menu/{pid}/{mid}', 'Admin\PartnerController@detachMenu')->name('admin.partner.delmenu');
+        Route::post('attach-facility/{id}', 'Admin\PartnerController@attachFacility')->name('admin.partner.addfacility');
+        Route::get('detach-facility/{pid}/{fid}', 'Admin\PartnerController@detachFacility')->name('admin.partner.delfacility');
+        Route::post('partner/{id}/add-gallery', 'Admin\PartnerController@addgallery')->name('admin.partner.gallery');
+        Route::get('partner/del-gallery/{id}', 'Admin\PartnerController@deletegallery')->name('admin.partner.galleryrm');
+    Route::post('partner/{id}/add-event-party', 'Admin\PartnerController@addEventPartyImage')->name('admin.partner.partyevent');
 
+        Route::get('users', 'Admin\UserController@index')->name('admin.users');
 
         Route::get('category', 'Admin\CategoryController@index')->name('admin.category');
         Route::get('category/create', 'Admin\CategoryController@add')->name('admin.category.add');
@@ -91,6 +107,10 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
         Route::get('banner/{id}', 'Admin\BannerController@edit')->where('id', '[0-9]+')->name('admin.banner.edit');
         Route::post('banner/{id}', 'Admin\BannerController@update')->where('id', '[0-9]+')->name('admin.banner.update');
         Route::get('select-menu-for-package/{id}', 'Admin\EventPackagesController@ajaxselectmenuevent')->name('partner.packagemenu.ajax');
+    Route::get('payment-history', 'Admin\OrderController@paymenthistory')->name('payment.history');
+
+    Route::get('notification-form', 'Admin\NotificationController@create')->name('admin.notification.create');
+    Route::post('send', 'Admin\NotificationController@send')->name('admin.notification.send');
 
 });
 
