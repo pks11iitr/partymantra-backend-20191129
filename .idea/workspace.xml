@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
+    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="nearby api added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +153,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../packagespare" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -241,13 +254,7 @@
       <workItem from="1582010150705" duration="2177000" />
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
-    </task>
-    <task id="LOCAL-00188" summary="collection changes">
-      <created>1581344532587</created>
-      <option name="number" value="00188" />
-      <option name="presentableId" value="LOCAL-00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1581344532587</updated>
+      <workItem from="1582871308759" duration="15317000" />
     </task>
     <task id="LOCAL-00189" summary="collection changes">
       <created>1581399802409</created>
@@ -585,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582701067926</updated>
     </task>
-    <option name="localTasksCounter" value="237" />
+    <task id="LOCAL-00237" summary="nearby api added">
+      <created>1582711902368</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1582711902368</updated>
+    </task>
+    <option name="localTasksCounter" value="238" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,22 +648,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="nearby api added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582700393095">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582874977540">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582700393095" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582701067579">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582874977540" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582874556403">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582701067579" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582874556403" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1582292774640">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1582883078980">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1582292774640" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1582883078980" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -674,10 +688,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582704139330">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582711907295">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582704139330" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582711907295" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

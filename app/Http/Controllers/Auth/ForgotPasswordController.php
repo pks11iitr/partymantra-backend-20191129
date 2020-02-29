@@ -62,7 +62,7 @@ class ForgotPasswordController extends Controller
 
             }
         }
-        return redirect()->route('password.reset', ['token'=>'otp'])->with('success', 'OTP has been sent to registered mobile')->with('mobile',$request->mobile);
+        return redirect()->route('admin.password.reset', ['token'=>'otp'])->with('success', 'OTP has been sent to registered mobile')->with('mobile',$request->mobile);
     }
 
     protected function validateEmail(Request $request)

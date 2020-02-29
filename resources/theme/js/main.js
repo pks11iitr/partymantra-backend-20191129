@@ -44,11 +44,11 @@ var quantitiy=0;
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
-        var quantity = parseInt($('#quantity').val());
+        var quantity = parseInt($(this).val());
 
         // If is not undefined
 
-            $('#quantity').val(quantity + 1);
+        $('#quantity').val(quantity + 1);
 
 
             // Increment

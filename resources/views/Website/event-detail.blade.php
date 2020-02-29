@@ -103,9 +103,11 @@
 
                     </div>
                 </div>
+                <form method="post" action="{{route('website.book')}}" class="event-form ">
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 px-2">
                     <div clss="row">
-                        @if(!empty($event->covers))
+                        <input type="hidden" name="type" value="event">
+                        @if(!empty($event->covers->toArray()))
                         <div class="col-12 event">
                             <h2 class="heading">Cover charges</h2>
                             <table class="table">
@@ -121,35 +123,73 @@
                                 @foreach($event->covers as $c)
                                 <tr>
 
-                                    <td>{{$c->}}</td>
-                                    <td>Rs.1213</td>
+                                    <td>{{$c->package_name}}</td>
+                                    <td>Rs.{{$c->price}}</td>
                                     <td>
                                         <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">
+                                                  <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                            <input type="hidden" name="itemid[]" value="{{$c->id}}">
+                                            <input type="text" id="quantity" name="pass[]" class="form-control input-number" value="10" min="1" max="100">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        @endif
+                            @if(!empty($event->packages))
+                                <div class="col-12 event">
+                                    <h2 class="heading">Event Packages</h2>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+
+                                            <th scope="col">Packages</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($event->packages as $c)
+                                            <tr>
+
+                                                <td>{{$c->package_name}}<br>{{$c->text_under_name}}</td>
+                                                <td>Rs.{{$c->price}}</td>
+                                                <td>
+                                                    <div class="input-group">
                                     <span class="input-group-btn">
                                         <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">
                                           <i class="fa fa-minus" aria-hidden="true"></i>
                                         </button>
                                     </span>
-                                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
-                                            <span class="input-group-btn">
+                                                        <input type="text" id="quantity" name="pass[]" class="form-control input-number" value="10" min="1" max="100">
+                                                        <span class="input-group-btn">
                                         <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                         </button>
                                     </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endfor
-                                </tbody>
-                            </table>
-
-                        </div>
-                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endif
                         <div class="col-12 event">
                             <div class="">
-                                <form class="event-form ">
                                     <h2 class="text-center py-2 mb-4">Book Your Slot Now..</h2>
-                                    <div class="row py-2">
+                                    <div class="row py-2" style="display:none">
                                         <div class="col-6">
                                             <p>Men </p>
 
@@ -161,7 +201,7 @@
 												  <i class="fa fa-minus" aria-hidden="true"></i>
 												</button>
 											</span>
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                                <input type="text" id="quantity" name="men" class="form-control input-number" value="10" min="1" max="100">
                                                 <span class="input-group-btn">
 												<button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
 													<i class="fa fa-plus" aria-hidden="true"></i>
@@ -171,7 +211,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row py-2" style="display:none">
                                         <div class="col-6">
                                             <p>Women </p>
 
@@ -183,7 +223,7 @@
 												  <i class="fa fa-minus" aria-hidden="true"></i>
 												</button>
 											</span>
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                                <input type="text" id="quantity" name="women" class="form-control input-number" value="10" min="1" max="100">
                                                 <span class="input-group-btn">
 												<button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
 													<i class="fa fa-plus" aria-hidden="true"></i>
@@ -192,10 +232,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row py-2" style="display:none">
                                         <div class="col-6">
                                             <p>Couple </p>
-
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group">
@@ -204,7 +243,7 @@
 												  <i class="fa fa-minus" aria-hidden="true"></i>
 												</button>
 											</span>
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                                <input type="text" id="quantity" name="couple" class="form-control input-number" value="10" min="1" max="100">
                                                 <span class="input-group-btn">
 												<button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
 													<i class="fa fa-plus" aria-hidden="true"></i>
@@ -213,76 +252,66 @@
                                             </div>
                                         </div>
                                     </div>
-                                    </br>
+
                                     <div class="form-group">
                                         <label for="exampleInputname1">Your Name</label>
-                                        <input type="text" class="form-control" id="exampleInputname1" aria-describedby="nameHelp">
+                                        <input type="text" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" name="name">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Your Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="exampleInputmobile">
+                                        <input type="text" class="form-control" id="exampleInputmobile" name="mobile">
                                     </div>
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Accept <a href="">Terms & Cond.</a></label>
-                                    </div>
+{{--                                    <div class="form-group form-check">--}}
+{{--                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
+{{--                                        <label class="form-check-label" for="exampleCheck1">Accept <a href="">Terms & Cond.</a></label>--}}
+{{--                                    </div>--}}
                                     <button type="submit" class="btn btn-form btn-block">Book Now</button>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
             <div class="row py-5 event-section event">
-                <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Reviews</h2>
-                <div class="col-12 py-4 reviews">
-                    <form>
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>
-                            <div class="col-sm-9">
-                                <textarea name="comment" class="form-control"></textarea>
-                            </div>
-                        </div>
+                <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2>
+{{--                <div class="col-12 py-4 reviews">--}}
+{{--                    <form>--}}
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>--}}
+{{--                            <div class="col-sm-9">--}}
+{{--                                <textarea name="comment" class="form-control"></textarea>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
-                        <div class="form-group row">
-                            <div class="col-sm-9 offset-sm-3">
-                                <button type="submit" class="btn btn-form btn-block">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+{{--                        <div class="form-group row">--}}
+{{--                            <div class="col-sm-9 offset-sm-3">--}}
+{{--                                <button type="submit" class="btn btn-form btn-block">Submit</button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+                @if(!empty($event->reviews))
+                    @foreach($event->reviews as $r)
                 <div class="reviews">
                     <div class="row blockquote review-item">
                         <div class="col-3 text-center">
-                            <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                            <img class="rounded-circle reviewer" src="{{$r->user->image}}">
                         </div>
                         <div class="col-9">
-                            <h6 class="heading">Joy Ray</h6>
+                            <h6 class="heading">{{$r->user->name??'User'}}</h6>
                             <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                            <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
-                            <p>Friday, Dec. 13, 2019</p>
+                            <p class="review-text">{{$r->description}}</p>
+                            <p>{{date('D,d M Y', strtotime($r->created_at))}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="reviews">
-                    <div class="row blockquote review-item">
-                        <div class="col-3 text-center">
-                            <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
-
-                        </div>
-                        <div class="col-9">
-                            <h6 class="heading">Joe Ray</h4>
-                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                <p class="review-text">My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. My awesome review. </p>
-                                <p>Friday, Dec. 13, 2019</p>
-                        </div>
-                    </div>
-                </div>
+                   @endforeach
+                    @endif
             </div>
         </div>
     </section>

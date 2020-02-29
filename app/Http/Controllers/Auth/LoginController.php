@@ -82,5 +82,14 @@ class LoginController extends Controller
 //            abort(401);
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect()->route('admin.login.form');
+    }
+
 
 }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class EventController extends Controller
 {
     public function view(Request $request, $id){
-        $event=PartnerEvent::active()->with(['partner', 'avgreviews', 'covers', 'facilities','gallery'])->with(['covers'=>function($cover){
+        $event=PartnerEvent::active()->with(['partner', 'avgreviews', 'covers', 'facilities','gallery','reviews'])->with(['covers'=>function($cover){
             $cover->where('isactive', true);
         }])->with(['packages'=>function($package){
             $package->where('isactive', true)->where('partneractive', true)->with('activemenus');

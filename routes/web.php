@@ -24,6 +24,10 @@ Route::get('event/{id}', 'Website\EventController@view')->name('website.event.de
 Route::get('restaurant/{id}', 'Website\RestaurantController@view')->name('website.restaurant.details');
 Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('website.party.details');
 
+Route::post('book', 'Website\OrderController@addToCart')->name('website.book');
+Route::get('cart-details', 'Website\OrderController@cartdetails')->name('website.cart.details');
+
+
 
 Route::get('privacy-policy', 'Website\TncController@privacy');
 Route::get('terms-and-condition', 'Website\TncController@tnc');
@@ -32,6 +36,18 @@ Route::get('about-us', 'Website\TncController@about');
 
 //this will be removed after setting proper redirection
 //Route::get('/home', 'HomeController@index')->name('home');
+
+//Admin Partner Login routes
+Route::group(['prefix'=>'admin'], function() {
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login.form');
+    Route::post('login', 'Auth\LoginController@login')->name('admin.login');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.reset');
+    Route::post('password/otp', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.send.otp');
+    Route::get('password/reset-form', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.password.update');
+    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
+});
+//Route::get('admin-login', 'Auth\LoginController@index')->name('admin.login');
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
         Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
