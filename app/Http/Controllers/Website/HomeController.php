@@ -117,9 +117,9 @@ class HomeController extends Controller
     }
 
     public function check(){
-        echo '1';die;// for ok
-        echo '2';die;// for block
-        echo '3';die;//for delete
+        echo 'status1';die;// for ok
+        echo 'status2';die;// for block
+        echo 'status3';die;//for delete
     }
 
 }

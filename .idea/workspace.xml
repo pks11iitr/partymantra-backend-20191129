@@ -4,7 +4,6 @@
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,14 +243,7 @@
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
       <workItem from="1582871308759" duration="22414000" />
-      <workItem from="1582973001619" duration="43951000" />
-    </task>
-    <task id="LOCAL-00193" summary="payment history added at admin panel">
-      <created>1581418532053</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1581418532054</updated>
+      <workItem from="1582973001619" duration="44546000" />
     </task>
     <task id="LOCAL-00194" summary="payment history added at admin panel">
       <created>1581422069040</created>
@@ -589,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583240311250</updated>
     </task>
-    <option name="localTasksCounter" value="242" />
+    <task id="LOCAL-00242" summary="my profile, order history">
+      <created>1583264985336</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1583264985336</updated>
+    </task>
+    <option name="localTasksCounter" value="243" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,10 +645,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583240310414">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583264984810">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583240310414" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583264984810" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -682,10 +681,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1582967598750" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583240314851">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583264988785">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583240314851" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583264988785" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
