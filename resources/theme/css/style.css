@@ -588,7 +588,7 @@ div.locdiv{width:380px; height:100vh; background:#fff; position:fixed; right:-40
     color:#ec7160;
 }
 
-#quantity{
+.quantity{
     border: none;
     background: transparent;
     padding: 10px;

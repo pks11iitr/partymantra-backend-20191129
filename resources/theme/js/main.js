@@ -28,10 +28,10 @@ $('#clickme').click(function() {
 	  $(".black ").hide().click(function(){
 		return false;
 	});
-	$(".white").show().click(function(){
-		$(".black ").slideToggle(150);
-		return false;
-	});
+	// $(".white").show().click(function(){
+	// 	$(".black ").slideToggle(150);
+	// 	return false;
+	// });
 	$(document).click(function(){
 		$(".black ").slideUp(150);
 	});
@@ -41,14 +41,44 @@ $(document).ready(function(){
 var quantitiy=0;
    $('.quantity-right-plus').click(function(e){
 
+       var canIncrement=true
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
-        var quantity = parseInt($(this).val());
+       var id=$(this).attr('packageid')
+       var type=$(this).attr('type1')
+       if(type=='package'){
+           $('.covers').each(function(){
 
-        // If is not undefined
+               if($(this).val()>0){
+                   canIncrement=false
+                   return false
+               }
 
-        $('#quantity').val(quantity + 1);
+           })
+       }else{
+           $('.packages').each(function(){
+
+               if($(this).val()>0)
+               {
+                   canIncrement=false
+                   return false
+               }
+           })
+       }
+       if(canIncrement==true){
+           var quantity = parseInt($('#packpass-'+id).val());
+
+           // If is not undefined
+
+           // Increment
+           if(quantity<10){
+               $('#packpass-'+id).val(quantity + 1);
+           }
+       }else{
+           alert("You can select either cover charges or packages")
+       }
+
 
 
             // Increment
@@ -59,13 +89,16 @@ var quantitiy=0;
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
-        var quantity = parseInt($('#quantity').val());
+
+        var id=$(this).attr('packageid')
+
+        var quantity = parseInt($('#packpass-'+id).val());
 
         // If is not undefined
 
             // Increment
             if(quantity>0){
-            $('#quantity').val(quantity - 1);
+                $('#packpass-'+id).val(quantity - 1);
             }
     });
 

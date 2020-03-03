@@ -11,7 +11,12 @@
 |
 */
 
-Auth::routes();
+//Auth::routes();
+Route::get('login', 'Auth\Website\LoginController@showLoginForm')->name('login.form');
+Route::post('login', 'Auth\Website\LoginController@login')->name('login');
+Route::get('verify-otp', 'Auth\Website\LoginController@OTPForm')->name('otp.verify');
+Route::post('verify', 'Auth\Website\LoginController@verifyOTP')->name('verify');
+Route::post('logout', 'Auth\Website\LoginController@logout')->name('logout');
 
 
 //website routes
@@ -26,6 +31,10 @@ Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('websit
 
 Route::post('book', 'Website\OrderController@addToCart')->name('website.book');
 Route::get('cart-details', 'Website\OrderController@cartdetails')->name('website.cart.details');
+Route::get('order-details/{id}', 'Website\OrderController@details')->name('website.order.details');
+Route::get('pay-now', 'Website\OrderController@makeOrder')->name('website.pay');
+Route::post('verify-payment', 'Website\OrderController@verifyPayment')->name('website.verify.payment');
+
 
 
 
@@ -33,9 +42,14 @@ Route::get('privacy-policy', 'Website\TncController@privacy');
 Route::get('terms-and-condition', 'Website\TncController@tnc');
 Route::get('about-us', 'Website\TncController@about');
 
+/*
+ * Website Routes Ends
+ */
 
-//this will be removed after setting proper redirection
-//Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ * Admin Partner Routes Starts
+ */
 
 //Admin Partner Login routes
 Route::group(['prefix'=>'admin'], function() {
@@ -47,7 +61,10 @@ Route::group(['prefix'=>'admin'], function() {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.password.update');
     Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
 });
-//Route::get('admin-login', 'Auth\LoginController@index')->name('admin.login');
+
+/*
+ * Admin Panel Routes
+ */
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
         Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
@@ -130,14 +147,9 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
 
 });
 
-
-
-
-
-
-
-
-
+/*
+ * Partner Panel Routes
+ */
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner'], function(){
         Route::get('dashboard', 'Partner\DashboardController@index')->name('partner.dashboard');
@@ -169,3 +181,7 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'partner', 'is'=>'partner
 
 
 });
+
+/*
+ * Admin Partner Routes Ends
+ */

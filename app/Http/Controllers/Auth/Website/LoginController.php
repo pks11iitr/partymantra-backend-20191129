@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth\Website;
 use App\Services\SMS\Msg91;
-use Illuminate\Contracts\Auth\Factory as Auth;
+//use Illuminate\Contracts\Auth\Factory as Auth;
 use App\Models\OTPModel;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,11 +36,15 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(Auth $auth, JWTAuth $jwt)
+    public function __construct()
     {
-        $this->auth=$auth;
-        $this->jwt=$jwt;
-        $this->middleware('guest')->except('logout');
+        $this->redirectTo=route('website.home');
+        $this->middleware('website.guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        return view('Website.auth.login');
     }
 
     /**
@@ -52,7 +56,7 @@ class LoginController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'mobile' => ['required', 'integer', 'digits:10'],
+            'mobile' => ['required', 'digits:10'],
         ]);
     }
 
@@ -101,7 +105,7 @@ class LoginController extends Controller
                 }
             }
         }
-        return redirect()->back()->with('success', 'User has been logged in');
+        return redirect()->route('otp.verify')->with('mobile', $request->mobile);
     }
 
     protected function ifUserExists($mobile){
@@ -111,35 +115,21 @@ class LoginController extends Controller
 
     //verify OTP for authentication
     public function verifyOTP(Request $request){
-        $this->validate($request, [
-            'mobile' => ['required', 'integer', 'digits:10'],
-            'otp' => ['required', 'integer'],
-        ]);
 
+        $this->validator($request->toArray())->validate();
         $user=User::where('mobile', $request->mobile)->first();
-
-        if(!$user){
-            return response()->json([
-                'message'=>'invalid login attempt',
-                'errors'=>[
-                ],
-            ], 404);
-        }else if(!in_array($user->status, [0 , 1])){
-            return response()->json([
-                'message'=>'account has been blocked',
-                'errors'=>[
-
-                ],
-            ], 401);
+        if(!$user)
+        {
+            return redirect()->route('login.form')->with('error', 'Invalid Request');
+        }
+        else if(!in_array($user->status, [0 , 1]))
+        {
+            return redirect()->route('login.form')->with('error', 'User account has been blocked');
         }
 
         if(!OTPModel::verifyOTP($user->id, 'login', $request->otp)){
-            return response()->json([
-                'message'=>'Incorrect OTP',
-                'errors'=>[
-
-                ],
-            ], 401);
+            $request->session()->flash('mobile', $request->session()->get('mobile'));
+            return redirect()->back()->with('error', 'Otp is not correct');
         }
 
         //activate user if not activated
@@ -147,19 +137,33 @@ class LoginController extends Controller
             $user->status=1;
             $user->save();
         }
-
-        return [
-            'message'=>'Login Successfull',
-            'token'=>$this->jwt->fromUser($user),
-            'type'=>$user->hasRole('customer')?'customer':'partner'
-        ];
+        Auth::loginUsingId($user->id, 1);
+        if($request->session()->get('redirect')){
+            //echo $request->session()->get('redirect');
+            //die;
+            return redirect()->intended($request->session()->get('redirect'));
+        }
+        else
+            return redirect()->intended($this->redirectTo);
 
     }
 
-    public function home(Request $request){
-        $user=$this->auth->user();
-        return ['message'=>'user home page'];
+    public function OTPForm(Request $request){
+
+        if(!$request->session()->get('mobile')){
+            return redirect()->route('login.form');
+        }
+        $request->session()->flash('mobile', $request->session()->get('mobile'));
+        return view('Website.auth.otp-verify', ['mobile'=>$request->session()->get('mobile')]);
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('website.home');
+    }
 
 }

@@ -27,6 +27,11 @@ class EventController extends Controller
         //$event->time_to_start='very soon';
         //echo "<pre>";
         //print_r($event);die;
-        return view('Website.event-detail', ['event'=>$event]);
+        $data=[];
+        $requestdata=$request->session()->get('requestdata');
+        if(isset($requestdata))
+            $data=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
+        var_dump($data);
+        return view('Website.event-detail', ['event'=>$event, 'cartdata'=>$data]);
     }
 }

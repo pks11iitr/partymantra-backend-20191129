@@ -95,7 +95,15 @@
                     </form>
                 </div>
                 <div class="toplinks col-md-4 col-sm-12">
-                    <a class="white" href="#"><i class="fa fa-user"></i> Sign in</a>
+                    @if(!auth()->user())
+                    <a class="white" href="{{route('login')}}"><i class="fa fa-user"></i> Sign in</a>
+                    @else
+                        <a class="white" href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-user"></i> Sign out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
                     <a href="#"><i class="fa fa-question-circle"></i> Help</a>
                     <a id="clickloc" href="#"><i class="fa fa-globe"></i> Select City</a>
                 </div>

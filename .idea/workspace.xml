@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="nearby api added">
+    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticatedWebsite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/auth/otp-verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/cart-details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/checkout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/order-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Website/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Website/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/allowedusers.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/allowedusers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/theme/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,11 +170,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
       <recent name="$PROJECT_DIR$/resources/theme" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/uploads/images" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
-      <recent name="$PROJECT_DIR$/app/Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -254,14 +262,8 @@
       <workItem from="1582010150705" duration="2177000" />
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
-      <workItem from="1582871308759" duration="15317000" />
-    </task>
-    <task id="LOCAL-00189" summary="collection changes">
-      <created>1581399802409</created>
-      <option name="number" value="00189" />
-      <option name="presentableId" value="LOCAL-00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1581399802409</updated>
+      <workItem from="1582871308759" duration="22414000" />
+      <workItem from="1582973001619" duration="33235000" />
     </task>
     <task id="LOCAL-00190" summary="collection changes">
       <created>1581399937645</created>
@@ -599,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582711902368</updated>
     </task>
-    <option name="localTasksCounter" value="238" />
+    <task id="LOCAL-00238" summary="admin partner login logout completed">
+      <created>1582961852725</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1582961852726</updated>
+    </task>
+    <option name="localTasksCounter" value="239" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="change in addpartytocart" />
     <MESSAGE value="change in order detail vendors" />
     <MESSAGE value="change in order detail customer" />
     <MESSAGE value="change in order history customer" />
@@ -645,25 +653,30 @@
     <MESSAGE value="collection items, all collections page" />
     <MESSAGE value="vendor firebase api key added" />
     <MESSAGE value="nearby api added" />
-    <option name="LAST_COMMIT_MESSAGE" value="nearby api added" />
+    <MESSAGE value="admin partner login logout completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin partner login logout completed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1582874977540">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583218687898">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1582874977540" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582874556403">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1583218687898" />
+    <state x="343" y="42" width="737" height="708" key="#phpunit.xml" timestamp="1583154010309">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582874556403" />
+    <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582961852243">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582961852243" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1582883078980">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583218831478">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1582883078980" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583218831478" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -672,22 +685,22 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1576231874612" />
-    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog" timestamp="1581573725069">
+    <state x="487" y="210" width="601" height="373" key="NewPhpClassDialog" timestamp="1583139276553">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="487" y="210" width="521" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1581573725069" />
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1582617912232">
+    <state x="487" y="210" width="601" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1583139276553" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1583221538633">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1582617912232" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1583221538633" />
     <state x="205" y="31" key="SettingsEditor" timestamp="1576932387042">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="205" y="31" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1576932387042" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1576045466123">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1582967598750">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1576045466123" />
+    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1582967598750" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582711907295">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

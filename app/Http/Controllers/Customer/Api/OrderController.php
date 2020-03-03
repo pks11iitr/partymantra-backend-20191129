@@ -1055,6 +1055,7 @@ class OrderController extends Controller
         return [
             'message'=>'success',
             'data'=>[
+                'status'=>$order->payment_status,
                 'orderid'=>$order->refid,
                 'title'=>$title,
                 'image'=>$image,
@@ -1128,6 +1129,7 @@ class OrderController extends Controller
 
     public function verifyPayment(Request $request){
         $order=Order::where('order_id', $request->razorpay_order_id)->firstOrFail();
+        Cart::where('user_id', $order->user_id)->delete();
         $paymentresult=$this->pay->verifypayment($request->all());
         if($paymentresult){
             $order->payment_id=$request->razorpay_payment_id;

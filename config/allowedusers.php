@@ -13,7 +13,6 @@ return [
     'admins'=>[
         'admin'=>'admin.dashboard',
         'partner'=>'partner.dashboard',
-        'customer'=>$_SERVER['HTTP_REFERER']??'website.home'
     ],
 
     /*

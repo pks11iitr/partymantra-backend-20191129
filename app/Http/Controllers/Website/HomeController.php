@@ -10,7 +10,9 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+
         switch($request->type){
             case 'event': $type=$request->type;
                 break;
