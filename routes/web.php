@@ -41,7 +41,7 @@ Route::post('verify-payment', 'Website\OrderController@verifyPayment')->name('we
 Route::post('add-money', 'Website\WalletController@addMoney')->name('website.wallet.recharge');
 Route::post('verify-recharge', 'Website\WalletController@verifyRecharge')->name('website.wallet.verify');
 
-
+Route::get('check-python-script', 'Website\HomeController@check');
 
 
 

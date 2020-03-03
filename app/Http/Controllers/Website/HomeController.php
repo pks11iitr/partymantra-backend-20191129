@@ -116,4 +116,10 @@ class HomeController extends Controller
         return $events;
     }
 
+    public function check(){
+        echo '1';die;// for ok
+        echo '2';die;// for block
+        echo '3';die;//for delete
+    }
+
 }
