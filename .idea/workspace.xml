@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticatedWebsite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/auth/otp-verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/cart-details.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/checkout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/order-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Website/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Website/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Payment/RazorPayService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/allowedusers.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/allowedusers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/theme/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,14 +243,7 @@
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
       <workItem from="1582871308759" duration="22414000" />
-      <workItem from="1582973001619" duration="33235000" />
-    </task>
-    <task id="LOCAL-00190" summary="collection changes">
-      <created>1581399937645</created>
-      <option name="number" value="00190" />
-      <option name="presentableId" value="LOCAL-00190" />
-      <option name="project" value="LOCAL" />
-      <updated>1581399937645</updated>
+      <workItem from="1582973001619" duration="33520000" />
     </task>
     <task id="LOCAL-00191" summary="payment history added at admin panel">
       <created>1581418117897</created>
@@ -608,7 +581,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582961852726</updated>
     </task>
-    <option name="localTasksCounter" value="239" />
+    <task id="LOCAL-00239" summary="website order details, cart details, checkout page">
+      <created>1583223425549</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1583223425550</updated>
+    </task>
+    <option name="localTasksCounter" value="240" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="change in order detail vendors" />
     <MESSAGE value="change in order detail customer" />
     <MESSAGE value="change in order history customer" />
     <MESSAGE value="change in bill pay order generate customer" />
@@ -654,7 +633,8 @@
     <MESSAGE value="vendor firebase api key added" />
     <MESSAGE value="nearby api added" />
     <MESSAGE value="admin partner login logout completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin partner login logout completed" />
+    <MESSAGE value="website order details, cart details, checkout page" />
+    <option name="LAST_COMMIT_MESSAGE" value="website order details, cart details, checkout page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583218687898">
@@ -665,10 +645,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1582961852243">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583223424863">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1582961852243" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583223424863" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -701,10 +681,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1582967598750" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1582711907295">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583223428626">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1582711907295" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583223428626" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

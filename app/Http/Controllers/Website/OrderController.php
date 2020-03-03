@@ -555,7 +555,7 @@ class OrderController extends Controller
     public function makeOrder(Request $request, $id=null){
         $user=auth()->user();
 
-        $redirect=$this->redirectIfRequired([],url()->full());
+        $redirect=$this->redirectIfRequired(url()->full());
         if($redirect)
             return $redirect;
 
