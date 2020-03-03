@@ -458,7 +458,7 @@ class OrderController extends Controller
 
     public function cartdetails(Request $request){
 
-        $redirect=$this->redirectIfRequired([],url()->full());
+        $redirect=$this->redirectIfRequired(url()->full());
         if($redirect)
             return $redirect;
 
@@ -752,6 +752,7 @@ class OrderController extends Controller
                         'name'=>$name,
                         'currency'=>'INR',
                         'merchantid'=>$this->pay->merchantkey,
+                        'url'=>route('website.verify.payment')
                     ];
 
                     return view('Website.checkout', compact('data','api_key'));
@@ -938,6 +939,11 @@ class OrderController extends Controller
     }
 
     public function details(Request $request, $id){
+
+        $redirect=$this->redirectIfRequired(url()->full());
+        if($redirect)
+            return $redirect;
+
         $user=auth()->user();
         $order=Order::with(['details.entity', 'details.other'])->where('user_id', $user->id)->where('refid', $id)->where('payment_status', '!=', 'pending')->firstOrFail();
         $amount=0;
@@ -1053,6 +1059,47 @@ class OrderController extends Controller
             ];
 
         return view('Website.order-details', compact('data'));
+    }
+
+
+    public function history(Request $request){
+
+        $redirect=$this->redirectIfRequired(url()->full());
+        if($redirect)
+            return $redirect;
+
+        $user=auth()->user();
+        //var_dump($user->id);die;
+        $orders=Order::with('details.entity')->where('user_id', $user->id)->whereIn('payment_status', [ 'paid','declined','cancel-request','cancelled', 'refunded'])->orderBy('id', 'desc')->get();
+        $ordersdetail=[];
+        $i=0;
+        foreach($orders as $o){
+            $ordersdetail[$i]=$o->toArray();
+            foreach($o->details as $d){
+                if($d->optional_type=='billpay') {
+                    $ordersdetail[$i]['title'] = $d->partner->name. ('( ' . ($d->optional_type ?? '' ). ' )');
+                    $ordersdetail[$i]['image'] = $d->partner->small_image;
+                    $ordersdetail[$i]['ordertype']='billpay';
+                    $ordersdetail[$i]['total']=$o->total+$o->instant_discount;
+                    $ordersdetail[$i]['datetime']=date('D,m d,Y H:iA', strtotime($o->updated_at));
+                    $ordersdetail[$i]['id']=$o->refid;
+                }else{
+                    if ($d->entity instanceof PartnerEvent) {
+                        $ordersdetail[$i]['title'] = $d->entity->title;
+                        $ordersdetail[$i]['ordertype']='event';
+                    } else {
+                        $ordersdetail[$i]['title'] = $d->entity->name . ('( ' . ($d->optional_type ?? '') . ' )');
+                        $ordersdetail[$i]['ordertype']=$d->optional_type ?? '';
+                    }
+                    $ordersdetail[$i]['image'] = $d->entity->small_image;
+                    $ordersdetail[$i]['total']=$o->total+$o->instant_discount;
+                    $ordersdetail[$i]['datetime']=date('D,m d,Y H:iA', strtotime($o->updated_at));
+                    $ordersdetail[$i]['id']=$o->refid;
+                }
+            }
+            $i++;
+        }
+        return view('Website.profile', compact('ordersdetail','user'));
     }
 
 }

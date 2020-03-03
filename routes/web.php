@@ -30,10 +30,18 @@ Route::get('restaurant/{id}', 'Website\RestaurantController@view')->name('websit
 Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('website.party.details');
 
 Route::post('book', 'Website\OrderController@addToCart')->name('website.book');
+Route::get('my-profile', 'Website\ProfileController@view')->name('website.user.profile');
 Route::get('cart-details', 'Website\OrderController@cartdetails')->name('website.cart.details');
 Route::get('order-details/{id}', 'Website\OrderController@details')->name('website.order.details');
+
+Route::get('order-history', 'Website\OrderController@history')->name('website.order.history');
+
 Route::get('pay-now', 'Website\OrderController@makeOrder')->name('website.pay');
 Route::post('verify-payment', 'Website\OrderController@verifyPayment')->name('website.verify.payment');
+Route::post('add-money', 'Website\WalletController@addMoney')->name('website.wallet.recharge');
+Route::post('verify-recharge', 'Website\WalletController@verifyRecharge')->name('website.wallet.verify');
+
+
 
 
 

@@ -1,4 +1,4 @@
-<form action="{{route('website.verify.payment')}}" method="POST" name="payment_form" style="display:none">
+<form action="{{$data['url']}}" method="POST" name="payment_form" style="display:none">
     @csrf
     <script
         src="https://checkout.razorpay.com/v1/checkout.js"
