@@ -153,13 +153,13 @@
             <div class="col-12 mobilemenu text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
+                        <a class="nav-link active" href="{{route('website.home')}}"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
+                        <a class="nav-link" href="{{route('website.home')}}?type=restaurant"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-glass" aria-hidden="true"></i> Parties</a>
+                        <a class="nav-link" href="{{route('website.home')}}?type=party"><i class="fa fa-glass" aria-hidden="true"></i> Parties</a>
                     </li>
                 </ul>
             </div>
