@@ -88,19 +88,200 @@ var quantitiy=0;
      $('.quantity-left-minus').click(function(e){
         // Stop acting like a button
         e.preventDefault();
-        // Get the field name
-
         var id=$(this).attr('packageid')
-
         var quantity = parseInt($('#packpass-'+id).val());
+        // Increment
+        if(quantity>0){
+            $('#packpass-'+id).val(quantity - 1);
+        }
+    });
 
-        // If is not undefined
+     $('.quantity-ratio-minus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        var id=$(this).attr('ratioid')
+        var quantity = parseInt($('#quantity-'+id).val());
+        // Increment
+        if(quantity>0){
+            $('#quantity-'+id).val(quantity - 1);
+        }
+    });
+
+
+    $('.quantity-ratio-plus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        var id=$(this).attr('ratioid')
+        var quantity = parseInt($('#quantity-'+id).val());
+        // Increment
+        //if(quantity>0){
+            $('#quantity-'+id).val(quantity + 1);
+        //}
+    });
+
+
+    $('.quantity-minus-item').click(function(e){
+        e.preventDefault();
+
+        var id=$(this).attr('itemid')
+        var type=$(this).attr('itemtype')
+        var name=$(this).attr('itemname')
+        var price=parseInt($(this).attr('itemprice'))
+
+        if(type=='menu'){
+            var quantity = parseInt($('#menu-'+id).val());
 
             // Increment
             if(quantity>0){
-                $('#packpass-'+id).val(quantity - 1);
+                quantity=quantity - 1
+                $('#menu-'+id).val(quantity);
+                $('.selected-items').each(function(){
+                    if($(this).attr('itemid')==id && $(this).attr('itemtype')=='menu'){
+                        $(this).remove()
+                    }
+
+                })
+
+                var newitem='<tr itemid="'+id+'" itemtype="menu" class="selected-items">' +
+                    '                                    <td scope="col" class="py-4"><strong>'+name+'</strong><br>' +
+                    '                                        <small>Rs.'+price+'</small>' +
+                    '                                    </td>' +
+                    '                                    <td scope="col" class="py-4">' +
+                    '                                        '+quantity+'' +
+                    '                                    </td>' +
+                    '                                    <td scope="col"class="py-4">' +
+                    '                                        Rs.'+price*quantity+'' +
+                    '                                        <span class="pull-right ml-3"><i class="fa fa-times" aria-hidden="true"></i></span>' +
+                    '                                    </td>' +
+                    '                                    <input type="hidden" name="menuid[]" value="'+id+'">' +
+                    '                                    <input type="hidden" name="quantity[]" value="'+quantity+'">' +
+                    '                                </tr>';
+                //alert(newitem)
+                if(quantity>0)
+                    $('#selected_elements').append(newitem)
             }
+        }else {
+
+            var quantity = parseInt($('#package-' + id).val());
+
+            // Increment
+            if (quantity > 0) {
+                quantity=quantity-1
+                $('#package-' + id).val(quantity);
+                $('.selected-items').each(function () {
+                    if ($(this).attr('itemid') == id && $(this).attr('itemtype') == 'package') {
+                        $(this).remove()
+                    }
+
+                })
+
+                var newitem = '<tr itemid="' + id + '" itemtype="package" class="selected-items">' +
+                    '                                    <td scope="col" class="py-4"><strong>' + name + '</strong><br>' +
+                    '                                        <small>Rs.' + price + '</small>' +
+                    '                                    </td>' +
+                    '                                    <td scope="col" class="py-4">' +
+                    '                                        ' + quantity + '' +
+                    '                                    </td>' +
+                    '                                    <td scope="col"class="py-4">' +
+                    '                                        Rs.' + price * quantity + '' +
+                    '                                        <span class="pull-right ml-3"><i class="fa fa-times" aria-hidden="true"></i></span>' +
+                    '                                    </td>' +
+                    '                                    <input type="hidden" name="itemid[]" value="' + id + '">' +
+                    '                                    <input type="hidden" name="pass[]" value="' + quantity + '">' +
+                    '                                </tr>';
+                //alert(newitem)
+                if(quantity>0)
+                    $('#selected_elements').append(newitem)
+            }
+
+
+        }
+        // If is not undefined
+
+
     });
+
+    $('.quantity-plus-item').click(function(e){
+        e.preventDefault();
+
+        var id=$(this).attr('itemid')
+        var type=$(this).attr('itemtype')
+        var name=$(this).attr('itemname')
+        var price=parseInt($(this).attr('itemprice'))
+
+        if(type=='menu'){
+            var quantity = parseInt($('#menu-'+id).val());
+
+            // Increment
+            if(quantity<10){
+                quantity=quantity + 1
+                $('#menu-'+id).val(quantity);
+                $('.selected-items').each(function(){
+                    if($(this).attr('itemid')==id && $(this).attr('itemtype')=='menu'){
+                        $(this).remove()
+                    }
+
+                })
+
+                var newitem='<tr itemid="'+id+'" itemtype="menu" class="selected-items">' +
+                    '                                    <td scope="col" class="py-4"><strong>'+name+'</strong><br>' +
+                    '                                        <small>Rs.'+price+'</small>' +
+                    '                                    </td>' +
+                    '                                    <td scope="col" class="py-4">' +
+                    '                                        '+quantity+'' +
+                    '                                    </td>' +
+                    '                                    <td scope="col"class="py-4">' +
+                    '                                        Rs.'+price*quantity+'' +
+                    '                                        <span class="pull-right ml-3"><i class="fa fa-times" aria-hidden="true"></i></span>' +
+                    '                                    </td>' +
+                    '                                    <input type="hidden" name="menuid[]" value="'+id+'">' +
+                    '                                    <input type="hidden" name="quantity[]" value="'+quantity+'">' +
+                    '                                </tr>';
+                //alert(newitem)
+                if(quantity>0)
+                    $('#selected_elements').append(newitem)
+            }
+        }else{
+            var quantity = parseInt($('#package-'+id).val());
+
+            // Increment
+            if(quantity<10){
+                quantity=quantity + 1
+                $('#package-'+id).val(quantity);
+                $('.selected-items').each(function(){
+                    if($(this).attr('itemid')==id && $(this).attr('itemtype')=='package'){
+                        $(this).remove()
+                    }
+
+                })
+
+                var newitem='<tr itemid="'+id+'" itemtype="package" class="selected-items">' +
+                    '                                    <td scope="col" class="py-4"><strong>'+name+'</strong><br>' +
+                    '                                        <small>Rs.'+price+'</small>' +
+                    '                                    </td>' +
+                    '                                    <td scope="col" class="py-4">' +
+                    '                                        '+quantity+'' +
+                    '                                    </td>' +
+                    '                                    <td scope="col"class="py-4">' +
+                    '                                        Rs.'+price*quantity+'' +
+                    '                                        <span class="pull-right ml-3"><i class="fa fa-times" aria-hidden="true"></i></span>' +
+                    '                                    </td>' +
+                    '                                    <input type="hidden" name="itemid[]" value="'+id+'">' +
+                    '                                    <input type="hidden" name="pass[]" value="'+quantity+'">' +
+                    '                                </tr>';
+                //alert(newitem)
+                if(quantity>0)
+                    $('#selected_elements').append(newitem)
+            }
+        }
+
+
+
+        // If is not undefined
+
+
+    });
+
 
 });
 

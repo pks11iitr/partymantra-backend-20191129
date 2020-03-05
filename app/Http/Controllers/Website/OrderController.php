@@ -29,7 +29,7 @@ class OrderController extends Controller
         $request->validate([
             'type'=>'required|in:event,restaurant,party',
         ]);
-
+        //return $request->all();
         $redirect=$this->redirectIfRequired(url()->previous(), ['cartdata'=>$request->all()]);
         if($redirect)
             return $redirect;
@@ -102,8 +102,7 @@ class OrderController extends Controller
             $i++;
         }
 
-        //var_dump($cartitems);die;
-        //var_dump($eventids);die;
+
         if(!empty($cartitems) && count($eventids)==1){
             if(Cart::insert($cartitems)){
                 return redirect()->route('website.cart.details');
@@ -224,7 +223,8 @@ class OrderController extends Controller
             }
 
         }
-
+        //echo "<pre>";
+        //var_dump($cartitems);die;
 
 
         if(!empty($cartitems)){
@@ -234,25 +234,7 @@ class OrderController extends Controller
             $image=$partner->small_image;
 
             if(Cart::insert($cartitems)){
-                return [
-                    'message'=>'success',
-                    'data'=>[
-                        'title'=>$title,
-                        'image'=>$image,
-                        'address'=>$address,
-                        'packages'=>$cartpackages,
-                        'date'=>$date,
-                        'totalitems'=>(!empty($request->pass)?array_sum($request->pass):0)+(!empty($request->quantity)?array_sum($request->quantity):0),
-                        'name'=>$request->name,
-                        'mobile'=>$request->mobile,
-                        'email'=>$request->email,
-                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>$amount,
-                        'amount'=>$amount,
-                        'taxes'=>0,
-                        'walletbalance'=>Wallet::balance(auth()->user()->id)
-                    ]
-                ];
+                return redirect()->route('website.cart.details');
             }
         }else{
             $title=$partner->name.' (Dining)';
@@ -278,34 +260,11 @@ class OrderController extends Controller
             ];
             //var_dump($cartitems);die;
             if(Cart::insert($cartitems)){
-                return [
-                    'message'=>'success',
-                    'data'=>[
-                        'title'=>$title,
-                        'image'=>$image,
-                        'address'=>$address,
-                        'packages'=>[],
-                        'date'=>$date,
-                        'totalitems'=>0,
-                        'name'=>$request->name,
-                        'mobile'=>$request->mobile,
-                        'email'=>$request->email,
-                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>0,
-                        'amount'=>0,
-                        'taxes'=>0,
-                        'walletbalance'=>Wallet::balance(auth()->user()->id)
-                    ]
-                ];
+                return redirect()->route('website.cart.details');
             }
         }
 
-        return response()->json([
-            'message'=>'some error occurred',
-            'errors'=>[
-
-            ],
-        ]);
+        return redirect()->back()->with('error', 'Some error occured');
 
     }
 
@@ -519,10 +478,13 @@ class OrderController extends Controller
                 $date=$cart[0]->date.' '.$cart[0]->time;
                 $startdate=date('D,M d, Y', strtotime($cart[0]->date));
                 $enddate=$cart[0]->time;
+                $type=$cart[0]->optional_type;
+
             }else{
                 $date=$cart[0]->entity->startdate.'-'.$cart[0]->entity->enddate;
                 $startdate=date('D,M d, Y - H:iA', strtotime($cart[0]->entity->startdate));
                 $enddate=date('D,M d, Y - H:iA', strtotime($cart[0]->entity->enddate));
+                $type='event';
             }
             $address=$cart[0]->entity->venue_adderss??$cart[0]->entity->address;
             $image=$cart[0]->entity->small_image;
@@ -544,11 +506,12 @@ class OrderController extends Controller
                     'startdate'=>$startdate,
                     'enddate'=>$enddate,
                     'walletbalance'=>Wallet::balance($user->id),
-                    'type'=>'event'
+                    'type'=>$type
                 ];
 
         }
-
+//        echo "<pre>";
+//        var_dump($data);die;
         return view('Website.cart-details', compact('data'));
     }
 

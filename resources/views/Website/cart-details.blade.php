@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center py-4">
-                    <h2 class="pagebrumb text-white">Order Details </h2>
+                    <h2 class="pagebrumb text-white">Cart Details </h2>
                 </div>
             </div>
         </div>
@@ -29,6 +29,10 @@
                                         <p class="mx-2">Starts at: {{$data['startdate']}}</br>
                                             Ends at: {{$data['enddate']}}
                                         </p>
+                                        @else
+                                            <p class="mx-2">Date: {{$data['startdate']}}</br>
+                                                Time: {{$data['enddate']}}
+                                            </p>
                                         @endif
                                     </div>
                                 </div>

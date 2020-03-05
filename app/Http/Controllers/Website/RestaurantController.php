@@ -25,7 +25,14 @@ class RestaurantController extends Controller
         //$event->time_to_start='very soon';
         //echo '<pre>';
         //var_dump($restaurant);die;
-        return view('Website.restaurant-details', compact('restaurant'));
+        $data=[];
+        $requestdata=$request->session()->get('requestdata');
+        $cartdata=[];
+        if(isset($requestdata))
+            $cartdata=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
+        //echo "<pre>";
+        //print_r($cartdata);die;
+        return view('Website.restaurant-details', compact('restaurant','cartdata'));
     }
 
     public function partyview(Request $request, $id){

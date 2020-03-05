@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/restaurant-details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Website/party-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/RestaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/RestaurantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/cart-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/cart-details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/restaurant-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/restaurant-details.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../instanthomeservice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../baapji" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -245,14 +249,7 @@
       <workItem from="1582269286948" duration="18802000" />
       <workItem from="1582523568255" duration="5159000" />
       <workItem from="1582871308759" duration="22414000" />
-      <workItem from="1582973001619" duration="51187000" />
-    </task>
-    <task id="LOCAL-00195" summary="notifications added">
-      <created>1581487853552</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1581487853553</updated>
+      <workItem from="1582973001619" duration="75677000" />
     </task>
     <task id="LOCAL-00196" summary="notifications added">
       <created>1581487866341</created>
@@ -590,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583265568045</updated>
     </task>
-    <option name="localTasksCounter" value="244" />
+    <task id="LOCAL-00244" summary="my profile, order history">
+      <created>1583323787129</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1583323787129</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,18 +651,18 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583265567971">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583323786426">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583265567971" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583323786426" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583299186810">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583389124261">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583299186810" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1583389124261" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1576231874610">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -671,30 +675,30 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="487" y="210" width="601" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1583139276553" />
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1583298666987">
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1583415402551">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1583298666987" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1583415402551" />
     <state x="205" y="31" key="SettingsEditor" timestamp="1576932387042">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="205" y="31" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1576932387042" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1582967598750">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583392284523">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1582967598750" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583265570581">
+    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583323791053">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583265570581" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583323791053" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1582010178858" />
-    <state x="362" y="128" width="911" height="536" key="find.popup" timestamp="1581069910559">
+    <state x="362" y="126" width="911" height="642" key="find.popup" timestamp="1583394527359">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="362" y="128" width="911" height="536" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1581069910559" />
+    <state x="362" y="126" width="911" height="642" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1583394527359" />
     <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1576751346241">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -703,6 +707,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="365" y="115" width="700" height="530" key="recent.locations.popup/67.27.1299.741@67.27.1299.741" timestamp="1580456748058" />
+    <state x="380" y="175" key="run.anything.popup" timestamp="1583390757437">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="380" y="175" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1583390757437" />
     <state x="379" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580710779093">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
