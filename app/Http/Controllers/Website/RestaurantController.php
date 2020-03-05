@@ -36,7 +36,9 @@ class RestaurantController extends Controller
     }
 
     public function partyview(Request $request, $id){
-        $restaurant=Partner::active()->with(['avgreviews', 'facilities'])->with(['packages'=>function($package){
+        $restaurant=Partner::active()->with(['avgreviews', 'facilities','reviews'])->with(['gallery'=>function($gallery){
+            $gallery->whereIn('other_type', ['party', 'both']);
+        }])->with(['packages'=>function($package){
             $package->where('isactive', true)->where('partneractive', true)->where('forparty', true)->where('package_type', 'other')->with('activemenus');
         }])->findOrFail($id);
         if(!$restaurant){
@@ -48,8 +50,11 @@ class RestaurantController extends Controller
             ], 404);
         }
         //$event->time_to_start='very soon';
-
-        return ['party'=>$restaurant];
+        $requestdata=$request->session()->get('requestdata');
+        $cartdata=[];
+        if(isset($requestdata))
+            $cartdata=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
+        return view('Website.party-details', ['restaurant'=>$restaurant, 'cartdata'=>$cartdata]);
     }
 
     public function gallery(Request $request, $id){

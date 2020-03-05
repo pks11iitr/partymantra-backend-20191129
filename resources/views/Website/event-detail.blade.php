@@ -67,7 +67,7 @@
                                             <div class="">
                                                 <div class="card">
                                                     <div class="cardimg">
-                                                        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/events/e1.jpg" data-target="#image-gallery">
+                                                        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="{{$g->doc_path}}" data-target="#image-gallery">
                                                             <img class="card-img-top img-fluid" src="{{$g->doc_path}}" style="height:200px;" alt="Short alt text">
                                                         </a>
                                                     </div>
@@ -182,7 +182,7 @@
                             @endif
                             <div class="col-12 event">
                                 <div class="">
-                                    <h2 class="text-center py-2 mb-4">Book Your Slot Now..</h2>
+                                    <h2 class="text-center py-2 mb-4">Book Your Pass Now</h2>
 {{--                                    <div class="row py-2" style="display:none">--}}
 {{--                                        <div class="col-6">--}}
 {{--                                            <p>Men </p>--}}

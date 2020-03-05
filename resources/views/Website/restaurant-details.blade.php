@@ -146,7 +146,7 @@
                                     <a class="nav-link pro-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Menu</a>
                                 </li>
                                 <li class="nav-item pro-item">
-                                    <a class="nav-link pro-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Packages</a>
+                                    <a class="nav-link pro-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Combos</a>
                                 </li>
                             </ul>
                             <div class="tab-content px-2 bg-white" id="pills-tabContent">
@@ -291,7 +291,7 @@
                             <div class="">
 
 
-                                    <h2 class="text-center py-2 mb-4">Book Your Slot Now..</h2>
+                                    <h2 class="text-center py-2 mb-4">Book Your Table Now</h2>
                                     <div class="row py-2">
                                         <div class="col-6">
                                             <p>Men </p>

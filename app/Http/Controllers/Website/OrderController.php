@@ -339,25 +339,7 @@ class OrderController extends Controller
             $image=$partner->small_image;
 
             if(Cart::insert($cartitems)){
-                return [
-                    'message'=>'success',
-                    'data'=>[
-                        'title'=>$title,
-                        'image'=>$image,
-                        'address'=>$address,
-                        'packages'=>[],
-                        'date'=>$date,
-                        'totalitems'=>0,
-                        'name'=>$request->name,
-                        'mobile'=>$request->mobile,
-                        'email'=>$request->email,
-                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>0,
-                        'amount'=>0,
-                        'taxes'=>0,
-                        'walletbalance'=>Wallet::balance(auth()->user()->id)
-                    ]
-                ];
+                return redirect()->route('website.cart.details');
             }
         }else{
             $title=$partner->name.' (Party)';
@@ -383,34 +365,11 @@ class OrderController extends Controller
             ];
 
             if(Cart::insert($cartitems)){
-                return [
-                    'message'=>'success',
-                    'data'=>[
-                        'title'=>$title,
-                        'image'=>$image,
-                        'address'=>$address,
-                        'packages'=>[],
-                        'date'=>$date,
-                        'totalitems'=>0,
-                        'name'=>$request->name,
-                        'mobile'=>$request->mobile,
-                        'email'=>$request->email,
-                        'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>0,
-                        'amount'=>0,
-                        'taxes'=>0,
-                        'walletbalance'=>Wallet::balance(auth()->user()->id)
-                    ]
-                ];
+                return redirect()->route('website.cart.details');
             }
         }
 
-        return response()->json([
-            'message'=>'some error occurred',
-            'errors'=>[
-
-            ],
-        ]);
+        return redirect()->back()->with('error', 'Some error occured');
 
     }
 
