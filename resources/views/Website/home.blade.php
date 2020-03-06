@@ -54,7 +54,7 @@
 <!-- Evetns Section Starts -->
 @if(isset($others))
     @foreach($others as $other)
-        <section class="section parties" id="">
+        <section class="section @if($loop->iteration%2==1){{'parties'}}@else{{'events'}}@endif" id="">
             <div class="container">
                 <div class="section-heading">
                     @if($other->type=='event')
@@ -65,7 +65,7 @@
                     <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
                     @endif
                         <p>{{$other->about}}</p>
-                </div>
+                </div><br>
                 <div class="row">
                     @foreach($other->$type as $item)
                         @if($type=='event')
@@ -138,13 +138,13 @@
                 <div class="col-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        @foreach($other->banners as $banner)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->iteration}}" class="active"></li>
+                        @endforeach
                     </ol>
                     <div class="carousel-inner slider-inner">
                         @foreach($other->banners as $banner)
-                            <div class="carousel-item banner-item active">
+                            <div class="carousel-item banner-item @if($loop->iteration==1){{'active'}}@endif">
                                 @if($banner->entity_type=='event')
                                     <a href="{{route('website.event.details', ["id"=>$banner->entity_id])}}"><img src="{{$banner->image}}" class="img-fluid d-block w-100" alt="..."></a>
                                 @elseif($banner->entity_type=='restaurant')
