@@ -171,13 +171,14 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{route('website.book')}}" method="post">
+                <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
+                    <form action="{{route('website.book')}}" method="post">
                     <!----- Sidebar Starts---->
                     <input type="hidden" value="party" name="type">
                     <input type="hidden" name="entity_id" value="{{$restaurant->id??''}}">
-                    <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
-                        <div clss="row">
-                            <div class="col-12 event">
+                    
+                    <div clss="row">
+                        <div class="col-12 event">
                                 <h2 class="heading">Booking Details </h2>
                                 <table class="table table-hover">
                                     <tbody id="selected_elements">
@@ -300,9 +301,10 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                     <!----- Sidebar Ends---->
-                </form>
+                
             </div>
             <!----- Review Section Starts---->
             <div class="row py-5 event-section event">

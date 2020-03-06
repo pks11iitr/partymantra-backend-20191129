@@ -8,10 +8,10 @@
         <div class="section-heading">
             <h2>Popular Collections<span class="pull-right"><a href="{{route('website.collections', ['type'=>$type])}}" class="btn btn-danger btn-small">View More</a></span>
 {{--                <p>Popular Collection</p>--}}
-        </div>
+        </div><br>
         <div class="customer-logos row">
             @foreach($collections as $collection)
-            <div class="slide col-4 mt-4 service-box">
+            <div class="slide col-4 my-4 service-box">
                 @if($collection->type=='event')
                     <a href="{{route('website.collection.event',['id'=>$collection->id])}}">
                 @elseif($collection->type=='restaurant')
@@ -132,7 +132,10 @@
         <!-- Event Ends -->
         <!-- Banner section Ends -->
         @if(isset($other->banners))
-            <section class="carousel slider banners">
+    <section class="banners">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -141,7 +144,7 @@
                     </ol>
                     <div class="carousel-inner slider-inner">
                         @foreach($other->banners as $banner)
-                            <div class="carousel-item slider-item active">
+                            <div class="carousel-item banner-item active">
                                 @if($banner->entity_type=='event')
                                     <a href="{{route('website.event.details', ["id"=>$banner->entity_id])}}"><img src="{{$banner->image}}" class="img-fluid d-block w-100" alt="..."></a>
                                 @elseif($banner->entity_type=='restaurant')
@@ -161,8 +164,10 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-
-            </section>
+                </div>
+            </div>
+        </div>
+    </section>
 
         @endif
     @endforeach
