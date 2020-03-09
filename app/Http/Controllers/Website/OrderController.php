@@ -11,6 +11,7 @@ use App\Models\OrderItem;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
+use App\Models\Review;
 use App\Models\Wallet;
 use App\Services\Payment\RazorPayService;
 use Illuminate\Http\Request;
@@ -1005,6 +1006,7 @@ class OrderController extends Controller
                     $ordersdetail[$i]['total']=$o->total+$o->instant_discount;
                     $ordersdetail[$i]['datetime']=date('D,m d,Y H:iA', strtotime($o->updated_at));
                     $ordersdetail[$i]['id']=$o->refid;
+                    $ordersdetail[$i]['oid']=$o->id;
                 }else{
                     if ($d->entity instanceof PartnerEvent) {
                         $ordersdetail[$i]['title'] = $d->entity->title;
@@ -1017,11 +1019,61 @@ class OrderController extends Controller
                     $ordersdetail[$i]['total']=$o->total+$o->instant_discount;
                     $ordersdetail[$i]['datetime']=date('D,m d,Y H:iA', strtotime($o->updated_at));
                     $ordersdetail[$i]['id']=$o->refid;
+                    $ordersdetail[$i]['oid']=$o->id;
                 }
             }
             $i++;
         }
         return view('Website.profile', compact('ordersdetail','user'));
     }
+
+    public function review(Request $request, $id){
+        $user=auth()->user();
+        $request->validate([
+            'rating'=>'required|integer|min:1|max:5',
+            'comment'=>'nullable|string|max:200'
+        ]);
+        $order=Order::with('details.entity')->where('user_id', $user->id)->where('payment_status', 'paid')->findOrFail($id);
+
+        if($order->review)
+            return redirect()->back()->with('error', 'You have already reviewed this order');
+        if(empty($order->details)){
+            return redirect()->back()->with('error', 'No such order exists');
+        }
+
+        $product=$order->details[0]->entity;
+
+        $review=new Review([
+            'user_id'=>$user->id,
+            'description'=>$request->comment,
+            'rating'=>$request->rating,
+            'order_id'=>$id
+        ]);
+        if($product->reviews()->save($review)){
+            return redirect()->back()->with('success', 'Review has been submitted');
+        }else{
+            return redirect()->back()->with('error', 'Some error occured. Please try later');
+        }
+    }
+
+    public function cancel(Request $request, $id){
+        $request->validate([
+            'reason_id'=>'required|integer',
+            'reason_text'=>'string'
+        ]);
+        $user=auth()->user();
+        $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
+        if($order){
+            $order->payment_status='cancel-request';
+            $order->cancel_reason=$request->reason_id;
+            $order->cancel_text=$request->reason_text;
+            $order->save();
+            return redirect()->back()->with('success', 'Your cancellation request has been raid. Our team will process your request.');
+        }
+
+        return redirect()->back()->with('error', 'This order cannot be cancelled now');
+
+    }
+
 
 }

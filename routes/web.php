@@ -31,10 +31,14 @@ Route::get('party/{id}', 'Website\RestaurantController@partyView')->name('websit
 
 Route::post('book', 'Website\OrderController@addToCart')->name('website.book');
 Route::get('my-profile', 'Website\ProfileController@view')->name('website.user.profile');
+Route::post('update-profile', 'Website\ProfileController@updateProfile')->name('website.profile.update');
 Route::get('cart-details', 'Website\OrderController@cartdetails')->name('website.cart.details');
-Route::get('order-details/{id}', 'Website\OrderController@details')->name('website.order.details');
 
 Route::get('order-history', 'Website\OrderController@history')->name('website.order.history');
+Route::get('order-details/{id}', 'Website\OrderController@details')->name('website.order.details');
+Route::post('submit-review/{id}', 'Website\OrderController@review')->name('website.submit.review');
+
+Route::post('cancel-order/{id}', 'Website\OrderController@cancel')->name('website.order.cancel');
 
 Route::get('pay-now', 'Website\OrderController@makeOrder')->name('website.pay');
 Route::post('verify-payment', 'Website\OrderController@verifyPayment')->name('website.verify.payment');

@@ -47,10 +47,10 @@ class ProfileController extends Controller
 
         $request->validate([
            'name'=>'required|max:25',
-           //'email'=>'required|email',
+           'email'=>'email',
            'gender'=>'required|in:male,female,other',
            'dob'=>'required|date_format:Y-m-d',
-            'image'=>'nullable|image'
+           'image'=>'nullable|image'
         ]);
 
         if(!empty($request->image)){
@@ -71,6 +71,7 @@ class ProfileController extends Controller
         $user->dob=$request->dob;
         $user->email=$request->email;
         $user->image=$path;
+        $user->address=$request->address;
         if(!$user->save()){
             return response()->json([
                 'message'=>'some error occurred',

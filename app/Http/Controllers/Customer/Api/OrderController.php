@@ -1170,6 +1170,10 @@ class OrderController extends Controller
     }
 
     public function cancel(Request $request, $id){
+        $request->validate([
+            'reasonid'=>'required|integer',
+            'reasontext'=>'string'
+        ]);
         $user=auth()->user();
         $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
         if($order){
