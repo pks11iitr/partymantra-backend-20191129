@@ -32,6 +32,18 @@ Author Url: http://www.bnextitsolutions.com/
     font-weight: 400;
     line-height: 65px;
 }
+.dropdown-menu.show{
+ margin-top:25px !important;
+}
+.dropdown-item{
+line-height:10px!important;
+}
+.dropdown-menu a{
+	    color: #444 !important;
+}
+.dropdown-menu a:hover{
+	    color: #fff !important;
+}
 @media (max-width:767px){
     .searchform{
         display:none;
@@ -186,7 +198,7 @@ Author Url: http://www.bnextitsolutions.com/
 
 }
 .card:hover{
-    box-shadow: 0 1px 3px 0 #a5a5a9, 0 0 0 1px #a5a5a9;
+    box-shadow: 3px 4px 5px 3px rgba(0,0,0,.2);
 }
 .card-star{
     padding: 3px 6px;
@@ -211,7 +223,7 @@ Author Url: http://www.bnextitsolutions.com/
 .card-img-top {
     display: block;
     width: 100%;
-    height: auto;
+    height: 210px;
 }
 
 .card-title {
@@ -283,6 +295,9 @@ Author Url: http://www.bnextitsolutions.com/
     .top-menu {
         height: 35px !important;
     }
+	.card-img-top {
+    height: 80px !important;
+}
 }
 @media (max-width:767px){
     h2 { font-size:16px;}
@@ -337,6 +352,9 @@ Author Url: http://www.bnextitsolutions.com/
     .card-title{
         margin-bottom:5px;
     }
+	.card-img-top {
+    height: 150px !important;;
+}
     li p a  {
         font-size: 10px;
     }
@@ -947,3 +965,64 @@ button.close{
 .mdbtn a:hover{
     color:black;
 }
+
+.pagebrumb{
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+.rating {
+      float:left;
+    }
+
+    /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+      follow these rules. Every browser that supports :checked also supports :not(), so
+      it doesn’t make the test unnecessarily selective */
+    .rating:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+        clip:rect(0,0,0,0);
+    }
+
+    .rating:not(:checked) > label {
+        float:right;
+        width:1em;
+        /* padding:0 .1em; */
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:300%;
+        /* line-height:1.2; */
+        color:#ddd;
+    }
+
+    .rating:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+    .rating > input:checked ~ label {
+        color: dodgerblue;
+        
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: dodgerblue;
+        
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked + label:hover ~ label,
+    .rating > input:checked ~ label:hover,
+    .rating > input:checked ~ label:hover ~ label,
+    .rating > label:hover ~ input:checked ~ label {
+        color: dodgerblue;
+        
+    }
+
+    .rating > label:active {
+        position:relative;
+        top:2px;
+        left:2px;
+    }

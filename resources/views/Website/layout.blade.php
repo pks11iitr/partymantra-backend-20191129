@@ -106,6 +106,17 @@
                     @endif
                     <a href="#"><i class="fa fa-question-circle"></i> Help</a>
                     <a id="clickloc" href="#"><i class="fa fa-globe"></i> Select City</a>
+                    <!--
+                    <a class="dropdown">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i> Sign In
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                      </div>
+                    </a>
+                    -->
                 </div>
 
             </div>

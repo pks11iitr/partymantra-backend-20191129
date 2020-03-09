@@ -1,8 +1,8 @@
 @extends('Website.layout')
 @section('contents')
     <!-- page container Starts-->
-    <section class="pagecrumb-wallet bg-light">
-        <div class="container">
+    <section class="pagecrumb-wallet py-5">
+        <div class="container py-5">
             <div class="row">
                 <div class="col-md-4 offset-md-4 event">
                     <h3 class="text-center section-heading">LOGIN</h3>

@@ -1,7 +1,7 @@
 @extends('Website.layout')
 @section('contents')
     <!-- Breadcrumb Starts-->
-    <section class="section pagecrumb" style="background-image:url({{$event->header_image}});">
+    <section class="section pagecrumb" style="background-image:url({{$event->header_image}}); background-repeat: no-repeat;background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center py-4">
@@ -100,8 +100,9 @@
                         </div>
                     </div>
                 </div>
-                <form method="post" action="{{route('website.book')}}" class="event-form " onsubmit="return checkEventBook()">
+                
                     <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 px-2">
+                        <form method="post" action="{{route('website.book')}}" class="event-form " onsubmit="return checkEventBook()">
                         <div clss="row">
                             <input type="hidden" name="type" value="event">
                             @if(!empty($event->covers->toArray()))
@@ -259,11 +260,12 @@
                                 </div>
                             </div>
                         </div>
+                         </form>
                     </div>
-                </form>
+               
             </div>
             <div class="row py-5 event-section event">
-                <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2>
+                <div class="col-12"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2></div>
                 {{--
                 <div class="col-12 py-4 reviews">
                    --}}
@@ -303,7 +305,7 @@
              --}}
                 @if(!empty($event->reviews))
                     @foreach($event->reviews as $r)
-                        <div class="reviews">
+                        <div class="reviews col-12">
                             <div class="row blockquote review-item">
                                 <div class="col-3 text-center">
                                     <img class="rounded-circle reviewer" src="{{$r->user->image}}">

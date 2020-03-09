@@ -7,7 +7,7 @@
             <?php var_dump($errors) ?>
         </div>
     @endif
-    <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}});">
+    <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}}); background-repeat: no-repeat;background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center py-4">
@@ -347,7 +347,7 @@
              </div>
              --}}
                 @foreach($restaurant->reviews as $review)
-                    <div class="reviews">
+                    <div class="reviews col-12">
                         <div class="row blockquote review-item">
                             <div class="col-3 text-center">
                                 <img class="rounded-circle reviewer" src="{{$review->user->image}}">

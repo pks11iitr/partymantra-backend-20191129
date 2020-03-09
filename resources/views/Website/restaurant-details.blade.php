@@ -7,7 +7,7 @@
             <?php var_dump($errors) ?>
         </div>
     @endif
-    <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}});">
+    <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}}); background-repeat: no-repeat;background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center py-4">
@@ -160,7 +160,9 @@
                                                         <tr>
                                                             <td scope="col"><img src="{{$menu->image}}" style="width:60px; height:60px;" class="img-responsive rounded"></td>
                                                             <td scope="col" class="py-4"><strong>{{$menu->name}}</strong><br>
-                                                                <small>Rs.500</small>
+                                                                <small>Rs.500</small><br>
+                                                                <br>offer details <a href="#" data-toggle="collapse" data-target="#elig-box">show more</a>
+                                                                
                                                             </td>
                                                             <td scope="col">
                                                                 <div class="input-group">
@@ -178,6 +180,13 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        <tr class="eligibal collapse p-2" id="elig-box">
+                                                <td colspan="3">
+                                                        <div class="arrow-up"></div>
+                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
+                                                </td>
+                                            </tr>
                                                     @endforeach
                                                     </tbody>
                                                 </table>
@@ -185,7 +194,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <div class="row">
                                         <div class="col-12">
                                             @if($restaurant->packages->toArray())
@@ -423,7 +432,7 @@
              </div>
              --}}
                 @foreach($restaurant->reviews as $review)
-                    <div class="reviews">
+                    <div class="reviews col-12">
                         <div class="row blockquote review-item">
                             <div class="col-3 text-center">
                                 <img class="rounded-circle reviewer" src="{{$review->user->image}}">

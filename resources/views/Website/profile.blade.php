@@ -61,6 +61,83 @@
                 </form>
             </div>
         </div>
+        <!--- Update Profile Section Starts --->
+            <div class="row">  
+                    <div class="col-12">
+                        <h2 class="heading"><i class="fa fa-user" aria-hidden="true"></i> Profile Details<span class="float-right"><a href="" class="btn btn-form btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a></span></h2><br>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12 text-center py-4">
+                              <img class="rounded-circle reviewer" src="http://standaloneinstaller.com/upload/avatar.png">
+                            </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12">
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                      <div class="form-group row">
+                                        <label for="forname" class="col-md-5 col-sm-12 col-xs-12 col-form-label"><strong> Name :</strong></label>
+                                        <div class="col-md-7 col-sm-12 col-xs-12">
+                                          <input type="text" class="form-control" id="inputtext" name="" value="Joy roe">
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                      <div class="form-group row">
+                                        <label for="forname" class="col-5 col-form-label"><strong> Mobile :</strong></label>
+                                        <div class="col-md-7 col-sm-6 col-xs-6">
+                                          <input type="text" class="form-control" id="inputtext" name="" value="+91-9015929393">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                      <div class="form-group row">
+                                        <label for="forname" class="col-5 col-form-label"><strong> Email :</strong></label>
+                                        <div class="col-md-7 col-sm-6 col-xs-6">
+                                          <input type="text" class="form-control" id="inputtext" name="" value="cwopcwn@gmail.com">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                      <div class="form-group row">
+                                        <label for="forname" class="col-md-5 col-form-label"><strong>Date of Birth :</strong></label>
+                                        <div class="col-md-7 col-sm-6 col-xs-6">
+                                          <input type="date" class="form-control" id="inputtext" name="" value="--/--/----">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                                      <div class="form-group row">
+                                        <label for="forname" class="col-md-5 col-form-label"><strong>Gender :</strong></label>
+                                        <div class="col-md-7 col-sm-6 col-xs-6">
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Others</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="forname" class="col-md-2 col-form-label"><strong>Address :</strong></label>
+                                    <div class="col-md-10">
+                                    <textarea for="foraddress" class="walletinput form-control" style="font-size: 16px;">Plot -115, Sector 38A, Noida (201301). </textarea>
+                                    </div>
+                                  </div>
+                            </form>
+                        </div>                  
+                </div>
+                 <!--- Update Profile Section Ends --->
         <div class="row mt-4">
             <div class="col-12">
                 <ul class="nav nav-pills nav-justified protab" id="pills-tab" role="tablist">
@@ -101,9 +178,9 @@
                                     @foreach($wallethistory as $h)
                                     <tr>
                                         @if($h->type=='Debit')
-                                        <td scope="col" class="pt-4"><span class="ricon py-3 px-4 h4 rounded-circle border border-success text-center"><i class="fa fa-inr" aria-hidden="true"></i>Put red color</span></td>
+                                        <td scope="col" class="pt-4"><span class="ricon py-3 px-4 h4 rounded-circle border border-danger text-danger text-center"><i class="fa fa-inr" aria-hidden="true"></i></span></td>
                                         @else
-                                            <td scope="col" class="pt-4"><span class="ricon py-3 px-4 h4 rounded-circle border border-success text-center"><i class="fa fa-inr" aria-hidden="true"></i></span></td>
+                                            <td scope="col" class="pt-4"><span class="ricon py-3 px-4 h4 rounded-circle border border-success text-success text-center"><i class="fa fa-inr" aria-hidden="true"></i></span></td>
                                         @endif
                                         <td scope="col"><strong>{{$h->description}}</strong><br>
                                             <small>{{date('D, M d, Y H:iA', strtotime($h->updated_at))}}</small></td>
@@ -130,13 +207,13 @@
                                 <p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p>
                                 <div class="row">
                                     <div class="col-4 p-2">
-                                        <a href="" class="btn btn-form btn-block">Cancel</a>
+                                        <a href="" data-toggle="modal" data-target="#cancle" class="btn btn-form btn-block">Cancel</a>
                                     </div>
                                     <div class="col-4 p-2">
                                         <a href="{{route('website.order.details', ['id'=>$order['id']])}}" class="btn btn-form btn-block">View More</a>
                                     </div>
                                     <div class="col-4 p-2">
-                                        <a href="" class="btn btn-form btn-block">Review</a>
+                                        <a href="" data-toggle="modal" data-target="#review" class="btn btn-form btn-block">Review</a>
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +227,105 @@
 
         </div>
 </section>
+        <!-- Review Popup Start-->
+
+            <div class="modal fade bd-example-modal-lg" id="review" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="container">
+                        <div class="row event-section">
+                            <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Reviews</h2>
+                        <div class="col-12 py-4 reviews">
+                            <form>
+                              <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>
+                                <div class="col-sm-9">
+                                  <textarea name="comment" class="form-control"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Rating</label>
+                                <div class="col-sm-9">
+                                  <div class="rating">
+                                      <input type="radio" id="star10" name="rating" value="10" /><label for="star10" title="Rocks!">5 stars</label>
+                                      <input type="radio" id="star9" name="rating" value="9" /><label for="star9" title="Rocks!">4 stars</label>
+                                      <input type="radio" id="star8" name="rating" value="8" /><label for="star8" title="Pretty good">3 stars</label>
+                                      <input type="radio" id="star7" name="rating" value="7" /><label for="star7" title="Pretty good">2 stars</label>
+                                      <input type="radio" id="star6" name="rating" value="6" /><label for="star6" title="Meh">1 star</label>
+                                    </div>
+                                </div>
+                              </div>
+
+                              
+                              <div class="form-group row">
+                                <div class="col-sm-5 offset-sm-3">
+                                  <button type="submit" class="btn btn-form btn-block">Submit</button>
+                                </div>
+                                <div class="col-sm-4">
+                                  <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+        <!-- Review Popup End-->
+        <!-- Cancle order Popup Start-->
+
+            <div class="modal fade bd-example-modal-lg" id="cancle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="container">
+                        <div class="row event-section">
+                            <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Comment</h2>
+                        <div class="col-12 py-4 reviews">
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleInputtext">Reason to canle the order</label>
+                                    <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                          <label class="form-check-label" for="exampleRadios1">
+                                            Want to change your date
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                          <label class="form-check-label" for="exampleRadios2">
+                                            Change your mind
+                                          </label>
+                                        </div>
+                                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputtext">write Us your experience with us</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                              
+                              <div class="form-group row">
+                                <div class="col-sm-7">
+                                  <button type="submit" class="btn btn-form btn-block">Submit</button>
+                                </div>
+                                <div class="col-sm-5">
+                                  <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+        <!-- Cancle Order Popup End-->
 @endsection
 @section('scripts')
 
