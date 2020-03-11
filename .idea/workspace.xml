@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Website/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +260,7 @@
       <workItem from="1582973001619" duration="79184000" />
       <workItem from="1583589591827" duration="84000" />
       <workItem from="1583770098690" duration="4597000" />
+      <workItem from="1583907262413" duration="744000" />
     </task>
     <task id="LOCAL-00198" summary="notifications token added">
       <created>1581498632503</created>
@@ -666,10 +662,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583492287964">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1583774840687">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583492287964" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583774840687" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -702,14 +698,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583492315527">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1583774848283">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583492315527" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1582010178858">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1583774848283" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583907367960">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1582010178858" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583907367960" />
     <state x="362" y="126" width="911" height="642" key="find.popup" timestamp="1583394527359">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

@@ -98,25 +98,23 @@
                     @if(!auth()->user())
                     <a class="white" href="{{route('login')}}"><i class="fa fa-user"></i> Sign in</a>
                     @else
-                        <a class="white" href="{{route('logout')}}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa fa-user"></i> Sign out</a>
+                        <a class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"></i>Hello, {{isset(auth()->user()->name)?substr(auth()->user()->name, 0, strpos(auth()->user()->name, ' ')):'User'}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="{{route('website.user.profile')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Profile</a>
+                                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                            </div>
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     @endif
                     <a href="#"><i class="fa fa-question-circle"></i> Help</a>
                     <a id="clickloc" href="#"><i class="fa fa-globe"></i> Select City</a>
-                    <!--
-                    <a class="dropdown">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i> Sign In
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Profile</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-                      </div>
-                    </a>
-                    -->
+
                 </div>
 
             </div>
@@ -164,12 +162,12 @@
             <div class="col-12 mobilemenu text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('website.home')}}"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
+                        <a class="nav-link @if(!request('type') || request('type')=='event'){{'active'}}@endif" href="{{route('website.home')}}"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('website.home')}}?type=restaurant"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
+                        <a class="nav-link @if(request('type')=='restaurant'){{'active'}}@endif" href="{{route('website.home')}}?type=restaurant"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if(request('type')=='party'){{'active'}}@endif">
                         <a class="nav-link" href="{{route('website.home')}}?type=party"><i class="fa fa-glass" aria-hidden="true"></i> Parties</a>
                     </li>
                 </ul>
