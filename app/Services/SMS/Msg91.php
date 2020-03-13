@@ -10,6 +10,9 @@ class Msg91
     protected static $authkey='308501AiM8VCGp6w4I5df71314';
 
     public static function send($mobile, $message){
+
+        return true;
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

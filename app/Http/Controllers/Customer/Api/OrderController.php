@@ -1178,6 +1178,8 @@ class OrderController extends Controller
         $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
         if($order){
             $order->payment_status='cancel-request';
+            $order->cancel_reason=$request->reason_id;
+            $order->cancel_text=$request->reason_text;
             $order->save();
             return response()->json([
                 'status'=>'success',
@@ -1190,7 +1192,7 @@ class OrderController extends Controller
 
         return response()->json([
             'status'=>'failed',
-            'message'=>'You cannot cancel this request',
+            'message'=>'You cannot cancel this order',
             'errors'=>[
 
             ],

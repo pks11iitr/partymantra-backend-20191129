@@ -19,6 +19,7 @@ $api = app('Dingo\Api\Routing\Router');
 
     $api->post('login', ['as'=>'api.login', 'uses'=>'Auth\Api\LoginController@login']);
     $api->post('verify-otp', ['as'=>'api.otp.verify', 'uses'=>'Auth\Api\LoginController@verifyOTP']);
+    $api->post('resend-otp', ['as'=>'api.otp.resend', 'uses'=>'Auth\Api\LoginController@resendOTP']);
 
     /*
     Customer application api routes
@@ -58,7 +59,7 @@ $api = app('Dingo\Api\Routing\Router');
         //order apis starts
         $api->get('order-history', ['as'=>'api.order.history', 'uses'=>'Customer\Api\OrderController@history']);
         $api->get('order-details/{id}', ['as'=>'api.order.details', 'uses'=>'Customer\Api\OrderController@details']);
-        $api->get('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
+        $api->post('cancel-order/{id}', ['as'=>'api.order.cancel', 'uses'=>'Customer\Api\OrderController@cancel']);
         //order apis ends
 
         //pay bill api
