@@ -869,7 +869,8 @@ class OrderController extends Controller
             }
             $i++;
         }
-        return $ordersdetail;
+        $reasons=config('partymantra.cancel_reasons');
+        return compact('ordersdetail','cancel_reasons');
     }
 
     public function cartdetails(Request $request){
