@@ -17,7 +17,7 @@
     <section class="section bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                     <div class="row px-2">
                         <div class="col-12 event">
                             <h2 class="heading">{{$event->title}}</h2>
@@ -68,7 +68,7 @@
                                                 <div class="card">
                                                     <div class="cardimg">
                                                         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="{{$g->doc_path}}" data-target="#image-gallery">
-                                                            <img class="card-img-top img-fluid" src="{{$g->doc_path}}" style="height:200px;" alt="Short alt text">
+                                                            <img class="card-img-top img-fluid" src="{{$g->doc_path}}" style="height:120px;" alt="Short alt text">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 px-2">
+                    <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
                         <form method="post" action="{{route('website.book')}}" class="event-form " onsubmit="return checkEventBook()">
                         <div clss="row">
                             <input type="hidden" name="type" value="event">

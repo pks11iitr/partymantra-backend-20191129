@@ -5,13 +5,14 @@
 @if(isset($collections))
 <section class="section events">
     <div class="container">
-        <div class="section-heading">
-            <h2>Popular Collections<span class="pull-right"><a href="{{route('website.collections', ['type'=>$type])}}" class="btn btn-danger btn-small">View More</a></span>
+        <div class="row section-heading">
+            <div class="col-9"><h2>Popular Collections</h2></div>
+            <div class="col-3"><span class="pull-right"><a href="{{route('website.collections', ['type'=>$type])}}" class="btn btn-danger btn-small">View More</a></span></div>
 {{--                <p>Popular Collection</p>--}}
         </div><br>
         <div class="customer-logos row">
             @foreach($collections as $collection)
-            <div class="slide col-4 my-4 service-box">
+            <div class="slide col-4 my-2 service-box">
                 @if($collection->type=='event')
                     <a href="{{route('website.collection.event',['id'=>$collection->id])}}">
                 @elseif($collection->type=='restaurant')
@@ -20,7 +21,7 @@
                     <a href="{{route('website.collection.party',['id'=>$collection->id])}}">
                 @endif
                 <div class="">
-                    <div class="card">
+                    <div class="card p-2 bg-light">
                         <div class="cardimg">
                             <img class="card-img-top" src="{{$collection->small_image}}"/>
                             <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -56,23 +57,27 @@
     @foreach($others as $other)
         <section class="section @if($loop->iteration%2==1){{'parties'}}@else{{'events'}}@endif" id="">
             <div class="container">
-                <div class="section-heading">
+                @php $isodd=$loop->iteration%2; @endphp
+                <div class="row section-heading">
                     @if($other->type=='event')
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.event',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <div class="col-9"><h2>{{$other->name}}</h2></div>
+                    <div class="col-3"><span class="pull-right"><a href="{{route('website.collection.event',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></div>
                     @elseif($other->type=='restaurant')
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.restaurant',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <div class="col-9"><h2>{{$other->name}}</h2></div>
+                    <div class="col-3"><span class="pull-right"><a href="{{route('website.collection.restaurant',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></div>
                     @else
-                    <h2>{{$other->name}}<span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></h2>
+                    <div class="col-9"><h2>{{$other->name}}</h2></div>
+                    <div class="col-3"><span class="pull-right"><a href="{{route('website.collection.party',['id'=>$other->id])}}" class="btn btn-danger btn-small">View More</a></span></div>
                     @endif
-                        <p>{{$other->about}}</p>
-                </div><br>
+                    <div class="col-12"><p>{{$other->about}}</p></div>
+                </div>
                 <div class="row">
                     @foreach($other->$type as $item)
                         @if($type=='event')
 
-                               <div class="col-4 mt-4 service-box">
+                               <div class="col-4 service-box mb-3">
                                <a href="{{route('website.event.details',['id'=>$item->id])}}">
-                                <div class="card">
+                                <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="{{$item->small_image}}">
                                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -88,9 +93,9 @@
                                </a>
                                </div>
                         @elseif($type=='restaurant')
-                            <div class="col-4 mt-4 service-box">
+                            <div class="col-4 service-box mb-3">
                                 <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
-                                    <div class="card">
+                                    <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
                                         <div class="cardimg">
                                             <img class="card-img-top" src="{{$item->small_image}}">
                                             <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -106,9 +111,9 @@
                                 </a>
                                 </div>
                         @else
-                            <div class="col-4 mt-4 service-box">
+                            <div class="col-4 service-box mb-3">
                                 <a href="{{route('website.party.details',['id'=>$item->id])}}">
-                                <div class="card">
+                                <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="{{$item->small_image}}">
                                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -132,7 +137,7 @@
         <!-- Event Ends -->
         <!-- Banner section Ends -->
         @if(isset($other->banners))
-    <section class="banners">
+    <section class="banners py-4">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -181,7 +186,7 @@
 {{--                <p>Lorem IpsumLorem Ipsum ipsayi cuba</p>--}}
 {{--        </div>--}}
 {{--        <div class="row">--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -196,7 +201,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -211,7 +216,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -227,7 +232,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -243,7 +248,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -259,7 +264,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -275,7 +280,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -291,7 +296,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -307,7 +312,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -346,7 +351,7 @@
 {{--                <p>Lorem IpsumLorem Ipsum ipsayi cuba</p>--}}
 {{--        </div>--}}
 {{--        <div class="row">--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -361,7 +366,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -376,7 +381,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -392,7 +397,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -408,7 +413,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -424,7 +429,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -440,7 +445,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -456,7 +461,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -472,7 +477,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -530,7 +535,7 @@
 {{--                <p>Lorem IpsumLorem Ipsum ipsayi cuba</p>--}}
 {{--        </div>--}}
 {{--        <div class="row">--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -545,7 +550,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -560,7 +565,7 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -576,7 +581,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -592,7 +597,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e4.jpg">--}}
@@ -608,7 +613,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e3.jpg">--}}
@@ -624,7 +629,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}
@@ -640,7 +645,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e1.jpg">--}}
@@ -656,7 +661,7 @@
 
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-4 mt-4 service-box">--}}
+{{--            <div class="col-4 service-box">--}}
 {{--                <div class="card">--}}
 {{--                    <div class="cardimg">--}}
 {{--                        <img class="card-img-top" src="img/events/e2.jpg">--}}

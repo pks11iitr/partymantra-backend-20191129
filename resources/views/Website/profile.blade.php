@@ -13,10 +13,10 @@
     <!-- Breadcrumb Starts-->
     <!-- Mobile Search Ends-->
     <!-- page container Starts-->
-    <section class="p-4">
-        <div class="container py-5 event bg-light">
+    <section class="py-5">
+        <div class="container">
 
-            <div class="row" id="view-profile">
+            <div class="row event bg-light" id="view-profile">
                 <div class="col-12">
                 <h2 class="heading">
                     <i class="fa fa-user" aria-hidden="true"></i> Profile Details
@@ -33,7 +33,48 @@
                 </div>
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <form>
-                        <div class="form-group row">
+                        <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-md-3 col-sm-6 col-xs-6 col-form-label"><strong> Name :</strong></label>
+                                            <label for="forname" class="col-md-7 col-sm-6 col-xs-6 col-form-label">{{$user->name}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-5 col-form-label"><strong> Mobile :</strong></label>
+                                            <label for="formobile" class="col-md-7 col-form-label">{{$user->mobile}}</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-5 col-form-label"><strong> Email :</strong></label>
+                                            <label for="foremail" class="col-md-7 col-form-label">{{$user->email}}</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-md-5 col-form-label"><strong>Gender :</strong></label>
+                                            <label for="forgender" class="col-md-7 col-form-label">{{$user->gender}}</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-md-5 col-form-label"><strong>Date of Birth :</strong></label>
+                                            <label for="fordob" class="col-md-7 col-form-label">{{$user->dob}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group row">
+                                            <label for="forname" class="col-md-3 col-form-label"><strong>Address :</strong></label>
+                                            <label for="foraddress" class="col-md-9 col-form-label">{{$user->address}} </label>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+
+                        <!---<div class="form-group row">
                             <label for="forname" class="col-md-3 col-sm-6 col-xs-6 col-form-label"><strong> Name :</strong></label>
                             <label for="forname" class="col-md-7 col-sm-6 col-xs-6 col-form-label">{{$user->name}}</label>
                         </div>
@@ -68,12 +109,12 @@
                         <div class="form-group row">
                             <label for="forname" class="col-md-3 col-form-label"><strong>Address :</strong></label>
                             <label for="foraddress" class="col-md-9 col-form-label">{{$user->address}}</label>
-                        </div>
+                        </div>-->
                     </form>
                 </div>
             </div>
             <!--- Update Profile Section Starts --->
-            <div class="row" id="update-profile" style="display:none">
+            <div class="row event bg-light" id="update-profile" style="display:none">
                 <div class="col-12">
                     <h2 class="heading"><i class="fa fa-user" aria-hidden="true"></i> Profile Details<span class="float-right"><a href="javascript:void(0)" class="btn btn-form btn-sm" onclick="$('#update-profile').toggle();$('#view-profile').toggle();">Cancel</a></span></h2>
                     <br>
@@ -96,7 +137,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group row">
-                                    <label for="forname" class="col-5 col-form-label"><strong> Mobile :</strong></label>
+                                    <label for="forname" class="col-5 col-form-label"><strong> Mobile:</strong></label>
                                     <div class="col-md-7 col-sm-6 col-xs-6">
                                         <input type="text" class="form-control" id="inputtext" name="" value="{{$user->mobile}}" disabled>
                                     </div>
@@ -104,7 +145,7 @@
                             </div>
                             <div class="form-group col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group row">
-                                    <label for="forname" class="col-5 col-form-label"><strong> Email :</strong></label>
+                                    <label for="forname" class="col-5 col-form-label"><strong> Email:</strong></label>
                                     <div class="col-md-7 col-sm-6 col-xs-6">
                                         <input type="text" class="form-control" id="inputtext" name="email" value="{{$user->email}}">
                                     </div>
@@ -146,12 +187,12 @@
                                 <textarea for="foraddress" class="walletinput form-control" style="font-size: 16px;" name="address">Plot -115, Sector 38A, Noida (201301). </textarea>
                             </div>
                         </div>
-                        <button type="submit">Submit</button>
+                        <button class="btn btn- btn-form btn-block" type="submit">Update</button>
                     </form>
                 </div>
             </div>
             <!--- Update Profile Section Ends --->
-            <div class="row mt-4">
+            <div class="row mt-4 py-4 event bg-light">
                 <div class="col-12">
                     <ul class="nav nav-pills nav-justified protab" id="pills-tab" role="tablist">
                         <li class="nav-item pro-item">
@@ -183,8 +224,37 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="wallethistory">
+                                    @foreach($wallethistory as $h)    
+                                    <div class="row mb-2 py-2 reviews">
+                                        @if($h->type=='Debit')
+                                        <div class="col-3">
+                                            <p class="py-2"><span class="ricon py-3 px-4 h4 rounded-circle border border-danger text-danger text-center"><i class="fa fa-inr" aria-hidden="true"></i></span></p>
+                                            </p>
+                                        </div>
+                                        @else
+                                        <div class="col-3">
+                                            <p class="py-2"><span class="ricon py-3 px-4 h4 rounded-circle border text-success border-success text-center"><i class="fa fa-inr" aria-hidden="true"></i></span></p>
+                                            </p>
+                                        </div>
+                                        @endif
+                                        <div class="col-6">
+                                            <p class="h2"><strong>{{$h->description}}</strong></p>
+                                            <p><small>{{date('D, M d, Y H:iA', strtotime($h->updated_at))}}</small></p>
+                                        </div>
+                                        <div class="col-3 py-2">
+                                            <p>₹ {{$h->amount}}</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+
+
+
+                                <!---<div class="row">
                                     <div class="col-12">
+
+
                                         <table class="table table-striped">
                                             <tbody>
                                             @foreach($wallethistory as $h)
@@ -203,7 +273,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         @endif
                         @if(isset($ordersdetail))
@@ -211,13 +281,20 @@
                                 @foreach($ordersdetail as $order)
                                     <div class="row reviews mb-2">
                                         <div class="col-3">
-                                            <img src="{{$order['image']}}" class="rounded img-fluid" style="height:180px;">
+                                            <img src="{{$order['image']}}" class=" order-image rounded img-fluid">
                                         </div>
                                         <div class="col-9 p-2">
-                                            <h4 class="heading">{{$order['title']}}<span class="float-right"><a href="" class="btn btn-success btn-sm">{{$order['payment_status']}}</a></span></h4>
-                                            <p>₹ {{$order['total']}}</p>
-                                            <p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p>
                                             <div class="row">
+                                                <div class="col-9">
+                                                    <h5 class="heading">{{$order['title']}}</h5>
+                                                </div>
+                                                <div class="col-3">
+                                                    <span class="float-right"><a href="" class="btn btn-success btn-small">{{$order['payment_status']}}</a></span>
+                                                </div>
+                                                <div class="col-12"><p>₹ {{$order['total']}}</p></div>
+                                                <div class="col-12"<p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p></div>
+                                            </div>
+                                        </div>
                                                 <div class="col-4 p-2">
                                                     <a href="" data-toggle="modal" data-target="#cancle" class="btn btn-form btn-block" onclick="$('#cancel-form').attr('action', '{{route('website.order.cancel', ['id'=>$order['id']])}}')">Cancel</a>
                                                 </div>
@@ -227,8 +304,6 @@
                                                 <div class="col-4 p-2">
                                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#review" class="btn btn-form btn-block" onclick="$('#review-form').attr('action', '{{route('website.submit.review', ['id'=>$order['oid']])}}')">Review</a>
                                                 </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 @endforeach
                             </div>
@@ -244,7 +319,9 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row event-section">
-                            <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Reviews</h2>
+                            <div class="col-10"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Reviews</h2></div>
+                            <div class="col-2 text-right"><span class="text-right">
+                      <a href="" type="btn close btn-close btn-lg btn-light" data-dismiss="modal">X</a></span></div>
                             <div class="col-12 py-4 reviews">
                                 <form method="post" action="" id="review-form">
                                     <div class="form-group row">
@@ -253,7 +330,7 @@
                                             <textarea name="comment" class="form-control"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group row mb-3">
                                         <label for="inputEmail3" class="col-sm-3 col-form-label">Rating</label>
                                         <div class="col-sm-9">
                                             <div class="rating">
@@ -266,11 +343,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-5 offset-sm-3">
+                                        <div class="col-sm-9 offset-sm-3">
                                             <button type="submit" class="btn btn-form btn-block">Submit</button>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </form>
@@ -289,7 +363,10 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row event-section">
-                            <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Comment</h2>
+                            <div class="col-10"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Comment</h2></div>
+                            <div class="col-2 text-right"><span class="text-right">
+                      <a href="" type="btn close btn-close btn-lg btn-light" data-dismiss="modal">X</a></span></div>
+                            
                             <div class="col-12 py-4 reviews">
                                 <form action="" method="post" id="cancel-form">
                                     <div class="form-group">
@@ -312,11 +389,8 @@
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reason_text"></textarea>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-12">
                                             <button type="submit" class="btn btn-form btn-block">Submit</button>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </form>

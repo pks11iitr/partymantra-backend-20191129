@@ -5,11 +5,16 @@
     <!-- Breadcrumb Starts-->
     <!-- Mobile Search Ends-->
     <!-- page container Starts-->
-    <section class="section bg-light">
+    <section class="section">
         <div class="container">
             <div class="row">
+                <div class="col-12 text-center py-2 mb-3">
+                    <h5 class="heading">FIND VENUE SPACE THAT WORKS FOR YOU</h5>
+                    <p>Find the best party venues in Delhi, Gurgaon, and Noida that suits your budget, purpose, and venue requirements. Our venues are A-listed and ensure you a great time whenever you visit.</p>
+                </div>
+
                 @foreach($collections as $collection)
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-4 service-box">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3 service-box">
                     @if($type=='event')
                     <a href="{{route('website.collection.event', ['id'=>$collection->id])}}">
                     @elseif($type=='restaurant')
