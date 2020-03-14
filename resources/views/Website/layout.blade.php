@@ -75,22 +75,15 @@
         <div class="container">
             <div class="row">
                 <div class="searchform col-8 left py-2">
-                    <form action="#" method="post" novalidate="novalidate">
+                    <form method="get" action="{{route('website.search')}}">
                         <div class="row">
-                            <div class="col-3 p-0">
-                                <select class="forminput form-control search-slt" id="exampleFormControlSelect1">
-                                    <option>Select</option>
-                                    <option>Party</option>
-                                    <option>Event</option>
-                                    <option>Dinning</option>
-                                </select>
-                            </div>
-                            <div class="col-6 p-0">
-                                <input type="text" class="forminput form-control" name="x" placeholder="Search term...">
-                            </div>
-                            <div class="col-3 p-0">
-                                <button type="button" class="btn btn-form btn-block"><i class="fa fa-search"></i> Search</button>
-                            </div>
+
+                                <div class="col-6 p-0">
+                                    <input type="text" class="forminput form-control" name="search" placeholder="Search term..." value="{{request('search')}}">
+                                </div>
+                                <div class="col-3 p-0">
+                                    <button type="submit" class="btn btn-form btn-block"><i class="fa fa-search"></i> Search</button>
+                                </div>
                         </div>
                     </form>
                 </div>
@@ -183,20 +176,18 @@
             <div class="mobform col-12 left py-2">
                 <form action="#" method="post" novalidate="novalidate">
                     <div class="row">
-                        <div class="col-3 p-0">
-                            <select class="forminput form-control search-slt" id="exampleFormControlSelect1">
-                                <option>Select</option>
-                                <option>Party</option>
-                                <option>Event</option>
-                                <option>Dinning</option>
-                            </select>
-                        </div>
+
+                        <form method="get" action="{{route('website.search')}}">
                         <div class="col-6 p-0">
-                            <input type="text" class="forminput form-control" name="x" placeholder="Search term...">
+
+                                <input type="text" class="forminput form-control" name="search" placeholder="Search term..." value="{{request('search')}}">
+
                         </div>
+
                         <div class="col-3 p-0">
-                            <button type="button" class="btn btn-form btn-block"><i class="fa fa-search"></i> Search</button>
+                            <button type="submit" class="btn btn-form btn-block"><i class="fa fa-search"></i> Search</button>
                         </div>
+                        </form>
                     </div>
                 </form>
             </div>

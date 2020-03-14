@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Models\Banner;
 use App\Models\Collection;
+use App\Models\Partner;
 use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -96,10 +97,12 @@ class HomeController extends Controller
         if(!empty($request->search)){
             $events=PartnerEvent::active()
                 ->with('partner')
-                ->where('title', 'like', '%'.$request->search.'%')
-                ->orWhere('venue_adderss', 'like', '%'.$request->search.'%')
-                ->orWhereHas('partner', function($query) use($request){
-                    return $query->where('name', 'like', '%'.$request->search.'%');
+                ->where(function($query) use ($request){
+                    $query->where('title', 'LIKE', "%$request->search%")
+                        ->orWhere('venue_adderss', 'like', "%$request->search%")
+                        ->orWhereHas('partner', function($query) use($request){
+                            return $query->where('name', 'like', "%$request->search%");
+                        });
                 })
                 ->get()
                 ->sortBy(function($event){
@@ -113,7 +116,48 @@ class HomeController extends Controller
                     return $event->away;
                 });
         }
-        return $events;
+
+        if(!empty($request->search)){
+            $restaurants=Partner::active()
+                ->where(function($query) use ($request){
+                    $query->where('name', 'like', '%'.$request->search.'%')
+                        ->orWhere('address', 'like', '%'.$request->search.'%');
+
+                })
+                ->get()
+                ->sortBy(function($event){
+                    return $event->away;
+                });
+        }else{
+            $restaurants=Partner::active()
+                ->get()
+                ->sortBy(function($event){
+                    return $event->away;
+                });
+        }
+
+        if(!empty($request->search)){
+            $parties=Partner::active()
+                ->where('allow_party', true)
+                ->where(function($query) use ($request){
+                    $query->where('name', 'like', '%'.$request->search.'%')
+                        ->orWhere('address', 'like', '%'.$request->search.'%');
+
+                })
+                ->get()
+                ->sortBy(function($event){
+                    return $event->away;
+                });
+        }else{
+            $parties=Partner::active()
+                ->where('allow_party', true)
+                ->get()
+                ->sortBy(function($event){
+                    return $event->away;
+                });
+        }
+
+        return view('Website.search-results',compact('events','restaurants','parties'));
     }
 
     public function check(){

@@ -21,6 +21,7 @@ Route::post('logout', 'Auth\Website\LoginController@logout')->name('logout');
 
 //website routes
 Route::get('/', 'Website\HomeController@index')->name('website.home');
+Route::get('search', 'Website\HomeController@search')->name('website.search');
 Route::get('collections', 'Website\CollectionController@index')->name('website.collections');
 Route::get('collections/{id}/event', 'Website\CollectionController@events')->name('website.collection.event');
 Route::get('collections/{id}/restaurant', 'Website\CollectionController@restaurants')->name('website.collection.restaurant');
