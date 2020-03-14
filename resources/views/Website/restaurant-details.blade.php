@@ -75,16 +75,16 @@
                      </div>
                      --}}
                         @if(!empty($restaurant->eventparty->toArray()))
-                            <div class="col-12 pb-5 event carousel slider">
+                            <div class="col-12 pb-5 event carousel gallery-slider">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                     </ol>
-                                    <div class="carousel-inner slider-inner">
+                                    <div class="carousel-inner slider-inner mb-2">
                                         @foreach($restaurant->eventparty as $image)
-                                            <div class="carousel-item slider-item active">
+                                            <div class="carousel-item gallery-item active">
                                                 @if($image->other_type=='partyonrestaurant')
                                                     <a href="{{route('website.party.details',['id'=>$image->other_id])}}"><img src="{{$image->doc_path}}" class="img-fluid d-block w-100" alt="..."></a>
                                                 @else
@@ -114,7 +114,7 @@
                                                 <div class="card">
                                                     <div class="cardimg">
                                                         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="{{$image->doc_path}}" data-target="#image-gallery">
-                                                            <img class="card-img-top img-fluid" src="{{$image->doc_path}}" style="height:200px;" alt="Short alt text">
+                                                            <img class="card-img-top img-fluid" src="{{$image->doc_path}}" style="height:120px;" alt="Short alt text">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -154,7 +154,34 @@
                                     <div class="row">
                                         <div class="col-12">
                                             @if($restaurant->menus->toArray())
-                                                <table class="table table-hover">
+                                            @foreach($restaurant->menus as $menu)
+
+
+                                            <div class="row reviews">
+                                                <div class="col-3">
+                                                            <img src="{{$menu->image}}" style="width:60px; height:60px;" class="img-responsive rounded">
+                                                </div>
+                                                <div class="col-6 py-2">
+                                                    <p class="h3"><strong>{{$menu->name}}</strong><p>
+                                                    <p>Rs.500</p>
+                                                </div>
+                                                <div class="col-3 py-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                             <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="menu" itemid='{{$menu->id}}' itemprice="250" itemname="{{$menu->name}}">
+                                                             <i class="fa fa-minus" aria-hidden="true"></i>
+                                                             </button>
+                                                         </span>
+                                                        <input type="text" id="menu-{{$menu->id}}" name="quantity" class="form-control input-number quantity" value="{{isset($cartdata['menuid'])?(array_search($menu->id,$cartdata['menuid'])!==false?(isset($cartdata['quantity'])?($cartdata['quantity'][array_search($menu->id,$cartdata['menuid'])]??0):0):0):0}}" min="1" max="100">
+                                                        <span class="input-group-btn">
+                                                             <button type="button" class="quantity-plus-item btn btn-quant btn-number" data-type="plus" data-field="" itemtype="menu" itemid='{{$menu->id}}' itemprice="250" itemname="{{$menu->name}}">
+                                                             <i class="fa fa-plus" aria-hidden="true"></i>
+                                                             </button>
+                                                         </span>     
+                                                    </div>
+                                                </div>
+                                            </div>
+                                               <!--- <table class="table table-hover">
                                                     <tbody>
                                                     @foreach($restaurant->menus as $menu)
                                                         <tr>
@@ -189,16 +216,58 @@
                                             </tr>
                                                     @endforeach
                                                     </tbody>
-                                                </table>
+                                                </table>-->
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
                                 </div>
+                <style>
+                                .input-number{
+                                    flex:auto;
+                                    border: none;
+                                    width:40px;
+                                    padding: 10px 15px;
+                                    background:transparent;
+                                }
+                                
+                            </style>
                                 <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <div class="row">
                                         <div class="col-12">
                                             @if($restaurant->packages->toArray())
-                                                <table class="table table-hover">
+                                             @foreach($restaurant->packages as $package)
+                                            <div class="row reviews">
+                                                <div class="col-9 py-2">
+                                                    <p class="h3"><strong>{{$package->package_name}}</strong><p>
+                                                    <p>Rs.{{$package->price}}</p>
+                                                </div>
+                                                <div class="col-3 py-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">
+                                                              <i class="fa fa-minus" aria-hidden="true"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 px-2">
+                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                </div>
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                        <div class="arrow-up"></div>
+                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
+     
+                                                </div>
+                                        </div>
+                                                <!--<table class="table table-hover">
                                                     <tbody>
                                                     @foreach($restaurant->packages as $package)
                                                         <tr>
@@ -226,7 +295,8 @@
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
-                                                </table>
+                                                </table>-->
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
@@ -302,6 +372,96 @@
 
 
                                     <h2 class="text-center py-2 mb-4">Book Your Table Now</h2>
+                                    <div class="form-group row">
+                                    <div class="col-12"> 
+                                        <div id="calendar-container">
+                                          <h1 id="calendar-title">
+                                            <div class="btn left"><</div>
+                                            <span>April, 2019</span>
+                                            <div class="btn right">></div>
+                                          </h1>
+                                          <table id="calendar-table">
+                                            <tr>
+                                              <th>Sun</th>
+                                              <th>Mon</th>
+                                              <th>Tue</th>
+                                              <th>Wed</th>
+                                              <th>Thu</th>
+                                              <th>Fri</th>
+                                              <th>Sat</th>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>1</td>
+                                              <td>2</td>
+                                              <td>3</td>
+                                              <td>4</td>
+                                              <td>5</td>
+                                              <td>6</td>
+                                            </tr>
+                                            <tr>
+                                              <td>7</td>
+                                              <td>8</td>
+                                              <td>9</td>
+                                              <td>10</td>
+                                              <td>11</td>
+                                              <td>12</td>
+                                              <td>13</td>
+                                            </tr>
+                                            <tr>
+                                              <td>14</td>
+                                              <td>15</td>
+                                              <td>16</td>
+                                              <td>17</td>
+                                              <td>18</td>
+                                              <td>19</td>
+                                              <td>20</td>
+                                            </tr>
+                                            <tr>
+                                              <td>21</td>
+                                              <td>22</td>
+                                              <td>23</td>
+                                              <td>24</td>
+                                              <td>25</td>
+                                              <td>26</td>
+                                              <td>27</td>
+                                            </tr>
+                                            <tr>
+                                              <td>28</td>
+                                              <td>29</td>
+                                              <td>30</td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                            </tr>
+                                            
+                                          </table>
+                                          <p id="date-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname1">Choose Slot</label>
+                                    <div class="form-group row mb-2">
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="9-12 AM">
+                                      <label class="form-check-label slot-lable" for="inlineRadio1">9-12 AM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=" 2-5 PM">
+                                      <label class="form-check-label slot-lable" for="inlineRadio2">2-5 PM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
+                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 6-9 PM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
+                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 9-12 PM</label>
+                                    </div>
+                                    </div>
+                                </div>
                                     <div class="row py-2">
                                         <div class="col-6">
                                             <p>Men </p>
@@ -451,4 +611,23 @@
         </div>
     </section>
     <!-- page container Ends-->
+      <style>
+  .form-check-inline .form-check-input{
+  display:none;
+  }
+   .form-check-inline{
+  margin-right:0;
+  }
+  
+  .slot-lable {
+    cursor: pointer;
+    background: #e2e2e2;
+    padding: 6px 15px;
+}   
+    .slot-lable:hover{
+        cursor: pointer;
+        background: #ec7160;
+        color:#fff;
+    }
+  </style>
 @endsection

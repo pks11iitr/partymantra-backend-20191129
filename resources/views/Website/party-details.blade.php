@@ -38,25 +38,23 @@
                             <p class="text-justify px-2">{{$restaurant->description}}</p>
                         </div>
                         <div class="col-12 event">
-                            <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
-                            <div class="row py-2 text-center">
-                                <div class="col-3">
-                                    <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i> Address</strong><br>{{$restaurant->address}}</p>
-                                </div>
-                                <div class="col-3">
+                            <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="tel:+91-{{$restaurant->contact_no}}" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
+                            <div class="row py-2">
+                                
+                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                                     <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time</strong><br>{{$restaurant->open}}-{{$restaurant->close}}</p>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                                     <p><strong><i class="fa fa-rupee" aria-hidden="true"></i> Everage Cost</strong><br>{{$restaurant->per_person_text}}</p>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                                     <p><strong><i class="fa fa-mobile" aria-hidden="true"></i> Contact Number</strong><br>+91-{{$restaurant->contact_no}}</p>
                                 </div>
                             </div>
                             <h6><i class="fa fa-heart" aria-hidden="true"></i> Facilities</h6>
                             <div class="row px-2">
                                 @foreach($restaurant->facilities as $facility)
-                                    <div class="col-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                                         <p class="text-justify"><span class="heading h6" style="margin-right:5px;"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>{{$facility->name}}</p>
                                     </div>
                                 @endforeach
@@ -97,7 +95,7 @@
                                                 <div class="card">
                                                     <div class="cardimg">
                                                         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="{{$image->doc_path}}" data-target="#image-gallery">
-                                                            <img class="card-img-top img-fluid" src="{{$image->doc_path}}" style="height:200px;" alt="Short alt text">
+                                                            <img class="card-img-top img-fluid" src="{{$image->doc_path}}" style="height:120px;" alt="Short alt text">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -134,7 +132,38 @@
                                     <div class="row">
                                         <div class="col-12">
                                             @if($restaurant->packages->toArray())
-                                                <table class="table table-hover">
+                                            @foreach($restaurant->packages as $package)
+                                            <div class="row reviews">
+                                                <div class="col-9 py-2">
+                                                    <p class="h3"><strong>{{$package->package_name}}</strong><p>
+                                                    <p>Rs.{{$package->price}}</p>
+                                                </div>
+                                                <div class="col-3 py-3">
+                                                    <div class="input-group">
+                                                         <span class="input-group-btn">
+                                                             <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
+                                                             <i class="fa fa-minus" aria-hidden="true"></i>
+                                                             </button>
+                                                         </span>
+                                                         <input type="text" id="package-{{$package->id}}" name="quantity" class="form-control input-number quantity" value="{{isset($cartdata['itemid'])?(array_search($package->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($package->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100">
+                                                        <span class="input-group-btn">
+                                                             <button type="button" class="quantity-plus-item btn btn-quant btn-number" data-type="plus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
+                                                             <i class="fa fa-plus" aria-hidden="true"></i>
+                                                             </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 px-2">
+                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                </div>
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                        <div class="arrow-up"></div>
+                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
+     
+                                                </div>
+                                        </div>
+                                                <!--<table class="table table-hover">
                                                     <tbody>
                                                     @foreach($restaurant->packages as $package)
                                                         <tr>
@@ -162,7 +191,8 @@
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
-                                                </table>
+                                                </table>-->
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
@@ -217,6 +247,96 @@
 
 
                                     <h2 class="text-center py-2 mb-4">Book Your Party Now</h2>
+                                <div class="form-group row">
+                                    <div class="col-12"> 
+                                        <div id="calendar-container">
+                                          <h1 id="calendar-title">
+                                            <div class="btn left"><</div>
+                                            <span>April, 2019</span>
+                                            <div class="btn right">></div>
+                                          </h1>
+                                          <table id="calendar-table">
+                                            <tr>
+                                              <th>Sun</th>
+                                              <th>Mon</th>
+                                              <th>Tue</th>
+                                              <th>Wed</th>
+                                              <th>Thu</th>
+                                              <th>Fri</th>
+                                              <th>Sat</th>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>1</td>
+                                              <td>2</td>
+                                              <td>3</td>
+                                              <td>4</td>
+                                              <td>5</td>
+                                              <td>6</td>
+                                            </tr>
+                                            <tr>
+                                              <td>7</td>
+                                              <td>8</td>
+                                              <td>9</td>
+                                              <td>10</td>
+                                              <td>11</td>
+                                              <td>12</td>
+                                              <td>13</td>
+                                            </tr>
+                                            <tr>
+                                              <td>14</td>
+                                              <td>15</td>
+                                              <td>16</td>
+                                              <td>17</td>
+                                              <td>18</td>
+                                              <td>19</td>
+                                              <td>20</td>
+                                            </tr>
+                                            <tr>
+                                              <td>21</td>
+                                              <td>22</td>
+                                              <td>23</td>
+                                              <td>24</td>
+                                              <td>25</td>
+                                              <td>26</td>
+                                              <td>27</td>
+                                            </tr>
+                                            <tr>
+                                              <td>28</td>
+                                              <td>29</td>
+                                              <td>30</td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                            </tr>
+                                            
+                                          </table>
+                                          <p id="date-text"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname1">Choose Slot</label>
+                                    <div class="form-group row mb-2">
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="9-12 AM">
+                                      <label class="form-check-label slot-lable" for="inlineRadio1">9-12 AM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=" 2-5 PM">
+                                      <label class="form-check-label slot-lable" for="inlineRadio2">2-5 PM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
+                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 6-9 PM</label>
+                                    </div>
+                                    <div class="col-3 text-center form-check form-check-inline">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
+                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 9-12 PM</label>
+                                    </div>
+                                    </div>
+                                </div>
                                     <div class="row py-2">
                                         <div class="col-6">
                                             <p>Men </p>
@@ -366,4 +486,23 @@
         </div>
     </section>
     <!-- page container Ends-->
+          <style>
+  .form-check-inline .form-check-input{
+  display:none;
+  }
+   .form-check-inline{
+  margin-right:0;
+  }
+  
+  .slot-lable {
+    cursor: pointer;
+    background: #e2e2e2;
+    padding: 6px 15px;
+}   
+    .slot-lable:hover{
+        cursor: pointer;
+        background: #ec7160;
+        color:#fff;
+    }
+  </style>
 @endsection
