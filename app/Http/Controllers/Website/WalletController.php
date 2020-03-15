@@ -58,11 +58,9 @@ class WalletController extends Controller
                 return view('Website.checkout', compact('data','api_key'));
 
             }else{
-                abort(404);
+                return redirect()->route('website.user.profile')->with('error','We appologize, Payment cannot be initiated this time');
             }
         }
-
-        abort(404);
 
     }
 
@@ -76,21 +74,9 @@ class WalletController extends Controller
             $wallet->iscomplete=true;
             $wallet->save();
             event(new RechargeSuccess($wallet));
-            return response()->json([
-                'status'=>'success',
-                'message'=>'Payment is successfull',
-                'errors'=>[
-
-                ],
-            ], 200);
+            return redirect()->route('website.user.profile')->with('success','Amount has been added to your wallet');
         }else{
-            return response()->json([
-                'status'=>'failed',
-                'message'=>'Payment is not successfull',
-                'errors'=>[
-
-                ],
-            ], 200);
+            return redirect()->route('website.user.profile')->with('error','We appologize, Wallet recharge is not successfull');
         }
     }
 }
