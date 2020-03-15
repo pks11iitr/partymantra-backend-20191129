@@ -60,18 +60,20 @@
                                 @endforeach
                             </div>
                         </div>
-                        {{--
+
                         <div class="col-12 event">
-                           --}}
-                        {{--
-                        <h2 class="heading"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Event Description </h2>
-                        --}}
-                        {{--
-                        <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        --}}
-                        {{--
-                     </div>
-                     --}}
+                            <h2 class="heading"><i class="fa fa-map-marker" aria-hidden="true"></i> Address </h2>
+                            <p class="">{{$restaurant->address}}</p>
+                            <div class="map py-2">
+                                <h3>Find Us:</h3>
+                                <div class="location">
+                                    <div class="map-responsive">
+                                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         @if(!empty($restaurant->eventparty->toArray()))
                             <div class="col-12 pb-5 event carousel gallery-slider">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -161,7 +163,7 @@
                                                 </div>
                                                 <div class="col-6 py-2">
                                                     <p class="h3"><strong>{{$menu->name}}</strong><p>
-                                                    <p>Rs.500</p>
+                                                    <p>Rs.{{$menu->pivot->price}}</p>
                                                 </div>
                                                 <div class="col-3 py-3">
                                                     <div class="input-group">
@@ -256,18 +258,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12 px-2">
-                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                <p class="px-2"><a href="#" data-toggle="collapse" data-target="#elig-box-{{$package->id}}" class="" aria-expanded="true">show more</a></p>
                                                 </div>
-                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box-{{$package->id}}">
                                                         <div class="arrow-up"></div>
-                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="h5">{{$package->custom_package_detail}}</p>
                                                         <div class="row">
+                                                            @foreach($package->activemenus as $m)
                                                             <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>{{$m->name}}</p>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
-                                                            </div>
+                                                                @endforeach
                                                         </div>
                                                 </div>
                                         </div>
@@ -532,12 +533,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}">
+                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}" maxlength="10">
                                     </div>
-{{--                                    <div class="form-group form-check">--}}
-{{--                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
-{{--                                        <label class="form-check-label" for="exampleCheck1">Accept <a href="">Terms & Cond.</a></label>--}}
-{{--                                    </div>--}}
 
                                     <button type="submit" class="btn btn-form btn-block">Book Now</button>
 
@@ -550,45 +547,9 @@
 
             </div>
             <!----- Review Section Starts---->
+            @if(!empty($restaurant->reviews->toArray()))
             <div class="row py-5 event-section event">
                 <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Customer Reviews</h2>
-                {{--
-                <div class="col-12 py-4 reviews">
-                   --}}
-                {{--
-                <form>
-                   --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--						<label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>--}}
-                {{--
-                <div class="col-sm-9">--}}
-                {{--						  <textarea name="comment" class="form-control"></textarea>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--
-                <div class="col-sm-9 offset-sm-3">--}}
-                {{--						  <button type="submit" class="btn btn-form btn-block">Submit</button>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </form>
-             --}}
-                {{--
-             </div>
-             --}}
                 @foreach($restaurant->reviews as $review)
                     <div class="reviews col-12">
                         <div class="row blockquote review-item">
@@ -612,6 +573,7 @@
                 @endforeach
             </div>
             <!----- Review Section Ends---->
+            @endif
         </div>
     </section>
     <!-- page container Ends-->

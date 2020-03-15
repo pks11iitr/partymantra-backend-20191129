@@ -58,6 +58,7 @@
                             <h2 class="heading"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Event Description </h2>
                             <p class="text-justify">{{$event->description}}</p>
                         </div>
+                        @if(!empty($event->facilities->toArray()))
                         <div class="col-12 event">
                             <h2 class="heading"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> More Info</h2>
                             <div class="row">
@@ -68,7 +69,8 @@
                             @endforeach
                             </div>
                         </div>
-                        @if(!empty($event->gallery))
+                        @endif
+                        @if(!empty($event->gallery->toArray()))
                             <div class="col-12 event">
                                 <h2 class="heading"><i class="fa fa-image" aria-hidden="true"></i> Gallery</h2>
                                 <div class="customer-logos row">
@@ -198,88 +200,29 @@
                                             </div>
                                         </div>
                                         <div class="col-12 px-2">
-                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                <p class="px-2"><a href="#" data-toggle="collapse" data-target="#elig-box-{{$c->id}}" class="" aria-expanded="true">show more</a></p>
                                                 </div>
-                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box-{{$c->id}}">
                                                         <div class="arrow-up"></div>
-                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="h5">{{$c->custom_package_detail}}</p>
                                                         <div class="row">
+                                                            @foreach($c->activemenus as $m)
+
                                                             <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span> lorem ipsum .event</p>
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>{{$m->name}}</p>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span> lorem ipsum .event</p>
-                                                            </div>
-                                                        </div>     
+                                                            @endforeach
+                                                        </div>
                                                 </div>
                                     </div>
                                     @endforeach
-                                    
+
                                 </div>
                             @endif
                             <div class="col-12 event">
                                 <div class="">
                                     <h2 class="text-center py-2 mb-4">Book Your Pass Now</h2>
-{{--                                    <div class="row py-2" style="display:none">--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <p>Men </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <div class="input-group">--}}
-{{--                                 <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">--}}
-{{--                                 <i class="fa fa-minus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                                <input type="text" id="quantity" name="men" class="form-control input-number" value="10" min="1" max="100">--}}
-{{--                                                <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">--}}
-{{--                                 <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="row py-2" style="display:none">--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <p>Women </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <div class="input-group">--}}
-{{--                                 <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">--}}
-{{--                                 <i class="fa fa-minus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                                <input type="text" id="quantity" name="women" class="form-control input-number" value="10" min="1" max="100">--}}
-{{--                                                <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">--}}
-{{--                                 <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="row py-2" style="display:none">--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <p>Couple </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-6">--}}
-{{--                                            <div class="input-group">--}}
-{{--                                 <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">--}}
-{{--                                 <i class="fa fa-minus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                                <input type="text" id="quantity" name="couple" class="form-control input-number" value="10" min="1" max="100">--}}
-{{--                                                <span class="input-group-btn">--}}
-{{--                                 <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">--}}
-{{--                                 <i class="fa fa-plus" aria-hidden="true"></i>--}}
-{{--                                 </button>--}}
-{{--                                 </span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+
                                     <div class="form-group">
                                         <label for="exampleInputname1">Your Name</label>
                                         <input type="text" class="form-control" id="booking-name" aria-describedby="nameHelp" name="name" value="{{$cartdata['name']??''}}">
@@ -302,44 +245,8 @@
             </div>
             <div class="row py-5 event-section event">
                 <div class="col-12"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2></div>
-                {{--
-                <div class="col-12 py-4 reviews">
-                   --}}
-                {{--
-                <form>
-                   --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--                            <label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>--}}
-                {{--
-                <div class="col-sm-9">--}}
-                {{--                                <textarea name="comment" class="form-control"></textarea>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--
-                <div class="col-sm-9 offset-sm-3">--}}
-                {{--                                <button type="submit" class="btn btn-form btn-block">Submit</button>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </form>
-             --}}
-                {{--
-             </div>
-             --}}
-                @if(!empty($event->reviews))
+
+                @if(!empty($event->reviews->toArray()))
                     @foreach($event->reviews as $r)
                         <div class="reviews col-12">
                             <div class="row blockquote review-item">

@@ -135,7 +135,7 @@
                                             @foreach($restaurant->packages as $package)
                                             <div class="row reviews">
                                                 <div class="col-8 py-2">
-                                                    <p class="h3"><strong>{{$package->package_name}}</strong><p>
+                                                    <p class="h3"><strong>{{$package->package_name}}</strong><p><p>{{$package->text_under_name}}</p>
                                                     <p>Rs.{{$package->price}}</p>
                                                 </div>
                                                 <div class="col-4 py-3">
@@ -154,18 +154,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12 px-2">
-                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                <p class="px-2"><a href="#" data-toggle="collapse" data-target="#elig-box-{{$package->id}}" class="" aria-expanded="true">show more</a></p>
                                                 </div>
-                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box-{{$package->id}}">
                                                         <div class="arrow-up"></div>
-                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <p class="h5">{{$package->custom_package_detail}}</p>
                                                         <div class="row">
+                                                            @foreach($package->activemenus as $m)
                                                             <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>{{$m->name}}</p>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
-                                                            </div>
+                                                            @endforeach
                                                         </div>
                                                 </div>
                                         </div>
@@ -409,7 +408,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}">
+                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}" maxlength="10">
                                     </div>
                                     {{--                                    <div class="form-group form-check">--}}
                                     {{--                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
@@ -428,45 +427,9 @@
 
             </div>
             <!----- Review Section Starts---->
+            @if(!empty($restaurant->reviews->toArray()))
             <div class="row py-5 event-section event">
                 <h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Customer Reviews</h2>
-                {{--
-                <div class="col-12 py-4 reviews">
-                   --}}
-                {{--
-                <form>
-                   --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--						<label for="inputEmail3" class="col-sm-3 col-form-label">Your Review</label>--}}
-                {{--
-                <div class="col-sm-9">--}}
-                {{--						  <textarea name="comment" class="form-control"></textarea>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-                <div class="form-group row">
-                   --}}
-                {{--
-                <div class="col-sm-9 offset-sm-3">--}}
-                {{--						  <button type="submit" class="btn btn-form btn-block">Submit</button>--}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </div>
-             --}}
-                {{--
-             </form>
-             --}}
-                {{--
-             </div>
-             --}}
                 @foreach($restaurant->reviews as $review)
                     <div class="reviews col-12">
                         <div class="review-item">
@@ -493,6 +456,7 @@
                     </div>
                 @endforeach
             </div>
+            @endif
             <!----- Review Section Ends---->
         </div>
     </section>

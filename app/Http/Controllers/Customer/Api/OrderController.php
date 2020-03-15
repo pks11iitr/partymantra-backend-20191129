@@ -914,7 +914,7 @@ class OrderController extends Controller
                             'package_type' => $c->other->package_type ?? 'menu'
                         ];
 
-                        $amount = $amount + $c->no_of_pass * $c->other->price;
+                        $amount = $amount + $c->no_of_pass * ($menuarr[$c->other_id]??0);
                         $totalpass = $totalpass + $c->no_of_pass;
 
                     }

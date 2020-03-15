@@ -155,12 +155,12 @@
             <div class="col-12 mobilemenu text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link @if(!request('type') || request('type')=='event'){{'active'}}@endif" href="{{route('website.home')}}"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
+                        <a class="nav-link @if(Route::currentRouteName()=='website.home' && (!request('type') || request('type')=='event')){{'active'}}@endif" href="{{route('website.home')}}"><i class="fa fa-bolt" aria-hidden="true"></i> Club Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if(request('type')=='restaurant'){{'active'}}@endif" href="{{route('website.home')}}?type=restaurant"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
+                        <a class="nav-link @if(Route::currentRouteName()=='website.home' && request('type')=='restaurant'){{'active'}}@endif" href="{{route('website.home')}}?type=restaurant"><i class="fa fa-cutlery" aria-hidden="true"></i>  Dinning</a>
                     </li>
-                    <li class="nav-item @if(request('type')=='party'){{'active'}}@endif">
+                    <li class="nav-item @if(Route::currentRouteName()=='website.home' && request('type')=='party'){{'active'}}@endif">
                         <a class="nav-link" href="{{route('website.home')}}?type=party"><i class="fa fa-glass" aria-hidden="true"></i> Parties</a>
                     </li>
                 </ul>
@@ -174,10 +174,10 @@
     <div class="container">
         <div class="row">
             <div class="mobform col-12 left py-2">
-                <form action="#" method="post" novalidate="novalidate">
+                <form method="get" action="{{route('website.search')}}">
                     <div class="row">
 
-                        <form method="get" action="{{route('website.search')}}">
+
                         <div class="col-9 p-0">
 
                                 <input type="text" class="forminput form-control" name="search" placeholder="Search term..." value="{{request('search')}}">
@@ -187,7 +187,6 @@
                         <div class="col-3 p-0">
                             <button type="submit" class="btn btn-form btn-block"><i class="fa fa-search"></i> Search</button>
                         </div>
-                        </form>
                     </div>
                 </form>
             </div>

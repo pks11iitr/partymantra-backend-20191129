@@ -9,7 +9,7 @@
         data-buttontext="Pay with Razorpay"
         data-name='Party Mantra'
         data-description="{{$data['description']??''}}"
-        data-image="http://packagingspare.com/vendor/themes/images/logo.png"
+        data-image="{{env('APP_URL')}}/theme/img/tplogo.png"
         data-prefill.name="{{$data['name']??''}}"
         data-prefill.email="{{$data['email']??''}}"
         data-prefill.contact="{{$data['mobile']??''}}"
