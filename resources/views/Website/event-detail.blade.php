@@ -54,9 +54,13 @@
                         </div>
                         <div class="col-12 event">
                             <h2 class="heading"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> More Info</h2>
+                            <div class="row">
                             @foreach($event->facilities as $f)
-                                <p class="text-justify"><span class="heading h6" style="margin-right:5px;"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>{{$f->name}}</p>
+                                <div class="col-6">
+                                    <p class="text-justify"><span class="heading h6" style="margin-right:5px;"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>{{$f->name}}</p>
+                                </div>
                             @endforeach
+                            </div>
                         </div>
                         @if(!empty($event->gallery))
                             <div class="col-12 event">
@@ -108,77 +112,99 @@
                             @if(!empty($event->covers->toArray()))
                                 <div class="col-12 event">
                                     <h2 class="heading">Cover charges</h2>
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Packages</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($event->covers as $c)
-                                            <tr>
-                                                <td>{{$c->package_name}}</td>
-                                                <td>Rs.{{$c->price}}</td>
-                                                <td>
-                                                    <div class="input-group">
-                                    <span class="input-group-btn">
-                                    <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="" packageid="{{$c->id}}" type1="cover">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-                                    </span>
-                                                        <input type="hidden" name="itemid[]" value="{{$c->id}}" id="pack-{{$c->id}}">
-                                                        <input type="text" id="packpass-{{$c->id}}" name="pass[]" class="form-control input-number quantity covers" value="{{isset($cartdata['itemid'])?(array_search($c->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($c->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100" >
-                                                        <span class="input-group-btn">
-                                    <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="" packageid="{{$c->id}}" type1="cover">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                                    </span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="row py-2 bg-light">
+                                        <div class="col-4">
+                                            <h6>Packages</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>Price</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        </div>
+                                    </div>
+                                     @foreach($event->covers as $c)
+                                    <div class="row py-2">
+                                        <div class="col-4">
+                                            <p>{{$c->package_name}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                           <p>Rs.{{$c->price}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="" packageid="{{$c->id}}" type1="cover">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    </button>
+                                                </span>
+                                                <input type="hidden" name="itemid[]" value="{{$c->id}}" id="pack-{{$c->id}}">
+                                                <input type="text" id="packpass-{{$c->id}}" name="pass[]" class="form-control input-number quantity covers" value="{{isset($cartdata['itemid'])?(array_search($c->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($c->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100" >
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="" packageid="{{$c->id}}" type1="cover">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     @endforeach
                                 </div>
                             @endif
                             @if(!empty($event->packages))
                                 <div class="col-12 event">
                                     <h2 class="heading">Event Packages</h2>
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Packages</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($event->packages as $c)
-                                            <tr>
-                                                <td>{{$c->package_name}}<br>{{$c->text_under_name}}</td>
-                                                <td>Rs.{{$c->price}}</td>
-                                                <td>
-                                                    <div class="input-group">
-                                    <span class="input-group-btn">
-                                    <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="" packageid="{{$c->id}}" type1="package">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-                                    </span>
-                                                        <input type="hidden" name="itemid[]" value="{{$c->id}}"  id="pack-{{$c->id}}">
-                                                        <input type="text" id="packpass-{{$c->id}}" name="pass[]" class="form-control input-number quantity packages" value="{{isset($cartdata['itemid'])?(array_search($c->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($c->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100">
-                                                        <span class="input-group-btn">
-                                    <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="" packageid="{{$c->id}}" type1="package">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                                    </span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="row py-2 bg-light">
+                                        <div class="col-4">
+                                            <h6>Packages</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>Price</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        </div>
+                                    </div>
+                                    @foreach($event->packages as $c)
+                                    <div class="row py-2">
+                                        <div class="col-4">
+                                            <p>{{$c->package_name}}<br>{{$c->text_under_name}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                           <p>Rs.{{$c->price}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="" packageid="{{$c->id}}" type1="package">
+                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                </span>
+                                                                    <input type="hidden" name="itemid[]" value="{{$c->id}}"  id="pack-{{$c->id}}">
+                                                                    <input type="text" id="packpass-{{$c->id}}" name="pass[]" class="form-control input-number quantity packages" value="{{isset($cartdata['itemid'])?(array_search($c->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($c->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100">
+                                                                    <span class="input-group-btn">
+                                                <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="" packageid="{{$c->id}}" type1="package">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 px-2">
+                                                <p class="px-2">Offfer Details...<a href="#" data-toggle="collapse" data-target="#elig-box" class="" aria-expanded="true">show more</a></p>
+                                                </div>
+                                                <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
+                                                        <div class="arrow-up"></div>
+                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span> lorem ipsum .event</p>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span> lorem ipsum .event</p>
+                                                            </div>
+                                                        </div>     
+                                                </div>
+                                    </div>
+                                    @endforeach
+                                    
                                 </div>
                             @endif
                             <div class="col-12 event">
@@ -307,12 +333,19 @@
                     @foreach($event->reviews as $r)
                         <div class="reviews col-12">
                             <div class="row blockquote review-item">
-                                <div class="col-3 text-center">
-                                    <img class="rounded-circle reviewer" src="{{$r->user->image}}">
+                                <div class="col-4 text-center">
+                                    <img class="rounded-circle review-image" src="{{$r->user->image}}">
                                 </div>
-                                <div class="col-9">
+                                <div class="col-8">
                                     <h6 class="heading">{{$r->user->name??'User'}}</h6>
-                                    <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                   <!-- <div class="ratebox text-center" data-id="0" data-rating="5"></div>-->
+                                    <div class="rate  px-2">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    </div>
                                     <p class="review-text">{{$r->description}}</p>
                                     <p>{{date('D,d M Y', strtotime($r->created_at))}}</p>
                                 </div>

@@ -233,6 +233,10 @@ line-height:10px!important;
 .order-image{
 height: 90px;
 }
+.review-image{
+height: 90px;
+width:90px;
+}
 
 .card-title {
     font-size: 1.28571429em;
@@ -321,6 +325,11 @@ height: 90px;
 height: 90px;
 }
 
+.review-image{
+height: 90px;
+width:90px;
+}
+
 }
 
 @media (min-width: 481px){
@@ -330,6 +339,18 @@ height: 90px;
     .order-image{
     height: 120px;
     }
+
+    .review-image{
+height: 120px;
+width:120px;
+}
+}
+.nav-pills > li > a{
+    margin-right: 0px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #ec7160;
+    border-radius: 0;
 }
 @media (min-width: 767px){
     .card-img-top {
@@ -338,6 +359,10 @@ height: 90px;
     .order-image{
         width:236px;
         height:157px;
+    }
+    .review-image{
+        height: 157px;
+        width:157px;
     }
 }
 

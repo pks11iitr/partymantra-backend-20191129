@@ -41,20 +41,20 @@
                             <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="tel:+91-{{$restaurant->contact_no}}" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
                             <div class="row py-2">
                                 
-                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                                    <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time</strong><br>{{$restaurant->open}}-{{$restaurant->close}}</p>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time</strong><br> {{$restaurant->open}}-{{$restaurant->close}}</p>
                                 </div>
-                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                                    <p><strong><i class="fa fa-rupee" aria-hidden="true"></i> Everage Cost</strong><br>{{$restaurant->per_person_text}}</p>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-rupee" aria-hidden="true"></i> Everage Cost</strong><br> {{$restaurant->per_person_text}}</p>
                                 </div>
-                                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                                    <p><strong><i class="fa fa-mobile" aria-hidden="true"></i> Contact Number</strong><br>+91-{{$restaurant->contact_no}}</p>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-mobile" aria-hidden="true"></i> Contact Number</strong><br> +91-{{$restaurant->contact_no}}</p>
                                 </div>
                             </div>
                             <h6><i class="fa fa-heart" aria-hidden="true"></i> Facilities</h6>
                             <div class="row px-2">
                                 @foreach($restaurant->facilities as $facility)
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                    <div class="col-6">
                                         <p class="text-justify"><span class="heading h6" style="margin-right:5px;"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>{{$facility->name}}</p>
                                     </div>
                                 @endforeach
@@ -134,11 +134,11 @@
                                             @if($restaurant->packages->toArray())
                                             @foreach($restaurant->packages as $package)
                                             <div class="row reviews">
-                                                <div class="col-9 py-2">
+                                                <div class="col-8 py-2">
                                                     <p class="h3"><strong>{{$package->package_name}}</strong><p>
                                                     <p>Rs.{{$package->price}}</p>
                                                 </div>
-                                                <div class="col-3 py-3">
+                                                <div class="col-4 py-3">
                                                     <div class="input-group">
                                                          <span class="input-group-btn">
                                                              <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
@@ -159,8 +159,14 @@
                                                 <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
                                                         <div class="arrow-up"></div>
                                                         <p class="h5 text-danger">Event Details:</p>
-                                                        <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
-     
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                            </div>
+                                                        </div>     
                                                 </div>
                                         </div>
                                                 <!--<table class="table table-hover">
@@ -251,9 +257,9 @@
                                     <div class="col-12"> 
                                         <div id="calendar-container">
                                           <h1 id="calendar-title">
-                                            <div class="btn left"><</div>
+                                            <div class="btn clndr left"><</div>
                                             <span>April, 2019</span>
-                                            <div class="btn right">></div>
+                                            <div class="btn clndr right">></div>
                                           </h1>
                                           <table id="calendar-table">
                                             <tr>
@@ -319,29 +325,29 @@
                                 <div class="form-group">
                                     <label for="exampleInputname1">Choose Slot</label>
                                     <div class="form-group row mb-2">
-                                    <div class="col-3 text-center form-check form-check-inline">
+                                    <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
                                       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="9-12 AM">
                                       <label class="form-check-label slot-lable" for="inlineRadio1">9-12 AM</label>
                                     </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
+                                    <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
                                       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=" 2-5 PM">
                                       <label class="form-check-label slot-lable" for="inlineRadio2">2-5 PM</label>
                                     </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
+                                    <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
                                       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
                                       <label class="form-check-label slot-lable" for="inlineRadio3"> 6-9 PM</label>
                                     </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
+                                    <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
                                       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
                                       <label class="form-check-label slot-lable" for="inlineRadio3"> 9-12 PM</label>
                                     </div>
                                     </div>
                                 </div>
                                     <div class="row py-2">
-                                        <div class="col-6">
+                                        <div class="col-8">
                                             <p>Men </p>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <div class="input-group">
                                  <span class="input-group-btn">
                                  <button type="button" class="quantity-ratio-minus btn btn-quant btn-number"  data-type="minus" data-field="" ratioid="men">
@@ -357,11 +363,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">
+                                    <div class="row py-2">
+                                        <div class="col-8">
                                             <p>Women </p>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <div class="input-group">
                                  <span class="input-group-btn">
                                  <button type="button" class="quantity-ratio-minus btn btn-quant btn-number"  data-type="minus" data-field="" ratioid="women">
@@ -377,11 +383,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">
+                                    <div class="row py-2">
+                                        <div class="col-8">
                                             <p>Couple </p>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <div class="input-group">
                                  <span class="input-group-btn">
                                  <button type="button" class="quantity-ratio-minus btn btn-quant btn-number"  data-type="minus" data-field="" ratioid="couple">
@@ -468,17 +474,27 @@
              --}}
                 @foreach($restaurant->reviews as $review)
                     <div class="reviews col-12">
-                        <div class="row blockquote review-item">
-                            <div class="col-3 text-center">
-                                <img class="rounded-circle reviewer" src="{{$review->user->image}}">
-                            </div>
-                            <div class="col-9">
-                                <h6 class="heading">{{$review->user->name}}</h6>
-                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
-                                <p class="review-text">{{$review->description}}</p>
-                                <p>{{date('D, M d, Y', strtotime($review->created_at))}}</p>
+                        <div class="review-item">
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <img class="rounded-circle review-image" src="{{$review->user->image}}">
+                                </div>
+                                <div class="col-8">
+                                    <h6 class="heading">{{$review->user->name}}</h6>
+                                   <!-- <div class="ratebox text-center" data-id="0" data-rating="5"></div>-->
+                                   <div class="rate  px-2">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    </div>
+                                    <p class="review-text">{{$review->description}}</p>
+                                    <p>{{date('D, M d, Y', strtotime($review->created_at))}}</p>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 @endforeach
             </div>
