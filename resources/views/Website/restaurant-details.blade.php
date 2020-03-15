@@ -38,25 +38,23 @@
                             <p class="text-justify px-2">{{$restaurant->description}}</p>
                         </div>
                         <div class="col-12 event">
-                            <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
-                            <div class="row py-2 text-center">
-                                <div class="col-3">
-                                    <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i> Address</strong><br>{{$restaurant->address}}</p>
+                            <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="tel:+91-{{$restaurant->contact_no}}" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
+                            <div class="row py-2">
+
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time :</strong><br>{{$restaurant->open}}-{{$restaurant->close}}</p>
                                 </div>
-                                <div class="col-3">
-                                    <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time</strong><br>{{$restaurant->open}}-{{$restaurant->close}}</p>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-rupee" aria-hidden="true"></i> Everage Cost :</strong><br>{{$restaurant->per_person_text}}</p>
                                 </div>
-                                <div class="col-3">
-                                    <p><strong><i class="fa fa-rupee" aria-hidden="true"></i> Everage Cost</strong><br>{{$restaurant->per_person_text}}</p>
-                                </div>
-                                <div class="col-3">
-                                    <p><strong><i class="fa fa-mobile" aria-hidden="true"></i> Contact Number</strong><br>+91-{{$restaurant->contact_no}}</p>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <p><strong><i class="fa fa-mobile" aria-hidden="true"></i> Contact Number :</strong><br>+91-{{$restaurant->contact_no}}</p>
                                 </div>
                             </div>
                             <h6><i class="fa fa-heart" aria-hidden="true"></i> Facilities</h6>
                             <div class="row px-2">
                                 @foreach($restaurant->facilities as $facility)
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <p class="text-justify"><span class="heading h6" style="margin-right:5px;"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>{{$facility->name}}</p>
                                     </div>
                                 @endforeach
@@ -262,9 +260,15 @@
                                                 </div>
                                                 <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
                                                         <div class="arrow-up"></div>
-                                                        <p class="h5 text-danger">Package Details:</p>
-                                                        <p class="text-justify">{{$package->description}}</p>
-
+                                                        <p class="h5 text-danger">Event Details:</p>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p class="text-justify"><span class="heading"><i class="fa fa-circle" aria-hidden="true"></i></span>  lorem ipsum .event</p>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                         </div>
                                                 <!--<table class="table table-hover">
@@ -380,9 +384,9 @@
                                     <div class="col-12">
                                         <div id="calendar-container">
                                           <h1 id="calendar-title">
-                                            <div class="btn left"><</div>
+                                            <div class="btn clndr left"><</div>
                                             <span>April, 2019</span>
-                                            <div class="btn right">></div>
+                                            <div class="btn clndr right">></div>
                                           </h1>
                                           <table id="calendar-table">
                                             <tr>
@@ -450,7 +454,7 @@
                                     <label for="exampleInputname1">Choose Slot</label>
                                     <div class="form-group row mb-2">
                                         @foreach(explode(',',$restaurant->timings) as $t)
-                                        <div class="col-3 text-center form-check form-check-inline">
+                                        <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
                                           <input class="form-check-input" type="radio" name="time" id="inlineRadio1" value="{{$t}}">
                                           <label class="form-check-label slot-lable" for="inlineRadio1">{{$t}}</label>
                                         </div>
@@ -588,12 +592,18 @@
                 @foreach($restaurant->reviews as $review)
                     <div class="reviews col-12">
                         <div class="row blockquote review-item">
-                            <div class="col-3 text-center">
-                                <img class="rounded-circle reviewer" src="{{$review->user->image}}">
+                            <div class="col-4 text-center">
+                                <img class="rounded-circle review-image" src="{{$review->user->image}}">
                             </div>
-                            <div class="col-9">
+                            <div class="col-8">
                                 <h6 class="heading">{{$review->user->name}}</h6>
-                                <div class="ratebox text-center" data-id="0" data-rating="5"></div>
+                                <div class="rate  px-2">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
                                 <p class="review-text">{{$review->description}}</p>
                                 <p>{{date('D, M d, Y', strtotime($review->created_at))}}</p>
                             </div>

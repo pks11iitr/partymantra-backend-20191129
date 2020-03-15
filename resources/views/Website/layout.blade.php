@@ -78,7 +78,7 @@
                     <form method="get" action="{{route('website.search')}}">
                         <div class="row">
 
-                                <div class="col-6 p-0">
+                                <div class="col-9 p-0">
                                     <input type="text" class="forminput form-control" name="search" placeholder="Search term..." value="{{request('search')}}">
                                 </div>
                                 <div class="col-3 p-0">
@@ -178,7 +178,7 @@
                     <div class="row">
 
                         <form method="get" action="{{route('website.search')}}">
-                        <div class="col-6 p-0">
+                        <div class="col-9 p-0">
 
                                 <input type="text" class="forminput form-control" name="search" placeholder="Search term..." value="{{request('search')}}">
 
