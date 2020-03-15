@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Website/search-results.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/RestaurantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/RestaurantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/Traits/WebsiteLoginRedirection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/theme/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/theme/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/event-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/order-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/order-details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/party-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/party-details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/restaurant-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/restaurant-details.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,14 +270,7 @@
       <workItem from="1583770098690" duration="4597000" />
       <workItem from="1583907262413" duration="1851000" />
       <workItem from="1583919916465" duration="4705000" />
-      <workItem from="1584019868126" duration="14686000" />
-    </task>
-    <task id="LOCAL-00203" summary="notifications at order success">
-      <created>1581580538939</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1581580538939</updated>
+      <workItem from="1584019868126" duration="27405000" />
     </task>
     <task id="LOCAL-00204" summary="notifications at order success">
       <created>1581580732514</created>
@@ -610,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584081949017</updated>
     </task>
-    <option name="localTasksCounter" value="252" />
+    <task id="LOCAL-00252" summary="website search added">
+      <created>1584192570808</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1584192570808</updated>
+    </task>
+    <option name="localTasksCounter" value="253" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="minor fix" />
     <MESSAGE value="fixes for banners" />
     <MESSAGE value="collection changes" />
     <MESSAGE value="payment history added at admin panel" />
@@ -656,21 +660,22 @@
     <MESSAGE value="my profile, order history" />
     <MESSAGE value="restaurant details and order done" />
     <MESSAGE value="changes in login api, order cancel api, resend otp added" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in login api, order cancel api, resend otp added" />
+    <MESSAGE value="website search added" />
+    <option name="LAST_COMMIT_MESSAGE" value="website search added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583773314715">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1583773314715" />
-    <state x="343" y="42" width="737" height="708" key="#phpunit.xml" timestamp="1583154010309">
+    <state x="343" y="42" width="737" height="708" key="#phpunit.xml" timestamp="1584266522733">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1583154010309" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1584081948706">
+    <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1584270491140">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1584081948706" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1584270491140" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -703,10 +708,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1584081952528">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1584194031984">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1584081952528" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1584194031984" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1583907367960">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -715,10 +720,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="362" y="126" width="911" height="642" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1583394527359" />
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1583770437067">
+    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1584193902169">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1583770437067" />
+    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1584193902169" />
     <state x="365" y="115" width="700" height="530" key="recent.locations.popup" timestamp="1580456748058">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

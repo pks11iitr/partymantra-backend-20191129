@@ -4,7 +4,7 @@
     @if ($errors->any())
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <?php var_dump($errors) ?>
+            {{$errors->first()}}
         </div>
     @endif
     <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}}); background-repeat: no-repeat;background-size: cover;">
@@ -177,7 +177,7 @@
                                                              <button type="button" class="quantity-plus-item btn btn-quant btn-number" data-type="plus" data-field="" itemtype="menu" itemid='{{$menu->id}}' itemprice="250" itemname="{{$menu->name}}">
                                                              <i class="fa fa-plus" aria-hidden="true"></i>
                                                              </button>
-                                                         </span>     
+                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,7 +189,7 @@
                                                             <td scope="col" class="py-4"><strong>{{$menu->name}}</strong><br>
                                                                 <small>Rs.500</small><br>
                                                                 <br>offer details <a href="#" data-toggle="collapse" data-target="#elig-box">show more</a>
-                                                                
+
                                                             </td>
                                                             <td scope="col">
                                                                 <div class="input-group">
@@ -230,7 +230,7 @@
                                     padding: 10px 15px;
                                     background:transparent;
                                 }
-                                
+
                             </style>
                                 <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <div class="row">
@@ -240,18 +240,18 @@
                                             <div class="row reviews">
                                                 <div class="col-9 py-2">
                                                     <p class="h3"><strong>{{$package->package_name}}</strong><p>
-                                                    <p>Rs.{{$package->price}}</p>
+                                                    <p>{{$package->text_under_name}}</p><p>Rs.{{$package->price}}</p>
                                                 </div>
                                                 <div class="col-3 py-3">
                                                     <div class="input-group">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="quantity-left-minus btn btn-quant btn-number"  data-type="minus" data-field="">
+                                                            <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
                                                               <i class="fa fa-minus" aria-hidden="true"></i>
                                                             </button>
                                                         </span>
-                                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+                                                        <input type="text" id="package-{{$package->id}}" name="quantity" class="form-control input-number quantity" value="{{isset($cartdata['itemid'])?(array_search($package->id,$cartdata['itemid'])!==false?(isset($cartdata['pass'])?($cartdata['pass'][array_search($package->id,$cartdata['itemid'])]??0):0):0):0}}" min="1" max="100">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="quantity-right-plus btn btn-quant btn-number" data-type="plus" data-field="">
+                                                            <button type="button" class="quantity-plus-item btn btn-quant btn-number" data-type="plus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
                                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                                             </button>
                                                         </span>
@@ -262,9 +262,9 @@
                                                 </div>
                                                 <div class="col-12 eligibal p-2 collapse px-4" id="elig-box">
                                                         <div class="arrow-up"></div>
-                                                        <p class="h5 text-danger">Event Details:</p>
-                                                        <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
-     
+                                                        <p class="h5 text-danger">Package Details:</p>
+                                                        <p class="text-justify">{{$package->description}}</p>
+
                                                 </div>
                                         </div>
                                                 <!--<table class="table table-hover">
@@ -306,14 +306,18 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
-                    <form action="{{route('website.book')}}" method="post">
+                    <form action="{{route('website.book')}}" method="post" onsubmit="return checkTableBook()">
                 <!----- Sidebar Starts---->
                     <input type="hidden" value="restaurant" name="type">
                     <input type="hidden" name="entity_id" value="{{$restaurant->id??''}}">
-                
+
                     <div clss="row">
-                        <div class="col-12 event">
-                            <h2 class="heading">Booking Details </h2>
+                        <div class="alert alert-danger" id="page-errors" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p id="error-msg"></p>
+                        </div>
+                        <div class="col-12 event" style="@if(empty($cartdata)){{'display:none'}}@endif" id="selected-items-div">
+                            <h2 class="heading">Selected Items</h2>
                             <table class="table table-hover">
                                 <tbody id="selected_elements">
 
@@ -373,7 +377,7 @@
 
                                     <h2 class="text-center py-2 mb-4">Book Your Table Now</h2>
                                     <div class="form-group row">
-                                    <div class="col-12"> 
+                                    <div class="col-12">
                                         <div id="calendar-container">
                                           <h1 id="calendar-title">
                                             <div class="btn left"><</div>
@@ -435,31 +439,22 @@
                                               <td></td>
                                               <td></td>
                                             </tr>
-                                            
+
                                           </table>
                                           <p id="date-text"></p>
+                                            <input type="hidden" name="date" value="" id="selected-date">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputname1">Choose Slot</label>
                                     <div class="form-group row mb-2">
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="9-12 AM">
-                                      <label class="form-check-label slot-lable" for="inlineRadio1">9-12 AM</label>
-                                    </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=" 2-5 PM">
-                                      <label class="form-check-label slot-lable" for="inlineRadio2">2-5 PM</label>
-                                    </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
-                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 6-9 PM</label>
-                                    </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
-                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 9-12 PM</label>
-                                    </div>
+                                        @foreach(explode(',',$restaurant->timings) as $t)
+                                        <div class="col-3 text-center form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="time" id="inlineRadio1" value="{{$t}}">
+                                          <label class="form-check-label slot-lable" for="inlineRadio1">{{$t}}</label>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                     <div class="row py-2">
@@ -525,22 +520,21 @@
                                     </br>
                                     <div class="form-group">
                                         <label for="exampleInputname1">Your Name</label>
-                                        <input type="text" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" name="name" value="{{$cartdata['name']??''}}">
+                                        <input type="text" class="form-control" aria-describedby="nameHelp" name="name" value="{{$cartdata['name']??''}}" id="booking-email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Your Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{$cartdata['email']??''}}">
+                                        <input type="email" class="form-control" aria-describedby="emailHelp" name="email" value="{{$cartdata['email']??''}}" id="booking-email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="exampleInputmobile" name="mobile" value="{{$cartdata['mobile']??''}}">
+                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}">
                                     </div>
 {{--                                    <div class="form-group form-check">--}}
 {{--                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
 {{--                                        <label class="form-check-label" for="exampleCheck1">Accept <a href="">Terms & Cond.</a></label>--}}
 {{--                                    </div>--}}
-                                    <input type="hidden" name="date" value="2020-12-11">
-                                    <input type="hidden" name="time" value="11:00AM">
+
                                     <button type="submit" class="btn btn-form btn-block">Book Now</button>
 
                             </div>
@@ -549,7 +543,7 @@
                     </form>
                 </div>
                 <!----- Sidebar Ends---->
-                
+
             </div>
             <!----- Review Section Starts---->
             <div class="row py-5 event-section event">
@@ -618,16 +612,61 @@
    .form-check-inline{
   margin-right:0;
   }
-  
+
   .slot-lable {
     cursor: pointer;
     background: #e2e2e2;
     padding: 6px 15px;
-}   
+}
     .slot-lable:hover{
         cursor: pointer;
         background: #ec7160;
         color:#fff;
     }
   </style>
+@endsection
+@section('scripts')
+    <script>
+        //clearGrid()
+        renderCalendar();
+        function checkTableBook(){
+
+            if($("#selected-date").val()==''){
+                $("#error-msg").html('Please select date')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+            if(!$("input[name='time']:checked").val()){
+                $("#error-msg").html('Please select time slot')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+
+            if($("#booking-email").val()==''){
+                $("#error-msg").html('Please enter email')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+
+            if($("#booking-mobile").val()==''){
+                $("#error-msg").html('Please enter mobile')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+
+                return false
+            }
+
+            if($("#booking-name").val()==''){
+                $("#error-msg").html('Please enter name')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+        }
+
+
+    </script>
 @endsection

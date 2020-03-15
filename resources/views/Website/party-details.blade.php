@@ -4,7 +4,7 @@
     @if ($errors->any())
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <?php var_dump($errors) ?>
+            {{$errors->first()}}
         </div>
     @endif
     <section class="section pagecrumb" style="background-image:url({{$restaurant->header_image}}); background-repeat: no-repeat;background-size: cover;">
@@ -40,7 +40,7 @@
                         <div class="col-12 event">
                             <h2 class="heading"><i class="fa fa-info-circle" aria-hidden="true"></i> About <span class="float-right"><a href="tel:+91-{{$restaurant->contact_no}}" class="heading"><i class="fa fa-phone" aria-hidden="true"></i> Call</a></span></h2>
                             <div class="row py-2">
-                                
+
                                 <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
                                     <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i> Time</strong><br>{{$restaurant->open}}-{{$restaurant->close}}</p>
                                 </div>
@@ -160,7 +160,7 @@
                                                         <div class="arrow-up"></div>
                                                         <p class="h5 text-danger">Event Details:</p>
                                                         <p class="text-justify">Event Details..lorem ipsum ...event Details..lorem ipsum .event Details..lorem ipsum .</p>
-     
+
                                                 </div>
                                         </div>
                                                 <!--<table class="table table-hover">
@@ -202,11 +202,15 @@
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
-                    <form action="{{route('website.book')}}" method="post">
+                    <form action="{{route('website.book')}}" method="post" onsubmit="return checkPartyBook()">
                     <!----- Sidebar Starts---->
+                        <div class="alert alert-danger" id="page-errors" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p id="error-msg"></p>
+                        </div>
                     <input type="hidden" value="party" name="type">
                     <input type="hidden" name="entity_id" value="{{$restaurant->id??''}}">
-                    
+
                     <div clss="row">
                         <div class="col-12 event">
                                 <h2 class="heading">Booking Details </h2>
@@ -248,7 +252,7 @@
 
                                     <h2 class="text-center py-2 mb-4">Book Your Party Now</h2>
                                 <div class="form-group row">
-                                    <div class="col-12"> 
+                                    <div class="col-12">
                                         <div id="calendar-container">
                                           <h1 id="calendar-title">
                                             <div class="btn left"><</div>
@@ -310,31 +314,22 @@
                                               <td></td>
                                               <td></td>
                                             </tr>
-                                            
+
                                           </table>
                                           <p id="date-text"></p>
+                                            <input type="hidden" name="date" value="" id="selected-date">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputname1">Choose Slot</label>
                                     <div class="form-group row mb-2">
+                                        @foreach(explode(',',$restaurant->party_timings) as $t)
                                     <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="9-12 AM">
-                                      <label class="form-check-label slot-lable" for="inlineRadio1">9-12 AM</label>
+                                      <input class="form-check-input" type="radio" name="time" id="inlineRadio1" value="{{$t}}">
+                                      <label class="form-check-label slot-lable" for="inlineRadio1">{{$t}}</label>
                                     </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=" 2-5 PM">
-                                      <label class="form-check-label slot-lable" for="inlineRadio2">2-5 PM</label>
-                                    </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
-                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 6-9 PM</label>
-                                    </div>
-                                    <div class="col-3 text-center form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="6-9 PM" >
-                                      <label class="form-check-label slot-lable" for="inlineRadio3"> 9-12 PM</label>
-                                    </div>
+                                            @endforeach
                                     </div>
                                 </div>
                                     <div class="row py-2">
@@ -400,15 +395,15 @@
                                     </br>
                                     <div class="form-group">
                                         <label for="exampleInputname1">Your Name</label>
-                                        <input type="text" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" name="name" value="{{$cartdata['name']??''}}">
+                                        <input type="text" class="form-control" id="booking-name" aria-describedby="nameHelp" name="name" value="{{$cartdata['name']??''}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Your Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{$cartdata['email']??''}}">
+                                        <input type="email" class="form-control" id="booking-email" aria-describedby="emailHelp" name="email" value="{{$cartdata['email']??''}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="exampleInputmobile" name="mobile" value="{{$cartdata['mobile']??''}}">
+                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}">
                                     </div>
                                     {{--                                    <div class="form-group form-check">--}}
                                     {{--                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
@@ -424,7 +419,7 @@
                         </form>
                     </div>
                     <!----- Sidebar Ends---->
-                
+
             </div>
             <!----- Review Section Starts---->
             <div class="row py-5 event-section event">
@@ -493,16 +488,62 @@
    .form-check-inline{
   margin-right:0;
   }
-  
+
   .slot-lable {
     cursor: pointer;
     background: #e2e2e2;
     padding: 6px 15px;
-}   
+}
     .slot-lable:hover{
         cursor: pointer;
         background: #ec7160;
         color:#fff;
     }
   </style>
+@endsection
+@section('scripts')
+    <script>
+        //clearGrid()
+        renderCalendar();
+        function checkPartyBook(){
+
+            if($("#selected-date").val()==''){
+                $("#error-msg").html('Please select date')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+
+            if(!$("input[name='time']:checked").val()){
+                $("#error-msg").html('Please select time slot')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+
+            if($("#booking-email").val()==''){
+                $("#error-msg").html('Please enter email')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+
+            if($("#booking-mobile").val()==''){
+                $("#error-msg").html('Please enter mobile')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+
+                return false
+            }
+
+            if($("#booking-name").val()==''){
+                $("#error-msg").html('Please enter name')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+                return false
+            }
+        }
+
+
+    </script>
 @endsection

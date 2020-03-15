@@ -31,7 +31,7 @@ class RestaurantController extends Controller
         if(isset($requestdata))
             $cartdata=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
         //echo "<pre>";
-        //print_r($cartdata);die;
+        $request->session()->forget('requestdata');
         return view('Website.restaurant-details', compact('restaurant','cartdata'));
     }
 
@@ -54,6 +54,7 @@ class RestaurantController extends Controller
         $cartdata=[];
         if(isset($requestdata))
             $cartdata=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
+        $request->session()->forget('requestdata');
         return view('Website.party-details', ['restaurant'=>$restaurant, 'cartdata'=>$cartdata]);
     }
 

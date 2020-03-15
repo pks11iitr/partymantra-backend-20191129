@@ -31,7 +31,7 @@ class EventController extends Controller
         $requestdata=$request->session()->get('requestdata');
         if(isset($requestdata))
             $data=json_decode($request->session()->get('requestdata'),true)['cartdata']??[];
-        var_dump($data);
+        $request->session()->forget('requestdata');
         return view('Website.event-detail', ['event'=>$event, 'cartdata'=>$data]);
     }
 }

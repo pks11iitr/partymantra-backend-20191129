@@ -1,5 +1,11 @@
 @extends('Website.layout')
 @section('contents')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{$errors->first()}}
+        </div>
+    @endif
     <!-- Breadcrumb Starts-->
     <section class="section pagecrumb" style="background-image:url({{$event->header_image}}); background-repeat: no-repeat;background-size: cover;">
         <div class="container">
@@ -100,13 +106,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                     <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 px-2">
-                        <form method="post" action="{{route('website.book')}}" class="event-form " onsubmit="return checkEventBook()">
+                        <div class="alert alert-danger" id="page-errors" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p id="error-msg"></p>
+                        </div>
+                        <form method="post" action="{{route('website.book')}}" class="event-form " >
                         <div clss="row">
                             <input type="hidden" name="type" value="event">
                             @if(!empty($event->covers->toArray()))
-                                <div class="col-12 event">
+                                <div class="col-12 event" id="packagage-focus">
                                     <h2 class="heading">Cover charges</h2>
                                     <table class="table">
                                         <thead>
@@ -254,7 +264,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Your Mobile</label>
-                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}">
+                                        <input type="text" class="form-control" id="booking-mobile" name="mobile" value="{{$cartdata['mobile']??''}}" maxlength="10">
                                     </div>
                                     <button type="submit" class="btn btn-form btn-block">Book Now</button>
                                 </div>
@@ -262,7 +272,7 @@
                         </div>
                          </form>
                     </div>
-               
+
             </div>
             <div class="row py-5 event-section event">
                 <div class="col-12"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2></div>
@@ -358,22 +368,31 @@
             })
 
             if(canOrder==false){
-                alert('Please select atleast one item')
+                $("#error-msg").html('Please select atleast one package')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
                 return false
             }
 
             if($("#booking-email").val()==''){
-                alert('Please enter email')
+                $("#error-msg").html('Please enter email')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
                 return false
             }
 
             if($("#booking-mobile").val()==''){
-                alert('Please enter mobile')
+                $("#error-msg").html('Please enter mobile')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
+
                 return false
             }
 
             if($("#booking-name").val()==''){
-                alert('Please enter name')
+                $("#error-msg").html('Please enter name')
+                $("#page-errors").show()
+                $("#page-errors").get(0).scrollIntoView()
                 return false
             }
         }

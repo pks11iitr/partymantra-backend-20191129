@@ -9,15 +9,12 @@ trait WebsiteLoginRedirection
     public function redirectIfRequired($redirect, $data=[]){
         if (!auth()->user()){
             session(['redirect'=>$redirect]);
-            if(request()->isMethod('post'))
-                session(['requestdata'=>json_encode($data)]);
-            //var_dump($request->all());die;
+            if(request()->isMethod('post')){
+                if(!empty($data))
+                    session(['requestdata'=>json_encode($data)]);
+            }
             return redirect()->route('login');
-
         }
-        if(request()->isMethod('post'))
-            session(['requestdata'=>json_encode($data)]);
-
         return null;
     }
 }

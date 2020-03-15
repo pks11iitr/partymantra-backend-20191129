@@ -52,11 +52,11 @@ class OrderController extends Controller
             'itemid'=>'required|array',
             'itemid.*'=>'required|integer',
             'pass'=>'required|array',
-            'pass.*'=>'required|integer',
+            'pass.*'=>'required|integer|min:1',
             'name'=>'required|string|max:50',
-            'mobile'=>'required|integer|digits:10',
+            'mobile'=>'required|string|digits:10',
             'email'=>'required|email'
-        ]);
+        ], ['pass.*'=>'Please select a package']);
 
         $cartitems=[];
         $cartpackages=[];
@@ -129,7 +129,7 @@ class OrderController extends Controller
             'women'=>'required|integer|min:0',
             'couple'=>'required|integer|min:0',
             'name'=>'required|string|max:50',
-            'mobile'=>'required|integer|digits:10',
+            'mobile'=>'required|string|digits:10',
             'email'=>'required|email',
             'date'=>'required|date_format:Y-m-d',
             'time'=>'required|date_format:h:iA'
@@ -280,7 +280,7 @@ class OrderController extends Controller
             'women'=>'required|integer|min:0',
             'couple'=>'required|integer|min:0',
             'name'=>'required|string|max:50',
-            'mobile'=>'required|integer|digits:10',
+            'mobile'=>'required|string|digits:10',
             'email'=>'required|email',
             'date'=>'required|date_format:Y-m-d',
             'time'=>'required|string|max:20'
@@ -637,22 +637,9 @@ class OrderController extends Controller
                 $order->payment_status='paid';
                 $order->save();
                 event(new OrderSuccessfull($order));
-                return response()->json([
-                    'status'=>'success',
-                    'message'=>'success',
-                    'paymentdone'=>'yes',
-                    'data'=>[
-                        'orderid'=> $order->order_id,
-                        'total'=>0,
-                        'email'=>$email,
-                        'mobile'=>$mobile,
-                        'description'=>$description,
-                        'address' => '',
-                        'name'=>$name,
-                        'currency'=>'INR',
-                        'merchantid'=>$this->pay->merchantkey,
-                    ],
-                ], 200);
+
+                return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
+
             }else if($order->total-$fromwallet>0){
                 $response=$this->pay->generateorderid([
                     "amount"=>$order->total*100-$fromwallet*100,
@@ -681,12 +668,8 @@ class OrderController extends Controller
                     return view('Website.checkout', compact('data','api_key'));
 
                 }else{
-                    return response()->json([
-                        'status'=>'failed',
-                        'message'=>'Payment cannot be initiated',
-                        'data'=>[
-                        ],
-                    ], 200);
+                    return redirect()->route('cart-details', ['id'=>$order->refid])->with('error', 'We apologize, Payment cannot be initialized this time');
+
                 }
             }else{
                 Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
@@ -694,22 +677,7 @@ class OrderController extends Controller
                 $order->payment_status='paid';
                 $order->save();
                 event(new OrderSuccessfull($order));
-                return response()->json([
-                    'status'=>'success',
-                    'message'=>'success',
-                    'paymentdone'=>'yes',
-                    'data'=>[
-                        'orderid'=> '',
-                        'total'=>$order->total,
-                        'email'=>$email,
-                        'mobile'=>$mobile,
-                        'description'=>$description,
-                        'address' => '',
-                        'name'=>$name,
-                        'currency'=>'INR',
-                        'merchantid'=>$this->pay->merchantkey,
-                    ],
-                ], 200);
+                return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
             }
 
         }
@@ -855,9 +823,9 @@ class OrderController extends Controller
                 Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
             }
             event(new OrderSuccessfull($order));
-            return redirect()->route('website.order.details', ['id'=>$order->id])->with('success', 'Congratulations. Your order has been successfull');
+            return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
         }else{
-            return redirect()->route('website.order.details', ['id'=>$order->id])->with('error', 'We apologize, Your order is not successfull');
+            return redirect()->route('website.order.details', ['id'=>$order->refid])->with('error', 'We apologize, Your order is not successfull');
         }
     }
 

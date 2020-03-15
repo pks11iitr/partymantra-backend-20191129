@@ -1,5 +1,19 @@
 @extends('Website.layout')
 @section('contents')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <!-- Breadcrumb Starts-->
     <section class="py-2" style="background:#ec7160;">
         <div class="container">
@@ -93,6 +107,6 @@
             </div>
         </section>
         <!-- page container Ends-->
-        
+
     @endif
 @endsection

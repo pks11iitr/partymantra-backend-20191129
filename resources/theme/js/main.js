@@ -76,7 +76,9 @@ var quantitiy=0;
                $('#packpass-'+id).val(quantity + 1);
            }
        }else{
-           alert("You can select either cover charges or packages")
+           $("#error-msg").html('You can select either cover charges or packages')
+           $("#page-errors").show()
+           $("#page-errors").get(0).scrollIntoView()
        }
 
 
@@ -240,6 +242,9 @@ var quantitiy=0;
                 //alert(newitem)
                 if(quantity>0)
                     $('#selected_elements').append(newitem)
+
+                $("#selected-items-div").show()
+
             }
         }else{
             var quantity = parseInt($('#package-'+id).val());
@@ -272,6 +277,8 @@ var quantitiy=0;
                 //alert(newitem)
                 if(quantity>0)
                     $('#selected_elements').append(newitem)
+
+                $("#selected-items-div").show()
             }
         }
 
@@ -361,7 +368,7 @@ const MONTHS = [
 ];
 
 function getTotalDaysInMonth(year, month) {
- 
+
   return 32 - new Date(year, month, 32)
     .getDate();
 }
@@ -388,46 +395,53 @@ function clearGrid() {
 }
 
 function renderCalendar(date = CURR_DATE) {
-  clearGrid();
-  
-  // sets month and year
-  calendarTitle.innerText = `${MONTHS[date.getMonth()]}, ${date.getFullYear()}`;
-  
-  const dayOfWeek  = date.getDay();
-  const dateOfMnth = date.getDate();
-  
-  let totalMonthDays = getTotalDaysInMonth(
-    date.getFullYear(),
-    date.getMonth()
-  );
-  
-  let startDay = dayOfWeek - dateOfMnth % 7 + 1;
-  
-  if (startDay < 0)
-    startDay = (startDay + 35) % 7;
-  
-  for ( let i = startDay; i < totalMonthDays + startDay; i++ )
-    grid[i % 35].innerHTML = (i - startDay + 1);
-  
-  grid[(startDay + dateOfMnth - 1) % 35].classList.add('today-cell');
-  
-  dateText.innerHTML = CURR_DATE.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-  
+    clearGrid();
+    day=date.getDate()
+    if(day<10)
+        day=0+''+day
+    month=date.getMonth()+1
+    if(month<10)
+        month=0+''+month
+    year=date.getFullYear()
+
+    formatdate=year+'-'+month+'-'+day
+    // sets month and year
+    calendarTitle.innerText = `${MONTHS[date.getMonth()]}, ${date.getFullYear()}`;
+
+    const dayOfWeek  = date.getDay();
+    const dateOfMnth = date.getDate();
+
+    let totalMonthDays = getTotalDaysInMonth(
+        date.getFullYear(),
+        date.getMonth()
+    );
+
+    let startDay = dayOfWeek - dateOfMnth % 7 + 1;
+
+    if (startDay < 0)
+        startDay = (startDay + 35) % 7;
+
+    for ( let i = startDay; i < totalMonthDays + startDay; i++ )
+        grid[i % 35].innerHTML = (i - startDay + 1);
+
+    grid[(startDay + dateOfMnth - 1) % 35].classList.add('today-cell');
+
+    dateText.innerHTML = CURR_DATE.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    $("#selected-date").val(formatdate)
+
 }
 
-[...document.getElementsByClassName('btn')].forEach(btn => {
-  
+[...document.getElementsByClassName('clndr')].forEach(btn => {
+
   let incr = 1;
   // left button decreases month
   if (btn.classList.contains('left'))
     incr = -1;
-  
+
   btn.onclick = function() {
     CURR_DATE.setMonth(CURR_DATE.getMonth() + incr);
-    renderCalendar(); 
+    renderCalendar();
   };
-  
+
 })
-//clearGrid()
-renderCalendar();
 
