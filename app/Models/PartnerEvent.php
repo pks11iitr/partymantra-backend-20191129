@@ -78,7 +78,9 @@ class PartnerEvent extends Model
     }
 
     public function getAwayAttribute(){
-           return intval($this->distance(request('lat'), request('lang'), $this->lat, $this->lang, 'K'));
+        if((request('lat')||session('lat'))&&(request('lat')||session('lat')))
+           return intval($this->distance(request('lat')??session('lat'), request('lang')??session('lang'), $this->lat, $this->lang, 'K'));
+        return 0;
     }
 
 

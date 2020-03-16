@@ -38,9 +38,9 @@ class CollectionController extends Controller
             ->where('partneractive', true)
             ->orderBy('priority','asc')
             ->get()
-            /*->sortBy(function($product){
+            ->sortBy(function($product){
                 return $product->away;
-            })*/;
+            });
         $i=0;
         foreach($events as $e){
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
@@ -65,9 +65,9 @@ class CollectionController extends Controller
             ->where('isactive',true)
             ->orderBy('priority','asc')
             ->get()
-            /*->sortBy(function($product){
+            ->sortBy(function($product){
                 return $product->away;
-            })*/;
+            });
         $i=0;
         foreach($events as $e){
             $events[$i]->rating=$e->avgreviews[0]->rating??0;
@@ -92,9 +92,9 @@ class CollectionController extends Controller
             ->where('isactive',true)
             ->orderBy('priority','asc')
             ->get()
-            /*->sortBy(function($product){
+            ->sortBy(function($product){
                 return $product->away;
-            })*/;
+            });
         $i=0;
         foreach($events as $e){
             $events[$i]->rating=$e->avgreviews[0]->rating??0;

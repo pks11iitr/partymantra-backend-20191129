@@ -1,5 +1,12 @@
 @extends('Website.layout')
 @section('contents')
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
     <!-- Breadcrumb Starts-->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -65,12 +72,7 @@
                             <h2 class="heading"><i class="fa fa-map-marker" aria-hidden="true"></i> Address </h2>
                             <p class="">{{$restaurant->address}}</p>
                             <div class="map py-2">
-                                <h3>Find Us:</h3>
-                                <div class="location">
-                                    <div class="map-responsive">
-                                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
+                                <div id="map"></div>
                             </div>
                         </div>
 
@@ -640,5 +642,26 @@
         }
 
 
+    </script>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: {{$restaurant->lat}}, lng: {{$restaurant->lang}}  };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 17, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdnpGnI038nDRtvM7LbCrBClPnLeXvpfc&libraries=places&callback=initMap">
     </script>
 @endsection
