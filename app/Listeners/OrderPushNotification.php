@@ -32,7 +32,7 @@ class OrderPushNotification
 
 
             //customer notification
-            $details = $event->order->details();
+            $details = $event->order->details;
             if (!empty($details->toArray())) {
                 switch ($details[0]->optional_type) {
                     case 'dining':

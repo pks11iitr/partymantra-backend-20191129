@@ -10,7 +10,7 @@ class Order extends Model
 
     protected $appends = array('order_date');
 
-    protected $fillable=['refid','payment_id_response', 'order_id_response','usingwallet','fromwallet','discount_type','instant_discount','total','date','time'];
+    protected $fillable=['refid','payment_id_response', 'order_id_response','usingwallet','fromwallet','discount_type','instant_discount','total','date','time', 'payment_status'];
 
     protected $hidden=['user_id', 'payment_text', 'deleted_at', 'created_at', 'payment_id_response', 'order_id_response'];
 
