@@ -70,7 +70,7 @@
                                             <label for="foraddress" class="col-md-9 col-form-label">{{$user->address}} </label>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -225,7 +225,7 @@
                                     </div>
                                 </div>
                                 <div class="wallethistory">
-                                    @foreach($wallethistory as $h)    
+                                    @foreach($wallethistory as $h)
                                     <div class="row mb-2 py-2 reviews">
                                         @if($h->type=='Debit')
                                         <div class="col-3">
@@ -291,6 +291,7 @@
                                                 <div class="col-3">
                                                     <span class="float-right"><a href="" class="btn btn-success btn-small">{{$order['payment_status']}}</a></span>
                                                 </div>
+                                                <div class="col-12"><p>Booking ID: {{$order['id']}}</p></div>
                                                 <div class="col-12"><p>₹ {{$order['total']}}</p></div>
                                                 <div class="col-12"<p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p></div>
                                             </div>
@@ -366,7 +367,7 @@
                             <div class="col-10"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Comment</h2></div>
                             <div class="col-2 text-right"><span class="text-right">
                       <a href="" type="btn close btn-close btn-lg btn-light" data-dismiss="modal">X</a></span></div>
-                            
+
                             <div class="col-12 py-4 reviews">
                                 <form action="" method="post" id="cancel-form">
                                     <div class="form-group">

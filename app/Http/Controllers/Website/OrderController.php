@@ -580,12 +580,7 @@ class OrderController extends Controller
             }
         }
         if(!count($items)){
-            return response()->json([
-                'message'=>'some error occurred',
-                'errors'=>[
-
-                ],
-            ], 404);
+            return redirect()->back()->with('error', 'Your cart is empty');
         }
 
         $email=$item->email;
@@ -636,7 +631,7 @@ class OrderController extends Controller
             if($total==0){
                 $order->payment_status='paid';
                 $order->save();
-                event(new OrderSuccessfull($order));
+                event(new OrderSuccessfull($order, 'website'));
 
                 return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
 
@@ -676,7 +671,7 @@ class OrderController extends Controller
 
                 $order->payment_status='paid';
                 $order->save();
-                event(new OrderSuccessfull($order));
+                event(new OrderSuccessfull($order, 'website'));
                 return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
             }
 
@@ -945,7 +940,8 @@ class OrderController extends Controller
                 'taxes'=>0,
                 'type'=>$type,
                 'startdate'=>$startdate,
-                'enddate'=>$enddate
+                'enddate'=>$enddate,
+                'status'=>$order->payment_status
                 //'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):''
             ];
 
