@@ -24,16 +24,29 @@
                             <div class="col-12 event">
                                 <div class="row">
                                     <div class="col-9">
-                                        <h4 class="heading">{{$data['title']??''}}</h4>
-                                        <p class="">{{$data['address']??''}}</p>
+                                        <h4 class="heading">{{$data['title']??''}}</h4><h3 class="heading">[{{$data['status']??''}}]</h3>
+                                        <p class="mx-2">Booking ID:{{$data['orderid']}}
+                                        </p>
+                                        <p class="">Address: {{$data['address']??''}}</p>
+                                        @if($data['type']=='event')
                                         <div class="date">
                                             <h3><strong><i class="fa fa-calendar" aria-hidden="true"></i> Date & Time</strong></h3>
-                                            @if($data['type']=='event')
+
                                                 <p class="mx-2">Starts at: {{$data['startdate']}}</br>
                                                     Ends at: {{$data['enddate']}}
                                                 </p>
-                                            @endif
+
                                         </div>
+                                        @elseif($data['type']=='restaurant')
+                                            <div class="date">
+                                                <h3><strong><i class="fa fa-calendar" aria-hidden="true"></i> Date & Time</strong></h3>
+
+                                                <p class="mx-2">Date: {{$data['startdate']}}</br>
+                                                    Time: {{$data['enddate']}}
+                                                </p>
+
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="col-3">
                                         <img src="{{$data['image']}}" class="">

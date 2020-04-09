@@ -1,5 +1,12 @@
 @extends('Website.layout')
 @section('contents')
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
     @if ($errors->any())
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -46,12 +53,7 @@
                             <h2 class="heading"><i class="fa fa-map-marker" aria-hidden="true"></i> Address </h2>
                             <p class="">{{$event->venue_adderss}}</p>
                             <div class="map py-2">
-                                <h3>Find Us:</h3>
-                                <div class="location">
-                                    <div class="map-responsive">
-                                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
+                                <div id="map"></div>
                             </div>
                         </div>
                         <div class="col-12 event">
@@ -243,10 +245,11 @@
                     </div>
 
             </div>
+            @if(!empty($event->reviews->toArray()))
             <div class="row py-5 event-section event">
                 <div class="col-12"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>User Reviews</h2></div>
 
-                @if(!empty($event->reviews->toArray()))
+
                     @foreach($event->reviews as $r)
                         <div class="reviews col-12">
                             <div class="row blockquote review-item">
@@ -269,9 +272,11 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+
             </div>
+
         </div>
+        @endif
     </section>
     <!-- page container Ends-->
 @endsection
@@ -337,5 +342,26 @@
             }
         }
 
+    </script>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: {{$event->lat}}, lng: {{$event->lang}}  };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 17, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdnpGnI038nDRtvM7LbCrBClPnLeXvpfc&libraries=places&callback=initMap">
     </script>
 @endsection

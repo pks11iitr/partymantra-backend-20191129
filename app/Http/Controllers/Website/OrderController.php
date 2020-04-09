@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\OrderStatus;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
@@ -501,11 +502,10 @@ class OrderController extends Controller
         OrderItem::whereHas('order', function($order)use($user){
             $order->where('payment_status', 'pending')->where('user_id', $user->id);
         })->delete();
+
         Order::where('payment_status', 'pending')->where('user_id', $user->id)->delete();
 
-
-
-        $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false)]);
+        $order=new Order(['refid'=>date('YmdHis'), 'usingwallet'=>($request->usingwallet==1?true:false), 'payment_status'=>'pending']);
         $user->orders()->save($order);
 
         $total=0;
@@ -580,12 +580,7 @@ class OrderController extends Controller
             }
         }
         if(!count($items)){
-            return response()->json([
-                'message'=>'some error occurred',
-                'errors'=>[
-
-                ],
-            ], 404);
+            return redirect()->back()->with('error', 'Your cart is empty');
         }
 
         $email=$item->email;
@@ -634,11 +629,28 @@ class OrderController extends Controller
             $api_key=$this->pay->api_key;
             //auth()->user()->cart()->delete();
             if($total==0){
-                $order->payment_status='paid';
+                if($item->optional_type=='party'){
+                   OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                   $order->payment_status='confirmation-awaited';
+                   $message='We have received your party booking request. You will get confirmation shortly';
+                }else if($item->optional_type=='dining'){
+                    //var_dump($order->payment_status);die;
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='confirmation-awaited';
+                    $message='We have received your party booking request. You will get confirmation shortly';
+                }else if($item->optional_type=='billpay'){
+                        OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                        $order->payment_status='paid';
+                        $message='Congratulations. Your order has been successfull';
+                }else{
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='Congratulations. Your order has been successfull';
+                }
                 $order->save();
-                event(new OrderSuccessfull($order));
+                event(new OrderSuccessfull($order, 'website'));
 
-                return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
+                return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', $message);
 
             }else if($order->total-$fromwallet>0){
                 $response=$this->pay->generateorderid([
@@ -674,12 +686,24 @@ class OrderController extends Controller
             }else{
                 Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
 
-                $order->payment_status='paid';
+                if($item->optional_type=='party'){
+                        OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                        $order->payment_status='paid';
+
+                }else if($item->optional_type=='dining'){
+                        OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                        $order->payment_status='paid';
+                }else if($item->optional_type=='billpay'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                }else{
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                }
                 $order->save();
-                event(new OrderSuccessfull($order));
+                event(new OrderSuccessfull($order, 'website'));
                 return redirect()->route('website.order.details', ['id'=>$order->refid])->with('success', 'Congratulations. Your order has been successfull');
             }
-
         }
 
         return response()->json([
@@ -806,12 +830,14 @@ class OrderController extends Controller
     }
 
     public function verifyPayment(Request $request){
-        $order=Order::where('order_id', $request->razorpay_order_id)->firstOrFail();
+        $order=Order::with('details')->where('order_id', $request->razorpay_order_id)->firstOrFail();
+        $item=$order->details[0];
         Cart::where('user_id', $order->user_id)->delete();
         $paymentresult=$this->pay->verifypayment($request->all());
         if($paymentresult){
             $order->payment_id=$request->razorpay_payment_id;
             $order->payment_id_response=$request->razorpay_signature;
+            OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
             $order->payment_status='paid';
 
             $order->save();
@@ -945,7 +971,8 @@ class OrderController extends Controller
                 'taxes'=>0,
                 'type'=>$type,
                 'startdate'=>$startdate,
-                'enddate'=>$enddate
+                'enddate'=>$enddate,
+                'status'=>$order->payment_status
                 //'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):''
             ];
 
@@ -1030,13 +1057,15 @@ class OrderController extends Controller
             'reason_text'=>'string'
         ]);
         $user=auth()->user();
-        $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
+        $order=Order::where(function($query){
+          $query->whereIn('payment_status', ['paid', 'confirmation-awaited', 'confirmed'])->where('entry_marked', 0);
+        })->where('user_id', $user->id)->where('refid', $id)->first();
         if($order){
             $order->payment_status='cancel-request';
             $order->cancel_reason=$request->reason_id;
             $order->cancel_text=$request->reason_text;
             $order->save();
-            return redirect()->back()->with('success', 'Your cancellation request has been raid. Our team will process your request.');
+            return redirect()->back()->with('success', 'Your cancellation request has been raised. Our team will process your request.');
         }
 
         return redirect()->back()->with('error', 'This order cannot be cancelled now');

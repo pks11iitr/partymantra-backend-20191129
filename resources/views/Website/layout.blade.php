@@ -23,7 +23,13 @@
 
     <!-- Fonts icons -->
     <link rel="stylesheet" href="{{asset('theme/css/plugins/font-awesome.min.css')}}">
-
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map1 {
+            height: 200px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
 </head>
 
 <body>
@@ -41,12 +47,28 @@
                     <input type="text" class="form-control" id="Username" aria-describedby="inputGroupPrepend3" name="location" placeholder="Choose Location">
                   </div>
                   <button type="submit" class="btn btn-form btn-block">Submit</button>
-                </form> 
+                </form>
             </div>
         </div>
     </div>
 </div>
 
+        <div class="row py-5">
+            <div class="col-md-12 py-5">
+                <h3 class="text-center section-heading">Set your location</h3>
+                <form class="py-3">
+                    <div class="map py-2">
+                        <div id="map1"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Choose your location" value="{{session('address')}}" disabled id="map-location">
+                    </div>
+                    <button type="button" class="btn btn-form btn-block" onclick="getLocation()">Auto Detect</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="header">
     <div class="top-menu">
         <div class="container">
@@ -83,7 +105,7 @@
                         </form>
                     @endif
                     <a href="#"><i class="fa fa-question-circle"></i> Help</a>
-                    <a class="white" href="#"><i class="fa fa-globe"></i> Select City</a>
+                    <a id="clickloc" href="#"><i class="fa fa-globe"></i>Set Location</a>
 
                 </div>
 
@@ -313,6 +335,117 @@
     </script>
 
 @yield('scripts')
+<script>
+    var marker=null;
+    var latlng={lat: {{session('lat')??0.0}}, lng: {{session('lang')??0.0}}  };
+    var geocoder = null;
+    var infowindow=null;
+    var map=null;
+
+    function initMap2() {
+        // The map, centered at Uluru
+        map = new google.maps.Map(
+            document.getElementById('map1'), {zoom: 17, center: latlng}
+            );
+        // The marker, positioned at Uluru
+        marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            draggable:true
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function()
+        {
+            geocodePosition(marker.getPosition());
+        });
+
+        geocoder = new google.maps.Geocoder;
+        infowindow = new google.maps.InfoWindow;
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        console.log("Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude)
+        latlng={lat:position.coords.latitude, lng:position.coords.longitude}
+        setLatLng(geocoder, map, infowindow);
+
+    }
+
+
+    function setLatLng(geocoder, map, infowindow) {
+        marker.setMap(null);
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === 'OK') {
+                if (results[0]) {
+                    map.setZoom(17);
+                    map.setCenter(new google.maps.LatLng(latlng.lat, latlng.lng));
+                    marker = new google.maps.Marker({
+                        position: latlng,
+                        draggable:true,
+                        map: map
+                    });
+                    document.getElementById('map-location').value=results[0].formatted_address
+
+                    google.maps.event.addListener(marker, 'dragend', function()
+                    {
+                        geocodePosition(marker.getPosition());
+                    });
+
+                    $.post('{{route('website.location')}}', {lat:latlng.lat, lang:latlng.lng, address:results[0].formatted_address}, function(data){
+
+                    })
+
+                } else {
+                    window.alert('No results found');
+                }
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }
+
+    function geocodePosition(pos)
+    {
+        alert(pos)
+        latlng=pos
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode
+        ({
+                latLng: pos
+            },
+            function(results, status)
+            {
+                if (status == google.maps.GeocoderStatus.OK)
+                {
+                    setLatLng(geocoder, map, infowindow)
+                }
+                else
+                {
+                    $("#mapErrorMsg").html('Cannot determine address at this location.'+status).show(100);
+                }
+            }
+        );
+    }
+    @if( (!session('lat')) && (!session('lang')  ))
+    $(document).ready(function(){
+        getLocation()
+    })
+    @endif
+
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdnpGnI038nDRtvM7LbCrBClPnLeXvpfc&libraries=places&callback=initMap2">
+</script>
+
 </body>
 
 </html>

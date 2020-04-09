@@ -166,4 +166,18 @@ class HomeController extends Controller
         echo 'status3';die;//for delete
     }
 
+    public function setLocation(Request $request){
+        $request->validate([
+           'lat'=>'required|numeric',
+           'lang'=>'required|numeric',
+            'adderss'=>'requierd|string'
+        ]);
+
+        session(['lat'=>$request->lat, 'lang'=>$request->lang, 'address'=>$request->address]);
+        return [
+            'status'=>'success'
+        ];
+
+    }
+
 }
