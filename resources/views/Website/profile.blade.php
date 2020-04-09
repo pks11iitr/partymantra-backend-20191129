@@ -1,19 +1,8 @@
 @extends('Website.layout')
 @section('contents')
-    <!-- Breadcrumb Starts-->
-    <section class="py-2" style="background:#ec7160;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center py-4">
-                    <h2 class="pagebrumb text-white">My Acount </h2>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Starts-->
-    <!-- Mobile Search Ends-->
+
     <!-- page container Starts-->
-    <section class="py-5">
+    <section class="py-2">
         <div class="container">
 
             <div class="row event bg-light" id="view-profile">
@@ -280,7 +269,7 @@
                             <div class="tab-pane fade @if(Route::currentRouteName()=='website.order.history'){{'show active'}}@endif" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                 @foreach($ordersdetail as $order)
                                     <div class="row reviews mb-2">
-                                        <div class="col-3">
+                                        <div class="col-3 py-2">
                                             <img src="{{$order['image']}}" class=" order-image rounded img-fluid">
                                         </div>
                                         <div class="col-9 p-2">
@@ -292,6 +281,7 @@
                                                     <span class="float-right"><a href="" class="btn btn-success btn-small">{{$order['payment_status']}}</a></span>
                                                 </div>
                                                 <div class="col-12"><p>₹ {{$order['total']}}</p></div>
+                                                <div class="col-12"><p><strong>Booking id</strong> : oco03201-202</p></div>
                                                 <div class="col-12"<p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p></div>
                                             </div>
                                         </div>
@@ -365,12 +355,13 @@
                         <div class="row event-section">
                             <div class="col-10"><h2 class="heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Leave Your Comment</h2></div>
                             <div class="col-2 text-right"><span class="text-right">
-                      <a href="" type="btn close btn-close btn-lg btn-light" data-dismiss="modal">X</a></span></div>
+                      <a href="" type="btn close btn-close btn-lg btn-light" data-dismiss="modal">X</a></span>
+                  </div>
                             
                             <div class="col-12 py-4 reviews">
                                 <form action="" method="post" id="cancel-form">
-                                    <div class="form-group">
-                                        <label for="exampleInputtext">Reason to canle the order</label>
+                                    <div class="form-group mb-2">
+                                        <label for="exampleInputtext"><strong>Reason to canle the order</strong></label>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="reason_id" id="exampleRadios1" value="1" checked>
                                             <label class="form-check-label" for="exampleRadios1">
@@ -384,8 +375,8 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputtext">write Us your experience with us</label>
+                                    <div class="form-group py-2">
+                                        <label for="exampleInputtext h5" class="mb-3"><strong>Write Us your experience with us</strong></label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reason_text"></textarea>
                                     </div>
                                     <div class="form-group row">

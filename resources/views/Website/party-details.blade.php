@@ -134,11 +134,14 @@
                                             @if($restaurant->packages->toArray())
                                             @foreach($restaurant->packages as $package)
                                             <div class="row reviews">
-                                                <div class="col-8 py-2">
+                                                <div class="col-4 py-2">
                                                     <p class="h3"><strong>{{$package->package_name}}</strong><p><p>{{$package->text_under_name}}</p>
+                                                    
+                                                </div>
+                                                <div class="col-4 py-2">
                                                     <p>Rs.{{$package->price}}</p>
                                                 </div>
-                                                <div class="col-4 py-3">
+                                                <div class="col-4 py-2">
                                                     <div class="input-group">
                                                          <span class="input-group-btn">
                                                              <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">
@@ -330,7 +333,7 @@
                                     <label for="exampleInputname1">Choose Slot</label>
                                     <div class="form-group row mb-2">
                                         @foreach(explode(',',$restaurant->party_timings) as $t)
-                                    <div class="col-3 text-center form-check form-check-inline d-flex justify-content-end">
+                                    <div class="col-6 text-center form-check form-check-inline d-flex justify-content-center">
                                       <input class="form-check-input" type="radio" name="time" id="inlineRadio1" value="{{$t}}">
                                       <label class="form-check-label slot-lable" for="inlineRadio1">{{$t}}</label>
                                     </div>

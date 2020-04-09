@@ -161,11 +161,11 @@
                                                 <div class="col-3">
                                                             <img src="{{$menu->image}}" style="width:60px; height:60px;" class="img-responsive rounded">
                                                 </div>
-                                                <div class="col-6 py-2">
+                                                <div class="col-5 py-2">
                                                     <p class="h3"><strong>{{$menu->name}}</strong><p>
                                                     <p>Rs.{{$menu->pivot->price}}</p>
                                                 </div>
-                                                <div class="col-3 py-3">
+                                                <div class="col-4 py-1">
                                                     <div class="input-group">
                                                         <span class="input-group-btn">
                                                              <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="menu" itemid='{{$menu->id}}' itemprice="250" itemname="{{$menu->name}}">
@@ -238,11 +238,14 @@
                                             @if($restaurant->packages->toArray())
                                              @foreach($restaurant->packages as $package)
                                             <div class="row reviews">
-                                                <div class="col-9 py-2">
+                                                <div class="col-4 py-2">
                                                     <p class="h3"><strong>{{$package->package_name}}</strong><p>
-                                                    <p>{{$package->text_under_name}}</p><p>Rs.{{$package->price}}</p>
+                                                    <p>{{$package->text_under_name}}</p>
                                                 </div>
-                                                <div class="col-3 py-3">
+                                                <div class="col-3 py-2">
+                                                    <p>Rs.{{$package->price}}</p>
+                                                </div>
+                                                <div class="col-5 py-1">
                                                     <div class="input-group">
                                                         <span class="input-group-btn">
                                                             <button type="button" class="quantity-minus-item btn btn-quant btn-number"  data-type="minus" data-field="" itemtype="package" itemid='{{$package->id}}' itemprice="{{$package->price}}" itemname="{{$package->package_name}}">

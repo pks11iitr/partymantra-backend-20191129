@@ -21,7 +21,7 @@
                     <a href="{{route('website.collection.party',['id'=>$collection->id])}}">
                 @endif
                 <div class="">
-                    <div class="card p-2 bg-light">
+                    <div class="card slide-card p-2 bg-light">
                         <div class="cardimg">
                             <img class="card-img-top" src="{{$collection->small_image}}"/>
                             <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -77,7 +77,7 @@
 
                                <div class="col-4 service-box mb-3">
                                <a href="{{route('website.event.details',['id'=>$item->id])}}">
-                                <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
+                                <div class="card @if($isodd==0){{'bg-light'}}@endif service-card p-2">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="{{$item->small_image}}">
                                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -95,7 +95,7 @@
                         @elseif($type=='restaurant')
                             <div class="col-4 service-box mb-3">
                                 <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
-                                    <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
+                                    <div class="card @if($isodd==0){{'bg-light'}}@endif service-card p-2">
                                         <div class="cardimg">
                                             <img class="card-img-top" src="{{$item->small_image}}">
                                             <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -113,7 +113,7 @@
                         @else
                             <div class="col-4 service-box mb-3">
                                 <a href="{{route('website.party.details',['id'=>$item->id])}}">
-                                <div class="card @if($isodd==0){{'bg-light'}}@endif p-2">
+                                <div class="card @if($isodd==0){{'bg-light'}}@endif service-card p-2">
                                     <div class="cardimg">
                                         <img class="card-img-top" src="{{$item->small_image}}">
                                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>

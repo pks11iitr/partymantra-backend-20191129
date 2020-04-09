@@ -14,17 +14,6 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
-    <!-- Breadcrumb Starts-->
-    <section class="py-2" style="background:#ec7160;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center py-4">
-                    <h2 class="pagebrumb text-white">Order Details </h2>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Ends-->
     <!-- page container Starts-->
     @if(!empty($data))
         <section class="section bg-light">

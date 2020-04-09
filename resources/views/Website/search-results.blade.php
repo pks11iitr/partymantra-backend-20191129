@@ -8,15 +8,15 @@
                 <div class="container">
                     <div class="section-heading">
 
-                        <h2>Search Results For Club Events<span class="pull-right"></span></h2>
+                        <h2>Search Results For Club Events</h2>
                     </div><br>
                     <div class="row">
                         @foreach($events as $item)
 
 
-                                <div class="col-4 mt-4 service-box">
+                                <div class="col-4 mt-2 service-box">
                                     <a href="{{route('website.event.details',['id'=>$item->id])}}">
-                                        <div class="card">
+                                        <div class="card service-card p-2 bg-light">
                                             <div class="cardimg">
                                                 <img class="card-img-top" src="{{$item->small_image}}">
                                                 <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -37,16 +37,16 @@
             </section>
     @endif
     @if(!empty($restaurants->toArray()))
-        <section class="section" id="">
+        <section class="section bg-light" id="">
             <div class="container">
                 <div class="section-heading">
-                    <h2>Search Results For Dinings<span class="pull-right"></span></h2>
+                    <h2>Search Results For Dinings</h2>
                 </div><br>
                 <div class="row">
                     @foreach($restaurants as $item)
-                    <div class="col-4 mt-4 service-box">
+                    <div class="col-4 mt-2 service-box">
             <a href="{{route('website.restaurant.details',['id'=>$item->id])}}">
-                <div class="card">
+                <div class="card service-card p-2">
                     <div class="cardimg">
                         <img class="card-img-top" src="{{$item->small_image}}">
                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>
@@ -71,13 +71,13 @@
             <div class="container">
                 <div class="section-heading">
 
-                    <h2>Search Results For Parties<span class="pull-right"></span></h2>
+                    <h2>Search Results For Parties</h2>
                 </div><br>
                 <div class="row">
                     @foreach($parties as $item)
-                        <div class="col-4 mt-4 service-box">
+                        <div class="col-4 mt-2 service-box">
             <a href="{{route('website.party.details',['id'=>$item->id])}}">
-                <div class="card">
+                <div class="card service-card p-2 bg-light">
                     <div class="cardimg">
                         <img class="card-img-top" src="{{$item->small_image}}">
                         <span class="card-star">4 <i class="fa fa-star" aria-hidden="true"></i></span>

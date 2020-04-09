@@ -31,45 +31,22 @@
     <div class="container py-5">
         <span class="close"><a href="#" class="white"><i class="fa fa-times" aria-hidden="true"></i></a></span>
         <div class="row py-5">
-            <div class="col-md-12">
-                <h3 class="text-center section-heading">Sign In</h3>
-
+            <div class="col-md-6  offset-md-3 py-5">
+            <h3 class="text-center section-heading">Choose Location</h3>
                 <form class="py-3">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <div class="input-group py-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend3"><a href=""><i class="fa fa-crosshairs" aria-hidden="true"></i></a></span>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-form btn-block">Submit</button>
-                </form>
+                    <input type="text" class="form-control" id="Username" aria-describedby="inputGroupPrepend3" name="location" placeholder="Choose Location">
+                  </div>
+                  <button type="submit" class="btn btn-form btn-block">Submit</button>
+                </form> 
             </div>
         </div>
     </div>
 </div>
-<div class="locdiv">
-    <div class="container py-5">
 
-        <div class="row py-5">
-            <div class="col-md-12 py-5">
-                <h3 class="text-center section-heading">Select City</h3>
-                <form class="py-3">
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Choose your location">
-                    </div>
-                    <button type="submit" class="btn btn-form btn-block">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <section class="header">
     <div class="top-menu">
         <div class="container">
@@ -89,7 +66,7 @@
                 </div>
                 <div class="toplinks col-md-4 col-sm-12">
                     @if(!auth()->user())
-                    <a class="white" href="{{route('login')}}"><i class="fa fa-user"></i> Sign in</a>
+                    <a href="{{route('login')}}"><i class="fa fa-user"></i> Sign in</a>
                     @else
                         <a class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -106,7 +83,7 @@
                         </form>
                     @endif
                     <a href="#"><i class="fa fa-question-circle"></i> Help</a>
-                    <a id="clickloc" href="#"><i class="fa fa-globe"></i> Select City</a>
+                    <a class="white" href="#"><i class="fa fa-globe"></i> Select City</a>
 
                 </div>
 
@@ -322,6 +299,18 @@
 {{--<script src="{{asset('theme/js/plugins/swiper.min.js')}}"></script>--}}
 {{--<script src="{{asset('theme/js/plugins/jqery.flexisel.js')}}"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script>
+          $(".black ").hide().click(function(){
+        return false;
+    });
+    $(".white").show().click(function(){
+        $(".black ").slideToggle(150);
+        return false;
+    });
+    $(document).click(function(){
+        $(".black ").slideUp(150);
+    });
+    </script>
 
 @yield('scripts')
 </body>
