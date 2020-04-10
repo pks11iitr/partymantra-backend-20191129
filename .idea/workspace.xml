@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/OrderPushNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/OrderPushNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/OrderSmsAlert.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/OrderSmsAlert.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Website/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Website/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="atul-branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -679,10 +683,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1584712767097">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1586527975210">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1584712767097" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586527975210" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -707,18 +711,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1584189365909" />
-    <state x="205" y="31" key="SettingsEditor" timestamp="1576932387042">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="205" y="31" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1576932387042" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1583392284523">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1584712770384">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586453999445">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1584712770384" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1586453999445" />
     <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1584682919874">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -727,6 +727,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="362" y="126" width="911" height="642" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1583394527359" />
+    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog" timestamp="1586453990426">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1586453990426" />
     <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1584271312821">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
