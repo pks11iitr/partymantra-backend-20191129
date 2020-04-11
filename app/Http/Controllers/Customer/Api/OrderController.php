@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\OrderStatus;
 use App\Models\Package;
 use App\Models\Partner;
 use App\Models\PartnerEvent;
@@ -528,6 +529,9 @@ class OrderController extends Controller
                     'price'=>$item->other->price,
                 ]);
                 $total = $total+$item->no_of_pass*$item->other->price;
+                $order->is_confirmed=true;
+                $order->save();
+
             }elseif($item->entity instanceof Partner) {
                 if (!empty($item->other)){
                     if ($item->other instanceof Menu) {
@@ -636,7 +640,23 @@ class OrderController extends Controller
         if($order->save()){
             //auth()->user()->cart()->delete();
             if($total==0){
-                $order->payment_status='paid';
+                if($item->optional_type=='party'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='We have received your party booking request. You will get confirmation shortly';
+                }else if($item->optional_type=='dining'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='We have received your party booking request. You will get confirmation shortly';
+                }else if($item->optional_type=='billpay'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='Congratulations. Your bill payment has been successfull';
+                }else{
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='Congratulations. Your order has been successfull';
+                }
                 $order->save();
                 event(new OrderSuccessfull($order));
                 return response()->json([
@@ -693,9 +713,26 @@ class OrderController extends Controller
             }else{
                 Wallet::updatewallet($user->id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $order->total, $order->id);
 
-                $order->payment_status='paid';
+                if($item->optional_type=='party'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='We have received your party booking request. You will get confirmation shortly';
+
+                }else if($item->optional_type=='dining'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='We have received your table booking request. You will get confirmation shortly';
+                }else if($item->optional_type=='billpay'){
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='Congratulations. Your bill payment has been successfull';
+                }else{
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $message='Congratulations. Your order has been successfull';
+                }
                 $order->save();
-                event(new OrderSuccessfull($order));
+                event(new OrderSuccessfull($order, 'website'));
                 return response()->json([
                     'status'=>'success',
                     'message'=>'success',
@@ -715,8 +752,6 @@ class OrderController extends Controller
             }
 
         }
-
-
 
         return response()->json([
             'message'=>'some error occurred',
@@ -854,13 +889,16 @@ class OrderController extends Controller
                     $ordersdetail[$i]['title'] = $d->partner->name. ('( ' . ($d->optional_type ?? '' ). ' )');
                     $ordersdetail[$i]['image'] = $d->partner->small_image;
                     $ordersdetail[$i]['ordertype']='billpay';
+                    $ordersdetail[$i]['display_status']=$o->payment_status;
                 }else{
                     if ($d->entity instanceof PartnerEvent) {
                         $ordersdetail[$i]['title'] = $d->entity->title;
                         $ordersdetail[$i]['ordertype']='event';
+                        $ordersdetail[$i]['display_status']=$o->payment_status;
                     } else {
                         $ordersdetail[$i]['title'] = $d->entity->name . ('( ' . ($d->optional_type ?? '') . ' )');
                         $ordersdetail[$i]['ordertype']=$d->optional_type ?? '';
+                        $ordersdetail[$i]['display_status']=$o->payment_status.(($o->is_confirmed==1)?' & confirmed':'& confirmation awaited');
                     }
                     $ordersdetail[$i]['image'] = $d->entity->small_image;
 
@@ -1046,11 +1084,17 @@ class OrderController extends Controller
             $date = date('D,d M Y', strtotime($order->date)).'-'.$order->time;
             $address = $c->entity->address;
             $image = $c->entity->small_image;
+            if($c->optional_type=='billing'){
+                $display_status=$order->payment_status;
+            }else{
+                $display_status=$order->payment_status.(($order->is_confirmed==1)?' & confirmed':'& confirmation awaited');
+            }
         }else{
             $title = $c->entity->title;
             $date = $c->entity->startdate . '-' . $c->entity->enddate;
             $address = $c->entity->venue_adderss;
             $image = $c->entity->small_image;
+            $display_status=$order->payment_status;
         }
         return [
             'message'=>'success',
@@ -1070,7 +1114,8 @@ class OrderController extends Controller
                 'amount'=>$amount,
                 'subtotal'=>$amount,
                 'taxes'=>0,
-                'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):''
+                'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):'',
+                'display_status'=>$display_status
             ]
         ];
 
@@ -1087,7 +1132,7 @@ class OrderController extends Controller
             'rating'=>'required|integer|min:1|max:5',
             'comment'=>'nullable|string|max:200'
         ]);
-        $order=Order::with('details.entity')->where('user_id', $user->id)->where('payment_status', 'paid')->findOrFail($id);
+        $order=Order::with('details.entity')->where('user_id', $user->id)->where('payment_status', 'paid')->where('entry_marked', true)->findOrFail($id);
 
         if($order->review)
             return response()->json([
@@ -1129,31 +1174,53 @@ class OrderController extends Controller
 
     public function verifyPayment(Request $request){
         $order=Order::where('order_id', $request->razorpay_order_id)->firstOrFail();
+        $item=$order->details[0];
         Cart::where('user_id', $order->user_id)->delete();
         $paymentresult=$this->pay->verifypayment($request->all());
         if($paymentresult){
-            $order->payment_id=$request->razorpay_payment_id;
-            $order->payment_id_response=$request->razorpay_signature;
-            $order->payment_status='paid';
-
-            $order->save();
             if($order->usingwallet==true){
                 $balance=Wallet::balance($order->user_id);
                 if($balance < $order->fromwallet){
                     return response()->json([
                         'status'=>'failed',
-                        'message'=>'Payment is not successfull',
+                        'message'=>'We apologize, Your order is not successfull',
                         'errors'=>[
 
                         ],
                     ], 200);
+                }else{
+                    $order->payment_id=$request->razorpay_payment_id;
+                    $order->payment_id_response=$request->razorpay_signature;
+                    OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                    $order->payment_status='paid';
+                    $order->save();
+                    Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
                 }
-                Wallet::updatewallet($order->user_id, 'Amount paid for Order ID:'.$order->refid, 'Debit', $balance, $order->id);
+
+            }else{
+                $order->payment_id=$request->razorpay_payment_id;
+                $order->payment_id_response=$request->razorpay_signature;
+                OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+                $order->payment_status='paid';
+                $order->save();
             }
+
+            if($item->optional_type=='party'){
+                $message='We have received your party booking request. You will get confirmation shortly';
+
+            }else if($item->optional_type=='dining'){
+                $message='We have received your table booking request. You will get confirmation shortly';
+            }else if($item->optional_type=='billpay'){
+                $message='Congratulations. Your bill payment has been successfull';
+            }else{
+                $message='Congratulations. Your order has been successfull';
+            }
+
             event(new OrderSuccessfull($order));
+
             return response()->json([
                 'status'=>'success',
-                'message'=>'Payment is successfull',
+                'message'=> $message,
                 'errors'=>[
 
                 ],
@@ -1161,7 +1228,7 @@ class OrderController extends Controller
         }else{
             return response()->json([
                 'status'=>'failed',
-                'message'=>'Payment is not successfull',
+                'message'=>'We apologize, Your payment cannot be verified',
                 'errors'=>[
 
                 ],
@@ -1175,7 +1242,7 @@ class OrderController extends Controller
             'reason_text'=>'string'
         ]);
         $user=auth()->user();
-        $order=Order::where('payment_status', 'paid')->where('entry_marked', 0)->where('user_id', $user->id)->where('refid', $id)->first();
+        $order=Order::where('payment_status', 'paid')->where('entry_marked', false)->where('user_id', $user->id)->where('refid', $id)->first();
         if($order){
             $order->payment_status='cancel-request';
             $order->cancel_reason=$request->reason_id;
