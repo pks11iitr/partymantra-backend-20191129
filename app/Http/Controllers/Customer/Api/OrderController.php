@@ -409,7 +409,7 @@ class OrderController extends Controller
                         'address'=>$address,
                         'packages'=>$cartpackages,
                         'date'=>$date,
-                        'totalitems'=>0,
+                        'totalitems'=>count($cartpackages),
                         'name'=>$request->name,
                         'mobile'=>$request->mobile,
                         'email'=>$request->email,
