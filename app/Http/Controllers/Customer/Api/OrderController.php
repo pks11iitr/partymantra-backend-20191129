@@ -414,8 +414,8 @@ class OrderController extends Controller
                         'mobile'=>$request->mobile,
                         'email'=>$request->email,
                         'ratio'=>'Men: '.$request->men.' Women: '.$request->women.' Couple:'.$request->couple,
-                        'subtotal'=>0,
-                        'amount'=>0,
+                        'subtotal'=>$amount,
+                        'amount'=>$amount,
                         'taxes'=>0,
                         'walletbalance'=>Wallet::balance(auth()->user()->id)
                     ]
@@ -451,7 +451,7 @@ class OrderController extends Controller
                         'title'=>$title,
                         'image'=>$image,
                         'address'=>$address,
-                        'packages'=>$cartpackages,
+                        'packages'=>[],
                         'date'=>$date,
                         'totalitems'=>0,
                         'name'=>$request->name,
@@ -475,7 +475,6 @@ class OrderController extends Controller
         ]);
 
     }
-
 
     public function makeOrder(Request $request, $id=null){
         $user=auth()->user();
