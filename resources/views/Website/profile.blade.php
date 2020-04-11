@@ -278,11 +278,11 @@
                                                     <h5 class="heading">{{$order['title']}}</h5>
                                                 </div>
                                                 <div class="col-3">
-                                                    <span class="float-right"><a href="" class="btn btn-success btn-small">{{$order['payment_status']}}</a></span>
+                                                    <span class="float-right"><a href="" class="btn btn-success btn-small">{{$order['payment_status']}} {{$order['confirmed']??''}}</a></span>
                                                 </div>
-                                                <div class="col-12"><p>Booking ID: {{$order['id']}}</p></div>
+{{--                                                <div class="col-12"><p>Booking ID: {{$order['id']}}</p></div>--}}
                                                 <div class="col-12"><p>₹ {{$order['total']}}</p></div>
-                                                <div class="col-12"><p><strong>Booking id</strong> : oco03201-202</p></div>
+                                                <div class="col-12"><p><strong>Booking Id</strong> : {{$order['id']}}</p></div>
                                                 <div class="col-12"<p><i class="fa fa-calendar" aria-hidden="true"></i>{{$order['datetime']}}</p></div>
                                             </div>
                                         </div>

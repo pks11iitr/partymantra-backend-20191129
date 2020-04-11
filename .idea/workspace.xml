@@ -33,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="atul-branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -278,13 +278,7 @@
       <workItem from="1586073683078" duration="1984000" />
       <workItem from="1586169373609" duration="2015000" />
       <workItem from="1586442040143" duration="1802000" />
-    </task>
-    <task id="LOCAL-00210" summary="notifications at order success">
-      <created>1581581929215</created>
-      <option name="number" value="00210" />
-      <option name="presentableId" value="LOCAL-00210" />
-      <option name="project" value="LOCAL" />
-      <updated>1581581929215</updated>
+      <workItem from="1586596145836" duration="411000" />
     </task>
     <task id="LOCAL-00211" summary="notifications at order success">
       <created>1581582367771</created>
@@ -622,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584712767640</updated>
     </task>
-    <option name="localTasksCounter" value="259" />
+    <task id="LOCAL-00259" summary="confirmation functionality added in website">
+      <created>1586528040065</created>
+      <option name="number" value="00259" />
+      <option name="presentableId" value="LOCAL-00259" />
+      <option name="project" value="LOCAL" />
+      <updated>1586528040066</updated>
+    </task>
+    <option name="localTasksCounter" value="260" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="notifications at order success" />
     <MESSAGE value="notifications at billpay success" />
     <MESSAGE value="date in notifications" />
     <MESSAGE value="admin notifications" />
@@ -668,7 +668,8 @@
     <MESSAGE value="map added" />
     <MESSAGE value="minor fixes in order, message change on order place" />
     <MESSAGE value="changes for confirmation of party dining" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes for confirmation of party dining" />
+    <MESSAGE value="confirmation functionality added in website" />
+    <option name="LAST_COMMIT_MESSAGE" value="confirmation functionality added in website" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583773314715">
@@ -679,10 +680,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1584712767097">
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1586528039533">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1584712767097" />
+    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586528039533" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -707,26 +708,26 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1584189365909" />
-    <state x="205" y="31" key="SettingsEditor" timestamp="1576932387042">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="205" y="31" key="SettingsEditor/67.27.1299.741@67.27.1299.741" timestamp="1576932387042" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1583392284523">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1584712770384">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586453999445">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1584712770384" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1584682919874">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1586453999445" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1586596157995">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1584682919874" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1586596157995" />
     <state x="362" y="126" width="911" height="642" key="find.popup" timestamp="1583394527359">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="362" y="126" width="911" height="642" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1583394527359" />
+    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog" timestamp="1586453990426">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1586453990426" />
     <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1584271312821">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

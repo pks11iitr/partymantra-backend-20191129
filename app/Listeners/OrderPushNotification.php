@@ -29,8 +29,6 @@ class OrderPushNotification
      */
     public function handle(OrderSuccessfull $event)
     {
-
-
             //customer notification
             $details = $event->order->details;
             if (!empty($details->toArray())) {
@@ -45,7 +43,7 @@ class OrderPushNotification
                         break;
                     case 'billpay':
                         $title = 'Payment Successfull';
-                        $body = 'Your order at TPM is successfull. Booking ID:' . ($event->order->refid ?? '');
+                        $body = 'Your billpayment using TPM is successfull. Booking ID:' . ($event->order->refid ?? '');
                         break;
                     default:
                         $title = 'Order Successfull';
@@ -64,9 +62,6 @@ class OrderPushNotification
                 'body' => $body
             ];
             FirebaseNotification::sendNotificationById($dids, $msg);
-        }else if($event->source=='website'){
-            $mobile=$event->order->customer->mobile;
-            Msg91::send($mobile, $body);
         }
 
         //partner notification
