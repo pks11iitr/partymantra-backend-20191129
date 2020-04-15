@@ -201,7 +201,7 @@ class OrderController extends Controller
         $partner = $user->partner;
         $order = Order::with(['details.entity', 'details.other'])->where('refid', $id)->first();
 
-        if (!$order || ($order->details[0]->entity instanceof Partner && $order->details[0]->entity_id== $partner->id) || ($order->details[0]->entity instanceof PartnerEvent && $order->details[0]->entity->partner->id== $partner->id) ){
+        if (!$order || ($order->details[0]->entity instanceof Partner && $order->details[0]->entity_id!= $partner->id) || ($order->details[0]->entity instanceof PartnerEvent && $order->details[0]->entity->partner->id!= $partner->id) ){
             $status = 'failed';
             $message = 'No order found';
             return compact('status', 'message');
