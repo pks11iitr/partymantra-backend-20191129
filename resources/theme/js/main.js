@@ -10,7 +10,6 @@ $(document).ready(function(e){
 	});
 });
 
-z
   $('#clickloc').click(function() {
     var $slider = $('.locdiv');
     $slider.animate({
