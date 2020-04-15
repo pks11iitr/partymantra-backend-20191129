@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +11,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -149,7 +146,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -187,18 +183,6 @@
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -278,42 +262,10 @@
       <workItem from="1586073683078" duration="1984000" />
       <workItem from="1586169373609" duration="2015000" />
       <workItem from="1586442040143" duration="1802000" />
-      <workItem from="1586596145836" duration="1119000" />
-    </task>
-    <task id="LOCAL-00212" summary="notifications at order success">
-      <created>1581582502311</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1581582502311</updated>
-    </task>
-    <task id="LOCAL-00213" summary="notifications at order success">
-      <created>1581582853282</created>
-      <option name="number" value="00213" />
-      <option name="presentableId" value="LOCAL-00213" />
-      <option name="project" value="LOCAL" />
-      <updated>1581582853282</updated>
-    </task>
-    <task id="LOCAL-00214" summary="notifications at billpay success">
-      <created>1581583287740</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1581583287740</updated>
-    </task>
-    <task id="LOCAL-00215" summary="date in notifications">
-      <created>1581584083173</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1581584083173</updated>
-    </task>
-    <task id="LOCAL-00216" summary="date in notifications">
-      <created>1581584640164</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1581584640164</updated>
+      <workItem from="1586596145836" duration="1771000" />
+      <workItem from="1586611117221" duration="11125000" />
+      <workItem from="1586718637168" duration="1796000" />
+      <workItem from="1586947618597" duration="1505000" />
     </task>
     <task id="LOCAL-00217" summary="date in notifications">
       <created>1581584783060</created>
@@ -623,29 +575,61 @@
       <option name="project" value="LOCAL" />
       <updated>1586596588625</updated>
     </task>
-    <option name="localTasksCounter" value="261" />
+    <task id="LOCAL-00261" summary="change in add party api">
+      <created>1586598181368</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1586598181368</updated>
+    </task>
+    <task id="LOCAL-00262" summary="changes for booking confirmation in apis">
+      <created>1586614823970</created>
+      <option name="number" value="00262" />
+      <option name="presentableId" value="LOCAL-00262" />
+      <option name="project" value="LOCAL" />
+      <updated>1586614823970</updated>
+    </task>
+    <task id="LOCAL-00263" summary="changes for booking confirmation in apis">
+      <created>1586614831489</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1586614831489</updated>
+    </task>
+    <task id="LOCAL-00264" summary="changes for booking confirmation in apis">
+      <created>1586614840870</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1586614840870</updated>
+    </task>
+    <task id="LOCAL-00265" summary="changes in partner order details api">
+      <created>1586949101175</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1586949101175</updated>
+    </task>
+    <option name="localTasksCounter" value="266" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="date in notifications" />
-    <MESSAGE value="admin notifications" />
     <MESSAGE value="order changed" />
     <MESSAGE value="collecion image" />
     <MESSAGE value="login register forgot password redirections setup for website" />
@@ -669,29 +653,31 @@
     <MESSAGE value="changes for confirmation of party dining" />
     <MESSAGE value="confirmation functionality added in website" />
     <MESSAGE value="change in add party api" />
-    <option name="LAST_COMMIT_MESSAGE" value="change in add party api" />
+    <MESSAGE value="changes for booking confirmation in apis" />
+    <MESSAGE value="changes in partner order details api" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in partner order details api" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583773314715">
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586697370081">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1583773314715" />
+    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1586697370081" />
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml" timestamp="1584266522733">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1586598163169">
+    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1586949100689">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586598163169" />
+    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586949100689" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584693951439">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586682165053">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1584693951439" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1586682165053" />
     <state x="187" y="85" width="1165" height="622" key="MergeDialog" timestamp="1584271631584">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -712,14 +698,14 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586596592355">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586614845782">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1586596592355" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1586596157995">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1586614845782" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1586768088522">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1586596157995" />
+    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1586768088522" />
     <state x="362" y="126" width="911" height="642" key="find.popup" timestamp="1583394527359">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -728,10 +714,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1586453990426" />
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1584271312821">
+    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1586598196693">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1584271312821" />
+    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1586598196693" />
     <state x="365" y="115" width="700" height="530" key="recent.locations.popup" timestamp="1580456748058">
       <screen x="67" y="27" width="1299" height="741" />
     </state>

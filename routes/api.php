@@ -112,6 +112,9 @@ $api->get('party/{id}/reviews', ['as'=>'api.party.reviews', 'uses'=>'Customer\Ap
         $api->get('partner-profile', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\ProfileController@profile']);
         $api->get('partner-order-details/{id}', ['as'=>'api.mark.entry', 'uses'=>'Partner\Api\OrderController@details']);
         $api->get('my-orders', ['as'=>'api.orders', 'uses'=>'Partner\Api\OrderController@index']);
+        $api->get('accept-order/{id}', ['as'=>'api.order.accept', 'uses'=>'Partner\Api\OrderController@acceptOrder']);
+        $api->get('decline-order/{id}', ['as'=>'api.order.decline', 'uses'=>'Partner\Api\OrderController@declineOrder']);
+
     });
 
     /*
