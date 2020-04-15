@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Partner\Api;
 
+use App\Events\OrderConfirmed;
+use App\Events\OrderDeclined;
 use App\Models\Order;
 use App\Models\Package;
 use App\Models\Partner;
@@ -47,6 +49,12 @@ class OrderController extends Controller
 
 
     public function details(Request $request, $id){
+
+        $actions=[
+            'mark'=>'no',
+            'confirm'=>'no',
+            'decline'=>'no',
+        ];
         $user=auth()->user();
         $partner=$user->partner;
         $order=Order::with(['details.entity', 'details.other'])->where('refid', $id)->where('payment_status', '!=', 'pending')->firstOrFail();
@@ -70,24 +78,6 @@ class OrderController extends Controller
         $amount=0;
         $totalpass=0;
         $cartpackages=[];
-
-//        foreach($order->details as $c){
-//            //$package=$c->package;
-//            $cartpackages[]=[
-//                'package'=>$c->package->package_name,
-//                'pass'=>$c->no_of_pass,
-//                'price'=>$c->package->price,
-//                'package_type'=>$c->package->package_type
-//            ];
-//            $title=$c->entity->title;
-//            $date=$c->entity->startdate.'-'.$c->entity->enddate;
-//
-//            $amount=$amount+$c->no_of_pass*$c->price;
-//
-//            $address=$c->entity->venue_address;
-//            $image=$c->entity->small_image;
-//            $totalpass=$totalpass+$c->no_of_pass;
-//        }
 
         foreach($order->details as $c){
             if($c->optional_type=='billpay'){
@@ -121,10 +111,39 @@ class OrderController extends Controller
             $title=$c->entity->name. ("($c->optional_type)"??'');
             $address=$c->entity->address;
             $date=date('D,d M Y', strtotime($order->date)).'-'.$order->time;
+            if(in_array($c->optional_type,['dining','party'])){
+                if(in_array($order->payment_status, ['paid'])){
+                    if($order->is_confirmed==true && $order->entry_marked==false){
+                        $actions['mark']='yes';
+                    }
+                }
+                if(in_array($order->payment_status, ['paid'])){
+                    if($order->is_confirmed==false){
+                        $actions['confirm']='yes';
+                    }
+                }
+                if(in_array($order->payment_status, ['paid'])){
+                    if($order->entry_marked==false){
+                        $actions['decline']='yes';
+                    }
+                }
+            }
+
         }else{
             $title=$c->entity->title;
             $date=$c->entity->startdate.'-'.$c->entity->enddate;
             $address=$c->entity->venue_adderss;
+
+            if(in_array($order->payment_status, ['paid'])){
+                if($order->is_confirmed==true && $order->entry_marked==false){
+                    $actions['mark']='yes';
+                }
+            }
+            if(in_array($order->payment_status, ['paid'])){
+                if($order->entry_marked==false){
+                    $actions['decline']='yes';
+                }
+            }
         }
 
         $image=$c->entity->small_image;
@@ -171,5 +190,61 @@ class OrderController extends Controller
             'message'=>'success',
             'data'=>$orderarray
         ];
+    }
+
+    public function declineOrder(Request $request, $id)
+    {
+        $user = auth()->user();
+        $partner = $user->partner;
+        $order = Order::with(['details.entity', 'details.other'])->where('refid', $id)->first();
+        if (!$order || $order->details[0]->entity->partner->id != $partner->id) {
+            $status = 'failed';
+            $message = 'No order found';
+            return compact('status', 'message');
+        }
+
+        if (in_array($order->details[0]->optional_type,['dining', 'party', null]) && $order->payment_status == 'paid' && $order->entry_marked == false) {
+            $order->payment_status = 'declined';
+            $order->is_confirmed = false;
+            $order->save();
+
+            event(new OrderDeclined($order));
+
+            $status = 'success';
+            $message = 'This order has been declined';
+            return compact('status', 'message');
+        }
+
+        $status = 'failed';
+        $message = 'This order cannot be declined';
+        return compact('status', 'message');
+    }
+
+
+    public function acceptOrder(Request $request, $id)
+    {
+        $user = auth()->user();
+        $partner = $user->partner;
+        $order = Order::with(['details.entity', 'details.other'])->where('refid', $id)->first();
+        if (!$order || $order->details[0]->entity->partner->id != $partner->id) {
+            $status = 'failed';
+            $message = 'No order found';
+            return compact('status', 'message');
+        }
+
+        if (in_array($order->details[0]->optional_type,['dining', 'party']) && $order->payment_status == 'paid') {
+            $order->is_confirmed = true;
+            $order->save();
+
+            event(new OrderConfirmed($order));
+
+            $status = 'success';
+            $message = 'This order has been confirmed';
+            return compact('status', 'message');
+        }
+
+        $status = 'failed';
+        $message = 'This order cannot be confirmed';
+        return compact('status', 'message');
     }
 }

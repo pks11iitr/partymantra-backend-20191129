@@ -55,6 +55,6 @@ class OrderSmsAlert
         //$msg='Your order for Booking ID: '.($event->order->refid??'').' at TPM is successfull. ';
             if(($event->order->total_paid??0)>0)
                 $body=$body.'. Total amount paid is Rs.'.($event->order->total_paid??0);
-        Msg91::send($event->order->mobile, $body);
+        Msg91::send($event->order->mobile??$event->order->customer->mobile, $body);
     }
 }
