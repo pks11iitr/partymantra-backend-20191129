@@ -165,7 +165,8 @@ class OrderController extends Controller
                 'amount'=>$amount,
                 'subtotal'=>$amount,
                 'taxes'=>0,
-                'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):''
+                'qrcode'=>$order->payment_status=='paid'?route('api.order.qr', ['id'=>$order->id]):'',
+                'actions'=>$actions
             ]
         ];
     }

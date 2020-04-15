@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/OrderSmsAlert.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/OrderSmsAlert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,14 +265,7 @@
       <workItem from="1586596145836" duration="1771000" />
       <workItem from="1586611117221" duration="11125000" />
       <workItem from="1586718637168" duration="1796000" />
-      <workItem from="1586947618597" duration="1398000" />
-    </task>
-    <task id="LOCAL-00216" summary="date in notifications">
-      <created>1581584640164</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1581584640164</updated>
+      <workItem from="1586947618597" duration="1505000" />
     </task>
     <task id="LOCAL-00217" summary="date in notifications">
       <created>1581584783060</created>
@@ -614,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586614840870</updated>
     </task>
-    <option name="localTasksCounter" value="265" />
+    <task id="LOCAL-00265" summary="changes in partner order details api">
+      <created>1586949101175</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1586949101175</updated>
+    </task>
+    <option name="localTasksCounter" value="266" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +630,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="admin notifications" />
     <MESSAGE value="order changed" />
     <MESSAGE value="collecion image" />
     <MESSAGE value="login register forgot password redirections setup for website" />
@@ -659,7 +654,8 @@
     <MESSAGE value="confirmation functionality added in website" />
     <MESSAGE value="change in add party api" />
     <MESSAGE value="changes for booking confirmation in apis" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes for booking confirmation in apis" />
+    <MESSAGE value="changes in partner order details api" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in partner order details api" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586697370081">
@@ -670,10 +666,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1586614840798">
+    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1586949100689">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586614840798" />
+    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586949100689" />
     <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
