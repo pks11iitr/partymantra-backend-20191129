@@ -55,6 +55,7 @@
 <div class="locdiv">
     <div class="container py-5">
         <div class="row py-5">
+            <span class="close"><a id="closeme" href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>
             <div class="col-md-12 py-5">
                 <h3 class="text-center section-heading">Set your location</h3>
                 <form class="py-3">

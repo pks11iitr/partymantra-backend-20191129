@@ -630,9 +630,8 @@ width:90px;
 
 }
 
-div.mydiv{width:400px; height:100vh; background:#fff; position:fixed; left:-400px; z-index:99;}
 
-div.locdiv{width:380px; height:100vh; background:#fff; position:fixed; right:-400px; z-index:99;}
+div.locdiv{width:350px; height:100vh; background:#fff; position:fixed; right:-350px; z-index:99;}
 
 
 .black {
