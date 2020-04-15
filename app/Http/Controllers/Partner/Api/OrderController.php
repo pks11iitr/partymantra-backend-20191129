@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Partner\Api;
 use App\Events\OrderConfirmed;
 use App\Events\OrderDeclined;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\Package;
 use App\Models\Partner;
+use App\Models\PartnerEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -198,13 +200,17 @@ class OrderController extends Controller
         $user = auth()->user();
         $partner = $user->partner;
         $order = Order::with(['details.entity', 'details.other'])->where('refid', $id)->first();
-        if (!$order || $order->details[0]->entity->partner->id != $partner->id) {
+
+        if (!$order || ($order->details[0]->entity instanceof Partner && $order->details[0]->entity_id== $partner->id) || ($order->details[0]->entity instanceof PartnerEvent && $order->details[0]->entity->partner->id== $partner->id) ){
             $status = 'failed';
             $message = 'No order found';
             return compact('status', 'message');
         }
 
         if (in_array($order->details[0]->optional_type,['dining', 'party', null]) && $order->payment_status == 'paid' && $order->entry_marked == false) {
+
+            OrderStatus::create(['order_id'=>$order->id, 'status'=>$order->payment_status]);
+
             $order->payment_status = 'declined';
             $order->is_confirmed = false;
             $order->save();
@@ -227,7 +233,8 @@ class OrderController extends Controller
         $user = auth()->user();
         $partner = $user->partner;
         $order = Order::with(['details.entity', 'details.other'])->where('refid', $id)->first();
-        if (!$order || $order->details[0]->entity->partner->id != $partner->id) {
+        //details entity is always partner
+        if (!$order || $order->details[0]->entity_id != $partner->id) {
             $status = 'failed';
             $message = 'No order found';
             return compact('status', 'message');
