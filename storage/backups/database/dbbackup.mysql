@@ -1,0 +1,1138 @@
+-- MySQL dump 10.13  Distrib 5.7.30, for Linux (x86_64)
+--
+-- Host: 127.0.0.1    Database: partymantra
+-- ------------------------------------------------------
+-- Server version	5.7.30-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `attachments`
+--
+
+DROP TABLE IF EXISTS `attachments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attachments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` int(11) NOT NULL,
+  `entity_type` int(11) DEFAULT NULL,
+  `entity_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attachments`
+--
+
+LOCK TABLES `attachments` WRITE;
+/*!40000 ALTER TABLE `attachments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attachments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `banners`
+--
+
+DROP TABLE IF EXISTS `banners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(250) NOT NULL,
+  `entity_type` varchar(250) DEFAULT NULL,
+  `entity_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) DEFAULT '1',
+  `priority` int(11) NOT NULL DEFAULT '1000',
+  `placeholder` tinyint(4) NOT NULL DEFAULT '10',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `banners`
+--
+
+LOCK TABLES `banners` WRITE;
+/*!40000 ALTER TABLE `banners` DISABLE KEYS */;
+INSERT INTO `banners` VALUES (1,'banner/partybanner5.jpg','event',2,'2019-12-13 13:04:19','2020-02-21 10:52:09',NULL,1,999,1),(2,'banner/partybanner4.jpeg','event',1,'2019-12-23 13:56:52','2020-02-21 12:29:10',NULL,1,1,1),(3,'banner/partybanner6.jpg','event',1,'2019-12-23 13:59:24','2020-02-21 12:29:22',NULL,1,2,2),(4,'banner/Pool_AdobeStock_230783125-830x415-c-default.jpeg','restaurant',2,'2020-01-23 07:26:19','2020-01-23 07:26:19',NULL,1,1,1),(5,'banner/partybanner4.jpeg','restaurant',3,'2020-01-23 07:26:48','2020-01-23 07:26:48',NULL,1,1,1),(6,'banner/disc.jpg','restaurant',4,'2020-01-23 07:27:37','2020-01-23 07:27:37',NULL,1,2,2),(7,'banner/Screenshot_from_2019-10-31_15-29-49.png','party',4,'2020-02-10 13:39:31','2020-02-10 13:39:31',NULL,1,1,1);
+/*!40000 ALTER TABLE `banners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `entity_type` varchar(30) NOT NULL,
+  `entity_id` int(11) NOT NULL,
+  `optional_type` enum('party','dining') DEFAULT NULL,
+  `other_type` varchar(150) DEFAULT NULL,
+  `other_id` int(11) DEFAULT NULL,
+  `partner_id` int(11) NOT NULL,
+  `men` smallint(6) NOT NULL DEFAULT '0',
+  `women` smallint(6) NOT NULL DEFAULT '0',
+  `couple` smallint(6) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `date` date DEFAULT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `no_of_pass` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (134,9,'App\\Models\\Partner',4,'party',NULL,NULL,4,5,3,7,'pankaj kumar sengar','sajimalek35@gmail.com','9978385629','2020-12-11','11:00AM',NULL,NULL,NULL,0);
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `image` varchar(250) DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `creator_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Spicy Mix','category/partybanner3.jpeg',1,9,'2019-12-12 12:03:02',NULL,'2019-12-12 13:40:58'),(2,'Spicy Mix','category/eventicon5.jpeg',0,9,'2019-12-13 13:07:14',NULL,'2019-12-13 13:07:24');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collection_event`
+--
+
+DROP TABLE IF EXISTS `collection_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collection_event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `collection_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `collection_event`
+--
+
+LOCK TABLES `collection_event` WRITE;
+/*!40000 ALTER TABLE `collection_event` DISABLE KEYS */;
+INSERT INTO `collection_event` VALUES (142,1,6,NULL,NULL,NULL),(143,2,6,NULL,NULL,NULL),(144,3,6,NULL,NULL,NULL),(148,1,8,NULL,NULL,NULL),(149,2,8,NULL,NULL,NULL),(150,3,8,NULL,NULL,NULL),(151,1,9,NULL,NULL,NULL),(152,2,9,NULL,NULL,NULL),(153,3,9,NULL,NULL,NULL),(154,1,10,NULL,NULL,NULL),(155,2,10,NULL,NULL,NULL),(156,3,10,NULL,NULL,NULL),(157,1,7,NULL,NULL,NULL),(158,2,7,NULL,NULL,NULL),(159,3,7,NULL,NULL,NULL),(169,1,12,NULL,NULL,NULL),(170,2,12,NULL,NULL,NULL),(171,3,12,NULL,NULL,NULL),(172,1,11,NULL,NULL,NULL),(173,2,11,NULL,NULL,NULL),(174,3,11,NULL,NULL,NULL),(186,1,13,NULL,NULL,NULL),(187,3,13,NULL,NULL,NULL),(188,4,13,NULL,NULL,NULL),(189,6,13,NULL,NULL,NULL),(203,2,1,NULL,NULL,NULL),(204,3,1,NULL,NULL,NULL),(205,6,1,NULL,NULL,NULL),(206,7,1,NULL,NULL,NULL),(207,2,2,NULL,NULL,NULL),(208,3,2,NULL,NULL,NULL),(209,6,2,NULL,NULL,NULL),(210,7,2,NULL,NULL,NULL),(211,2,3,NULL,NULL,NULL),(212,3,3,NULL,NULL,NULL),(213,6,3,NULL,NULL,NULL),(214,7,3,NULL,NULL,NULL),(215,2,4,NULL,NULL,NULL),(216,3,4,NULL,NULL,NULL),(217,6,4,NULL,NULL,NULL),(218,7,4,NULL,NULL,NULL),(219,2,5,NULL,NULL,NULL),(220,3,5,NULL,NULL,NULL),(221,6,5,NULL,NULL,NULL),(222,7,5,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `collection_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collection_restaurant`
+--
+
+DROP TABLE IF EXISTS `collection_restaurant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collection_restaurant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `collection_id` int(11) NOT NULL,
+  `restaurant_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `collection_restaurant`
+--
+
+LOCK TABLES `collection_restaurant` WRITE;
+/*!40000 ALTER TABLE `collection_restaurant` DISABLE KEYS */;
+INSERT INTO `collection_restaurant` VALUES (31,1,3,NULL,NULL,NULL),(32,2,3,NULL,NULL,NULL),(47,1,2,NULL,NULL,NULL),(48,2,2,NULL,NULL,NULL),(51,3,3,NULL,NULL,NULL),(52,3,3,NULL,NULL,NULL),(54,4,2,NULL,NULL,NULL),(55,5,2,NULL,NULL,NULL),(59,2,1,NULL,NULL,NULL),(60,3,1,NULL,NULL,NULL),(61,4,1,NULL,NULL,NULL),(62,1,4,NULL,NULL,NULL),(63,4,4,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `collection_restaurant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collections`
+--
+
+DROP TABLE IF EXISTS `collections`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collections` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `cover_image` varchar(250) NOT NULL,
+  `small_image` varchar(250) NOT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `istop` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'top colletion will be displayed in top group',
+  `priority` smallint(4) NOT NULL DEFAULT '1000',
+  `about` varchar(100) DEFAULT NULL,
+  `type` enum('event','restaurant','party') NOT NULL DEFAULT 'event',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `collections`
+--
+
+LOCK TABLES `collections` WRITE;
+/*!40000 ALTER TABLE `collections` DISABLE KEYS */;
+INSERT INTO `collections` VALUES (1,'All Time Hit',9,'2019-12-13 13:06:13',NULL,'2020-02-10 14:17:21','collections/partybanner1.jpg','collections/partybanner1.jpg',1,1,10,'hello this is one line','restaurant'),(2,'Fresh Collection',9,'2019-12-14 08:10:15',NULL,'2019-12-14 10:47:41','collections/partybanner1.jpg','collections/partybanner1.jpg',1,0,2,NULL,'event'),(3,'Top Trending Restaurants',9,'2019-12-13 13:06:13',NULL,'2019-12-24 05:44:01','collections/partybanner1.jpg','collections/partybanner1.jpg',1,1,10,'hello this is one line','event'),(4,'Best Food Restaurants',9,'2019-12-14 08:10:15',NULL,'2020-02-10 14:17:40','collections/partybanner1.jpg','collections/partybanner1.jpg',1,0,2,'hello this is one line','party'),(5,'pankaj kumar sengar',9,'2020-02-10 14:18:17',NULL,'2020-02-11 05:43:10','collections/Screenshot_from_2019-10-26_22-30-00.png','collections/Screenshot_from_2019-10-26_22-30-00.png',0,1,1,'hello this is one line','restaurant'),(6,'Romatic evening events',9,'2020-02-21 12:14:01',NULL,'2020-02-21 12:16:50','collections/night-party.jpg','collections/night-party.jpg',1,0,1,'hello this is one line','event'),(7,'Total Madness Unleased',9,'2020-02-21 12:14:51',NULL,'2020-02-21 12:16:43','collections/luggageroombanner.jpeg','collections/luggageroombanner.jpeg',1,0,1,'hello this is one line','event');
+/*!40000 ALTER TABLE `collections` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cusines`
+--
+
+DROP TABLE IF EXISTS `cusines`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cusines` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `creator_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cusines`
+--
+
+LOCK TABLES `cusines` WRITE;
+/*!40000 ALTER TABLE `cusines` DISABLE KEYS */;
+INSERT INTO `cusines` VALUES (1,'South Indian',9,'2019-12-13 13:04:53',NULL,'2019-12-13 13:05:00');
+/*!40000 ALTER TABLE `cusines` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discounts`
+--
+
+DROP TABLE IF EXISTS `discounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `discount_type` enum('instant','cashback') NOT NULL,
+  `sub_type` enum('percent','fixed') NOT NULL,
+  `value` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discounts`
+--
+
+LOCK TABLES `discounts` WRITE;
+/*!40000 ALTER TABLE `discounts` DISABLE KEYS */;
+INSERT INTO `discounts` VALUES (1,'instant','percent',20),(2,'cashback','percent',10);
+/*!40000 ALTER TABLE `discounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_facility`
+--
+
+DROP TABLE IF EXISTS `event_facility`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_facility` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `facility_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_facility`
+--
+
+LOCK TABLES `event_facility` WRITE;
+/*!40000 ALTER TABLE `event_facility` DISABLE KEYS */;
+INSERT INTO `event_facility` VALUES (44,1,2,NULL,NULL,NULL),(45,1,5,NULL,NULL,NULL),(46,2,1,NULL,NULL,NULL),(47,2,3,NULL,NULL,NULL),(48,2,4,NULL,NULL,NULL),(49,4,4,NULL,NULL,NULL),(50,4,5,NULL,NULL,NULL),(51,5,4,NULL,NULL,NULL),(52,5,5,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `event_facility` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_packages`
+--
+
+DROP TABLE IF EXISTS `event_packages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_packages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `partner_id` int(11) NOT NULL,
+  `package_name` varchar(50) NOT NULL,
+  `text_under_name` varchar(30) NOT NULL COMMENT 'will be visible under package name',
+  `price` int(11) NOT NULL,
+  `custom_package_detail` text NOT NULL COMMENT 'will be visible after menu list on package details',
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `partneractive` tinyint(1) NOT NULL DEFAULT '1',
+  `package_type` enum('cover','other') NOT NULL DEFAULT 'other',
+  `forparty` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'package will be used for party',
+  `fordining` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'package will be used for dining',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_packages`
+--
+
+LOCK TABLES `event_packages` WRITE;
+/*!40000 ALTER TABLE `event_packages` DISABLE KEYS */;
+INSERT INTO `event_packages` VALUES (1,3,3,'Last Booking Call 2','small menus',250,'ssdsdsdsd',9,'2019-12-13 13:36:22','2020-02-06 12:12:15',NULL,0,0,'other',1,1),(2,2,4,'Early Bird','small menus',250,'ssdsdsdsd',14,'2019-12-14 13:22:35','2019-12-14 13:28:50',NULL,0,1,'other',1,1),(3,2,4,'Last Booking Call 4','small menus',250,'ssdsdsdsd',9,'2019-12-14 13:29:20','2020-01-30 12:58:22',NULL,1,1,'other',1,1),(4,2,4,'Last Booking Call 3','small menus',250,'ssdsdsdsd',9,'2019-12-14 13:42:42','2020-01-30 09:50:29',NULL,1,1,'other',1,1),(5,2,1,'Men','a',4000,'ssdsdsdsd skdjd dfkjfdf this also includes skdjskdjs fkjdfd dkfdfdfd',9,'2020-01-07 05:50:37','2020-02-21 12:15:42',NULL,1,1,'cover',1,1),(6,2,1,'Women','a',3000,'ssdsdsdsd skdjd dfkjfdf this also includes skdjskdjs fkjdfd dkfdfdfd',9,'2020-01-07 05:51:08','2020-02-21 12:15:42',NULL,1,1,'cover',1,1),(7,2,1,'Couple','a',7000,'ssdsdsdsd skdjd dfkjfdf this also includes skdjskdjs fkjdfd dkfdfdfd',9,'2020-01-07 05:51:35','2020-02-21 12:15:42',NULL,1,1,'cover',1,1),(8,5,1,'Men','a',4000,'a',9,'2020-01-07 11:44:43','2020-02-21 12:16:07',NULL,1,1,'cover',1,1),(9,5,1,'Women','a',5000,'a',9,'2020-01-07 11:44:43','2020-02-21 12:16:07',NULL,1,1,'cover',1,1),(10,5,1,'Couple','a',0,'a',9,'2020-01-07 11:44:44','2020-02-21 12:16:07',NULL,0,1,'cover',1,1),(11,3,3,'Early Bird','small menus',250,'ssdsdsdsd',9,'2020-02-06 12:09:41','2020-02-06 12:12:05',NULL,1,1,'other',1,1);
+/*!40000 ALTER TABLE `event_packages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `partner_id` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `startdate` datetime NOT NULL,
+  `enddate` datetime DEFAULT NULL,
+  `description` text NOT NULL,
+  `venue_name` varchar(100) NOT NULL,
+  `venue_adderss` varchar(250) NOT NULL,
+  `lat` decimal(20,12) NOT NULL,
+  `lang` decimal(20,12) NOT NULL,
+  `header_image` varchar(250) NOT NULL,
+  `small_image` varchar(250) NOT NULL,
+  `tnc` text,
+  `custom_package_details` text COMMENT 'this will be used for package inclusions',
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `partneractive` tinyint(1) NOT NULL DEFAULT '1',
+  `istop` tinyint(1) NOT NULL DEFAULT '0',
+  `markasfull` tinyint(1) NOT NULL DEFAULT '0',
+  `priority` smallint(4) NOT NULL DEFAULT '1000',
+  `per_person_text` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,1,9,'New Year Blast','2019-12-13 11:50:00','2019-12-13 18:55:00','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','Taj Hotel','Taj Mansingh Hotel Road, South Block, Man Singh Road Area, New Delhi, Delhi, India',28.604912200000,77.223133800000,'events/partybanner1.jpg','events/eventicon2.jpg','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','2019-12-13 13:30:08',NULL,'2020-02-21 12:15:34',1,1,0,0,1000,'250 per person'),(2,4,9,'Chrismas Event 2019','2019-12-24 19:50:00','2019-12-11 14:25:00','The best way to deal with this, therefore, is to simply add the preselected item as a new option. For remotely sourced data, this will probably involve creating a new API endpoint in your server-side application that can retrieve individual items:','Taj Hotel','Frankfurt, Germany',24.000000000000,22.000000000000,'events/partybanner6.jpg','events/eventicon7.jpg','A party is a gathering of people who have been invited by a host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of','The best way to deal with this, therefore, is to simply add the preselected item as a new option. For remotely sourced data, this will probably involve creating a new API endpoint in your server-side application that can retrieve individual items:','2019-12-13 13:59:51',NULL,'2020-02-21 12:15:42',1,1,0,0,1000,'250 per person'),(3,1,9,'TEst event','2019-12-11 14:50:00','2019-12-03 17:15:00','dffg','dgff','Frankfurt, Germany',23.000000000000,12.000000000000,'events/partybanner6.jpg','events/eventicon4.jpg','A party is a gathering of people who have been invited by a host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of a special occasion. A party will typically feature food and beverages, and often music and dancing or other forms of entertainment.','sdfd','2019-12-14 13:13:29',NULL,'2020-02-21 12:15:51',1,1,1,0,1,'250 per person'),(4,1,9,'cover event','2020-01-09 17:30:00','2020-01-08 10:30:00','vdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkj vdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkjvdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkjvdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkj','Burj Khalifa','Fort Lauderdale, FL, USA',28.604912200000,77.223133800000,'events/eventicon2.jpg','events/eventicon2.jpg','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','2020-01-07 11:43:52',NULL,'2020-02-21 12:15:59',1,1,0,0,1000,'250 per person'),(5,4,9,'cover event','2020-01-09 17:30:00','2020-01-08 10:30:00','vdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkj vdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkjvdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkjvdfsdjs dkjfs dfkjfdf dkjfdg kjgfg fgjkfgf gkjfg fgkfjg fgkfjg fhkj','Burj Khalifa','Fort Lauderdale, FL, USA',28.604912200000,77.223133800000,'events/eventicon2.jpg','events/eventicon2.jpg','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.','2020-01-07 11:44:41',NULL,'2020-02-21 12:16:07',1,1,0,0,1000,'250 per person');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `facilities`
+--
+
+DROP TABLE IF EXISTS `facilities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `facilities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `creator_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `facilities`
+--
+
+LOCK TABLES `facilities` WRITE;
+/*!40000 ALTER TABLE `facilities` DISABLE KEYS */;
+INSERT INTO `facilities` VALUES (1,'LIve Sport',1,1,NULL,NULL,NULL),(2,'Private Dining',1,1,NULL,NULL,NULL),(3,'Full BAr',1,1,NULL,NULL,NULL),(4,'Parking',1,1,NULL,NULL,NULL),(5,'Smoking Area',1,1,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `facilities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type` varchar(100) NOT NULL,
+  `entity_id` int(11) NOT NULL,
+  `other_type` enum('restaurant','party','both','eventonrestaurant','partyonrestaurant') DEFAULT NULL,
+  `other_id` int(11) DEFAULT NULL,
+  `doc_path` varchar(250) NOT NULL,
+  `uploaded_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `partneractive` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gallery`
+--
+
+LOCK TABLES `gallery` WRITE;
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+INSERT INTO `gallery` VALUES (2,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/eventicon2.jpg',9,NULL,NULL,NULL,1,1),(3,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/eventicon7.jpg',9,NULL,NULL,NULL,1,1),(4,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/partybanner6.jpg',9,NULL,NULL,NULL,1,1),(5,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/eventicon4.jpg',9,NULL,NULL,NULL,1,1),(6,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/1/774_eventicon3.jpg',9,'2019-12-24 11:43:22',NULL,'2019-12-24 11:43:22',1,1),(7,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/1/633_eventicon2.jpg',9,'2019-12-24 11:43:22',NULL,'2019-12-24 11:43:22',1,1),(8,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/1/960_partybanner1.jpg',9,'2019-12-25 07:56:32',NULL,'2019-12-25 07:56:32',1,1),(9,'App\\Models\\PartnerEvent',1,'restaurant',NULL,'events/1/680_partybanner2.jpeg',9,'2019-12-25 07:56:32',NULL,'2019-12-25 07:56:32',1,1),(10,'App\\Models\\PartnerEvent',4,'restaurant',NULL,'events/4/438_partybanner6.jpg',9,'2020-01-30 10:08:08',NULL,'2020-01-30 10:08:08',1,1),(11,'App\\Models\\PartnerEvent',4,'restaurant',NULL,'events/4/852_partybanner5.jpg',9,'2020-01-30 10:08:08',NULL,'2020-01-30 10:08:08',1,1),(12,'App\\Models\\PartnerEvent',4,'restaurant',NULL,'events/4/191_partybanner4.jpeg',9,'2020-01-30 10:08:08',NULL,'2020-01-30 10:08:08',1,1),(13,'App\\Models\\Partner',4,'restaurant',NULL,'events/4/751_partybanner2.jpeg',9,'2020-01-30 10:09:28',NULL,'2020-01-30 10:09:28',1,1),(15,'App\\Models\\Partner',4,'restaurant',NULL,'events/4/267_parties-pictures-of-freedom-roost-970.jpeg',9,'2020-01-30 10:09:28',NULL,'2020-01-30 10:09:28',1,1),(16,'App\\Models\\Partner',4,'both',NULL,'events/4/953_partybanner1.jpg',9,'2020-01-30 10:22:45',NULL,'2020-01-30 10:22:45',1,1),(17,'App\\Models\\Partner',4,'both',NULL,'events/4/295_parties-pictures-of-freedom-roost-970.jpeg',9,'2020-01-30 10:22:45',NULL,'2020-01-30 10:22:45',1,1),(18,'App\\Models\\PartnerEvent',5,NULL,NULL,'events/5/603_partybanner1.jpg',9,'2020-01-30 10:23:22',NULL,'2020-01-30 10:23:22',1,1),(19,'App\\Models\\Partner',1,'restaurant',NULL,'events/1/956_partybanner1.jpg',9,'2020-02-06 08:09:25',NULL,'2020-02-06 08:09:25',1,1),(20,'App\\Models\\Partner',1,'both',NULL,'events/1/447_luggageroombanner.webp',9,'2020-02-06 08:28:10',NULL,'2020-02-06 08:28:10',1,1),(21,'App\\Models\\Partner',1,'restaurant',NULL,'events/1/468_partybanner3.jpeg',9,'2020-02-06 08:29:31',NULL,'2020-02-06 08:29:31',1,1),(22,'App\\Models\\Partner',1,'restaurant',NULL,'events/1/167_partybanner2.jpeg',9,'2020-02-06 08:29:31',NULL,'2020-02-06 08:29:31',1,1),(23,'App\\Models\\Partner',1,'eventonrestaurant',NULL,'events/1/523_parties-pictures-of-freedom-roost-970.jpeg',9,'2020-02-06 08:32:38',NULL,'2020-02-06 08:32:38',1,1),(24,'App\\Models\\Partner',1,'eventonrestaurant',NULL,'events/1/137_luggageroombanner.webp',9,'2020-02-06 08:32:38',NULL,'2020-02-06 08:32:38',1,1),(25,'App\\Models\\Partner',1,'partyonrestaurant',NULL,'events/1/477_partybanner2.jpeg',9,'2020-02-06 08:42:59',NULL,'2020-02-06 08:42:59',1,1),(26,'App\\Models\\Partner',1,'eventonrestaurant',NULL,'events/1/425_parties-pictures-of-freedom-roost-970.jpeg',9,'2020-02-06 08:43:14',NULL,'2020-02-06 08:43:14',1,1),(27,'App\\Models\\Partner',1,'eventonrestaurant',NULL,'events/1/578_partybanner1.jpg',9,'2020-02-06 08:44:38',NULL,'2020-02-06 08:44:38',1,1),(28,'App\\Models\\Partner',1,'eventonrestaurant',3,'events/1/205_partybanner1.jpg',9,'2020-02-06 08:45:53',NULL,'2020-02-06 08:45:53',1,1);
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menus`
+--
+
+DROP TABLE IF EXISTS `menus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `image` varchar(250) NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `cut_pice` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `description` text,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `partneractive` tinyint(1) NOT NULL DEFAULT '1',
+  `creator_id` int(11) NOT NULL,
+  `partner_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menus`
+--
+
+LOCK TABLES `menus` WRITE;
+/*!40000 ALTER TABLE `menus` DISABLE KEYS */;
+INSERT INTO `menus` VALUES (1,'Malai kofta','menus/eventicon5.jpeg',250,300,9,'Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.',0,1,9,1,'2019-12-13 13:33:11','2019-12-25 08:17:18',NULL),(2,'Spicy Mix','menus/eventicon5.jpeg',500,1000,9,'Notice that we manually trigger the select2:select event and pass along the entire data object. This allows other handlers to access additional properties of the selected item.',1,1,9,1,'2019-12-13 13:34:14','2019-12-13 13:34:14',NULL),(3,'Kadai Panner','menus/eventicon7.jpg',1213,1234,9,NULL,1,1,9,1,'2019-12-13 13:34:50','2019-12-13 13:34:50',NULL),(4,'Puri Sabji','menus/eventicon7.jpg',250,350,NULL,'sjks sdkjfdf',0,1,14,1,'2019-12-14 13:03:25','2019-12-14 13:03:25',NULL);
+/*!40000 ALTER TABLE `menus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2015_02_07_172606_create_roles_table',2),(4,'2015_02_07_172633_create_role_user_table',2),(5,'2015_02_07_172649_create_permissions_table',2),(6,'2015_02_07_172657_create_permission_role_table',2),(7,'2015_02_17_152439_create_permission_user_table',2),(8,'2015_11_30_232041_bigint_user_keys',3),(9,'2016_02_06_172606_create_users_table',3);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `notifications`
+--
+
+DROP TABLE IF EXISTS `notifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(250) DEFAULT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `receiver_type` enum('single','allcustomer','allvendor','alluser') NOT NULL DEFAULT 'single',
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `is_sent` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notifications`
+--
+
+LOCK TABLES `notifications` WRITE;
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` VALUES (1,'this is test notif','hdss fdkjd gkdgf kfg fkf hfklgh fkgh kjgh gjhj',NULL,15,'single',NULL,NULL,NULL,1),(2,'this is with image','dhf dfkjfd fgkgf gfkfg gfkjgf kj','users/eventicon1.jpeg',15,'single',NULL,NULL,NULL,1),(3,'Chrismas Event 2019','Chrismas Event 2019',NULL,15,'single',NULL,NULL,NULL,1),(4,'Chrismas Event 2019','Chrismas Event 2019',NULL,16,'single',NULL,NULL,NULL,1),(5,'Order Successfull','Your order at TPM is successfull. Booking ID:20200205093032',NULL,15,'single','2020-03-03 11:34:31',NULL,'2020-03-03 11:34:31',1),(6,'Payment Successfull','Payment for Booking ID:20200205093032 is successfull',NULL,17,'single','2020-03-03 11:34:31',NULL,'2020-03-03 11:34:31',1),(7,'Order Successfull','Your recharge at TPM for Rs.10000 is successful. Recharge ID is:20200303120327',NULL,15,'single','2020-03-03 12:04:30',NULL,'2020-03-03 12:04:30',1),(8,'Order Successfull','Your order at TPM is successfull. Booking ID:20200315090848',NULL,15,'single','2020-03-15 09:09:07',NULL,'2020-03-15 09:09:07',1),(9,'Payment Successfull','Payment for Booking ID:20200315090848 is successfull',NULL,14,'single','2020-03-15 09:09:07',NULL,'2020-03-15 09:09:07',1),(10,'Order Successfull','Your order at TPM is successfull. Booking ID:20200315104608',NULL,15,'single','2020-03-15 10:46:09',NULL,'2020-03-15 10:46:09',1),(11,'Payment Successfull','Payment for Booking ID:20200315104608 is successfull',NULL,19,'single','2020-03-15 10:46:09',NULL,'2020-03-15 10:46:09',1),(12,'Order Successfull','Your order at TPM is successfull. Booking ID:20200315105524',NULL,15,'single','2020-03-15 10:55:24',NULL,'2020-03-15 10:55:24',1),(13,'Payment Successfull','Payment for Booking ID:20200315105524 is successfull',NULL,19,'single','2020-03-15 10:55:25',NULL,'2020-03-15 10:55:25',1),(14,'Order Successfull','Your order at TPM is successfull. Booking ID:20200315110730',NULL,15,'single','2020-03-15 11:07:31',NULL,'2020-03-15 11:07:31',1),(15,'Payment Successfull','Payment for Booking ID:20200315110730 is successfull',NULL,19,'single','2020-03-15 11:07:32',NULL,'2020-03-15 11:07:32',1),(16,'Order Successfull','Your recharge at TPM for Rs.10000 is successful. Recharge ID is:20200315111021',NULL,15,'single','2020-03-15 11:10:52',NULL,'2020-03-15 11:10:52',1),(17,'Order Successfull','Your order at TPM is successfull. Booking ID:20200315164855',NULL,15,'single','2020-03-15 16:49:04',NULL,'2020-03-15 16:49:04',1),(18,'Payment Successfull','Payment for Booking ID:20200315164855 is successfull',NULL,19,'single','2020-03-15 16:49:04',NULL,'2020-03-15 16:49:04',1),(19,'Table Booking: ','We have received table booking request. You will get confirmation shortly. Your reference id is: 20200320135552',NULL,15,'single','2020-03-20 13:55:52',NULL,'2020-03-20 13:55:52',1),(20,'Table Booking Request Received: ','You have received table booking request (Booking id: 20200320135552). Please confirm or decline as per availablity',NULL,19,'single','2020-03-20 13:55:52',NULL,'2020-03-20 13:55:52',1),(21,'Order Successfull','Your order at TPM is successfull. Booking ID:20200410132505',NULL,15,'single','2020-04-10 13:25:44',NULL,'2020-04-10 13:25:44',1),(22,'Order Successfull','Your order at TPM is successfull. Booking ID:20200410132505',NULL,14,'single','2020-04-10 13:25:44',NULL,'2020-04-10 13:25:44',1),(23,'Table Booking: ','We have received table booking request. You will get confirmation shortly. Your reference id is: 20200410132720',NULL,15,'single','2020-04-10 13:27:20',NULL,'2020-04-10 13:27:20',1),(24,'Table Booking Request Received: ','You have received table booking request (Booking id: 20200410132720). Please confirm or decline as per availablity',NULL,19,'single','2020-04-10 13:27:20',NULL,'2020-04-10 13:27:20',1),(25,'Table Booking: ','We have received table booking request. You will get confirmation shortly. Your reference id is: 20200410132901',NULL,15,'single','2020-04-10 13:30:08',NULL,'2020-04-10 13:30:08',1),(26,'Table Booking Request Received: ','You have received table booking request (Booking id: 20200410132901). Please confirm or decline as per availablity',NULL,19,'single','2020-04-10 13:30:08',NULL,'2020-04-10 13:30:08',1);
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `entity_type` varchar(30) NOT NULL,
+  `entity_id` int(11) NOT NULL,
+  `optional_type` varchar(150) DEFAULT NULL,
+  `other_type` varchar(150) DEFAULT NULL,
+  `other_id` int(11) DEFAULT NULL,
+  `partner_id` int(11) NOT NULL,
+  `men` smallint(6) NOT NULL DEFAULT '0',
+  `women` smallint(6) NOT NULL DEFAULT '0',
+  `couple` smallint(6) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `no_of_pass` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_details`
+--
+
+LOCK TABLES `order_details` WRITE;
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` VALUES (29,37,'App\\Models\\Partner',4,'dining','App\\Models\\Package',3,4,0,0,0,'2020-01-31 07:51:33','2020-01-31 07:51:33',NULL,4,250),(30,37,'App\\Models\\Partner',4,'dining','App\\Models\\Package',4,4,0,0,0,'2020-01-31 07:51:34','2020-01-31 07:51:34',NULL,1,250),(31,37,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',3,4,0,0,0,'2020-01-31 07:51:34','2020-01-31 07:51:34',NULL,3,1000),(32,37,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',2,4,0,0,0,'2020-01-31 07:51:34','2020-01-31 07:51:34',NULL,2,1000),(33,38,'App\\Models\\PartnerEvent',2,NULL,'App\\Models\\Package',3,4,0,0,0,'2020-02-01 07:53:29','2020-02-01 07:53:29',NULL,4,250),(34,38,'App\\Models\\PartnerEvent',2,NULL,'App\\Models\\Package',4,4,0,0,0,'2020-02-01 07:53:30','2020-02-01 07:53:30',NULL,1,250),(35,39,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 09:30:32','2020-02-05 09:30:32',NULL,0,500),(36,40,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 09:31:21','2020-02-05 09:31:21',NULL,0,500),(37,41,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 09:32:44','2020-02-05 09:32:44',NULL,0,500),(38,42,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 09:32:48','2020-02-05 09:32:48',NULL,0,500),(44,53,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 10:09:57','2020-02-05 10:09:57',NULL,0,500),(46,55,'App\\Models\\Partner',2,'billpay',NULL,NULL,2,0,0,0,'2020-02-05 10:43:41','2020-02-05 10:43:41',NULL,0,500),(67,66,'App\\Models\\PartnerEvent',5,NULL,'App\\Models\\Package',8,1,0,0,0,'2020-03-15 09:08:48','2020-03-15 09:08:48',NULL,1,4000),(68,67,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-03-15 10:46:08','2020-03-15 10:46:08',NULL,0,0),(69,68,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-03-15 10:55:24','2020-03-15 10:55:24',NULL,0,0),(70,69,'App\\Models\\Partner',4,'party',NULL,NULL,4,0,0,0,'2020-03-15 11:07:31','2020-03-15 11:07:31',NULL,0,0),(107,79,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',3,4,0,0,0,'2020-03-15 16:48:55','2020-03-15 16:48:55',NULL,2,1200),(108,79,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',2,4,0,0,0,'2020-03-15 16:48:56','2020-03-15 16:48:56',NULL,1,900),(120,91,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-03-20 13:54:13','2020-03-20 13:54:13',NULL,0,0),(121,92,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-03-20 13:55:02','2020-03-20 13:55:02',NULL,0,0),(122,93,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-03-20 13:55:52','2020-03-20 13:55:52',NULL,0,0),(123,94,'App\\Models\\PartnerEvent',2,NULL,'App\\Models\\Package',5,1,0,0,0,'2020-04-10 13:25:05','2020-04-10 13:25:05',NULL,1,4000),(124,94,'App\\Models\\PartnerEvent',2,NULL,'App\\Models\\Package',7,1,0,0,0,'2020-04-10 13:25:05','2020-04-10 13:25:05',NULL,1,7000),(125,95,'App\\Models\\Partner',4,'dining',NULL,NULL,4,0,0,0,'2020-04-10 13:27:20','2020-04-10 13:27:20',NULL,0,0),(126,96,'App\\Models\\Partner',4,'dining','App\\Models\\Package',3,4,0,0,0,'2020-04-10 13:29:01','2020-04-10 13:29:01',NULL,1,250),(127,96,'App\\Models\\Partner',4,'dining','App\\Models\\Package',4,4,0,0,0,'2020-04-10 13:29:01','2020-04-10 13:29:01',NULL,1,250),(128,96,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',3,4,0,0,0,'2020-04-10 13:29:02','2020-04-10 13:29:02',NULL,1,1200),(129,96,'App\\Models\\Partner',4,'dining','App\\Models\\Menu',2,4,0,0,0,'2020-04-10 13:29:02','2020-04-10 13:29:02',NULL,1,900);
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_status`
+--
+
+DROP TABLE IF EXISTS `order_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `status` varchar(25) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_status`
+--
+
+LOCK TABLES `order_status` WRITE;
+/*!40000 ALTER TABLE `order_status` DISABLE KEYS */;
+INSERT INTO `order_status` VALUES (1,91,'pending','2020-03-20 13:54:13','2020-03-20 13:54:13',NULL),(2,92,'pending','2020-03-20 13:55:02','2020-03-20 13:55:02',NULL),(3,93,'pending','2020-03-20 13:55:52','2020-03-20 13:55:52',NULL),(4,94,'pending','2020-04-10 13:25:44','2020-04-10 13:25:44',NULL),(5,94,'paid','2020-04-10 13:25:44','2020-04-10 13:25:44',NULL),(6,95,'pending','2020-04-10 13:27:20','2020-04-10 13:27:20',NULL),(7,96,'pending','2020-04-10 13:30:08','2020-04-10 13:30:08',NULL),(8,96,'paid','2020-04-10 13:30:08','2020-04-10 13:30:08',NULL);
+/*!40000 ALTER TABLE `order_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `refid` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `total` int(11) NOT NULL DEFAULT '0',
+  `payment_status` enum('pending','paid','cancelled','cancel-request','declined','refunded') NOT NULL DEFAULT 'pending',
+  `is_confirmed` tinyint(1) NOT NULL DEFAULT '0',
+  `payment_text` text,
+  `entry_marked` tinyint(1) NOT NULL DEFAULT '0',
+  `order_id` varchar(100) DEFAULT NULL,
+  `order_id_response` text,
+  `payment_id` varchar(100) DEFAULT NULL,
+  `payment_id_response` text,
+  `email` varchar(100) DEFAULT NULL,
+  `mobile` varchar(10) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `men` int(11) NOT NULL DEFAULT '0',
+  `women` int(11) NOT NULL DEFAULT '0',
+  `couple` int(11) NOT NULL DEFAULT '0',
+  `usingwallet` tinyint(1) NOT NULL DEFAULT '0',
+  `fromwallet` int(11) NOT NULL DEFAULT '0',
+  `instant_discount` int(11) NOT NULL DEFAULT '0',
+  `discount_type` enum('instant','cashback','none') NOT NULL DEFAULT 'none',
+  `cashback_discount` int(11) NOT NULL DEFAULT '0',
+  `cancel_reason` int(11) DEFAULT NULL,
+  `cancel_text` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (37,'20200131075133',15,'2020-01-31 07:51:33','2020-01-31 07:51:34',NULL,6250,'cancelled',0,NULL,0,'order_EB0UfVDd6uxHAQ','{\"id\":\"order_EB0UfVDd6uxHAQ\",\"entity\":\"order\",\"amount\":625000,\"amount_paid\":0,\"amount_due\":625000,\"currency\":\"INR\",\"receipt\":\"20200131075133\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1580457094}',NULL,NULL,'pks11iitr@gmail.com','8802035788',NULL,NULL,'pankaj',1,1,1,0,0,0,'none',0,NULL,NULL),(38,'20200201075329',15,'2020-02-01 07:53:29','2020-02-01 07:53:31',NULL,1250,'paid',0,NULL,0,'order_EBP3puYLCOoGfY','{\"id\":\"order_EBP3puYLCOoGfY\",\"entity\":\"order\",\"amount\":125000,\"amount_paid\":0,\"amount_due\":125000,\"currency\":\"INR\",\"receipt\":\"20200201075329\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1580543611}',NULL,NULL,'pks11iitr@gmail.com','8802035788',NULL,NULL,'pankaj',1,1,1,0,0,0,'none',0,NULL,NULL),(39,'20200205093032',15,'2020-02-05 09:30:32','2020-02-05 09:30:33',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,'none',0,NULL,NULL),(40,'20200205093121',15,'2020-02-05 09:31:21','2020-02-05 09:31:21',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,'none',0,NULL,NULL),(41,'20200205093244',15,'2020-02-05 09:32:44','2020-02-05 09:32:44',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,'none',0,NULL,NULL),(42,'20200205093248',15,'2020-02-05 09:32:48','2020-02-05 09:32:48',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,'none',0,NULL,NULL),(53,'20200205100957',15,'2020-02-05 10:09:57','2020-02-05 10:09:57',NULL,400,'paid',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,400,100,'instant',0,NULL,NULL),(55,'20200205104341',15,'2020-02-05 10:43:41','2020-03-09 17:26:22',NULL,400,'cancel-request',0,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,1,400,100,'instant',0,1,'jhgj'),(66,'20200315090848',15,'2020-03-15 09:08:48','2020-03-15 09:09:06',NULL,4000,'paid',0,NULL,0,'order_ESRJbabVMSG87r','{\"id\":\"order_ESRJbabVMSG87r\",\"entity\":\"order\",\"amount\":400000,\"amount_paid\":0,\"amount_due\":400000,\"currency\":\"INR\",\"receipt\":\"20200315090848\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1584263331}','pay_ESRJoAi2M9R11K','e0c8857da5037fe7df9bb377678f566c43d7fb7cfe5c8fe69c303c3ac618baf2','sajimalek35@gmail.com','9978385629',NULL,NULL,'Makudmiyaa',0,0,0,0,0,0,'none',0,NULL,NULL),(67,'20200315104608',15,'2020-03-15 10:46:08','2020-03-15 10:46:08',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,'sridharsodexo@gmail.com','8971520750','2020-03-18','01:00PM','pankaj',1,4,1,0,0,0,'none',0,NULL,NULL),(68,'20200315105524',15,'2020-03-15 10:55:24','2020-03-15 10:55:24',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,'sridharsodexo@gmail.com','8971520750','2020-03-18','01:00PM','pankaj',1,4,1,0,0,0,'none',0,NULL,NULL),(69,'20200315110730',15,'2020-03-15 11:07:30','2020-03-15 11:07:31',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,'sajimalek35@gmail.com','9978385629','2020-12-11','11:00AM','pankah',0,0,0,0,0,0,'none',0,NULL,NULL),(79,'20200315164855',15,'2020-03-15 16:48:55','2020-03-15 16:49:04',NULL,3300,'paid',0,NULL,0,'order_ESZ9bOwMt6Rn7B','{\"id\":\"order_ESZ9bOwMt6Rn7B\",\"entity\":\"order\",\"amount\":330000,\"amount_paid\":0,\"amount_due\":330000,\"currency\":\"INR\",\"receipt\":\"20200315164855\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1584290936}','pay_ESZ9h9O0fHSkA0','0901ed4a01a3e35127ff9a5f168d9bb4fb78eb0be078f3268c2c8b38dc74cb59','sajimalek35@gmail.com','9978385629','2020-03-15','01:00PM','pankaj',0,0,0,0,0,0,'none',0,NULL,NULL),(94,'20200410132505',15,'2020-04-10 13:25:05','2020-04-10 13:25:44',NULL,11000,'paid',1,NULL,0,'order_EcnZPpgkQ7plep','{\"id\":\"order_EcnZPpgkQ7plep\",\"entity\":\"order\",\"amount\":1100000,\"amount_paid\":0,\"amount_due\":1100000,\"currency\":\"INR\",\"receipt\":\"20200410132505\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1586525106}','pay_Ecna0WHDneGVuw','fae5dcf4c97c4d70fdd62a9deee54a551ea3f1ddc127bb9a1f5e8d936daf1d18','pks.11iitr@gmail.com','8802035788',NULL,NULL,'pankaj sengar',0,0,0,0,0,0,'none',0,NULL,NULL),(95,'20200410132720',15,'2020-04-10 13:27:20','2020-04-10 13:27:20',NULL,0,'paid',0,NULL,0,NULL,NULL,NULL,NULL,'sajimalek35@gmail.com','8802035788','2020-04-16','01:00PM','pankaj kumar sengar',1,3,1,0,0,0,'none',0,NULL,NULL),(96,'20200410132901',15,'2020-04-10 13:29:01','2020-04-10 13:30:08',NULL,2600,'paid',0,NULL,0,'order_EcndZmCd9IhGDD','{\"id\":\"order_EcndZmCd9IhGDD\",\"entity\":\"order\",\"amount\":260000,\"amount_paid\":0,\"amount_due\":260000,\"currency\":\"INR\",\"receipt\":\"20200410132901\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1586525342}','pay_Ecndsubp6uYAmO','8a36ef4727ccca3a56a09107e391352334f6c91f676895f602f1ba521a308e74','pks.11iitr@gmail.com','8802035788','2020-04-16','01:00PM','pankaj',2,2,1,0,0,0,'none',0,NULL,NULL);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `otps`
+--
+
+DROP TABLE IF EXISTS `otps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `otps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `otp` varchar(6) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `expiry` datetime NOT NULL,
+  `isverified` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `otps`
+--
+
+LOCK TABLES `otps` WRITE;
+/*!40000 ALTER TABLE `otps` DISABLE KEYS */;
+INSERT INTO `otps` VALUES (2,7,'111111','login','2019-12-02 07:49:38',1,'2019-12-02 02:19:38','2019-12-02 02:35:07',NULL),(3,8,'111111','login','2019-12-02 08:05:19',1,'2019-12-02 02:35:19','2019-12-02 02:35:30',NULL),(4,8,'111111','login','2019-12-02 08:17:16',1,'2019-12-02 02:47:16','2019-12-02 02:47:45',NULL),(5,8,'111111','login','2019-12-02 08:30:39',1,'2019-12-02 03:00:39','2019-12-02 03:00:51',NULL),(6,8,'111111','login','2019-12-04 10:04:27',1,'2019-12-04 04:34:27','2019-12-04 04:37:42',NULL),(7,8,'111111','login','2019-12-06 11:17:11',1,'2019-12-06 05:47:11','2019-12-06 05:47:30',NULL),(8,8,'111111','login','2019-12-06 12:20:38',1,'2019-12-06 06:50:38','2019-12-06 06:50:49',NULL),(9,7,'111111','login','2019-12-09 12:03:28',1,'2019-12-09 06:33:28','2019-12-09 06:34:29',NULL),(10,7,'111111','login','2019-12-10 10:33:01',1,'2019-12-10 05:03:01','2019-12-10 05:03:23',NULL),(11,7,'111111','login','2019-12-11 13:15:51',1,'2019-12-11 07:45:51','2019-12-11 07:46:02',NULL),(12,15,'111111','login','2019-12-14 08:28:21',1,'2019-12-14 02:58:21','2019-12-16 06:07:08',NULL),(14,15,'971944','login','2019-12-17 07:55:34',1,'2019-12-17 02:25:34','2019-12-17 02:26:15',NULL),(15,15,'431785','login','2019-12-17 10:40:40',1,'2019-12-17 05:10:40','2019-12-17 05:11:25',NULL),(16,15,'111111','login','2019-12-23 06:24:37',1,'2019-12-23 00:54:37','2019-12-23 00:55:03',NULL),(17,15,'111111','login','2019-12-25 06:17:18',1,'2019-12-25 00:47:18','2019-12-25 00:47:32',NULL),(18,15,'111111','login','2019-12-26 06:40:34',1,'2019-12-26 01:10:34','2019-12-26 01:38:48',NULL),(19,15,'111111','login','2019-12-26 08:27:28',1,'2019-12-26 02:57:28','2019-12-26 02:57:40',NULL),(20,15,'111111','login','2019-12-26 08:45:39',1,'2019-12-26 03:15:39','2019-12-26 03:15:49',NULL),(21,15,'111111','login','2019-12-26 12:16:35',1,'2019-12-26 06:46:35','2019-12-26 06:46:41',NULL),(22,14,'111111','login','2019-12-26 13:02:30',1,'2019-12-26 07:32:30','2019-12-26 07:33:05',NULL),(23,14,'111111','login','2019-12-26 13:04:25',1,'2019-12-26 07:34:25','2019-12-26 07:34:34',NULL),(24,16,'111111','login','2020-01-07 06:41:07',1,'2020-01-07 01:11:07','2020-01-07 01:11:28',NULL),(25,15,'111111','login','2020-01-08 06:56:27',1,'2020-01-08 01:26:27','2020-01-08 01:26:40',NULL),(26,15,'111111','login','2020-01-08 06:57:15',1,'2020-01-08 01:27:15','2020-01-08 01:27:19',NULL),(27,14,'111111','login','2020-01-08 07:02:31',1,'2020-01-08 01:32:31','2020-01-08 01:32:51',NULL),(28,15,'111111','login','2020-01-08 07:18:54',1,'2020-01-08 01:48:54','2020-01-08 01:49:07',NULL),(29,15,'111111','login','2020-01-30 12:59:52',1,'2020-01-30 07:29:52','2020-01-30 07:30:05',NULL),(30,15,'111111','login','2020-02-05 09:23:02',1,'2020-02-05 03:53:02','2020-02-05 03:53:21',NULL),(31,15,'111111','login','2020-02-12 06:05:15',1,'2020-02-12 00:35:15','2020-02-12 00:35:27',NULL),(35,15,'111111','reset-password','2020-02-21 07:42:42',1,'2020-02-21 02:12:42','2020-02-21 02:13:24',NULL),(36,15,'111111','reset-password','2020-02-21 07:44:34',1,'2020-02-21 02:14:34','2020-02-21 02:15:14',NULL),(37,15,'111111','reset-password','2020-02-21 07:49:41',1,'2020-02-21 02:19:41','2020-02-21 02:21:56',NULL),(38,9,'111111','reset-password','2020-02-28 12:16:46',1,'2020-02-28 06:46:46','2020-02-29 01:39:23',NULL),(39,9,'111111','login','2020-02-29 09:17:58',1,'2020-02-29 03:47:58','2020-02-29 04:42:36',NULL),(40,9,'111111','login','2020-02-29 10:15:45',1,'2020-02-29 04:45:45','2020-02-29 04:45:49',NULL),(41,9,'111111','login','2020-02-29 10:20:32',1,'2020-02-29 04:50:32','2020-02-29 04:50:37',NULL),(42,9,'111111','login','2020-02-29 10:21:02',1,'2020-02-29 04:51:02','2020-02-29 04:51:06',NULL),(43,9,'111111','login','2020-02-29 10:22:21',1,'2020-02-29 04:52:21','2020-02-29 04:52:25',NULL),(44,15,'111111','login','2020-02-29 10:46:59',1,'2020-02-29 05:16:59','2020-02-29 05:17:06',NULL),(45,9,'111111','login','2020-02-29 10:47:44',1,'2020-02-29 05:17:44','2020-02-29 05:17:49',NULL),(46,9,'111111','login','2020-02-29 10:47:54',1,'2020-02-29 05:17:54','2020-02-29 05:18:00',NULL),(47,9,'111111','login','2020-02-29 10:48:51',1,'2020-02-29 05:18:51','2020-02-29 05:19:10',NULL),(48,9,'111111','login','2020-02-29 10:49:57',1,'2020-02-29 05:19:57','2020-02-29 05:20:02',NULL),(49,9,'111111','login','2020-02-29 10:54:07',1,'2020-02-29 05:24:07','2020-02-29 05:24:22',NULL),(50,9,'111111','login','2020-02-29 12:42:39',1,'2020-02-29 07:12:39','2020-02-29 07:15:05',NULL),(51,9,'111111','login','2020-02-29 12:46:08',1,'2020-02-29 07:16:08','2020-02-29 07:16:15',NULL),(52,9,'111111','login','2020-02-29 12:50:57',1,'2020-02-29 07:20:57','2020-02-29 07:21:22',NULL),(53,9,'111111','login','2020-03-02 06:33:08',1,'2020-03-02 01:03:08','2020-03-02 01:03:11',NULL),(54,15,'111111','login','2020-03-02 06:49:30',1,'2020-03-02 01:19:30','2020-03-02 01:28:32',NULL),(55,21,'111111','login','2020-03-02 06:51:46',0,'2020-03-02 01:21:46','2020-03-02 01:21:46',NULL),(56,22,'111111','login','2020-03-02 06:52:34',1,'2020-03-02 01:22:34','2020-03-02 01:25:59',NULL),(57,17,'111111','login','2020-03-02 06:53:46',1,'2020-03-02 01:23:46','2020-03-02 01:24:33',NULL),(58,15,'111111','login','2020-03-02 06:58:48',1,'2020-03-02 01:28:48','2020-03-02 01:28:53',NULL),(59,22,'111111','login','2020-03-02 06:59:01',1,'2020-03-02 01:29:01','2020-03-02 01:29:04',NULL),(60,15,'111111','login','2020-03-02 07:33:01',1,'2020-03-02 02:03:01','2020-03-02 02:03:04',NULL),(61,15,'111111','login','2020-03-02 07:34:36',1,'2020-03-02 02:04:36','2020-03-02 02:04:40',NULL),(62,15,'111111','login','2020-03-02 07:36:14',1,'2020-03-02 02:06:14','2020-03-02 02:06:18',NULL),(63,15,'111111','login','2020-03-02 07:36:37',1,'2020-03-02 02:06:37','2020-03-02 02:06:40',NULL),(64,9,'111111','login','2020-03-02 08:08:57',1,'2020-03-02 02:38:58','2020-03-02 02:42:08',NULL),(65,9,'111111','login','2020-03-02 08:15:12',1,'2020-03-02 02:45:12','2020-03-02 02:45:17',NULL),(66,15,'111111','login','2020-03-02 08:34:09',1,'2020-03-02 03:04:09','2020-03-02 03:04:13',NULL),(67,15,'111111','login','2020-03-02 08:40:20',1,'2020-03-02 03:10:20','2020-03-02 03:10:24',NULL),(68,15,'111111','login','2020-03-02 08:40:57',1,'2020-03-02 03:10:57','2020-03-02 03:11:04',NULL),(69,15,'111111','login','2020-03-02 08:43:25',1,'2020-03-02 03:13:25','2020-03-02 03:13:31',NULL),(70,15,'111111','login','2020-03-02 08:44:05',1,'2020-03-02 03:14:05','2020-03-02 03:14:11',NULL),(71,15,'111111','login','2020-03-02 08:44:27',1,'2020-03-02 03:14:27','2020-03-02 03:14:32',NULL),(72,15,'111111','login','2020-03-02 08:45:51',1,'2020-03-02 03:15:51','2020-03-02 03:15:55',NULL),(73,15,'111111','login','2020-03-02 08:46:27',1,'2020-03-02 03:16:27','2020-03-02 03:16:34',NULL),(74,15,'111111','login','2020-03-02 09:25:59',1,'2020-03-02 03:55:59','2020-03-02 04:03:28',NULL),(75,15,'111111','login','2020-03-02 09:39:24',1,'2020-03-02 04:09:24','2020-03-02 04:09:27',NULL),(76,15,'111111','login','2020-03-02 09:40:07',1,'2020-03-02 04:10:07','2020-03-02 04:10:10',NULL),(77,15,'111111','login','2020-03-02 09:43:21',1,'2020-03-02 04:13:21','2020-03-02 04:13:24',NULL),(78,15,'111111','login','2020-03-02 09:46:18',1,'2020-03-02 04:16:18','2020-03-02 04:16:23',NULL),(79,9,'111111','login','2020-03-02 11:24:32',1,'2020-03-02 05:54:32','2020-03-02 05:54:36',NULL),(80,9,'111111','login','2020-03-02 11:25:58',1,'2020-03-02 05:55:58','2020-03-02 05:56:07',NULL),(81,15,'111111','login','2020-03-03 05:06:30',1,'2020-03-02 23:36:30','2020-03-02 23:36:34',NULL),(82,15,'111111','login','2020-03-03 11:03:07',1,'2020-03-03 05:33:07','2020-03-03 05:33:10',NULL),(83,15,'111111','login','2020-03-03 11:03:57',1,'2020-03-03 05:33:57','2020-03-03 05:34:00',NULL),(84,15,'111111','login','2020-03-05 17:23:01',1,'2020-03-05 11:53:01','2020-03-05 12:06:10',NULL),(85,15,'111111','login','2020-03-06 11:18:21',1,'2020-03-06 05:48:21','2020-03-06 05:48:25',NULL),(86,15,'111111','login','2020-03-11 06:22:56',1,'2020-03-11 00:52:56','2020-03-11 00:53:00',NULL),(87,15,'111111','login','2020-03-15 09:26:34',1,'2020-03-15 03:56:34','2020-03-15 03:56:38',NULL),(88,15,'111111','login','2020-03-18 10:43:35',1,'2020-03-18 05:13:35','2020-03-18 05:13:38',NULL),(89,9,'111111','login','2020-05-06 10:31:31',1,'2020-05-06 05:01:31','2020-05-06 05:01:34',NULL);
+/*!40000 ALTER TABLE `otps` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `package_menu`
+--
+
+DROP TABLE IF EXISTS `package_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `package_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `package_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL DEFAULT '0',
+  `cut_price` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `package_menu`
+--
+
+LOCK TABLES `package_menu` WRITE;
+/*!40000 ALTER TABLE `package_menu` DISABLE KEYS */;
+INSERT INTO `package_menu` VALUES (46,3,2,0,0,NULL,NULL,NULL),(47,4,3,0,0,NULL,NULL,NULL),(48,4,2,0,0,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `package_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `partner_menus`
+--
+
+DROP TABLE IF EXISTS `partner_menus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `partner_menus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) NOT NULL,
+  `partner_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL DEFAULT '0',
+  `cut_price` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `upated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `partner_menus`
+--
+
+LOCK TABLES `partner_menus` WRITE;
+/*!40000 ALTER TABLE `partner_menus` DISABLE KEYS */;
+INSERT INTO `partner_menus` VALUES (2,3,4,1200,1400,NULL,NULL,NULL),(3,2,4,900,1000,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `partner_menus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `partners`
+--
+
+DROP TABLE IF EXISTS `partners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `partners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `description` text,
+  `address` varchar(250) DEFAULT NULL,
+  `short_address` varchar(50) NOT NULL COMMENT 'displayed under header image',
+  `lat` double DEFAULT NULL,
+  `lang` double DEFAULT NULL,
+  `contact_no` varchar(20) NOT NULL,
+  `header_image` varchar(250) DEFAULT NULL COMMENT 'image to be displayed as header',
+  `small_image` varchar(250) DEFAULT NULL,
+  `type` varchar(50) NOT NULL DEFAULT 'restaurant' COMMENT 'organizers/restaurant etc',
+  `per_person_text` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `open` varchar(20) DEFAULT NULL,
+  `close` varchar(20) DEFAULT NULL,
+  `allow_party` tinyint(1) NOT NULL DEFAULT '0',
+  `priority` int(11) NOT NULL DEFAULT '10',
+  `timings` text,
+  `party_timings` text,
+  `tnc` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `partners`
+--
+
+LOCK TABLES `partners` WRITE;
+/*!40000 ALTER TABLE `partners` DISABLE KEYS */;
+INSERT INTO `partners` VALUES (1,14,'Hotel Samrat','The best way to deal with this, therefore, is to simply add the preselected item as a new option. For remotely sourced data, this will probably involve creating a new API endpoint in your server-side application that can retrieve individual items:','n 65, sector 12','n 65',11.23,12.32,'8802035788','partners/eventicon7.jpg','partners/eventicon1.jpeg','restaurant','250 per person','2019-12-13 13:20:20',NULL,'2020-02-06 11:58:09',1,'10:00AM','09:00PM',0,10,'01:00PM,02:00PM,03:00PM',NULL,NULL),(2,17,'Hotel Taj Delhi','dsdsds','Railway Colony, Ankleshwar, Gujarat 393001','Railway Colony, Ankleshwar, Gujarat 393001',12.32,11.23,'7081259690','partners/eventicon5.jpeg','partners/eventicon4.jpg','restaurant','4500 per couple','2020-01-23 07:22:18',NULL,'2020-01-23 07:22:18',1,NULL,NULL,1,10,'',NULL,NULL),(3,18,'Lord of the drinks','1sdddddddddddddddddddddddddddddddd   1sdddddddddddddddddddddddddddddddd\r\n1sdddddddddddddddddddddddddddddddd\r\n1sdddddddddddddddddddddddddddddddd\r\n1sdddddddddddddddddddddddddddddddd1sdddddddddddddddddddddddddddddddd','Lal Kuan, Ghaziabad, Uttar Pradesh, India','Lal Kuan, Ghaziabad, Uttar Pradesh, India',11.23,12.32,'8971520750','partners/eventicon3.jpg','partners/eventicon2.jpg','restaurant','1000per person','2020-01-23 07:24:28',NULL,'2020-01-23 07:24:28',1,NULL,NULL,0,10,'',NULL,NULL),(4,19,'Dharam Garam','aaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n            dddddddddddddd                   ddddddddddddddddddddd\r\ndddddddddddddddd','c 67, sector 63, sector 63','c 67, sector 63',-12.32,11.23,'1232123454','partners/eventicon7.jpg','partners/freedomroost.jpg','restaurant','best night','2020-01-23 07:25:37',NULL,'2020-03-05 17:24:48',1,NULL,NULL,1,10,'01:00PM,02:00PM','01:00PM-06:00PM,07:00PM-12:00AM','sdsdsjdksjfksjfskskfsjfks');
+/*!40000 ALTER TABLE `partners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permission_role`
+--
+
+DROP TABLE IF EXISTS `permission_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permission_role` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `permission_id` int(10) unsigned NOT NULL,
+  `role_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `permission_role_permission_id_index` (`permission_id`),
+  KEY `permission_role_role_id_index` (`role_id`),
+  CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permission_role`
+--
+
+LOCK TABLES `permission_role` WRITE;
+/*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permission_user`
+--
+
+DROP TABLE IF EXISTS `permission_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permission_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `permission_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `permission_user_permission_id_index` (`permission_id`),
+  KEY `permission_user_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permission_user`
+--
+
+LOCK TABLES `permission_user` WRITE;
+/*!40000 ALTER TABLE `permission_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permission_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permissions`
+--
+
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `inherit_id` int(10) unsigned DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `permissions_inherit_id_index` (`inherit_id`),
+  KEY `permissions_name_index` (`name`),
+  KEY `permissions_slug_index` (`slug`),
+  CONSTRAINT `permissions_inherit_id_foreign` FOREIGN KEY (`inherit_id`) REFERENCES `permissions` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permissions`
+--
+
+LOCK TABLES `permissions` WRITE;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `restaurant_facility`
+--
+
+DROP TABLE IF EXISTS `restaurant_facility`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `restaurant_facility` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `restaurant_id` int(11) NOT NULL,
+  `facility_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `restaurant_facility`
+--
+
+LOCK TABLES `restaurant_facility` WRITE;
+/*!40000 ALTER TABLE `restaurant_facility` DISABLE KEYS */;
+INSERT INTO `restaurant_facility` VALUES (3,1,2,NULL,NULL,NULL),(4,1,5,NULL,NULL,NULL),(23,2,1,NULL,NULL,NULL),(24,2,3,NULL,NULL,NULL),(25,2,4,NULL,NULL,NULL),(27,4,5,NULL,NULL,NULL),(28,5,4,NULL,NULL,NULL),(29,5,5,NULL,NULL,NULL),(32,4,3,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `restaurant_facility` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `description` text,
+  `entity_id` int(11) NOT NULL,
+  `entity_type` varchar(250) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews`
+--
+
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` VALUES (8,15,4,5,'awesome',2,'App\\Models\\PartnerEvent','2019-12-17 08:25:46',NULL,'2019-12-17 08:25:46',1),(9,15,4,5,'awesome',4,'App\\Models\\Partner','2019-12-17 08:25:46',NULL,'2019-12-17 08:25:46',1),(10,15,53,3,'testing this review on website',2,'App\\Models\\Partner','2020-03-09 17:11:42',NULL,'2020-03-09 17:11:42',1);
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_user`
+--
+
+DROP TABLE IF EXISTS `role_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` int(10) unsigned NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `role_user_role_id_index` (`role_id`),
+  KEY `role_user_user_id_index` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_user`
+--
+
+LOCK TABLES `role_user` WRITE;
+/*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
+INSERT INTO `role_user` VALUES (3,1,9,NULL,NULL),(5,3,14,NULL,NULL),(6,2,15,'2019-12-14 02:58:21','2019-12-14 02:58:21'),(7,2,16,'2020-01-07 01:11:07','2020-01-07 01:11:07'),(8,2,21,'2020-03-02 01:21:46','2020-03-02 01:21:46'),(9,2,22,'2020-03-02 01:22:34','2020-03-02 01:22:34');
+/*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_unique` (`name`),
+  UNIQUE KEY `roles_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'admin','admin','this is super administrator of application',NULL,NULL),(2,'customer','customer','this role is for application customers',NULL,NULL),(3,'partner','partner','this is for partner users',NULL,NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `mobile_verified_at` datetime DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `lat` float DEFAULT NULL,
+  `lang` float DEFAULT NULL,
+  `gender` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `image` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniqmobile` (`mobile`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (9,'Super Admin',NULL,'1234567890',NULL,1,NULL,NULL,'$2y$10$RxZHE2FA7KvX152/pzPqhe40QHvbcRojOvkbgHO556SxI/Q52Mp3O','2REbApkE2wLhCLUehSr2OLXuAMQlsEj2752iTLyIyzGOp0FK8d73BIMXT4Pa','2019-12-03 02:49:32','2020-02-29 01:39:24',NULL,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,'2345678901',NULL,1,NULL,NULL,'$2y$10$NQg9k81lIN2qKsqf3EI0puTNey6l9UnFaaWpp2DenPXa8R7SdDgVq',NULL,'2019-12-13 07:50:20','2019-12-25 02:41:51',NULL,NULL,NULL,NULL,NULL,NULL),(15,'pankaj kumar sengar','pks.11iitr@gmail.com','8802035788',NULL,1,NULL,NULL,'$2y$10$cUdSDzb7lYLhsDhLGDaj.eAi.NhhF/EMCMNmOKVtcrMKD6lePNyua','b1yMCEWDdpHI0IPJSZ1em4ZfcQ5WSh8ZIRdPwtdpqYZvNrq3tGBat1gaMsMy','2019-12-14 02:58:21','2020-03-09 11:13:34',NULL,NULL,'male','2000-08-29','users/eventicon1.jpeg',NULL),(16,NULL,NULL,'7011635590',NULL,1,NULL,NULL,'$2y$10$TIZ/23xaQl/27CT2NbHBXuZZhriNGeYjsQKj1cqJ0QyymUqc2NT8e',NULL,'2020-01-07 01:11:06','2020-01-07 01:11:28',NULL,NULL,NULL,NULL,NULL,NULL),(17,NULL,NULL,'1111111111',NULL,1,NULL,NULL,'$2y$10$jSDsQjZYLumiIELqDZuS2.vWxcPL2pQc4WinYJsh9VCBDKktjUF3m',NULL,'2020-01-23 01:52:18','2020-01-23 01:52:18',NULL,NULL,NULL,NULL,NULL,NULL),(18,NULL,NULL,'2222222222',NULL,1,NULL,NULL,'$2y$10$UbbdBLwRKprA8rlYjCjgK.8Q9iDlFzB8yAEWTOnDzV6ieTDTS3gGi',NULL,'2020-01-23 01:54:28','2020-01-23 01:54:28',NULL,NULL,NULL,NULL,NULL,NULL),(19,NULL,NULL,'3333333334',NULL,1,NULL,NULL,'$2y$10$E.UMeTQR8oTmxwAUHAaF9euyZXLbvcoJzOWBC2rqJEjQ3FDbiccpq',NULL,'2020-01-23 01:55:36','2020-01-23 01:55:36',NULL,NULL,NULL,NULL,NULL,NULL),(20,NULL,NULL,'3435387548',NULL,1,NULL,NULL,'$2y$10$UiHjG8KJ9pyHEy7a0mEMHO44hO1U0BllezaaKoWWvpajR4r5KwgGm',NULL,'2020-02-06 00:26:56','2020-02-06 00:26:56',NULL,NULL,NULL,NULL,NULL,NULL),(21,NULL,NULL,'8802035789',NULL,0,NULL,NULL,'$2y$10$RXHTofGYulSCOrp2DQjZ9.MCn6LZ7DxgE8GKYQI21rJ0zKInxJG6m',NULL,'2020-03-02 01:21:45','2020-03-02 01:21:45',NULL,NULL,NULL,NULL,NULL,NULL),(22,NULL,NULL,'0880203578',NULL,1,NULL,NULL,'$2y$10$vtjMMKKME.LNY630NQeHXeQj6R6xtURRs6AeAHZxl8JusUGz3zlWm','SouUqe1SDKrjcRDw6InttI9YKzoux3s0lQYcPShlN0kGatTLXhXjGohhG1al','2020-03-02 01:22:34','2020-03-02 01:25:59',NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wallet`
+--
+
+DROP TABLE IF EXISTS `wallet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wallet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `refid` varchar(20) DEFAULT NULL,
+  `type` enum('Debit','Credit') NOT NULL,
+  `amount` int(11) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `iscomplete` tinyint(1) NOT NULL DEFAULT '0',
+  `order_id` varchar(50) DEFAULT NULL,
+  `order_id_response` text,
+  `payment_id` varchar(50) DEFAULT NULL,
+  `payment_id_response` text,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wallet`
+--
+
+LOCK TABLES `wallet` WRITE;
+/*!40000 ALTER TABLE `wallet` DISABLE KEYS */;
+INSERT INTO `wallet` VALUES (1,1,'sdsdsds','Debit',10,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,15,'xcxcxcxc','Credit',1000,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,10,NULL,'Debit',10,'Service fee deducted for Booking ID: ',1,'23',NULL,NULL,NULL,'2020-01-27 07:59:54','2020-01-27 07:59:54',NULL),(4,15,NULL,'Debit',400,'Paid for Order ID:20200205100957',1,NULL,NULL,NULL,NULL,'2020-02-05 10:09:57','2020-02-05 10:09:57',NULL),(5,15,NULL,'Debit',400,'Paid for Order ID:20200205104341',1,NULL,NULL,NULL,NULL,'2020-02-05 10:43:41','2020-02-05 10:43:41',NULL),(9,15,'20200303120327','Credit',10000,'Wallet Recharge',1,'order_ENjsbDFRS5euWI','{\"id\":\"order_ENjsbDFRS5euWI\",\"entity\":\"order\",\"amount\":1000000,\"amount_paid\":0,\"amount_due\":1000000,\"currency\":\"INR\",\"receipt\":\"20200303120327\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1583237008}','pay_ENjt2YKMNSfeSf','a77a44da2e1f67a5091e1a719c71f7b2558843c99dd3a700a68396f52dcf0e40','2020-03-03 12:03:27','2020-03-03 12:04:30',NULL),(10,15,'20200315111021','Credit',10000,'Wallet Recharge',1,'order_ESTNxVGdx3Brja','{\"id\":\"order_ESTNxVGdx3Brja\",\"entity\":\"order\",\"amount\":1000000,\"amount_paid\":0,\"amount_due\":1000000,\"currency\":\"INR\",\"receipt\":\"20200315111021\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1584270622}','pay_ESTORATTrffm2a','e37b8b0df497669aaeb38b48d9ab65ad39d14e1a304fabc3cf350cf6a21bf5af','2020-03-15 11:10:21','2020-03-15 11:10:52',NULL),(11,15,'20200315111536','Credit',5000,'Wallet Recharge',0,'order_ESTTV4jnZQ7yuH','{\"id\":\"order_ESTTV4jnZQ7yuH\",\"entity\":\"order\",\"amount\":500000,\"amount_paid\":0,\"amount_due\":500000,\"currency\":\"INR\",\"receipt\":\"20200315111536\",\"offer_id\":null,\"status\":\"created\",\"attempts\":0,\"notes\":[],\"created_at\":1584270937}',NULL,NULL,'2020-03-15 11:15:36','2020-03-15 11:15:37',NULL);
+/*!40000 ALTER TABLE `wallet` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-08-03 16:43:29
