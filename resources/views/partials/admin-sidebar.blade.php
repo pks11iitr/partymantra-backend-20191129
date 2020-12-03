@@ -267,6 +267,8 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<div style="margin-left: 250px;">
+<section class="content">
 <div>
 	@if ($message = Session::get('success'))
     <div class="alert alert-success alert-block">
@@ -306,4 +308,6 @@
         Please check the form below for errors
     </div>
 @endif
+</div>
+</section>
 </div>

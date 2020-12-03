@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
+    <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="minor change partner decline api">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_03_08_20__4_43_PM.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Partner/Api/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/admin-sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,22 +159,24 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
-      <recent name="$PROJECT_DIR$/resources/theme" />
-      <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$/public/uploads/images" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/Models/Traits" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Customer/Api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Console" />
+      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
+      <recent name="$PROJECT_DIR$/resources/theme" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/public/uploads/images" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -185,6 +190,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -266,21 +272,24 @@
       <workItem from="1586596145836" duration="1771000" />
       <workItem from="1586611117221" duration="11125000" />
       <workItem from="1586718637168" duration="1796000" />
-      <workItem from="1586947618597" duration="3573000" />
-    </task>
-    <task id="LOCAL-00220" summary="admin notifications">
-      <created>1581594838166</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1581594838166</updated>
-    </task>
-    <task id="LOCAL-00221" summary="admin notifications">
-      <created>1581594961989</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1581594961989</updated>
+      <workItem from="1586947618597" duration="4956000" />
+      <workItem from="1587046914356" duration="1219000" />
+      <workItem from="1587196864513" duration="599000" />
+      <workItem from="1587226310621" duration="614000" />
+      <workItem from="1588761006755" duration="421000" />
+      <workItem from="1592390136622" duration="657000" />
+      <workItem from="1592394190212" duration="38000" />
+      <workItem from="1592636242989" duration="631000" />
+      <workItem from="1592801312035" duration="667000" />
+      <workItem from="1592915509778" duration="743000" />
+      <workItem from="1593166854286" duration="2924000" />
+      <workItem from="1593500438408" duration="626000" />
+      <workItem from="1596453153129" duration="104000" />
+      <workItem from="1596866608015" duration="19000" />
+      <workItem from="1599670692864" duration="791000" />
+      <workItem from="1599671535300" duration="7000" />
+      <workItem from="1600420475376" duration="923000" />
+      <workItem from="1601014226635" duration="271000" />
     </task>
     <task id="LOCAL-00222" summary="admin notifications">
       <created>1581595021228</created>
@@ -611,11 +620,25 @@
       <option name="project" value="LOCAL" />
       <updated>1586956775085</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="minor change partner decline api">
+      <created>1586957232677</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1586957232677</updated>
+    </task>
+    <task id="LOCAL-00270" summary="minor change partner decline api">
+      <created>1596453223363</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1596453223363</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -631,7 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="collecion image" />
     <MESSAGE value="login register forgot password redirections setup for website" />
     <MESSAGE value="working on home page, partialy completed" />
     <MESSAGE value="modified gitignore" />
@@ -656,84 +678,25 @@
     <MESSAGE value="changes for booking confirmation in apis" />
     <MESSAGE value="changes in partner order details api" />
     <MESSAGE value="minor fix in main.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix in main.js" />
+    <MESSAGE value="minor change partner decline api" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor change partner decline api" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="506" y="77" width="411" height="638" key="#com.intellij.ide.util.MemberChooser" timestamp="1586956686467">
+    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1599671029543">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="506" y="77" width="411" height="638" key="#com.intellij.ide.util.MemberChooser/67.27.1299.741@67.27.1299.741" timestamp="1586956686467" />
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586956729217">
+    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1599671029543" />
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1596453159712">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1586956729217" />
-    <state x="343" y="42" width="737" height="708" key="#phpunit.xml" timestamp="1584266522733">
+    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1596453159712" />
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1599670936771">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="343" y="42" width="737" height="708" key="#phpunit.xml/67.27.1299.741@67.27.1299.741" timestamp="1584266522733" />
-    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1586956774985">
+    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1599670936771" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1596453248123">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="297" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1586956774985" />
-    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog" timestamp="1581581917811">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="203" y="86" width="1039" height="622" key="DiffContextDialog/67.27.1299.741@67.27.1299.741" timestamp="1581581917811" />
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586682165053">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1586682165053" />
-    <state x="187" y="85" width="1165" height="622" key="MergeDialog" timestamp="1584271631584">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="187" y="85" width="1165" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1584271631584" />
-    <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog" timestamp="1584271631586">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="421" y="112" width="580" height="568" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1584271631586" />
-    <state x="487" y="210" width="601" height="373" key="NewPhpClassDialog" timestamp="1583139276553">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="487" y="210" width="601" height="373" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1583139276553" />
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1584189365909">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1584189365909" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1583392284523">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/67.27.1299.741@67.27.1299.741" timestamp="1583392284523" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586956778642">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1586956778642" />
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1586768088522">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="372" y="224" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1586768088522" />
-    <state x="362" y="126" width="911" height="642" key="find.popup" timestamp="1583394527359">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="362" y="126" width="911" height="642" key="find.popup/67.27.1299.741@67.27.1299.741" timestamp="1583394527359" />
-    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog" timestamp="1586453990426">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="476" y="189" width="471" height="415" key="git4idea.merge.GitMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1586453990426" />
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog" timestamp="1586949435599">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="140" y="153" width="759" height="415" key="git4idea.merge.GitPullDialog/67.27.1299.741@67.27.1299.741" timestamp="1586949435599" />
-    <state x="365" y="115" width="700" height="530" key="recent.locations.popup" timestamp="1580456748058">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="365" y="115" width="700" height="530" key="recent.locations.popup/67.27.1299.741@67.27.1299.741" timestamp="1580456748058" />
-    <state x="380" y="175" width="672" height="677" key="run.anything.popup" timestamp="1584700253631">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="380" y="175" width="672" height="677" key="run.anything.popup/67.27.1299.741@67.27.1299.741" timestamp="1584700253631" />
-    <state x="379" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580710779093">
-      <screen x="67" y="27" width="1299" height="741" />
-    </state>
-    <state x="379" y="89" width="672" height="678" key="search.everywhere.popup/67.27.1299.741@67.27.1299.741" timestamp="1580710779093" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1596453248123" />
   </component>
 </project>

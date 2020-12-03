@@ -81,6 +81,7 @@ Route::group(['prefix'=>'admin'], function() {
  */
 
 Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], function(){
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
         Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
         Route::get('orders', 'Admin\OrderController@index')->name('admin.orders');
         Route::get('order-details/{id}', 'Admin\OrderController@details')->name('admin.orders.details');
