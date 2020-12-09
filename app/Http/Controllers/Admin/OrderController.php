@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use App\Models\Partner;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -53,6 +54,9 @@ class OrderController extends Controller
         $order=Order::where('payment_status', 'cancel-request')->where('id', $id)->first();
         $order->payment_status='cancelled';
         $order->save();
+
+        Wallet::updatewallet($order->user_id, 'Amount refunded for Order ID:'.$order->refid, 'Credit', $order->total, $order->id);
+
         return redirect()->back()->with('success', 'Order cancel request has been approved');
 
     }
