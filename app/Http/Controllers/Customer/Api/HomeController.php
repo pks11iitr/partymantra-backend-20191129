@@ -25,9 +25,13 @@ class HomeController extends Controller
         /*
          * get all banners for entity type
          */
-        $banners=Banner::where('isactive', true)->where('entity_type', $type)->orderBy('priority', 'asc')->where('placeholder',  1)->get();
+        $banners=Banner::where('isactive', true)
+            ->where('entity_type', $type)
+            ->orderBy('priority', 'asc')
+            ->where('placeholder',  1)->get();
         $otherbanners=Banner::where('isactive', true)
-            ->where('entity_type', $type)->where('placeholder',  '>',1)
+            ->where('entity_type', $type)
+            ->where('placeholder',  '>',1)
             ->orderBy('priority', 'asc')->get();
 
         /*
@@ -35,10 +39,10 @@ class HomeController extends Controller
          */
         $bannerorder=[];
         foreach($otherbanners as $banner){
-            if(!isset($bannerorder[$banner->placeholder-1])){
-                $bannerorder[$banner->placeholder-1]=[];
+            if(!isset($bannerorder[$banner->placeholder-2])){
+                $bannerorder[$banner->placeholder-2]=[];
             }
-            $bannerorder[$banner->placeholder-1][]=$banner;
+            $bannerorder[$banner->placeholder-2][]=$banner;
         }
         unset($otherbanners);
 
@@ -72,12 +76,12 @@ class HomeController extends Controller
          * Add placeholder banner to placeholer collection
          */
         $i=0;
-        $placeholderno=1;
+        //$placeholderno=1;
         $collectionswithbanner=[];
         foreach($othercollections as $c){
-            if($i%2!=0 && isset($bannerorder[$placeholderno])){
-                $c->banners=$bannerorder[$placeholderno];
-                $placeholderno++;
+            if(isset($bannerorder[$i])){
+                $c->banners=$bannerorder[$i];
+                //$placeholderno++;
 
             }
             $collectionswithbanner[]=$c;
