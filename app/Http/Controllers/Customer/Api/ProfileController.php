@@ -47,7 +47,7 @@ class ProfileController extends Controller
 
         $request->validate([
            'name'=>'required|max:25',
-           'email'=>'email',
+           'email'=>'nullable|email',
            'gender'=>'required|in:male,female,other',
            'dob'=>'required|date_format:Y-m-d',
            'image'=>'nullable|image'
