@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Buttons</title>
+  <title>PartyMantra</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -58,16 +58,19 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
 
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="{{ route('admin.logout') }}"
-           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-          Logout <i class="fas fa-th-large"></i>
-        </a>
-          <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-              @csrf
-          </form>
-      </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa fa-user"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" class="dropdown-item dropdown-header">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
     </ul>
 
   </nav>
