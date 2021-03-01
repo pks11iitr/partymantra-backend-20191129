@@ -160,6 +160,12 @@ Route::group(['middleware'=>['auth', 'acl'], 'prefix'=>'admin', 'is'=>'admin'], 
     Route::get('notification-form', 'Admin\NotificationController@create')->name('admin.notification.create');
     Route::post('send', 'Admin\NotificationController@send')->name('admin.notification.send');
 
+    Route::group(['prefix'=>'change-password'], function(){
+        Route::get('edit','Admin\ChangePasswordController@edit')->name('change.password.edit');
+        Route::post('update','Admin\ChangePasswordController@update')->name('change.password.update');
+    });
+
+
 });
 
 /*
