@@ -62,14 +62,20 @@ class HomeController extends Controller
         /*
          * get other collections for entity type
          */
-        $othercollections=Collection::active()->where('type', $type)->with([$type=>function($query) use($type){
+        $othercollections=Collection::active()
+            ->where('type', $type)
+            ->with([$type=>function($query) use($type){
             if($type=='event')
                 return $query->with('avgreviews')->where('isactive',true)->where('partneractive', true)->orderBy('priority', 'asc');
             else if($type=='party')
                 return $query->with('avgreviews')->where('isactive',true)->where('allow_party', true)->orderBy('priority', 'asc');
             else
                 return $query->with('avgreviews')->where('isactive',true)->orderBy('priority', 'asc');
-        }])->where('istop', false)->orderby('priority', 'desc')->has($type)->get();
+        }])
+            ->where('istop', false)
+            ->orderby('priority', 'desc')
+            ->has($type)
+            ->get();
 
 
         /*
@@ -79,6 +85,11 @@ class HomeController extends Controller
         //$placeholderno=1;
         $collectionswithbanner=[];
         foreach($othercollections as $c){
+            foreach($c->$type as $item){
+                $item->newreviews=!empty($item->avgreviews)?$item->avgreviews[0]->rating:"0.0";
+                $item->newreviews=!empty($item->avgreviews)?$item->avgreviews[0]->reviews:0;
+
+            }
             if(isset($bannerorder[$i])){
                 $c->banners=$bannerorder[$i];
                 //$placeholderno++;
