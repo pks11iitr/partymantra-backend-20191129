@@ -87,7 +87,7 @@ class HomeController extends Controller
         foreach($othercollections as $c){
             foreach($c->$type as $item){
                 $item->newreviews=count($item->avgreviews)?$item->avgreviews[0]->rating:"0.0";
-                $item->newreviews=count($item->avgreviews)?$item->avgreviews[0]->reviews:0;
+                $item->newcount=count($item->avgreviews)?$item->avgreviews[0]->reviews:0;
 
             }
             if(isset($bannerorder[$i])){
