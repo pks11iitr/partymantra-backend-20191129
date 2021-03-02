@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b880984e-521f-4063-8d7a-e6903fc31550" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Customer/Api/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PartnerEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartnerEvent.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,27 +299,6 @@
       <workItem from="1613025747426" duration="1223000" />
       <workItem from="1613722207402" duration="6368000" />
       <workItem from="1613969460995" duration="3167000" />
-    </task>
-    <task id="LOCAL-00227" summary="collecion image">
-      <created>1582013085346</created>
-      <option name="number" value="00227" />
-      <option name="presentableId" value="LOCAL-00227" />
-      <option name="project" value="LOCAL" />
-      <updated>1582013085346</updated>
-    </task>
-    <task id="LOCAL-00228" summary="login register forgot password redirections setup for website">
-      <created>1582272427112</created>
-      <option name="number" value="00228" />
-      <option name="presentableId" value="LOCAL-00228" />
-      <option name="project" value="LOCAL" />
-      <updated>1582272427112</updated>
-    </task>
-    <task id="LOCAL-00229" summary="working on home page, partialy completed">
-      <created>1582288745611</created>
-      <option name="number" value="00229" />
-      <option name="presentableId" value="LOCAL-00229" />
-      <option name="project" value="LOCAL" />
-      <updated>1582288745612</updated>
     </task>
     <task id="LOCAL-00230" summary="working on home page, partialy completed">
       <created>1582289352712</created>
@@ -642,7 +622,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613025783197</updated>
     </task>
-    <option name="localTasksCounter" value="276" />
+    <task id="LOCAL-00276" summary="minor change partner decline api">
+      <created>1614665036257</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1614665036257</updated>
+    </task>
+    <task id="LOCAL-00277" summary="minor change partner decline api">
+      <created>1614665118158</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1614665118158</updated>
+    </task>
+    <task id="LOCAL-00278" summary="minor change partner decline api">
+      <created>1614665165300</created>
+      <option name="number" value="00278" />
+      <option name="presentableId" value="LOCAL-00278" />
+      <option name="project" value="LOCAL" />
+      <updated>1614665165300</updated>
+    </task>
+    <option name="localTasksCounter" value="279" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

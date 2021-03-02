@@ -124,6 +124,12 @@ class PartnerEvent extends Model
                 ->with(["avgreviews"])
                 ->orderBy(DB::raw("$haversine"), 'asc')->where(DB::raw("$haversine"),'<', 10000)->get();
         }
+
+        foreach($events as $item){
+            $item->newreviews=count($item->avgreviews)?$item->avgreviews[0]->rating:"0.0";
+            $item->newcount=count($item->avgreviews)?$item->avgreviews[0]->reviews:0;
+
+        }
         return $events;
     }
 
