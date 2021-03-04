@@ -22,6 +22,10 @@ class EventController extends Controller
                 ],
             ], 404);
         }
+
+        $event->newreviews=count($event->avgreviews)?$event->avgreviews[0]->rating:"0.0";
+        $event->newcount=count($event->avgreviews)?$event->avgreviews[0]->reviews:0;
+
         //$event->time_to_start='very soon';
         return ['event'=>$event];
     }

@@ -21,6 +21,10 @@ class RestaurantController extends Controller
                 ],
             ], 404);
         }
+
+        $restaurant->newreviews=count($restaurant->avgreviews)?$restaurant->avgreviews[0]->rating:"0.0";
+        $restaurant->newcount=count($restaurant->avgreviews)?$restaurant->avgreviews[0]->reviews:0;
+
         //$event->time_to_start='very soon';
         return ['restaurant'=>$restaurant];
     }
@@ -37,6 +41,10 @@ class RestaurantController extends Controller
                 ],
             ], 404);
         }
+
+        $restaurant->newreviews=count($restaurant->avgreviews)?$restaurant->avgreviews[0]->rating:"0.0";
+        $restaurant->newcount=count($restaurant->avgreviews)?$restaurant->avgreviews[0]->reviews:0;
+
         //$event->time_to_start='very soon';
         return ['party'=>$restaurant];
     }

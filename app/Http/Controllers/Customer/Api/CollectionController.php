@@ -45,7 +45,7 @@ class CollectionController extends Controller
             })*/;
         $i=0;
         foreach($events as $e){
-            $events[$i]->rating=$e->avgreviews[0]->rating??0;
+            $events[$i]->rating=$e->avgreviews[0]->rating??"0.0";
             $i++;
         }
         return ['events'=>$events,'image'=>$collection->cover_image];
