@@ -17,7 +17,9 @@ class Banner extends Model
     protected $hidden = ['created_at','deleted_at','updated_at'];
 
     public function getImageAttribute($value){
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
 
     public function partner(){

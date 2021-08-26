@@ -39,11 +39,15 @@ class PartnerEvent extends Model
 
     public function getHeaderImageAttribute($value)
     {
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
 
     public function getSmallImageAttribute($value){
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
 
     public function order(){

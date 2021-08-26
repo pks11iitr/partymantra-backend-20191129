@@ -30,11 +30,15 @@ class Collection extends Model
 
     public function getCoverImageAttribute($value)
     {
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
     public function getSmallImageAttribute($value)
     {
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
 
 }

@@ -18,7 +18,9 @@ class Menu extends Model
     protected $hidden=['created_at', 'updated_at', 'deleted_at', 'created_by', 'isactive'];
 
     public function getImageAttribute($value){
-        return Storage::url($value);
+        if($value)
+            return Storage::url($value);
+        return '';
     }
 
     public function partner(){

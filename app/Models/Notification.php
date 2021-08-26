@@ -15,10 +15,9 @@ class Notification extends Model
 
     public function getImageAttribute($value)
     {
-        if(empty($value))
-            return '';
-        else
+        if($value)
             return Storage::url($value);
+        return '';
     }
 
     public function getDateAttribute(){

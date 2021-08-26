@@ -14,7 +14,9 @@ class Document extends Model
     protected $hidden=['id', 'created_at', 'deleted_at', 'uploaded_by', 'entity_type', 'entity_id','isactive', 'partneractive'];
 
     public function getDocPathAttribute($value){
+        if($value)
             return Storage::url($value);
+        return '';
     }
 
 }
