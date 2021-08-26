@@ -67,7 +67,7 @@ class EventController extends Controller
 
             $path1='events/'.$name;
 
-            Storage::put($path1, file_get_contents($file));
+            Storage::put($path1, file_get_contents($file), 'public');
 
         }
 
@@ -79,7 +79,7 @@ class EventController extends Controller
 
             $path2='events/'.$name;
 
-            Storage::put($path2, file_get_contents($file));
+            Storage::put($path2, file_get_contents($file), 'public');
 
         }
 
@@ -147,7 +147,7 @@ class EventController extends Controller
 
               $path1='events/'.$name;
 
-              Storage::put($path1, $file);
+              Storage::put($path1, $file, 'public');
 
           }else{
           $path1=DB::raw('header_image');
@@ -161,7 +161,7 @@ class EventController extends Controller
 
               $path2='events/'.$name;
 
-              Storage::put($path2, $file);
+              Storage::put($path2, $file, 'public');
 
           }else{
           $path2=DB::raw('small_image');

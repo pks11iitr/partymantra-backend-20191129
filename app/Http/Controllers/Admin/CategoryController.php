@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
                     $path='category/'.$name;
 
-                    Storage::put($path, file_get_contents($file));
+                    Storage::put($path, file_get_contents($file), 'public');
 
 
 				 if(Category::create(['name'=>$request->name,
@@ -80,7 +80,7 @@ class CategoryController extends Controller
 
               		$path='category/'.$name;
 
-              		Storage::put($path, file_get_contents($file));
+              		Storage::put($path, file_get_contents($file), 'public');
                 }else{
                     $path=DB::raw('image');
                 }

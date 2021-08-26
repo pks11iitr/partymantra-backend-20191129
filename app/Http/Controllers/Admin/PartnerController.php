@@ -84,7 +84,7 @@ class PartnerController extends Controller
 
             $path1='partners/'.$name;
 
-            Storage::put($path1, file_get_contents($file));
+            Storage::put($path1, file_get_contents($file), 'public');
         }
 
         if(isset($request->small_image)){
@@ -95,7 +95,7 @@ class PartnerController extends Controller
 
             $path2='partners/'.$name;
 
-            Storage::put($path2, file_get_contents($file));
+            Storage::put($path2, file_get_contents($file), 'public');
 
         }
 
@@ -161,7 +161,7 @@ class PartnerController extends Controller
 
           $path1='partners/'.$name;
 
-          Storage::put($path1, file_get_contents($file));
+          Storage::put($path1, file_get_contents($file), 'public');
       }else{
           $path1=DB::raw('header_image');
       }
@@ -174,7 +174,7 @@ class PartnerController extends Controller
 
           $path2='partners/'.$name;
 
-          Storage::put($path2, file_get_contents($file));
+          Storage::put($path2, file_get_contents($file), 'public');
 
       }else{
           $path2=DB::raw('small_image');

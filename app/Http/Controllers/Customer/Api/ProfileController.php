@@ -60,7 +60,7 @@ class ProfileController extends Controller
 
             $path = 'users/' . $name;
 
-            Storage::put($path, file_get_contents($file));
+            Storage::put($path, file_get_contents($file), 'public');
         }else{
             $path=DB::raw('image');
         }

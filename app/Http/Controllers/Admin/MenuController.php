@@ -48,7 +48,7 @@ class MenuController extends Controller
 
 		$path='menus/'.$name;
 
-		Storage::put($path, file_get_contents($file));
+		Storage::put($path, file_get_contents($file), 'public');
 
 		if(Menu::create(['name'=>$request->name,
 							'image'=>$path,
@@ -89,7 +89,7 @@ class MenuController extends Controller
 
         $path='menus/'.$name;
 
-        Storage::put($path, file_get_contents($file));
+        Storage::put($path, file_get_contents($file), 'public');
 
     }else{
         $path=DB::raw('image');
