@@ -49,7 +49,7 @@ class CollectionController extends Controller
 
 		$path1='collections/'.$name;
 
-		Storage::put($path1, file_get_contents($file));
+		Storage::put($path1, file_get_contents($file), 'public');
 
         $file=$request->cover_image->path();
 
@@ -57,7 +57,7 @@ class CollectionController extends Controller
 
         $path2='collections/'.$name;
 
-        Storage::put($path2, file_get_contents($file));
+        Storage::put($path2, file_get_contents($file), 'public');
 
 
         if(Collection::create(['name'=>$request->name,
@@ -96,7 +96,7 @@ class CollectionController extends Controller
 
           $path1='collections/'.$name;
 
-          Storage::put($path1, file_get_contents($file));
+          Storage::put($path1, file_get_contents($file), 'public');
       }else{
           $path1=DB::raw('cover_image');
       }
@@ -108,7 +108,7 @@ class CollectionController extends Controller
 
             $path2='collections/'.$name;
 
-            Storage::put($path2, file_get_contents($file));
+            Storage::put($path2, file_get_contents($file), 'public');
         }else{
             $path2=DB::raw('small_image');
         }
